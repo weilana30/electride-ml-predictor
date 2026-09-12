@@ -1,0 +1,69 @@
+&CONTROL
+  calculation = 'vc-relax',
+  prefix = 'mp-15896_r2scan',
+  outdir = './out',
+  pseudo_dir = '../../pseudo/PBE',
+  tstress = .true.,
+  tprnfor = .true.,
+  nstep = 300,
+  etot_conv_thr = 1.0d-5,
+  forc_conv_thr = 1.0d-4,
+  disk_io = 'low',
+/
+&SYSTEM
+  ibrav = 0,
+  nat = 12,
+  ntyp = 3,
+  ecutwfc = 100,
+  ecutrho = 800,
+  input_dft = 'r2scan',
+  occupations = 'fixed',
+/
+&ELECTRONS
+  conv_thr = 1.0d-9,
+  mixing_mode = 'local-TF',
+  mixing_beta = 0.25,
+  electron_maxstep = 200,
+  diagonalization = 'david',
+/
+&IONS
+  ion_dynamics = 'bfgs',
+/
+&CELL
+  cell_dynamics = 'bfgs',
+  press = 0.0,
+  press_conv_thr = 0.5,
+  cell_dofree = 'all',
+/
+
+ATOMIC_SPECIES
+  Cu   63.546000 Cu.upf
+  Si   28.085000 Si.upf
+  Se   78.971000 Se.upf
+
+CELL_PARAMETERS angstrom
+      6.6855991200     0.0000000000     0.0000000000
+      2.1130934749     6.3274612786     0.0000000000
+      1.0565473117     3.1637302805     5.8618400706
+
+ATOMIC_POSITIONS crystal
+  Cu      0.50262342     0.23318964     0.50960673
+  Cu      0.00262342     0.74279636     0.49039327
+  Cu      0.50015775     0.58408142     0.82600655
+  Cu      0.00015775     0.41008898     0.17399345
+  Si      0.52432198     0.88575359     0.16972488
+  Si      0.02432198     0.05547947     0.83027512
+  Se      0.12257408     0.69868974     0.83051447
+  Se      0.62257408     0.52920420     0.16948553
+  Se      0.62687497     0.86713526     0.48386814
+  Se      0.12687497     0.35100340     0.51613186
+  Se      0.14494781     0.03064701     0.15708293
+  Se      0.64494781     0.18773093     0.84291707
+
+K_POINTS automatic
+  7 8 8 0 0 0
+
+! Source: data/cifs/mp-15896.cif (mp-15896)
+! ternary covalent/chalcogenide semiconductor control
+! PBE ONCV scalar-relativistic pseudopotentials; r2SCAN needs a QE build with LibXC/r2SCAN support
+! Pre-production settings: converge cutoffs and k mesh before comparing functionals.

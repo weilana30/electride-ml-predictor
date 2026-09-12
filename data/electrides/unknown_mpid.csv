@@ -1,0 +1,336 @@
+material_id,normalized_formula,space_group,mpid,pressure
+ELD-0001,AsLi7,P6/mmm,not found,80–150 GPa (reported electronic analyses include 80 and 150 GPa)
+ELD-0002,AsLi7,Pmmm,not found,high pressure; Pmmm phase below the 80 GPa topology change
+ELD-0003,Ba2As,I4/mmm,mp-2768,ambient/near-ambient database structure; exact pressure not reported
+ELD-0004,Ba2Bi,I4/mmm,mp-567872,ambient/near-ambient database structure; exact pressure not reported
+ELD-0005,Ba2CrN5,C2/m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0006,Ba2LiN,P42/nmc,mp-605860,ambient/near-ambient database structure; exact pressure not reported
+ELD-0009,Ba2N,Cc,not found,high pressure; exact interval not reported in accessible abstract
+ELD-0010,Ba2N,R-3m,mp-1892,ambient/near-ambient database structure; exact pressure not reported
+ELD-0011,Ba2Sb,I4/mmm,mp-9908,ambient/near-ambient database structure; exact pressure not reported
+ELD-0013,Ba3Au2,R-3,mp-1104164,ambient/near-ambient database structure; exact pressure not reported
+ELD-0016,Ba3LiN,P63/mmc,mp-13288,ambient/near-ambient database structure; exact pressure not reported
+ELD-0017,Ba3MnN3,P63/m,mp-9324,ambient/near-ambient database structure; exact pressure not reported
+ELD-0018,Ba3N,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0019,Ba3NaN,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0025,Ba5Ge3,I4/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0026,Ba5Pb3,I4/mcm,mp-622106,ambient/near-ambient database structure; exact pressure not reported
+ELD-0028,Ba5Si3,I4/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0030,Ba7(BIr)12,R-3m,mp-27261,ambient/near-ambient database structure; exact pressure not reported
+ELD-0033,BaAg,Pnma,mp-11840,ambient/near-ambient database structure; exact pressure not reported
+ELD-0034,BaAl2O4-xHy,not reported,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0035,BaAl2O4-y,not reported,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0036,BaBr,P-62,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0037,BaBr,P63mc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0038,BaCu,not reported,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0039,BaF,P-62,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0040,BaF,P63mc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0044,Ca2As,I4/mmm,mp-10106,ambient/near-ambient database structure; exact pressure not reported
+ELD-0046,Ca2N,Cc,not found,>20.5 GPa in the reported compression sequence
+ELD-0047,Ca2N,Fd-3m,not found,2.8–13.5 GPa (approximate transition/stability interval)
+ELD-0048,Ca2N,I-42d,not found,13.5–20.5 GPa (reported transition interval)
+ELD-0049,Ca2N,R-3m,mp-2686,ambient/near-ambient database structure; exact pressure not reported
+ELD-0050,Ca2Sb,I4/mmm,mp-9925,ambient/near-ambient database structure; exact pressure not reported
+ELD-0051,Ca3(MnAl2)4,P63/m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0052,Ca3Ag8,Im-3m,mp-646824,ambient/near-ambient database structure; exact pressure not reported
+ELD-0053,Ca3Au,Pm-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0056,Ca3P,Cmma,not found,ambient pressure (predicted)
+ELD-0057,Ca3Pb,Pm-3m,mp-30479,ambient/near-ambient database structure; exact pressure not reported
+ELD-0058,Ca3Pd,Pnma,mp-1106061,ambient/near-ambient database structure; exact pressure not reported
+ELD-0059,Ca3Si2Ni3,Pnma,mp-542138,ambient/near-ambient database structure; exact pressure not reported
+ELD-0061,Ca5As3,P63/mcm,mp-10047,ambient/near-ambient database structure; exact pressure not reported
+ELD-0064,Ca5Bi3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0065,Ca5Bi3,Pnma,mp-27145,ambient/near-ambient database structure; exact pressure not reported
+ELD-0067,Ca5Ga2N4,Cmce,mp-28489,ambient/near-ambient database structure; exact pressure not reported
+ELD-0069,Ca5Hg3,I4/mcm,mp-31154,ambient/near-ambient database structure; exact pressure not reported
+ELD-0070,Ca5P3,C2/m,not found,ambient pressure (predicted)
+ELD-0071,Ca5Pb3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0073,Ca5Sb3,Pnma,mp-17564,ambient/near-ambient database structure; exact pressure not reported
+ELD-0075,Ca5Sn3,I4/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0076,Ca6Al7O16,I-43d,mp-721592,ambient/near-ambient database structure; exact pressure not reported
+ELD-0077,Ca6Al7O16,I-43d,mp-721592,ambient/near-ambient database structure; exact pressure not reported
+ELD-0079,CaBr,P-62,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0080,CaBr,P63mc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0081,CaF,P-62,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0082,CaF,P63mc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0085,Ce2MgCu2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0086,Ce2MgGe2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0088,Ce2MgSi2,P4/mbm,mp-505296,ambient/near-ambient database structure; exact pressure not reported
+ELD-0090,Ce2ScSi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0091,Ce2YSi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0093,CeH2,Fm-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0094,CeMnGe,P4/nmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0095,CeMnSi,P4/nmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0096,CeNiSi,not reported,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0097,CeRuGe,P4/nmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0098,CeRuSi,P4/nmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0099,CeScGe,I4/mmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0100,CeScSb,I4/mmm,mp-1077197,ambient/near-ambient database structure; exact pressure not reported
+ELD-0102,CeScSi,I4/mmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0103,Cr3H,I4/mmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0104,CrH,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0105,CrH,P63mc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0106,Cs3O,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0107,Cs3O,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0108,Cs4Al3P4,P-42m,not found,ambient pressure (predicted)
+ELD-0109,Cs5Bi3,Pnma,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0110,Cs6Al2S5,Cm,not found,ambient pressure (predicted)
+ELD-0111,Dy2C,R-3m,mp-12574,ambient/near-ambient database structure; exact pressure not reported
+ELD-0112,Dy2MgGe2,P4/mbm,mp-977559,ambient/near-ambient database structure; exact pressure not reported
+ELD-0114,Dy2MgNi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0115,Dy2MgSi2,P4/mbm,mp-570561,ambient/near-ambient database structure; exact pressure not reported
+ELD-0117,Dy3Co,Pnma,mp-646392,ambient/near-ambient database structure; exact pressure not reported
+ELD-0118,Dy5Rh3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0120,Er2C,R-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0121,Er2MgGe2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0122,Er2MgNi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0123,Er2MgSi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0124,Er3Rh,Pnma,mp-11437,ambient/near-ambient database structure; exact pressure not reported
+ELD-0126,Er4MgRu,F-43m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0128,Er5Ge3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0129,Er5Pb3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0130,Er5Rh3,P63/mcm,mp-569915,ambient/near-ambient database structure; exact pressure not reported
+ELD-0132,Er5Si3,P63/mcm,mp-31167,ambient/near-ambient database structure; exact pressure not reported
+ELD-0133,Er5Sn3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0138,Gd2C,R-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0139,Gd2MgGe2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0140,Gd2MgNi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0141,Gd2MgSi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0142,Hf2O,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0143,Hf2S,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0144,Hf2S,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0145,Hf2Se,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0146,Hf2SxSe1-x,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0147,Hf2Te,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0148,Hf3I,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0149,HfBr,R-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0150,Ho2(Ga3Co)3,P63/m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0151,Ho2C,R-3m,mp-1640,ambient/near-ambient database structure; exact pressure not reported
+ELD-0152,Ho2MgGe2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0153,Ho2MgSi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0154,Ho3Co,Pnma,mp-622565,ambient/near-ambient database structure; exact pressure not reported
+ELD-0156,Ho4MgRu,F-43m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0157,Ho5Ge3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0158,Ho5Pb3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0160,Ho5Si3,P63/mcm,mp-13236,ambient/near-ambient database structure; exact pressure not reported
+ELD-0161,Ho5Sn3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0164,K2RbPt,P4/mbm,mp-1079567,ambient/near-ambient database structure; exact pressure not reported
+ELD-0165,K3O,C2/c,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0166,K3Pd,Pm-3m,mp-1064508,ambient/near-ambient database structure; exact pressure not reported
+ELD-0168,K3S,C2/c,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0169,K3Se,C2/c,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0170,K4Al3(SiO4)3,P-43n,mp-1019788,ambient/near-ambient database structure; exact pressure not reported
+ELD-0171,K6BO4,P3,not found,ambient pressure (predicted)
+ELD-0173,La1.5Sr0.5Ga3O7.25,not reported,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0175,La2MgCu2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0176,La2MgNi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0177,La2MgSi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0178,La2ScSi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0179,La3Ga,Pm-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0183,La4MgRu,F-43m,mp-605878,ambient/near-ambient database structure; exact pressure not reported
+ELD-0184,La5Bi3,P63/mcm,mp-1105962,ambient/near-ambient database structure; exact pressure not reported
+ELD-0185,La5Ge3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0186,La5Pb3,P63/mcm,mp-1105896,ambient/near-ambient database structure; exact pressure not reported
+ELD-0187,La5Sb3,P63/mcm,mp-1106084,ambient/near-ambient database structure; exact pressure not reported
+ELD-0189,La5Si3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0190,La5Sn3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0191,La8Sr2(SiO4)6,P63,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0192,La8Sr2(SiO4)6,P63/m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0193,LaBr,R-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0195,LaCl,R-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0196,LaCl2,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0197,LaCoSi,P4/nmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0198,LaCu0.67Si1.33,P6/mmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0199,LaFeGe,P-62,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0200,LaFeSi,P4/nmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0202,LaI,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0203,LaMnGe,P4/nmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0204,LaMnSi,P4/nmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0205,LaNiSi,not reported,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0206,LaRuGe,P4/nmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0207,LaRuSi,P4/nmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0209,LaScGe,I4/mmm,mp-1077837,ambient/near-ambient database structure; exact pressure not reported
+ELD-0211,LaScSi,I4/mmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0212,Li2Ca3N6,Cmcm,mp-1020010,ambient/near-ambient database structure; exact pressure not reported
+ELD-0213,Li2NdGe,P63/mmc,mp-1025473,ambient/near-ambient database structure; exact pressure not reported
+ELD-0214,Li2PrGe,P63/mmc,mp-1079867,ambient/near-ambient database structure; exact pressure not reported
+ELD-0215,Li4Pd,I4/mmm,not found,130 GPa
+ELD-0216,Li4Rh,Cmcm,not found,150 GPa
+ELD-0217,Li4Rh,I4/mmm,not found,300 GPa
+ELD-0218,Li5C,P6/mmm,not found,50–210 GPa
+ELD-0219,Li5He2,R-3m,not found,stable above 700 GPa; dynamically stable down to 210 GPa
+ELD-0220,Li5N,P6/mmm,not found,150–350 GPa; structural data reported at 150 GPa
+ELD-0221,Li5P,not reported,not found,high pressure; compound-specific range not reported in abstract
+ELD-0222,Li6C,not reported,not found,moderate pressure below 100 GPa; exact stability interval not reported in accessible abstract
+ELD-0223,Li6P,not reported,not found,high pressure; compound-specific range not reported in abstract
+ELD-0224,Li6Pd,P21/m,not found,150 GPa
+ELD-0226,Li8Au,Fm-3m,not found,250 GPa
+ELD-0227,Li8P,not reported,not found,high pressure; compound-specific range not reported in abstract
+ELD-0228,Li10Se,C2/m,not found,50 GPa (maximum reported Tc); high-pressure phase
+ELD-0229,Li11P2,not reported,not found,high pressure; compound-specific range not reported in abstract
+ELD-0230,Li12Al3Si4,I-43d,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0231,Li12Mg3Si4,I-43d,mp-8331,ambient/near-ambient database structure; exact pressure not reported
+ELD-0232,Li15P2,not reported,not found,high pressure; compound-specific range not reported in abstract
+ELD-0234,Lu2MgGe2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0236,Lu5Rh3,P63/mcm,mp-865778,ambient/near-ambient database structure; exact pressure not reported
+ELD-0240,Mg3Cd,P63/mmc,mp-30490,ambient/near-ambient database structure; exact pressure not reported
+ELD-0241,Mg3Sn,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0242,Na,I4/m,not found,143–166 GPa predicted stability at 300 K; associated with experimental tI50 observations near 118 GPa
+ELD-0243,Na,P63/mmc,not found,≥200 GPa; single-crystal electride model at 223 GPa
+ELD-0245,Na2Cl,Cmmm,mp-1077015,ambient/near-ambient database structure; exact pressure not reported
+ELD-0246,Na2He,Fm-3m,not found,stable above ~113 GPa
+ELD-0247,Na2He4H,not reported,not found,high pressure; exact value not reported in abstract
+ELD-0248,Na3Cl2,Cmmm,mp-1069676,ambient/near-ambient database structure; exact pressure not reported
+ELD-0252,Na6C,C2/m,not found,30 GPa; predicted dynamically recoverable to ambient pressure
+ELD-0253,NaBa2O,Cmme,mp-1019519,ambient/near-ambient database structure; exact pressure not reported
+ELD-0254,Nb5Ir3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0255,Nd2MgGe2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0256,Nd2MgNi2,P4/mbm,mp-5925,ambient/near-ambient database structure; exact pressure not reported
+ELD-0258,Nd2MgSi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0259,Nd2ScSi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0262,Nd3Tl,Pm-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0264,Nd5(CoB3)2,R-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0265,Nd5Ge3,P63/mcm,mp-1464,ambient/near-ambient database structure; exact pressure not reported
+ELD-0267,Nd5Pb3,P63/mcm,mp-1106152,ambient/near-ambient database structure; exact pressure not reported
+ELD-0268,Nd5Si3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0269,Nd5Sn3,P63/mcm,mp-510503,ambient/near-ambient database structure; exact pressure not reported
+ELD-0274,NdGa,Pnma,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0275,NdH2,Fm-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0276,NdMgSn,I4/mmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0277,NdNiSi,not reported,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0278,NdRuSi,P4/nmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0279,NdScGe,I4/mmm,mp-4854,ambient/near-ambient database structure; exact pressure not reported
+ELD-0281,NdScSb,I4/mmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0282,NdScSi,I4/mmm,mp-1077558,ambient/near-ambient database structure; exact pressure not reported
+ELD-0284,Pr2MgCu2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0285,Pr2MgGe2,P4/mbm,mp-21350,ambient/near-ambient database structure; exact pressure not reported
+ELD-0287,Pr2MgNi2,P4/mbm,mp-2926,ambient/near-ambient database structure; exact pressure not reported
+ELD-0289,Pr2MgSi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0290,Pr2ScSi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0291,Pr3Ga,Pm-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0292,Pr3In,Pm-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0296,Pr5(CoB3)2,R-3m,mp-7735,ambient/near-ambient database structure; exact pressure not reported
+ELD-0297,Pr5Ge3,P63/mcm,mp-17124,ambient/near-ambient database structure; exact pressure not reported
+ELD-0298,Pr5Sn3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0300,PrGa,Pnma,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0301,PrH2,Fm-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0302,PrMgSn,I4/mmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0303,PrNiSi,not reported,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0304,PrRuGe,P4/nmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0305,PrRuSi,P4/nmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0306,PrScGe,I4/mmm,mp-4738,ambient/near-ambient database structure; exact pressure not reported
+ELD-0308,PrScSi,I4/mmm,mp-1024960,ambient/near-ambient database structure; exact pressure not reported
+ELD-0310,Rb3O,C2/c,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0314,Rb3S,C2/c,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0315,Rb3Se,C2/c,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0316,Sc2C,P-3m1,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0317,Sc2C,P-3m1,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0318,Sc2MgGa2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0321,Sc2Sb,P4/nmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0322,Sc3(MnAl2)4,P63/m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0324,Sc5Ga3,P63/mcm,mp-17332,ambient/near-ambient database structure; exact pressure not reported
+ELD-0325,Sc5Ge3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0326,Sc5Si3,P63/mcm,mp-7822,ambient/near-ambient database structure; exact pressure not reported
+ELD-0327,Sc5Sn3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0329,ScAl,not reported,not found,ambient pressure (existing intermetallic phase)
+ELD-0330,ScCl,R-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0331,ScH2,Fm-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0332,Sm2(Ga3Co)3,P63/m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0333,Sm2MgGe2,P4/mbm,mp-867932,ambient/near-ambient database structure; exact pressure not reported
+ELD-0335,Sm2MgSi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0336,Sm2ScSi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0338,SmH2,Fm-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0340,SmTiGe,I4/mmm,mp-10454,ambient/near-ambient database structure; exact pressure not reported
+ELD-0342,Sr2As,I4/mmm,mp-15697,ambient/near-ambient database structure; exact pressure not reported
+ELD-0343,Sr2Bi,I4/mmm,mp-29619,ambient/near-ambient database structure; exact pressure not reported
+ELD-0345,Sr2LiN,I4mm,mp-1218743,ambient/near-ambient database structure; exact pressure not reported
+ELD-0346,Sr2N,Cc,not found,high pressure; exact interval not reported in accessible abstract
+ELD-0347,Sr2N,R-3m,mp-1245,ambient/near-ambient database structure; exact pressure not reported
+ELD-0348,Sr2Sb,I4/mmm,mp-15624,ambient/near-ambient database structure; exact pressure not reported
+ELD-0351,Sr3Au2,R-3,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0352,Sr3CrN3,P63/m,mp-12906,ambient/near-ambient database structure; exact pressure not reported
+ELD-0354,Sr3MnN3,P63/m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0357,Sr5Bi3,Pnma,mp-1197242,ambient/near-ambient database structure; exact pressure not reported
+ELD-0360,Sr5P3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0362,Sr5Sb3,Pnma,mp-2585,ambient/near-ambient database structure; exact pressure not reported
+ELD-0365,Sr7Ag3,P63mc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0366,Sr7Au3,P63mc,mp-30422,ambient/near-ambient database structure; exact pressure not reported
+ELD-0370,SrBr,P-62,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0371,SrBr,P63mc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0372,SrF,P-62,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0373,SrF,P63mc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0378,Tb2C,R-3m,mp-692,ambient/near-ambient database structure; exact pressure not reported
+ELD-0379,Tb2MgGe2,P4/mbm,mp-867301,ambient/near-ambient database structure; exact pressure not reported
+ELD-0381,Tb2MgNi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0382,Tb2MgSi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0385,Tb4MgRu,F-43m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0387,Tb5Ge3,P63/mcm,mp-2610,ambient/near-ambient database structure; exact pressure not reported
+ELD-0389,Tb5Rh3,P63/mcm,mp-1105551,ambient/near-ambient database structure; exact pressure not reported
+ELD-0396,TbScGe,I4/mmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0397,TbScSb,I4/mmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0398,TbTiGe,I4/mmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0400,Ti2H3,P42/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0401,Ti2O,not reported,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0402,Ti2S,Pnnm,mp-616559,ambient/near-ambient database structure; exact pressure not reported
+ELD-0403,Ti2S,Pnnm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0404,Ti3Br,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0405,TiH,P42/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0406,Tm2C,R-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0407,Tm2MgGe2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0408,Tm2MgNi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0409,Tm2MgSi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0411,Tm5Rh3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0413,VH,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0414,VI,P63mc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0415,Y2(Al3Co)3,P63/m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0416,Y2(Ga3Co)3,P63/m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0417,Y2C,R-3m,mp-1334,ambient/near-ambient database structure; exact pressure not reported
+ELD-0419,Y2LiSi2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0421,Y2MgGa2,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0422,Y2MgGe2,P4/mbm,mp-865747,ambient/near-ambient database structure; exact pressure not reported
+ELD-0423,Y2MgNi2,P4/mbm,mp-754185,ambient/near-ambient database structure; exact pressure not reported
+ELD-0424,Y2MgSi2,P4/mbm,mp-1205496,ambient/near-ambient database structure; exact pressure not reported
+ELD-0425,Y2Ti2O6,Fd-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0426,Y3H,Pmma,mp-1205301,ambient/near-ambient database structure; exact pressure not reported
+ELD-0427,Y3H2,P63/mmc,mp-569037,ambient/near-ambient database structure; exact pressure not reported
+ELD-0428,Y3Pd2,not reported,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0429,Y5Ge3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0430,Y5Si3,P63/mcm,mp-2538,ambient/near-ambient database structure; exact pressure not reported
+ELD-0431,Y9N8,R-3,not found,ambient pressure (predicted)
+ELD-0434,Yb2Sn,P63/mmc,mp-570050,ambient/near-ambient database structure; exact pressure not reported
+ELD-0435,Yb5Ag3,I4/mcm,mp-571212,ambient/near-ambient database structure; exact pressure not reported
+ELD-0436,Yb5Au3,I4/mcm,mp-568944,ambient/near-ambient database structure; exact pressure not reported
+ELD-0437,Yb5Ge3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0438,Yb5Pb3,P63/mcm,mp-571634,ambient/near-ambient database structure; exact pressure not reported
+ELD-0439,Yb5Rh3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0440,Yb5Sb3,P63/mcm,mp-201,ambient/near-ambient database structure; exact pressure not reported
+ELD-0441,Yb5Sb3,Pnma,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0442,Yb5Si3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0443,Yb5Sn3,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0445,YBr,R-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0446,YCl,R-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0447,YCl,R-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0448,YH2,Fm-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0449,YI,P-3m1,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0450,YMgSn,P-62m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0451,YScSb,I4/mmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0452,YTiGe,I4/mmm,mp-10455,ambient/near-ambient database structure; exact pressure not reported
+ELD-0454,YTiGe,P4/nmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0455,YTiSi,I4/mmm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0456,Zr2S,Pnnm,mp-1197374,ambient/near-ambient database structure; exact pressure not reported
+ELD-0457,Zr2S,Pnnm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0458,Zr3Br,P63/mmc,mp-1188037,ambient/near-ambient database structure; exact pressure not reported
+ELD-0459,Zr3C,P63/mcm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0460,Zr3Cl,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0461,ZrBr,R-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0462,ZrCl,R-3m,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0463,ZrH,P42/mmc,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0464,Li5As,P6/mmm,not found,50 GPa (electronic and superconductivity analysis pressure)
+ELD-0465,Li8As,P6/mmm,not found,50 GPa (electronic and superconductivity analysis pressure)
+ELD-0466,Li10As,C2/m,not found,90.1–137.5 GPa stability range; properties analyzed at 100 GPa
+ELD-0467,Li10Sb,C2/m,not found,100 GPa (dynamically stable generated structure)
+ELD-0468,Li6As,Cmc21,not found,270 GPa (electronic and superconductivity analysis pressure)
+ELD-0469,Li6As,C2/c,not found,270 GPa (electronic and superconductivity analysis pressure)
+ELD-0470,Li10Te,C2/m,not found,100 GPa (comparison pressure)
+ELD-0471,Gd2Mg2Ni,P4/mbm,not found,ambient/near-ambient database structure; exact pressure not reported
+ELD-0472,Yb5As3,P63/mmc,not found,ambient/near-ambient database structure; exact pressure not reported

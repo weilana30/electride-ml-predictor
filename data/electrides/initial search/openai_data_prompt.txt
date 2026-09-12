@@ -1,0 +1,296 @@
+Conduct a comprehensive, source-verified literature search for inorganic crystalline electrides and proposed inorganic electride candidates.
+
+The goal is to create a master registry of every distinct inorganic crystalline phase that has been:
+
+1. experimentally confirmed as an electride;
+2. experimentally suggested or partially characterized as an electride;
+3. theoretically predicted to be an electride;
+4. described as electride-like or a potential electride with credible interstitial-electron evidence.
+
+Do not use or rely on any previously curated electride dataset. Build the registry independently from the scientific literature and primary sources.
+
+## Definition
+
+Include a material only if the paper explicitly identifies it as an electride, electride candidate, or electride-like material, or provides credible evidence that electrons occupy interstitial, non-nuclear regions of a periodic inorganic crystal.
+
+Acceptable evidence includes:
+
+- electron localization function maxima in interstitial regions;
+- interstitial electron density;
+- non-nuclear attractors;
+- interstitial Bader or topological basins;
+- integrated electron population in a crystal cavity;
+- electronic bands identified as interstitial-electron states;
+- charge-density or ELF connectivity through interstitial regions;
+- experimental observations explicitly interpreted as electride behavior.
+
+Do not classify a material as an electride merely because it is:
+
+- metallic;
+- electron-rich;
+- composed of electropositive elements;
+- vacancy-containing;
+- predicted to have a large cavity;
+- associated with an unusual band structure;
+- associated with ordinary covalent bonds or lone pairs.
+
+## Scope
+
+Include:
+
+- inorganic bulk crystalline materials;
+- elemental inorganic electrides;
+- binary, ternary, and multinary inorganic compounds;
+- ambient-pressure phases;
+- high-pressure phases;
+- pressure-induced phase transitions;
+- defect- or vacancy-induced inorganic electrides;
+- doped or substituted inorganic electride phases;
+- layered, 0D, 1D, 2D, and 3D inorganic electrides;
+- experimentally known structures and theoretically predicted structures;
+- distinct polymorphs and pressure-dependent phases.
+
+Exclude from the main registry:
+
+- organic electrides;
+- molecular electrides;
+- solvated-electron systems;
+- metal–ammonia electrides;
+- isolated clusters without a periodic crystalline phase;
+- surfaces and interfaces unless they are part of a clearly defined periodic inorganic crystal;
+- materials with no explicit electride claim or credible interstitial-electron evidence.
+
+If an excluded material is important historically, record it in a separate excluded-materials section with the reason for exclusion.
+
+## Search strategy
+
+Use multiple research passes rather than one search.
+
+### Pass 1: Reviews and foundational literature
+
+Find major reviews and perspective articles on:
+
+- inorganic electrides;
+- theoretical electride descriptors;
+- high-pressure electrides;
+- layered and two-dimensional electrides;
+- interstitial or anionic electrons;
+- non-nuclear attractors;
+- high-throughput electride screening.
+
+Use these papers to identify terminology, material families, and references to individual compounds.
+
+### Pass 2: Experimentally confirmed electrides
+
+Search for every experimentally synthesized or characterized inorganic electride. For each material, locate the original experimental paper whenever possible.
+
+Do not treat a review statement as sufficient confirmation if the original paper can be identified.
+
+### Pass 3: Theoretically predicted electrides
+
+Search for:
+
+- first-principles predictions;
+- high-throughput electride screening;
+- crystal-structure prediction;
+- evolutionary structure searches;
+- inverse-design studies;
+- high-pressure structure searches;
+- materials-discovery studies;
+- papers containing “potential electride,” “predicted electride,” “electride candidate,” “interstitial electron,” “anionic electron,” or “electride-like.”
+
+Inspect tables, figures, appendices, and supplementary information. Candidate formulas may appear only in supplementary files.
+
+### Pass 4: Family-specific searches
+
+Search separately by material family, including:
+
+- alkali and alkaline-earth compounds;
+- alkaline-earth nitrides;
+- metal oxides and chalcogenides;
+- intermetallic electrides;
+- rare-earth and transition-metal systems;
+- layered electrides;
+- high-pressure elemental phases;
+- hydrides and superhydrides;
+- vacancy and defect electrides;
+- electron-rich intermetallic compounds.
+
+Search both formula-based and concept-based terminology.
+
+### Pass 5: Citation expansion
+
+For each major review, screening paper, and foundational electride paper:
+
+- inspect cited references;
+- inspect citing papers;
+- inspect supplementary information;
+- search every newly discovered material formula;
+- search alternative formula orderings and material names;
+- search the DOI, title, formula, and prototype independently.
+
+Continue until repeated searches produce mostly duplicates and no substantial new material families.
+
+## Required verification for every entry
+
+Before including a material in the verified registry, confirm:
+
+1. The formula appears in an identifiable source.
+2. The material is inorganic.
+3. The phase or structure is distinguishable from other phases of the same composition.
+4. The electride claim or interstitial-electron evidence is present.
+5. Experimental and theoretical status are correctly distinguished.
+6. Pressure is recorded when relevant.
+7. Defects, vacancies, substitutions, or doping are recorded when required.
+8. The crystal structure and space group are not invented.
+9. The dimensionality is supported by the source or marked unclear.
+10. A DOI or stable source link is provided whenever available.
+
+If a detail cannot be verified, write `not reported` rather than inferring it.
+
+## Status categories
+
+Use exactly one primary status:
+
+- `experimentally_confirmed`
+- `experimentally_suggested`
+- `theoretically_predicted`
+- `ambiguous_or_disputed`
+
+Use a separate confidence field:
+
+- `high`
+- `medium`
+- `low`
+
+Do not upgrade theoretical predictions to experimental confirmations.
+
+## Dimensionality categories
+
+Use:
+
+- `0D`
+- `1D`
+- `2D`
+- `3D`
+- `mixed`
+- `unclear`
+
+If different papers assign different dimensionalities, preserve the disagreement in the notes and use `mixed` or `unclear` as appropriate.
+
+## Deduplication rules
+
+Create one row per distinct inorganic material phase, not one row per paper.
+
+Keep separate rows when the same composition has different:
+
+- crystal structures;
+- space groups;
+- polymorphs;
+- pressure ranges;
+- defect configurations;
+- dopant concentrations;
+- electride dimensionalities;
+- structural prototypes.
+
+Merge rows only when they clearly refer to the same phase.
+
+Normalize formulas while preserving the original reported formula. Do not merge different vacancy, substitutional, pressure, or polymorphic phases merely because their reduced formulas are similar.
+
+## Required master-table columns
+
+Return a table with exactly these columns:
+
+1. `material_id`
+2. `normalized_formula`
+3. `formula_as_reported`
+4. `material_name`
+5. `electride_status`
+6. `confidence`
+7. `electride_dimensionality`
+8. `material_category`
+9. `crystal_structure_or_prototype`
+10. `space_group`
+11. `pressure`
+12. `temperature_or_synthesis_conditions`
+13. `defect_dopant_or_vacancy_details`
+14. `reported_evidence`
+15. `evidence_type`
+16. `primary_reference`
+17. `publication_year`
+18. `doi_or_stable_link`
+19. `additional_references`
+20. `structure_source_or_database_id`
+21. `verification_notes`
+
+Use `not reported` when necessary. Never invent missing information.
+
+## Evidence recording
+
+For `reported_evidence`, provide a concise paraphrase of the specific evidence supporting the electride classification.
+
+For `evidence_type`, use one or more of:
+
+- `ELF`
+- `interstitial_charge_density`
+- `non_nuclear_attractor`
+- `interstitial_bader_or_topological_basin`
+- `interstitial_electronic_bands`
+- `density_connectivity`
+- `experimental_interpretation`
+- `multiple_electronic_descriptors`
+
+Record whether the evidence comes from the primary paper, supplementary information, or a later paper.
+
+## Quality-control summary
+
+After the master table, provide:
+
+### Count summary
+
+Report:
+
+- total distinct inorganic phases;
+- experimentally confirmed count;
+- experimentally suggested count;
+- theoretically predicted count;
+- ambiguous or disputed count;
+- counts by 0D, 1D, 2D, 3D, mixed, and unclear;
+- counts by ambient-pressure, high-pressure, defect/vacancy, and other categories.
+
+### Potential duplicates or ambiguous cases
+
+List:
+
+- formulas that may refer to the same phase;
+- polymorphs requiring separate treatment;
+- conflicting dimensionality assignments;
+- materials whose electride classification is disputed;
+- records where the original source could not be accessed.
+
+### Likely gaps
+
+Identify:
+
+- inaccessible papers;
+- unavailable supplementary information;
+- candidate lists found only in secondary sources;
+- material families that require additional searches;
+- formulas for which a crystal structure could not be located.
+
+### Search log
+
+Briefly record:
+
+- databases and websites searched;
+- major search terms used;
+- reviews and screening papers used as citation hubs;
+- the date of the search;
+- the stopping criterion;
+- searches that produced substantial new entries.
+
+Do not claim that the list is literally complete. Describe it as comprehensive relative to the accessible literature and clearly identify remaining gaps.
+
+Before presenting the final table, perform a second verification pass over every row for formula accuracy, source accuracy, inorganic-only scope, electride status, phase identity, pressure, and duplicate handling.
+
+If file creation is available, also export the verified master table as both CSV and XLSX. The files must contain only the verified registry and use the exact column names above.

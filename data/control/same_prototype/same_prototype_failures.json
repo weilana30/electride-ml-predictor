@@ -1,0 +1,33 @@
+{
+  "timeout_seconds_per_seed_group": 180,
+  "total_seed_groups": 462,
+  "completed_or_skipped_seed_groups": 459,
+  "failure_count": 3,
+  "deduplicated_candidate_count": 7682,
+  "failures": [
+    {
+      "seed_formula": "BaAl2O4-xHy",
+      "seed_space_group": "not reported",
+      "seed_prototype": "stuffed-tridymite BaAl2O4",
+      "reason": "error",
+      "message": "MPRestError('The server does not support the request made to https://api.materialsproject.org/materials/summary/?formula=BaAl2O4-xHy&_limit=1000&_fields=material_id%2Cformula_pretty%2Cstructure%2Csymmetry%2Cenergy_above_hull%2Cformation_energy_per_atom%2Cvolume%2Cnsites. This may be due to an outdated mp-api package, or a problem with the query.')",
+      "elapsed_seconds": 0.12
+    },
+    {
+      "seed_formula": "BaAl2O4-y",
+      "seed_space_group": "not reported",
+      "seed_prototype": "not reported",
+      "reason": "error",
+      "message": "MPRestError('The server does not support the request made to https://api.materialsproject.org/materials/summary/?formula=BaAl2O4-y&_limit=1000&_fields=material_id%2Cformula_pretty%2Cstructure%2Csymmetry%2Cenergy_above_hull%2Cformation_energy_per_atom%2Cvolume%2Cnsites. This may be due to an outdated mp-api package, or a problem with the query.')",
+      "elapsed_seconds": 0.12
+    },
+    {
+      "seed_formula": "Hf2SxSe1-x",
+      "seed_space_group": "P63/mmc",
+      "seed_prototype": "anti-TaS2-type",
+      "reason": "error",
+      "message": "MPRestError('The server does not support the request made to https://api.materialsproject.org/materials/summary/?formula=Hf2SxSe1-x&_limit=1000&_fields=material_id%2Cformula_pretty%2Cstructure%2Csymmetry%2Cenergy_above_hull%2Cformation_energy_per_atom%2Cvolume%2Cnsites. This may be due to an outdated mp-api package, or a problem with the query.')",
+      "elapsed_seconds": 0.12
+    }
+  ]
+}

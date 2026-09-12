@@ -1,0 +1,2 @@
+Sc5Cl8, mp-id: mp-542449, cif: Sc5Cl8.cif
+Tb5Br8, mp-id: mp-31007, cif: Tb5Br8.cif

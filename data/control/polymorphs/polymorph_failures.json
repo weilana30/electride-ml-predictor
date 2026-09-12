@@ -1,0 +1,26 @@
+{
+  "timeout_seconds_per_formula": 180,
+  "total_unique_formulas": 400,
+  "completed_formula_count": 397,
+  "failure_count": 3,
+  "failures": [
+    {
+      "formula": "BaAl2O4-xHy",
+      "reason": "error",
+      "message": "MPRestError('The server does not support the request made to https://api.materialsproject.org/materials/summary/?formula=BaAl2O4-xHy&_limit=1000&_fields=material_id%2Cformula_pretty%2Cstructure%2Csymmetry%2Cenergy_above_hull%2Cformation_energy_per_atom%2Cdatabase_IDs%2Cvolume%2Cnsites. This may be due to an outdated mp-api package, or a problem with the query.')",
+      "elapsed_seconds": 0.22
+    },
+    {
+      "formula": "BaAl2O4-y",
+      "reason": "error",
+      "message": "MPRestError('The server does not support the request made to https://api.materialsproject.org/materials/summary/?formula=BaAl2O4-y&_limit=1000&_fields=material_id%2Cformula_pretty%2Cstructure%2Csymmetry%2Cenergy_above_hull%2Cformation_energy_per_atom%2Cdatabase_IDs%2Cvolume%2Cnsites. This may be due to an outdated mp-api package, or a problem with the query.')",
+      "elapsed_seconds": 0.17
+    },
+    {
+      "formula": "Hf2SxSe1-x",
+      "reason": "error",
+      "message": "MPRestError('The server does not support the request made to https://api.materialsproject.org/materials/summary/?formula=Hf2SxSe1-x&_limit=1000&_fields=material_id%2Cformula_pretty%2Cstructure%2Csymmetry%2Cenergy_above_hull%2Cformation_energy_per_atom%2Cdatabase_IDs%2Cvolume%2Cnsites. This may be due to an outdated mp-api package, or a problem with the query.')",
+      "elapsed_seconds": 0.18
+    }
+  ]
+}

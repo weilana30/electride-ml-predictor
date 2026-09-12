@@ -1,0 +1,36 @@
+# generated using pymatgen
+data_Li(HoSi)2
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   7.10301449
+_cell_length_b   7.10301449
+_cell_length_c   4.18361802
+_cell_angle_alpha   90.00000000
+_cell_angle_beta   90.00000000
+_cell_angle_gamma   90.00000000
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Li(HoSi)2
+_chemical_formula_sum   'Li2 Ho4 Si4'
+_cell_volume   211.07530527
+_cell_formula_units_Z   2
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Li  Li0  1  0.00000000  0.00000000  0.00000000  1
+  Li  Li1  1  0.50000000  0.50000000  0.00000000  1
+  Ho  Ho2  1  0.82220769  0.32220769  0.50000000  1
+  Ho  Ho3  1  0.67779231  0.82220769  0.50000000  1
+  Ho  Ho4  1  0.32220769  0.17779231  0.50000000  1
+  Ho  Ho5  1  0.17779231  0.67779231  0.50000000  1
+  Si  Si6  1  0.11901578  0.38098422  0.00000000  1
+  Si  Si7  1  0.88098422  0.61901578  0.00000000  1
+  Si  Si8  1  0.61901578  0.11901578  0.00000000  1
+  Si  Si9  1  0.38098422  0.88098422  0.00000000  1
