@@ -10,8 +10,7 @@
 #SBATCH --partition=cpu
 
 set -euo pipefail
-script_dir="${SLURM_SUBMIT_DIR:-$PWD}"
-cd "$script_dir"
+script_dir="$PWD"
 
 echo "Submitting SCF parameter cases for MgS"
 for functional in PBE PBEsol R2SCAN; do

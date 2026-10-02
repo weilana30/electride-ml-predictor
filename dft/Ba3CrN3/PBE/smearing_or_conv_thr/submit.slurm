@@ -10,8 +10,7 @@
 #SBATCH --partition=cpu
 
 set -euo pipefail
-script_dir="${SLURM_SUBMIT_DIR:-$PWD}"
-cd "$script_dir"
+script_dir="$PWD"
 
 echo "Submitting Ba3CrN3 PBE smearing_or_conv_thr SCF cases"
 for job in submit_scf_*.slurm; do
