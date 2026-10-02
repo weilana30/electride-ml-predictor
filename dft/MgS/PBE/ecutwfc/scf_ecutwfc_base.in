@@ -1,0 +1,48 @@
+! SCF parameter sweep: ecutwfc = 100:400
+! Same structure, functional, pseudopotential, and magnetic seed as the parent vc-relax input.
+&CONTROL
+  calculation = 'scf',
+  prefix = 'mp-1315_pbe_ecutwfc_base',
+  outdir = './out_ecutwfc_base',
+  pseudo_dir = '../../../pseudo/PBE',
+  tstress = .true.,
+  tprnfor = .true.,
+  disk_io = 'low',
+/
+&SYSTEM
+  ibrav = 0,
+  nat = 2,
+  ntyp = 2,
+  ecutwfc = 100,
+  ecutrho = 400,
+  input_dft = 'pbe',
+  occupations = 'fixed',
+/
+&ELECTRONS
+  conv_thr = 1.0d-9,
+  mixing_mode = 'local-TF',
+  mixing_beta = 0.40,
+  electron_maxstep = 200,
+  diagonalization = 'david',
+/
+
+ATOMIC_SPECIES
+  Mg   24.305000 Mg.upf
+  S    32.060000 S.upf
+
+CELL_PARAMETERS angstrom
+      3.6831746100     0.0000000000     0.0000000000
+      1.8415874463     3.1897227665     0.0000000000
+      1.8415872271     1.0632408031     3.0072988447
+
+ATOMIC_POSITIONS crystal
+  Mg      0.00000000    -0.00000000     0.00000000
+  S       0.50000000     0.50000000     0.50000000
+
+K_POINTS automatic
+  14 14 14 0 0 0
+
+! Source: data/cifs/mp-1315.cif (mp-1315)
+! binary ionic control
+! PBE ONCV scalar-relativistic pseudopotentials
+! Pre-production settings: converge cutoffs and k mesh before comparing functionals.

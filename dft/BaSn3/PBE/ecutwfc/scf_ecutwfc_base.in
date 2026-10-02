@@ -1,0 +1,56 @@
+! SCF parameter sweep: ecutwfc = 100:400
+! Same structure, functional, pseudopotential, and magnetic seed as the parent vc-relax input.
+&CONTROL
+  calculation = 'scf',
+  prefix = 'mp-7759_pbe_ecutwfc_base',
+  outdir = './out_ecutwfc_base',
+  pseudo_dir = '../../../pseudo/PBE',
+  tstress = .true.,
+  tprnfor = .true.,
+  disk_io = 'low',
+/
+&SYSTEM
+  ibrav = 0,
+  nat = 8,
+  ntyp = 2,
+  ecutwfc = 100,
+  ecutrho = 400,
+  input_dft = 'pbe',
+  occupations = 'smearing',
+  smearing = 'mv',
+  degauss = 0.02,
+/
+&ELECTRONS
+  conv_thr = 1.0d-9,
+  mixing_mode = 'local-TF',
+  mixing_beta = 0.40,
+  electron_maxstep = 200,
+  diagonalization = 'david',
+/
+
+ATOMIC_SPECIES
+  Ba  137.327000 Ba.upf
+  Sn  118.710000 Sn.upf
+
+CELL_PARAMETERS angstrom
+      7.3478689600     0.0000000000     0.0000000000
+     -3.6739947965     6.3635054210     0.0000000000
+      0.0000102484    -0.0000170493     5.6498447100
+
+ATOMIC_POSITIONS crystal
+  Ba      0.33333300     0.66666700     0.25000000
+  Ba      0.66666700     0.33333300     0.75000000
+  Sn      0.27318433     0.13659166     0.25000000
+  Sn      0.13659166     0.27318433     0.75000000
+  Sn      0.13659266     0.86340734     0.75000000
+  Sn      0.86340734     0.13659266     0.25000000
+  Sn      0.86340834     0.72681567     0.25000000
+  Sn      0.72681567     0.86340834     0.75000000
+
+K_POINTS automatic
+  7 7 8 0 0 0
+
+! Source: data/cifs/mp-7759.cif (mp-7759)
+! Ba-containing metallic intermetallic control
+! PBE ONCV scalar-relativistic pseudopotentials
+! Pre-production settings: converge cutoffs and k mesh before comparing functionals.

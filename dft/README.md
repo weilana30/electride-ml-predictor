@@ -64,6 +64,18 @@ pw.x -in r2scan_vc-relax.in > r2scan_vc-relax.out
 
 Run the three relaxations from the same CIF-derived starting structure. Do not chain the r2SCAN job from the PBE-relaxed geometry during this benchmark.
 
+## SCF parameter sweeps
+
+Each material/functional directory also contains three SCF sweep directories:
+
+- `ecutwfc/`: low, baseline, and high wavefunction cutoffs, with `ecutrho` scaled by the same factor.
+- `kpoints/`: low, baseline, and high automatic Monkhorst-Pack meshes.
+- `smearing_or_conv_thr/`: three `degauss` values for metallic/smearing inputs, or three `conv_thr` values for fixed-occupation inputs.
+
+Each sweep directory has one `submit.slurm` launcher that runs its three SCF inputs sequentially and prints per-case and total elapsed wall time. The material-level `submit_parameter_tests.slurm` launcher submits all nine sweep jobs (three functionals × three parameter directories). Run it from the material directory or submit it with `sbatch`.
+
+The sweep inputs are independent SCF calculations at the original CIF-derived geometry; they do not perform ionic or cell relaxation. They use the same functional, pseudopotentials, magnetic seed, and structure as their parent input.
+
 ## Magnetic caveat: Ba3CrN3
 
 Ba3CrN3 uses two labels, `Cr1` and `Cr2`, with identical Cr pseudopotentials and opposite initial moments. That is an antiferromagnetic seed, not proof that AFM is its ground state. After this three-functional geometry comparison, run a small magnetic-ordering check (AFM seed versus FM seed) at the chosen production level. DFT+U is a separate sensitivity study and is not folded into this PBE/PBEsol/r2SCAN geometry benchmark.
