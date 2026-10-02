@@ -1,10 +1,10 @@
-! SCF parameter sweep: kpoints =   5 5 6 0 0 0
+! SCF parameter sweep: kpoints =   13 13 13 0 0 0
 ! Same structure, functional, pseudopotential, and magnetic seed as the parent vc-relax input.
 &CONTROL
   calculation = 'scf',
   prefix = 'mp-7759_r2scan_kpoints_low',
   outdir = './out_kpoints_low',
-  pseudo_dir = '../../../pseudo/PBE',
+  pseudo_dir = '../../../pseudo/PBE_PAW',
   tstress = .true.,
   tprnfor = .true.,
   disk_io = 'low',
@@ -13,25 +13,38 @@
   ibrav = 0,
   nat = 8,
   ntyp = 2,
-  ecutwfc = 100,
-  ecutrho = 800,
+  
+  
   input_dft = 'r2scan',
+  
+  
+  
+  
+  
+  
+  
+  
+  ecutwfc = 60,
+  ecutrho = 480,
   occupations = 'smearing',
-  smearing = 'mv',
+  smearing = 'methfessel-paxton',
   degauss = 0.02,
 /
 &ELECTRONS
-  conv_thr = 1.0d-9,
+  
   mixing_mode = 'local-TF',
-  mixing_beta = 0.25,
+  
   electron_maxstep = 200,
   diagonalization = 'david',
+  
+  
+  conv_thr = 1.0d-8,
+  mixing_beta = 0.7,
 /
 
 ATOMIC_SPECIES
-  Ba  137.327000 Ba.upf
-  Sn  118.710000 Sn.upf
-
+  Ba  137.327000 Ba.pbe-spn-kjpaw_psl.1.0.0.UPF
+  Sn  118.710000 Sn.pbe-dn-kjpaw_psl.1.0.0.UPF
 CELL_PARAMETERS angstrom
       7.3478689600     0.0000000000     0.0000000000
      -3.6739947965     6.3635054210     0.0000000000
@@ -48,7 +61,7 @@ ATOMIC_POSITIONS crystal
   Sn      0.72681567     0.86340834     0.75000000
 
 K_POINTS automatic
-  5 5 6 0 0 0
+  13 13 13 0 0 0
 ! Source: data/cifs/mp-7759.cif (mp-7759)
 ! Ba-containing metallic intermetallic control
 ! PBE ONCV scalar-relativistic pseudopotentials; r2SCAN needs a QE build with LibXC/r2SCAN support

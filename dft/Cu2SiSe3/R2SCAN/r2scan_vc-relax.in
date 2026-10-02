@@ -2,7 +2,7 @@
   calculation = 'vc-relax',
   prefix = 'mp-15896_r2scan',
   outdir = './out',
-  pseudo_dir = '../../pseudo/PBE',
+  pseudo_dir = '../../pseudo/PBE_PAW',
   tstress = .true.,
   tprnfor = .true.,
   nstep = 300,
@@ -14,17 +14,33 @@
   ibrav = 0,
   nat = 12,
   ntyp = 3,
-  ecutwfc = 100,
-  ecutrho = 800,
+  
+  
   input_dft = 'r2scan',
-  occupations = 'fixed',
+  
+  
+  
+  
+  
+  
+  
+  
+  ecutwfc = 60,
+  ecutrho = 480,
+  occupations = 'smearing',
+  smearing = 'methfessel-paxton',
+  degauss = 0.02,
 /
 &ELECTRONS
-  conv_thr = 1.0d-9,
+  
   mixing_mode = 'local-TF',
-  mixing_beta = 0.25,
+  
   electron_maxstep = 200,
   diagonalization = 'david',
+  
+  
+  conv_thr = 1.0d-8,
+  mixing_beta = 0.7,
 /
 &IONS
   ion_dynamics = 'bfgs',
@@ -37,10 +53,9 @@
 /
 
 ATOMIC_SPECIES
-  Cu   63.546000 Cu.upf
-  Si   28.085000 Si.upf
-  Se   78.971000 Se.upf
-
+  Cu   63.546000 Cu.pbe-spn-kjpaw_psl.1.0.0.UPF
+  Si   28.085000 Si.pbe-n-kjpaw_psl.1.0.0.UPF
+  Se   78.971000 Se.pbe-dn-kjpaw_psl.1.0.0.UPF
 CELL_PARAMETERS angstrom
       6.6855991200     0.0000000000     0.0000000000
       2.1130934749     6.3274612786     0.0000000000
@@ -61,8 +76,7 @@ ATOMIC_POSITIONS crystal
   Se      0.64494781     0.18773093     0.84291707
 
 K_POINTS automatic
-  7 8 8 0 0 0
-
+  17 17 17  0 0 0
 ! Source: data/cifs/mp-15896.cif (mp-15896)
 ! ternary covalent/chalcogenide semiconductor control
 ! PBE ONCV scalar-relativistic pseudopotentials; r2SCAN needs a QE build with LibXC/r2SCAN support

@@ -2,11 +2,11 @@
   calculation = 'vc-relax',
   prefix = 'eld-0049_pbe',
   outdir = './out',
-  pseudo_dir = '../../pseudo/PBE',
+  pseudo_dir = '../../pseudo/PBE_PAW',
   tstress = .true.,
   tprnfor = .true.,
   nstep = 300,
-  etot_conv_thr = 1.0d-5,
+  etot_conv_thr = 1.0d-8,
   forc_conv_thr = 1.0d-4,
   disk_io = 'low',
 /
@@ -14,19 +14,33 @@
   ibrav = 0,
   nat = 3,
   ntyp = 2,
-  ecutwfc = 100,
-  ecutrho = 400,
+  
+  
   input_dft = 'pbe',
+  
+  
+  
+  
+  
+  
+  
+  
+  ecutwfc = 60,
+  ecutrho = 480,
   occupations = 'smearing',
-  smearing = 'mv',
+  smearing = 'methfessel-paxton',
   degauss = 0.02,
 /
 &ELECTRONS
-  conv_thr = 1.0d-9,
+  
   mixing_mode = 'local-TF',
-  mixing_beta = 0.40,
+  
   electron_maxstep = 200,
   diagonalization = 'david',
+  
+  
+  conv_thr = 1.0d-8,
+  mixing_beta = 0.7,
 /
 &IONS
   ion_dynamics = 'bfgs',
@@ -39,9 +53,8 @@
 /
 
 ATOMIC_SPECIES
-  Ca   40.078000 Ca.upf
-  N    14.007000 N.upf
-
+  Ca   40.078000 Ca.pbe-spn-kjpaw_psl.1.0.0.UPF
+  N    14.007000 N.pbe-n-kjpaw_psl.1.0.0.UPF
 CELL_PARAMETERS angstrom
       6.7548549000     0.0000000000     0.0000000000
       5.7938761013     3.4726163102     0.0000000000
@@ -53,8 +66,7 @@ ATOMIC_POSITIONS crystal
   N      -0.00000000    -0.00000000     0.00000000
 
 K_POINTS automatic
-  14 14 14 0 0 0
-
+  17 17 17  0 0 0
 ! Source: data/cifs/mp-2686.cif (mp-2686)
 ! 2D; canonical layered electride; light-element contrast
 ! PBE ONCV scalar-relativistic pseudopotentials

@@ -24,7 +24,7 @@ def scf_input(base: str, prefix_suffix: str, outdir: str, parameter: str, value:
     text = re.sub(r"^\s*forc_conv_thr\s*=.*\n", "", text, count=1, flags=re.MULTILINE)
     text = replace_one(text, r"prefix\s*=\s*'([^']+)'", f"prefix = '\\1_{prefix_suffix}'")
     text = replace_one(text, r"outdir\s*=\s*'[^']+'", f"outdir = './{outdir}'")
-    text = text.replace("pseudo_dir = '../../pseudo/", "pseudo_dir = '../../../pseudo/")
+    text = text.replace("pseudo_dir = '../../pseudo/PBE_PAW'", "pseudo_dir = '../../../pseudo/PBE_PAW'")
 
     if parameter == "ecutwfc":
         ecut, rho = value.split(":")
@@ -66,7 +66,7 @@ def case_submit(material: str, functional: str, input_name: str) -> str:
         "#SBATCH --account=andre176",
         "#SBATCH --output=slurm-%x-%j.out",
         "#SBATCH --error=slurm-%x-%j.err",
-        "#SBATCH --time=00:30:00",
+        "#SBATCH --time=01:00:00",
         "#SBATCH --nodes=1",
         "#SBATCH --ntasks-per-node=9",
         "#SBATCH --mem=16G",
@@ -134,7 +134,7 @@ def material_submit(material: str) -> str:
         'script_dir="$PWD"',
         "",
         'echo "Submitting SCF parameter cases for ' + material + '"',
-        "for functional in PBE PBEsol R2SCAN; do",
+        "for functional in PBE R2SCAN; do",
         "  for parameter in ecutwfc kpoints smearing_or_conv_thr; do",
         '    sweep_dir="${script_dir}/${functional}/${parameter}"',
         '    for job in "$sweep_dir"/submit_scf_*.slurm; do',
@@ -148,13 +148,67 @@ def material_submit(material: str) -> str:
 
 
 base_paths = []
-for functional in ("PBE", "PBEsol", "R2SCAN"):
+PAW_FILES = {
+    "As": "As.pbe-n-kjpaw_psl.1.0.0.UPF",
+    "Ba": "Ba.pbe-spn-kjpaw_psl.1.0.0.UPF",
+    "Ca": "Ca.pbe-spn-kjpaw_psl.1.0.0.UPF",
+    "Cr1": "Cr.pbe-spn-kjpaw_psl.1.0.0.UPF",
+    "Cr2": "Cr.pbe-spn-kjpaw_psl.1.0.0.UPF",
+    "Cu": "Cu.pbe-spn-kjpaw_psl.1.0.0.UPF",
+    "Mg": "Mg.pbe-spnl-kjpaw_psl.1.0.0.UPF",
+    "N": "N.pbe-n-kjpaw_psl.1.0.0.UPF",
+    "S": "S.pbe-n-kjpaw_psl.1.0.0.UPF",
+    "Se": "Se.pbe-dn-kjpaw_psl.1.0.0.UPF",
+    "Si": "Si.pbe-n-kjpaw_psl.1.0.0.UPF",
+    "Sn": "Sn.pbe-dn-kjpaw_psl.1.0.0.UPF",
+}
+
+
+def normalize_base(text: str) -> str:
+    def set_value(text: str, section: str, key: str, value: str) -> str:
+        section_match = re.search(rf"(?ms)^&{section}\s*\n(.*?^/)", text)
+        if section_match is None:
+            raise RuntimeError(f"Could not find &{section} section")
+        block = re.sub(rf"\b{key}\s*=\s*[^,\n/]+,?", "", section_match.group(0))
+        block = block.replace("\n/", f"\n  {key} = {value},\n/", 1)
+        return text[:section_match.start()] + block + text[section_match.end():]
+
+    text = set_value(text, "SYSTEM", "ecutwfc", "60")
+    text = set_value(text, "SYSTEM", "ecutrho", "480")
+    text = set_value(text, "SYSTEM", "occupations", "'smearing'")
+    text = set_value(text, "SYSTEM", "smearing", "'methfessel-paxton'")
+    text = set_value(text, "SYSTEM", "degauss", "0.02")
+    text = set_value(text, "ELECTRONS", "conv_thr", "1.0d-8")
+    text = set_value(text, "ELECTRONS", "mixing_beta", "0.7")
+    text = replace_one(text, r"(?m)^\s*\d+\s+\d+\s+\d+\s+0\s+0\s+0\s*$", "  17 17 17  0 0 0")
+    text = replace_one(text, r"pseudo_dir\s*=\s*'[^']+'", "pseudo_dir = '../../pseudo/PBE_PAW'")
+
+    species = re.search(r"(?ms)(^ATOMIC_SPECIES\s*\n)(.*?)(?=^\s*$)", text)
+    if species is None:
+        raise RuntimeError("Could not find ATOMIC_SPECIES block")
+
+    def replace_species(match: re.Match[str]) -> str:
+        element = match.group(2)
+        if element not in PAW_FILES:
+            raise RuntimeError(f"No downloaded PBE PAW file for {element}")
+        return f"{match.group(1)}{element}{match.group(3)}{PAW_FILES[element]}"
+
+    species_block = re.sub(
+        r"(?m)^(\s*)([A-Z][a-z]?\d*)(\s+\S+\s+)\S+\s*$",
+        replace_species,
+        species.group(2),
+    )
+    return text[:species.start(2)] + species_block + text[species.end(2):]
+
+
+for functional in ("PBE", "R2SCAN"):
     base_paths.extend(ROOT.glob(f"*/{functional}/*_vc-relax.in"))
 
 for base_path in sorted(base_paths):
     material = base_path.parts[-3]
     functional = base_path.parts[-2]
-    base = base_path.read_text()
+    base = normalize_base(base_path.read_text())
+    base_path.write_text(base)
     ecut = int(re.search(r"ecutwfc\s*=\s*(\d+)", base).group(1))
     rho = int(re.search(r"ecutrho\s*=\s*(\d+)", base).group(1))
     k_match = re.search(r"(?m)^\s*(\d+)\s+(\d+)\s+(\d+)\s+0\s+0\s+0\s*$", base)
@@ -175,7 +229,7 @@ for base_path in sorted(base_paths):
         final_values = [(f"degauss_{x.replace('.', 'p')}", x) for x in ("0.01", "0.02", "0.04")]
     else:
         final_parameter = "conv_thr"
-        final_values = [(f"conv_thr_{x.replace('.', 'd').replace('-', 'm')}", x) for x in ("1.0d-8", "1.0d-9", "1.0d-10")]
+        final_values = [(f"conv_thr_{x.replace('.', 'd').replace('-', 'm')}", x) for x in ("1.0d-7", "1.0d-8", "1.0d-9")]
 
     sweeps = [("ecutwfc", cutoff_values), ("kpoints", kpoint_values), ("smearing_or_conv_thr", final_values)]
     for directory_name, values in sweeps:
