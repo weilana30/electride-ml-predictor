@@ -57,8 +57,9 @@ def elapsed_block() -> str:
 '''
 
 
-def sweep_submit(material: str, functional: str, parameter: str) -> str:
-    job = f"{material}_{functional.lower()}_{parameter}_scf"
+def case_submit(material: str, functional: str, input_name: str) -> str:
+    stem = input_name.removesuffix(".in")
+    job = f"{material}_{functional.lower()}_{stem}"
     lines = [
         "#!/bin/bash",
         f"#SBATCH --job-name={job}",
@@ -68,7 +69,7 @@ def sweep_submit(material: str, functional: str, parameter: str) -> str:
         "#SBATCH --time=00:30:00",
         "#SBATCH --nodes=1",
         "#SBATCH --ntasks-per-node=9",
-        "#SBATCH --mem=4G",
+        "#SBATCH --mem=16G",
         "#SBATCH --partition=cpu",
         "",
         "set -euo pipefail",
@@ -79,21 +80,28 @@ def sweep_submit(material: str, functional: str, parameter: str) -> str:
         "",
         elapsed_block().rstrip(),
         'job_start=$(date +%s)',
-        f'echo "Starting {material} {functional} {parameter} SCF sweep: $(date)"',
-        "",
-        "for input in scf_*.in; do",
-        '  stem="${input%.in}"',
-        '  output="${stem}.out"',
-        '  case_start=$(date +%s)',
-        '  echo "[$(date)] Running ${input}"',
-        '  srun pw.x -in "$input" > "$output"',
-        '  case_elapsed=$(( $(date +%s) - case_start ))',
-        '  echo "[$(date)] ${input} elapsed time: $(format_elapsed "$case_elapsed")"',
-        "done",
-        "",
+        f'echo "Starting {material} {functional} {stem}: $(date)"',
+        f'echo "Running {input_name}"',
+        f'srun pw.x -in "{input_name}" > "{stem}.out"',
         'job_elapsed=$(( $(date +%s) - job_start ))',
-        'echo "Completed sweep at $(date)"',
+        'echo "Completed calculation at $(date)"',
         'echo "Total job elapsed time: $(format_elapsed "$job_elapsed")"',
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def sweep_submit(material: str, functional: str, parameter: str) -> str:
+    lines = [
+        "#!/bin/bash",
+        "set -euo pipefail",
+        'script_dir="${SLURM_SUBMIT_DIR:-$PWD}"',
+        'cd "$script_dir"',
+        "",
+        f'echo "Submitting {material} {functional} {parameter} SCF cases"',
+        "for job in submit_scf_*.slurm; do",
+        '  sbatch --chdir="$script_dir" "$script_dir/$job"',
+        "done",
         "",
     ]
     return "\n".join(lines)
@@ -109,18 +117,20 @@ def material_submit(material: str) -> str:
         "#SBATCH --time=00:05:00",
         "#SBATCH --nodes=1",
         "#SBATCH --ntasks-per-node=1",
-        "#SBATCH --mem=1G",
+        "#SBATCH --mem=16G",
         "#SBATCH --partition=cpu",
         "",
         "set -euo pipefail",
         'script_dir="${SLURM_SUBMIT_DIR:-$PWD}"',
         'cd "$script_dir"',
         "",
-        'echo "Submitting SCF parameter sweeps for ' + material + '"',
+        'echo "Submitting SCF parameter cases for ' + material + '"',
         "for functional in PBE PBEsol R2SCAN; do",
         "  for parameter in ecutwfc kpoints smearing_or_conv_thr; do",
         '    sweep_dir="${script_dir}/${functional}/${parameter}"',
-        '    sbatch --chdir="$sweep_dir" "$sweep_dir/submit.slurm"',
+        '    for job in "$sweep_dir"/submit_scf_*.slurm; do',
+        '      sbatch --chdir="$sweep_dir" "$job"',
+        "    done",
         "  done",
         "done",
         "",
@@ -169,6 +179,9 @@ for base_path in sorted(base_paths):
             input_name = f"scf_{label}.in"
             outdir = f"out_{label}"
             (sweep_dir / input_name).write_text(scf_input(base, label, outdir, sweep_parameter, value))
+            (sweep_dir / f"submit_{input_name.removesuffix('.in')}.slurm").write_text(
+                case_submit(material, functional, input_name)
+            )
         (sweep_dir / "submit.slurm").write_text(sweep_submit(material, functional, directory_name))
 
     (base_path.parent.parent / "submit_parameter_tests.slurm").write_text(material_submit(material))

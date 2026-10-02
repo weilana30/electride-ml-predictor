@@ -72,7 +72,7 @@ Each material/functional directory also contains three SCF sweep directories:
 - `kpoints/`: low, baseline, and high automatic Monkhorst-Pack meshes.
 - `smearing_or_conv_thr/`: three `degauss` values for metallic/smearing inputs, or three `conv_thr` values for fixed-occupation inputs.
 
-Each sweep directory has one `submit.slurm` launcher that runs its three SCF inputs sequentially and prints per-case and total elapsed wall time. The material-level `submit_parameter_tests.slurm` launcher submits all nine sweep jobs (three functionals × three parameter directories). Run it from the material directory or submit it with `sbatch`.
+Each sweep directory has one `submit.slurm` launcher that submits three independent per-input Slurm jobs. Each per-input job requests 16 GB of memory and prints its elapsed wall time. The material-level `submit_parameter_tests.slurm` launcher submits all 27 SCF jobs (three functionals × three parameter directories × three values). Run it from the material directory or submit it with `sbatch`.
 
 The sweep inputs are independent SCF calculations at the original CIF-derived geometry; they do not perform ionic or cell relaxation. They use the same functional, pseudopotentials, magnetic seed, and structure as their parent input.
 

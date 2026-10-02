@@ -6,17 +6,19 @@
 #SBATCH --time=00:05:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --mem=1G
+#SBATCH --mem=16G
 #SBATCH --partition=cpu
 
 set -euo pipefail
 script_dir="${SLURM_SUBMIT_DIR:-$PWD}"
 cd "$script_dir"
 
-echo "Submitting SCF parameter sweeps for Cu2SiSe3"
+echo "Submitting SCF parameter cases for Cu2SiSe3"
 for functional in PBE PBEsol R2SCAN; do
   for parameter in ecutwfc kpoints smearing_or_conv_thr; do
     sweep_dir="${script_dir}/${functional}/${parameter}"
-    sbatch --chdir="$sweep_dir" "$sweep_dir/submit.slurm"
+    for job in "$sweep_dir"/submit_scf_*.slurm; do
+      sbatch --chdir="$sweep_dir" "$job"
+    done
   done
 done
