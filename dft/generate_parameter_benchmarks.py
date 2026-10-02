@@ -94,6 +94,16 @@ def case_submit(material: str, functional: str, input_name: str) -> str:
 def sweep_submit(material: str, functional: str, parameter: str) -> str:
     lines = [
         "#!/bin/bash",
+        f"#SBATCH --job-name={material}_{functional.lower()}_{parameter}_submit",
+        "#SBATCH --account=andre176",
+        "#SBATCH --output=slurm-%x-%j.out",
+        "#SBATCH --error=slurm-%x-%j.err",
+        "#SBATCH --time=00:05:00",
+        "#SBATCH --nodes=1",
+        "#SBATCH --ntasks-per-node=1",
+        "#SBATCH --mem=16G",
+        "#SBATCH --partition=cpu",
+        "",
         "set -euo pipefail",
         'script_dir="${SLURM_SUBMIT_DIR:-$PWD}"',
         'cd "$script_dir"',
