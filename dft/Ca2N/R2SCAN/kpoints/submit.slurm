@@ -12,7 +12,7 @@
 set -euo pipefail
 
 module load quantum-espresso
-script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+script_dir="${SLURM_SUBMIT_DIR:-$PWD}"
 cd "$script_dir"
 
 format_elapsed() {

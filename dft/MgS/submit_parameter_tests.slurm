@@ -10,12 +10,13 @@
 #SBATCH --partition=cpu
 
 set -euo pipefail
-script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+script_dir="${SLURM_SUBMIT_DIR:-$PWD}"
 cd "$script_dir"
 
 echo "Submitting SCF parameter sweeps for MgS"
 for functional in PBE PBEsol R2SCAN; do
   for parameter in ecutwfc kpoints smearing_or_conv_thr; do
-    sbatch "${functional}/${parameter}/submit.slurm"
+    sweep_dir="${script_dir}/${functional}/${parameter}"
+    sbatch --chdir="$sweep_dir" "$sweep_dir/submit.slurm"
   done
 done
