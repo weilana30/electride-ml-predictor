@@ -75,6 +75,8 @@ def case_submit(material: str, functional: str, input_name: str) -> str:
         "set -euo pipefail",
         "",
         "module load quantum-espresso",
+        "export OMPI_MCA_pml=ob1",
+        "export OMPI_MCA_btl=self,tcp",
         'script_dir="${SLURM_SUBMIT_DIR:-$PWD}"',
         'cd "$script_dir"',
         "",
