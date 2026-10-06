@@ -6,13 +6,13 @@
 #SBATCH --time=00:05:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --mem=16G
+#SBATCH --mem=1G
 #SBATCH --partition=cpu
 
 set -euo pipefail
-script_dir="$PWD"
+parent_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
-echo "Submitting Ca2N PBE kpoints SCF cases"
-for job in submit_scf_*.slurm; do
-  sbatch --chdir="$script_dir" "$script_dir/$job"
-done
+echo "Submitting Ca2N PBE kpoints cases"
+sbatch --chdir="$parent_dir/low" --output="$parent_dir/low/slurm-%x-%j.out" --error="$parent_dir/low/slurm-%x-%j.err" "$parent_dir/low/submit.slurm"
+sbatch --chdir="$parent_dir/base" --output="$parent_dir/base/slurm-%x-%j.out" --error="$parent_dir/base/slurm-%x-%j.err" "$parent_dir/base/submit.slurm"
+sbatch --chdir="$parent_dir/high" --output="$parent_dir/high/slurm-%x-%j.out" --error="$parent_dir/high/slurm-%x-%j.err" "$parent_dir/high/submit.slurm"

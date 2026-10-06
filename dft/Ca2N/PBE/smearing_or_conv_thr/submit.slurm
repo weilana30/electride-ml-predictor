@@ -6,13 +6,13 @@
 #SBATCH --time=00:05:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --mem=16G
+#SBATCH --mem=1G
 #SBATCH --partition=cpu
 
 set -euo pipefail
-script_dir="$PWD"
+parent_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
-echo "Submitting Ca2N PBE smearing_or_conv_thr SCF cases"
-for job in submit_scf_*.slurm; do
-  sbatch --chdir="$script_dir" "$script_dir/$job"
-done
+echo "Submitting Ca2N PBE smearing_or_conv_thr cases"
+sbatch --chdir="$parent_dir/degauss_0p01" --output="$parent_dir/degauss_0p01/slurm-%x-%j.out" --error="$parent_dir/degauss_0p01/slurm-%x-%j.err" "$parent_dir/degauss_0p01/submit.slurm"
+sbatch --chdir="$parent_dir/degauss_0p02" --output="$parent_dir/degauss_0p02/slurm-%x-%j.out" --error="$parent_dir/degauss_0p02/slurm-%x-%j.err" "$parent_dir/degauss_0p02/submit.slurm"
+sbatch --chdir="$parent_dir/degauss_0p04" --output="$parent_dir/degauss_0p04/slurm-%x-%j.out" --error="$parent_dir/degauss_0p04/slurm-%x-%j.err" "$parent_dir/degauss_0p04/submit.slurm"

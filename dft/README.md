@@ -1,80 +1,100 @@
-# Geometry-optimization benchmark
+# PBE DFT workflow
 
-This directory contains PBE and r2SCAN inputs for three electrides and three controls.
+This directory contains PBE calculations for three electrides and three control materials:
 
-## Selected structures
+| Role | Structure | Dataset ID |
+| --- | --- | --- |
+| Electride | Ba2As | ELD-0003 / mp-2768 |
+| Electride | Ba3CrN3 | ELD-0014 / mp-12905 |
+| Electride | Ca2N | ELD-0049 / mp-2686 |
+| Control | MgS | mp-1315 |
+| Control | BaSn3 | mp-7759 |
+| Control | Cu2SiSe3 | mp-15896 |
 
-| Role | Structure | Dataset ID | Why it is included |
-| --- | --- | --- | --- |
-| Electride | Ba2As (0D) | ELD-0003 / mp-2768 | Binary, nonmagnetic 0D baseline. |
-| Electride | Ba3CrN3 (1D) | ELD-0014 / mp-12905 | 1D transition-metal nitride; its inputs seed antiferromagnetism. |
-| Electride | Ca2N (2D) | ELD-0049 / mp-2686 | Canonical layered 2D electride. |
-| Control | MgS | mp-1315 | Simple ionic binary. |
-| Control | BaSn3 | mp-7759 | Metallic Ba-containing intermetallic. |
-| Control | Cu2SiSe3 | mp-15896 | Ternary covalent/chalcogenide semiconductor. |
+R2SCAN has been removed. The PBE PAW pseudopotentials are in `pseudo/PBE_PAW/`.
 
-The CIFs are P1 primitive-cell exports. Inputs intentionally retain those primitive cells through `ibrav=0`, explicit `CELL_PARAMETERS`, and fractional positions. Do not replace them with conventional cells mid-benchmark.
+## Layout
 
-## Pseudopotentials: downloaded
-
-Scalar-relativistic PBE PAW pseudopotentials are installed under:
+Each material has the following structure:
 
 ```text
-pseudo/PBE_PAW/*.UPF
+<material>/
+├── PBE/
+│   ├── relax/
+│   │   ├── pbe_vc-relax.in
+│   │   └── submit.slurm
+│   ├── ecutwfc/
+│   │   ├── low/
+│   │   ├── base/
+│   │   ├── high/
+│   │   └── submit.slurm
+│   ├── kpoints/
+│   └── smearing_or_conv_thr/
+└── submit_parameter_tests.slurm
 ```
 
-The files were downloaded from the official Quantum ESPRESSO PSlibrary legacy tables and checked for `pseudo_type="PAW"`. Both PBE and r2SCAN inputs use this same PBE PAW set; the r2SCAN functional still requires a QE build with LibXC support.
+Every benchmark value has its own directory. Its `scf.in` and `submit.slurm` are kept with the value-specific outputs.
 
-## Quantum ESPRESSO requirement
+## Scratch and copied-back files
 
-Use a current QE build with r2SCAN/LibXC support. The r2SCAN inputs use:
+`dft/run_scf_case.sh` stages each calculation in:
 
 ```text
-input_dft = 'r2scan'
+$RCAC_SCRATCH/electride-ml-predictor/<material>_<test>_<value>_<jobid>/
 ```
 
-Test this first with the 3-atom Ca2N input. If QE reports that `r2scan` is unknown, the executable lacks the required support and must be rebuilt or replaced with a LibXC-enabled build. Do not silently change the r2SCAN inputs to PBE.
+The QE save data, ELF cube, and density cube remain in scratch while the job runs. After post-processing, the cube files and QE save data are removed from scratch on success. Each case directory receives only:
 
-## Initial numerical settings
+```text
+scf.out
+scf.err
+pp_elf.out
+pp_elf.err
+pp_density.out
+pp_density.err
+summary.csv
+slurm-*.out
+slurm-*.err
+```
 
-- All jobs are `vc-relax`, use BFGS ionic and cell updates, and relax to 0 kbar.
-- The initial k mesh targets no more than about 0.15 1/angstrom reciprocal-space spacing.
-- All inputs start at 60/480 Ry wavefunction/charge-density cutoffs.
-- All inputs use Methfessel-Paxton smearing with a 0.02 Ry width and `conv_thr=1d-8`.
+`summary.csv` contains:
 
-These are starting settings, not a convergence claim. The sweep inputs test lower and higher cutoff, k-point, and smearing values around these baselines.
+```text
+material,parameter,case,total_energy_ry,max_force_ry_bohr,elf_max,density_at_elf_max
+```
 
-## Run
+The maximum force is the largest per-atom force magnitude, not QE's aggregate `Total force` value. The density is sampled at the ELF maximum using periodic interpolation.
 
-From any structure folder, for example:
+## Submitting jobs
+
+From a material directory, submit all nine parameter cases with:
 
 ```bash
-mkdir -p out
-pw.x -in pbe_vc-relax.in > pbe_vc-relax.out
-pw.x -in r2scan_vc-relax.in > r2scan_vc-relax.out
+sbatch submit_parameter_tests.slurm
 ```
 
-Run the three relaxations from the same CIF-derived starting structure. Do not chain the r2SCAN job from the PBE-relaxed geometry during this benchmark.
+To submit only one sweep:
 
-## SCF parameter sweeps
+```bash
+cd Ca2N/PBE/ecutwfc
+sbatch submit.slurm
+```
 
-Each material/functional directory also contains three SCF sweep directories:
+To submit the PBE relaxation:
 
-- `ecutwfc/`: low, baseline, and high wavefunction cutoffs, with `ecutrho` scaled by the same factor.
-- `kpoints/`: low, baseline, and high automatic Monkhorst-Pack meshes.
-- `smearing_or_conv_thr/`: three `degauss` values for metallic/smearing inputs, or three `conv_thr` values for fixed-occupation inputs.
+```bash
+cd Ca2N/PBE
+sbatch submit.slurm
+```
 
-Each sweep directory has one `submit.slurm` launcher that submits three independent per-input Slurm jobs. Each per-input job requests 16 GB of memory, has a one-hour limit, and prints its elapsed wall time. The material-level `submit_parameter_tests.slurm` launcher submits all 18 SCF jobs (two functionals × three parameter directories × three values). Run it from the material directory or submit it with `sbatch`.
+The relaxation also runs in scratch and receives a `summary.csv`. The parameter sweeps are fixed-geometry SCF calculations based on the original structure, not chained relaxations.
 
-The sweep inputs are independent SCF calculations at the original CIF-derived geometry; they do not perform ionic or cell relaxation. They use the same functional, pseudopotentials, magnetic seed, and structure as their parent input.
+## Regenerating the workflow
 
-## Magnetic caveat: Ba3CrN3
+If the parent PBE relaxation inputs or benchmark factors change, regenerate the case directories with:
 
-Ba3CrN3 uses two labels, `Cr1` and `Cr2`, with identical Cr pseudopotentials and opposite initial moments. That is an antiferromagnetic seed, not proof that AFM is its ground state. Run a small magnetic-ordering check (AFM seed versus FM seed) at the chosen production level. DFT+U is a separate sensitivity study.
+```bash
+python3 dft/generate_parameter_benchmarks.py
+```
 
-## Sources consulted
-
-- QE `pw.x` input reference: https://www.quantum-espresso.org/Doc/INPUT_PW.html
-- QE pseudopotential guidance: https://www.quantum-espresso.org/pseudopotentials/
-- PseudoDojo/KSPP NC-SR 0.4.1 tables: https://github.com/Quantum-MultiScale/KSPP/tree/main/norm-conserving/nc-sr-04
-- QE users discussion of r2SCAN/LibXC: https://lists.quantum-espresso.org/pipermail/users/2023-June/050558.html
+The generator removes and recreates the three PBE sweep trees and removes any material-level R2SCAN tree.

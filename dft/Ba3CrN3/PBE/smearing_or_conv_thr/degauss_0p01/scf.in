@@ -1,0 +1,65 @@
+! PBE SCF benchmark: degauss = 0.01
+! QE data are staged in scratch by the case submission script.
+&CONTROL
+  calculation = 'scf', prefix = 'eld-0014_pbe_degauss_degauss_0p01', outdir = './qe_data',
+  pseudo_dir = '../../../../pseudo/PBE_PAW', tstress = .true., tprnfor = .true.,
+/
+&SYSTEM
+  ibrav = 0, nat = 14, ntyp = 4,  
+  input_dft = 'pbe',   
+  nspin = 2, starting_magnetization(2) = 0.60, starting_magnetization(3) = -0.60,
+  nosym = .true.,
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  ecutwfc = 60,
+  ecutrho = 480,
+  occupations = 'smearing',
+  smearing = 'methfessel-paxton',
+  degauss = 0.01,
+/
+&ELECTRONS
+  
+  electron_maxstep = 200, diagonalization = 'david',
+  
+  
+  
+  conv_thr = 1.0d-8,
+  mixing_beta = 0.7,
+/
+
+ATOMIC_SPECIES
+  Ba  137.327000 Ba.pbe-spn-kjpaw_psl.1.0.0.UPF
+  Cr1 51.996100 Cr.pbe-spn-kjpaw_psl.1.0.0.UPF
+  Cr2 51.996100 Cr.pbe-spn-kjpaw_psl.1.0.0.UPF
+  N   14.007000 N.pbe-n-kjpaw_psl.1.0.0.UPF
+CELL_PARAMETERS angstrom
+      8.3378570000     0.0000000000     0.0000000000
+     -4.1689292536     7.2207959095     0.0000000000
+      0.0000000000     0.0000000000     5.4971217800
+
+ATOMIC_POSITIONS crystal
+  Ba 0.63887241 0.71993901 0.75000000
+  Ba 0.91893240 0.63887241 0.25000000
+  Ba 0.71993901 0.08106760 0.25000000
+  Ba 0.28006099 0.91893240 0.75000000
+  Ba 0.08106760 0.36112759 0.75000000
+  Ba 0.36112759 0.28006099 0.25000000
+  Cr1 0.66666700 0.33333300 0.75000000
+  Cr2 0.33333300 0.66666700 0.25000000
+  N 0.54636051 0.68149718 0.25000000
+  N 0.86486234 0.54636051 0.75000000
+  N 0.68149718 0.13513766 0.75000000
+  N 0.31850282 0.86486234 0.25000000
+  N 0.13513766 0.45363949 0.25000000
+  N 0.45363949 0.31850282 0.75000000
+
+K_POINTS automatic
+  17 17 17  0 0 0
