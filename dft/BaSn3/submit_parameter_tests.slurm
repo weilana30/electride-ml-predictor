@@ -12,5 +12,5 @@
 set -euo pipefail
 material_dir=${SLURM_SUBMIT_DIR:?SLURM_SUBMIT_DIR is not set}
 for parameter in ecutwfc kpoints smearing_or_conv_thr; do
-  bash "$material_dir/PBE/$parameter/submit.slurm"
+  (cd "$material_dir/PBE/$parameter" && bash submit.slurm)
 done

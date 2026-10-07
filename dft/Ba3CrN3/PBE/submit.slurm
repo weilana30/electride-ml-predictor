@@ -10,7 +10,7 @@
 #SBATCH --partition=cpu
 
 set -euo pipefail
-parent_dir=${SLURM_SUBMIT_DIR:?SLURM_SUBMIT_DIR is not set}
+parent_dir=$(pwd -P)
 sbatch --chdir="$parent_dir/relax" \
   --output="$parent_dir/relax/slurm-%x-%j.out" \
   --error="$parent_dir/relax/slurm-%x-%j.err" \

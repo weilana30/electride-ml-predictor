@@ -10,7 +10,7 @@
 #SBATCH --partition=cpu
 
 set -euo pipefail
-parent_dir=${SLURM_SUBMIT_DIR:?SLURM_SUBMIT_DIR is not set}
+parent_dir=$(pwd -P)
 
 echo "Submitting Ba3CrN3 PBE ecutwfc cases"
 sbatch --chdir="$parent_dir/low" --output="$parent_dir/low/slurm-%x-%j.out" --error="$parent_dir/low/slurm-%x-%j.err" "$parent_dir/low/submit.slurm"

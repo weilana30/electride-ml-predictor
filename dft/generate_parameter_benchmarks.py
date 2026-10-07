@@ -123,7 +123,7 @@ def submit_children(material: str, parameter: str, labels: list[str]) -> str:
         "#SBATCH --partition=cpu",
         "",
         "set -euo pipefail",
-        'parent_dir=${SLURM_SUBMIT_DIR:?SLURM_SUBMIT_DIR is not set}',
+        'parent_dir=$(pwd -P)',
         "",
         f'echo "Submitting {material} PBE {parameter} cases"',
     ]
@@ -150,7 +150,7 @@ def submit_relax(material: str) -> str:
 #SBATCH --partition=cpu
 
 set -euo pipefail
-parent_dir=${{SLURM_SUBMIT_DIR:?SLURM_SUBMIT_DIR is not set}}
+parent_dir=$(pwd -P)
 sbatch --chdir="$parent_dir/relax" \\
   --output="$parent_dir/relax/slurm-%x-%j.out" \\
   --error="$parent_dir/relax/slurm-%x-%j.err" \\
@@ -173,7 +173,7 @@ def material_submit(material: str) -> str:
 set -euo pipefail
 material_dir=${{SLURM_SUBMIT_DIR:?SLURM_SUBMIT_DIR is not set}}
 for parameter in ecutwfc kpoints smearing_or_conv_thr; do
-  bash "$material_dir/PBE/$parameter/submit.slurm"
+  (cd "$material_dir/PBE/$parameter" && bash submit.slurm)
 done
 '''
 
