@@ -10,7 +10,7 @@
 #SBATCH --partition=cpu
 
 set -euo pipefail
-parent_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+parent_dir=${SLURM_SUBMIT_DIR:?SLURM_SUBMIT_DIR is not set}
 
 echo "Submitting Ca2N PBE smearing_or_conv_thr cases"
 sbatch --chdir="$parent_dir/degauss_0p01" --output="$parent_dir/degauss_0p01/slurm-%x-%j.out" --error="$parent_dir/degauss_0p01/slurm-%x-%j.err" "$parent_dir/degauss_0p01/submit.slurm"

@@ -103,7 +103,7 @@ def case_submit(material: str, parameter: str, label: str, levels_to_root: int, 
 #SBATCH --partition=cpu
 
 set -euo pipefail
-case_dir=$(cd "$(dirname "${{BASH_SOURCE[0]}}")" && pwd)
+case_dir=$(pwd -P)
 project_root=$(cd "$case_dir/{relative_root}" && pwd)
 exec bash "$project_root/dft/run_scf_case.sh" "$project_root" "$case_dir" "{input_name}" "{material}" "{parameter_name}" "{label}"
 '''
@@ -123,7 +123,7 @@ def submit_children(material: str, parameter: str, labels: list[str]) -> str:
         "#SBATCH --partition=cpu",
         "",
         "set -euo pipefail",
-        'parent_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)',
+        'parent_dir=${SLURM_SUBMIT_DIR:?SLURM_SUBMIT_DIR is not set}',
         "",
         f'echo "Submitting {material} PBE {parameter} cases"',
     ]
@@ -150,7 +150,7 @@ def submit_relax(material: str) -> str:
 #SBATCH --partition=cpu
 
 set -euo pipefail
-parent_dir=$(cd "$(dirname "${{BASH_SOURCE[0]}}")" && pwd)
+parent_dir=${{SLURM_SUBMIT_DIR:?SLURM_SUBMIT_DIR is not set}}
 sbatch --chdir="$parent_dir/relax" \\
   --output="$parent_dir/relax/slurm-%x-%j.out" \\
   --error="$parent_dir/relax/slurm-%x-%j.err" \\
@@ -171,7 +171,7 @@ def material_submit(material: str) -> str:
 #SBATCH --partition=cpu
 
 set -euo pipefail
-material_dir=$(cd "$(dirname "${{BASH_SOURCE[0]}}")" && pwd)
+material_dir=${{SLURM_SUBMIT_DIR:?SLURM_SUBMIT_DIR is not set}}
 for parameter in ecutwfc kpoints smearing_or_conv_thr; do
   bash "$material_dir/PBE/$parameter/submit.slurm"
 done

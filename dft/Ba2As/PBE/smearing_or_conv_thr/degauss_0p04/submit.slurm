@@ -10,6 +10,6 @@
 #SBATCH --partition=cpu
 
 set -euo pipefail
-case_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+case_dir=$(pwd -P)
 project_root=$(cd "$case_dir/../../../../.." && pwd)
 exec bash "$project_root/dft/run_scf_case.sh" "$project_root" "$case_dir" "scf.in" "Ba2As" "smearing_or_conv_thr" "degauss_0p04"

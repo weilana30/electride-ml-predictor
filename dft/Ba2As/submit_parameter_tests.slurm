@@ -10,7 +10,7 @@
 #SBATCH --partition=cpu
 
 set -euo pipefail
-material_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+material_dir=${SLURM_SUBMIT_DIR:?SLURM_SUBMIT_DIR is not set}
 for parameter in ecutwfc kpoints smearing_or_conv_thr; do
   bash "$material_dir/PBE/$parameter/submit.slurm"
 done
