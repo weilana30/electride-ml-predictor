@@ -1,0 +1,2 @@
+material,parameter,case,total_energy_ry,max_force_ry_bohr,elf_max,density_at_elf_max
+Ca2N,smearing_or_conv_thr,degauss_0p01,-295.42986982,0.00267225797493,0.9478,0.39347999999999983

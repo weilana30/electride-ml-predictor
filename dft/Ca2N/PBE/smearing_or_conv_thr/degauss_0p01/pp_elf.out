@@ -1,0 +1,63 @@
+
+     Program POST-PROC v.7.1 starts on  7Oct2026 at 17:54:56 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+         "P. Giannozzi et al., J. Chem. Phys. 152 154105 (2020);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI & OpenMP), running on       9 processor cores
+     Number of MPI processes:                 9
+     Threads/MPI process:                     1
+
+     MPI processes distributed on     1 nodes
+     R & G space division:  proc/nbgrp/npool/nimage =       9
+     171982 MiB available memory on the printing compute node when the environment starts
+
+
+     Reading xml data from directory:
+
+     ./qe_data/eld-0049_pbe_degauss_degauss_0p01.save/
+     file Ca.pbe-spn-kjpaw_psl.1.0.0.UPF: wavefunction(s)  3S renormalized
+     file N.pbe-n-kjpaw_psl.1.0.0.UPF: wavefunction(s)  2S renormalized
+
+     IMPORTANT: XC functional enforced from input :
+     Exchange-correlation= PBE
+                           (   1   4   3   4   0   0   0)
+     Any further DFT definition will be discarded
+     Please, verify this is what you really want
+
+
+     Parallelization info
+     --------------------
+     sticks:   dense  smooth     PW     G-vecs:    dense   smooth      PW
+     Min         355     178     57                 9630     3401     618
+     Max         356     179     58                 9631     3403     619
+     Sum        3203    1605    515                86671    30617    5565
+
+     Using Slab Decomposition
+
+
+     Check: negative core charge=   -0.000001
+
+     Calling punch_plot, plot_num =   8
+     Message from routine do_elf:
+     elf + US not fully implemented
+     Writing data to file  tmp.pp
+     Reading data from file  tmp.pp
+
+     Writing data to be plotted to file elf.cube
+     Plot Type: 3D                     Output format: Gaussian cube
+
+     POST-PROC    :     45.65s CPU   1m58.10s WALL
+
+
+   This run was terminated on:  17:56:54   7Oct2026            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=

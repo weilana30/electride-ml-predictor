@@ -1,0 +1,172 @@
+
+     Program PWSCF v.7.1 starts on  7Oct2026 at 18:57:16 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+         "P. Giannozzi et al., J. Chem. Phys. 152 154105 (2020);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI & OpenMP), running on       9 processor cores
+     Number of MPI processes:                 9
+     Threads/MPI process:                     1
+
+     MPI processes distributed on     1 nodes
+     195922 MiB available memory on the printing compute node when the environment starts
+
+     Reading input from scf.in
+
+     Current dimensions of program PWSCF are:
+     Max number of different atomic species (ntypx) = 10
+     Max number of k-points (npk) =  40000
+     Max angular momentum in pseudopotentials (lmaxx) =  4
+     file Cu.pbe-spn-kjpaw_psl.1.0.0.UPF: wavefunction(s)  4S 3P 3D renormalized
+     file Si.pbe-n-kjpaw_psl.1.0.0.UPF: wavefunction(s)  3S 3P renormalized
+     file Se.pbe-dn-kjpaw_psl.1.0.0.UPF: wavefunction(s)  4S 4P 3D renormalized
+
+     IMPORTANT: XC functional enforced from input :
+     Exchange-correlation= PBE
+                           (   1   4   3   4   0   0   0)
+     Any further DFT definition will be discarded
+     Please, verify this is what you really want
+
+     Message from routine setup:
+     using ibrav=0 with symmetry is DISCOURAGED, use correct ibrav instead
+
+     R & G space division:  proc/nbgrp/npool/nimage =       9
+     Subspace diagonalization in iterative solution of the eigenvalue problem:
+     a serial algorithm will be used
+
+
+     Parallelization info
+     --------------------
+     sticks:   dense  smooth     PW     G-vecs:    dense   smooth      PW
+     Min         641     321     90                33021    11676    1760
+     Max         642     322     91                33022    11677    1761
+     Sum        5771    2891    815               297193   105091   15843
+
+     Using Slab Decomposition
+
+
+
+     bravais-lattice index     =            0
+     lattice parameter (alat)  =      12.6340  a.u.
+     unit-cell volume          =    1673.4024 (a.u.)^3
+     number of atoms/cell      =           12
+     number of atomic types    =            3
+     number of electrons       =       180.00
+     number of Kohn-Sham states=          108
+     kinetic-energy cutoff     =      60.0000  Ry
+     charge density cutoff     =     480.0000  Ry
+     scf convergence threshold =      1.0E-08
+     mixing beta               =       0.7000
+     number of iterations used =            8  local-TF  mixing
+     Exchange-correlation= PBE
+                           (   1   4   3   4   0   0   0)
+
+     celldm(1)=  12.633951  celldm(2)=   0.000000  celldm(3)=   0.000000
+     celldm(4)=   0.000000  celldm(5)=   0.000000  celldm(6)=   0.000000
+
+     crystal axes: (cart. coord. in units of alat)
+               a(1) = (   1.000000   0.000000   0.000000 )  
+               a(2) = (   0.316066   0.946431   0.000000 )  
+               a(3) = (   0.158033   0.473216   0.876786 )  
+
+     reciprocal axes: (cart. coord. in units 2 pi/alat)
+               b(1) = (  1.000000 -0.333956 -0.000000 )  
+               b(2) = (  0.000000  1.056601 -0.570264 )  
+               b(3) = (  0.000000  0.000000  1.140529 )  
+
+
+     PseudoPot. # 1 for Cu read from file:
+     /home/weilana/electride-ml-predictor/dft/pseudo/PBE_PAW/Cu.pbe-spn-kjpaw_psl.1.0.0.UPF
+     MD5 check sum: e7cbaad2f97193e5fe23251a619a52b0
+     Pseudo is Projector augmented-wave + core cor, Zval = 19.0
+     Generated using &quot;atomic&quot; code by A. Dal Corso  v.6.3
+     Shape of augmentation charge: PSQ
+     Using radial grid of 1199 points,  6 beta functions with: 
+                l(1) =   0
+                l(2) =   0
+                l(3) =   1
+                l(4) =   1
+                l(5) =   2
+                l(6) =   2
+     Q(r) pseudized with 0 coefficients 
+
+
+     PseudoPot. # 2 for Si read from file:
+     /home/weilana/electride-ml-predictor/dft/pseudo/PBE_PAW/Si.pbe-n-kjpaw_psl.1.0.0.UPF
+     MD5 check sum: c39c59da582df4a0d9f10159256ea34e
+     Pseudo is Projector augmented-wave + core cor, Zval =  4.0
+     Generated using &quot;atomic&quot; code by A. Dal Corso  v.6.3
+     Shape of augmentation charge: PSQ
+     Using radial grid of 1141 points,  6 beta functions with: 
+                l(1) =   0
+                l(2) =   0
+                l(3) =   1
+                l(4) =   1
+                l(5) =   2
+                l(6) =   2
+     Q(r) pseudized with 0 coefficients 
+
+
+     PseudoPot. # 3 for Se read from file:
+     /home/weilana/electride-ml-predictor/dft/pseudo/PBE_PAW/Se.pbe-dn-kjpaw_psl.1.0.0.UPF
+     MD5 check sum: ac240dd2bae32a30e0bf3a38df9c8785
+     Pseudo is Projector augmented-wave + core cor, Zval = 16.0
+     Generated using &quot;atomic&quot; code by A. Dal Corso  v.6.3
+     Shape of augmentation charge: PSQ
+     Using radial grid of 1211 points,  6 beta functions with: 
+                l(1) =   0
+                l(2) =   0
+                l(3) =   1
+                l(4) =   1
+                l(5) =   2
+                l(6) =   2
+     Q(r) pseudized with 0 coefficients 
+
+
+     atomic species   valence    mass     pseudopotential
+        Cu            19.00    63.54600     Cu( 1.00)
+        Si             4.00    28.08500     Si( 1.00)
+        Se            16.00    78.97100     Se( 1.00)
+
+      2 Sym. Ops. (no inversion) found ( 1 have fractional translation)
+
+
+
+   Cartesian axes
+
+     site n.     atom                  positions (alat units)
+         1           Cu  tau(   1) = (   0.6568617   0.4618519   0.4468161  )
+         2           Cu  tau(   2) = (   0.3148949   0.9350676   0.4299700  )
+         3           Cu  tau(   3) = (   0.8153028   0.9436723   0.7242310  )
+         4           Cu  tau(   4) = (   0.1572699   0.4704575   0.1525550  )
+         5           Si  tau(   5) = (   0.8311011   0.9186215   0.1488124  )
+         6           Si  tau(   6) = (   0.1730683   0.4454067   0.7279736  )
+         7           Se  tau(   7) = (   0.4746554   1.0542744   0.7281835  )
+         8           Se  tau(   8) = (   0.8166221   0.5810587   0.1486025  )
+         9           Se  tau(   9) = (   0.9774146   1.0496581   0.4242488  )
+        10           Se  tau(  10) = (   0.3193814   0.5764423   0.4525372  )
+        11           Se  tau(  11) = (   0.1794586   0.1033394   0.1377281  )
+        12           Se  tau(  12) = (   0.8374922   0.5765560   0.7390579  )
+
+     number of k points=  1305  Methfessel-Paxton smearing, width (Ry)=  0.0400
+
+     Number of k-points >= 100: set verbosity='high' to print them.
+
+     Dense  grid:   297193 G-vectors     FFT dimensions: (  90,  90,  90)
+
+     Smooth grid:   105091 G-vectors     FFT dimensions: (  64,  64,  64)
+
+     Estimated max dynamical RAM per process >       3.20 GB
+
+     Estimated total dynamical RAM >      28.77 GB
+
+     Initial potential from superposition of free atoms
+
+     starting charge     179.9973, renormalised to     180.0000
+     Starting wfcs are  102 randomized atomic wfcs +    6 random wfcs

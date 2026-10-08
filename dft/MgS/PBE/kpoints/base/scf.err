@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 5 in communicator MPI_COMM_WORLD
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+In: PMI_Abort(1, N/A)
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 6 in communicator MPI_COMM_WORLD
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+In: PMI_Abort(1, N/A)
+[2026-10-07T19:06:31.763] error: *** STEP 43895581.0 ON a025 CANCELLED AT 2026-10-07T19:06:31 DUE TO TASK FAILURE ***
+srun: error: a025: tasks 0-4,7-8: Terminated
+srun: error: a025: tasks 5-6: Exited with exit code 1
+srun: Force Terminated StepId=43895581.0
