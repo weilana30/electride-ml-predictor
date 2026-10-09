@@ -1,5 +1,8 @@
 # PBE DFT workflow
 
+The separate CP2K fixed-geometry convergence and structure-only void workflow is
+documented in [`cp2k/README.md`](cp2k/README.md).
+
 This directory contains PBE calculations for three electrides and three control materials:
 
 | Role | Structure | Dataset ID |
