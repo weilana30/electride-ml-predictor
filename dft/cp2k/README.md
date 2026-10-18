@@ -40,9 +40,10 @@ separate `dft/cp2k/<material>/` tree. Cases are:
 * k mesh: 3x3x3, 5x5x5, 7x7x7, and 9x9x9, Gamma centered, with 16, 20, 24, and 32 GB
 * basis: one TZVP-MOLOPT-SR-GTH case at 500/60 Ry and 5x5x5, with 24 GB; compare with the matching DZVP baseline
 
-The full ELF cube is requested for each case so its maximum can be analyzed near
-the structural candidate sites. `analyze_void_elf.py` reports the local ELF
-maximum within a radius of a selected structure-only candidate.
+The full ELF cube is requested for each case. After CP2K finishes, the job script
+runs `analyze_void_elf.py` against every structural candidate and writes the
+local ELF maximum within 1.5 Å of each site. The per-cube CSV report is copied
+back to that case directory. ELF cubes remain in the job's scratch directory.
 
 Generated inputs use CP2K's standard `BASIS_MOLOPT`, `BASIS_MOLOPT_UCL`, and `GTH_POTENTIALS`
 libraries, which must be available to the CP2K installation on Negishi. The
@@ -69,13 +70,14 @@ Submit all convergence cases for a material from its CP2K directory with:
 sbatch submit_all.slurm
 ```
 
-Each calculation requests 03:00:00. Results are written in each case directory.
-Jobs stage inputs and scratch output under `$RCAC_SCRATCH/electride-ml-predictor/cp2k/`
-and copy back the CP2K log and ELF cube. Failed-job scratch is retained for review.
-Each material has nine DFT cases (four cutoff,
-four k-point, one basis comparison). `analyze_void_elf.py` takes a selected structural
-site index and the case's `*-ELF*.cube` file to locate a local ELF maximum; it
-does not feed that value back into the site finder.
+Each calculation requests 03:00:00. Jobs stage inputs and output under
+`$RCAC_SCRATCH/electride-ml-predictor/cp2k/`, retain the scratch directory and
+ELF cube, and copy the CP2K log plus per-void ELF CSV report back to the case
+directory. This requires `python3` with NumPy available on the compute node.
+Each material has nine DFT cases (four cutoff, four k-point, one basis comparison).
+Automated job analysis checks every row in the material's
+`structure/void_candidates.csv`; it does not feed ELF values back into the
+structure-only site finder.
 
 For example, from a case directory:
 

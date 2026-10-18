@@ -68,15 +68,26 @@ def validate_material(material):
             coord_text = re.search(r"&COORD\s*(.*?)\s*&END COORD", text, re.S).group(1)
             coord_rows = [line for line in coord_text.splitlines() if line.strip()]
             assert len(coord_rows) == len(cart_atoms), f"{path}: coordinate count mismatch"
-            assert "--time=03:00:00" in (path.parent / "submit.slurm").read_text()
-            assert f"--mem={MEMORY_GB[f'{group}/{path.parent.name}']}G" in (path.parent / "submit.slurm").read_text()
+            submit_text = (path.parent / "submit.slurm").read_text()
+            assert "--time=03:00:00" in submit_text
+            assert f"--mem={MEMORY_GB[f'{group}/{path.parent.name}']}G" in submit_text
+            assert "analyze_void_elf.py" in submit_text and "candidate_file" in submit_text
+            assert "rm -rf \"$scratch_dir\"" not in submit_text
+            assert "for cube in \"$scratch_dir\"/*-ELF*.cube" in submit_text
+            assert '--output "$report"' in submit_text and "--site" not in submit_text
+            assert 'cp "$report" "$case_dir/"' in submit_text
     basis_input = CP2K_ROOT / material / "basis" / "tzvp" / "cp2k.inp"
     basis_text = basis_input.read_text()
     assert "BASIS_SET_FILE_NAME BASIS_MOLOPT_UCL" in basis_text
     assert all(f"BASIS_SET TZVP-MOLOPT-SR-GTH-q{PSEUDO[symbol][1].rsplit('q', 1)[1]}" in basis_text for symbol in {a.symbol for a in atom_sites})
     assert "SMEAR" not in basis_text.upper()
-    assert "--time=03:00:00" in (basis_input.parent / "submit.slurm").read_text()
-    assert f"--mem={MEMORY_GB['basis/tzvp']}G" in (basis_input.parent / "submit.slurm").read_text()
+    basis_submit = (basis_input.parent / "submit.slurm").read_text()
+    assert "--time=03:00:00" in basis_submit
+    assert f"--mem={MEMORY_GB['basis/tzvp']}G" in basis_submit
+    assert "analyze_void_elf.py" in basis_submit and "candidate_file" in basis_submit
+    assert "rm -rf \"$scratch_dir\"" not in basis_submit
+    assert "for cube in \"$scratch_dir\"/*-ELF*.cube" in basis_submit
+    assert '--output "$report"' in basis_submit and "--site" not in basis_submit
     print(f"PASS {material}: {len(atom_sites)} QE/CIF atoms agree; {len(sites)} valid Voronoi candidates; 9 fixed-geometry CP2K inputs checked")
 
 

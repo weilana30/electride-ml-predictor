@@ -1,3 +1,6 @@
 .env
 __pycache__/
 .ipynb_checkpoints/
+
+# External ELFNet source, model, and large data archives
+elfnet_data/
