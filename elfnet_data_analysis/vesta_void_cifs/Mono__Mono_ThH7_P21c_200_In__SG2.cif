@@ -1,0 +1,23 @@
+data_Mono__Mono_ThH7_P21c_200_In__SG2
+# Candidate void positions are helium marker sites.
+_cell_length_a 2.95402000
+_cell_length_b 2.96539000
+_cell_length_c 5.29081000
+_cell_angle_alpha 97.57900000
+_cell_angle_beta 82.49640000
+_cell_angle_gamma 110.20200000
+_space_group_name_H-M_alt 'P 1'
+_space_group_IT_number 1
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+In1 In 0.77834000 0.21289000 0.29041000 1.0
+In2 In 0.17044000 0.82298000 0.76110000 1.0
+Void_1 He 0.69690585 0.74010775 0.52511682 1.0
+Void_2 He 0.12883533 0.86122970 0.40840537 1.0
+Void_3 He 0.17626295 0.81300886 0.13415865 1.0
+Void_4 He 0.49973342 0.49288654 0.00170933 1.0

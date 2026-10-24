@@ -1,0 +1,28 @@
+data_2__2_AcH5_C2m_50GPa_200_Cu_Eu__SG8
+# Candidate void positions are helium marker sites.
+_cell_length_a 3.30612000
+_cell_length_b 4.92561000
+_cell_length_c 4.58248000
+_cell_angle_alpha 90.00000000
+_cell_angle_beta 101.43000000
+_cell_angle_gamma 90.00000000
+_space_group_name_H-M_alt 'P 1'
+_space_group_IT_number 1
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+Cu1 Cu 0.71926000 0.00000000 0.24283000 1.0
+Cu2 Cu 0.21926000 0.50000000 0.24283000 1.0
+Eu3 Eu 0.28074000 0.00000000 0.75717000 1.0
+Eu4 Eu 0.78074000 0.50000000 0.75717000 1.0
+Void_1 He 0.00000000 0.79389882 0.00000000 1.0
+Void_2 He 0.00000062 0.26797554 0.50000069 1.0
+Void_3 He 0.25465224 0.13736910 0.37168108 1.0
+Void_4 He 0.24534744 0.36263079 0.62831923 1.0
+Void_5 He 0.31421419 0.36243098 0.88201432 1.0
+Void_6 He 0.71703121 0.36263070 0.23471660 1.0
+Void_7 He 0.68495245 0.63741095 0.11819842 1.0

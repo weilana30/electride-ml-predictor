@@ -1,0 +1,88 @@
+{
+  "dataset_name": "elfnet_atom_void_graphs",
+  "dataset_version": "v1",
+  "manifest_schema_version": 1,
+  "description": "Manifest and storage contract for structure-derived atom/void graphs with per-void ELF targets.",
+  "source_layout": "<category>/<parent_phase>/<variant>/{POSCAR,ELFCAR}",
+  "manifest": {
+    "format": "Apache Parquet",
+    "one_row_per": "variant directory containing POSCAR and/or ELFCAR",
+    "path_base": "source_root",
+    "fields": {
+      "sample_id": {"type": "string", "meaning": "Stable ID from SHA-256 of source-relative sample directory."},
+      "family_id": {"type": "string", "meaning": "Stable split group ID from normalized parent phase directory name; category is excluded."},
+      "structure_family_id": {"type": "string", "meaning": "Alias of family_id for clarity in downstream consumers."},
+      "category": {"type": "string|null", "meaning": "First relative path component, e.g. 2 or Mono."},
+      "phase_id": {"type": "string|null", "meaning": "Parent phase directory name."},
+      "source_relative_dir": {"type": "string", "meaning": "Sample directory relative to source_root."},
+      "poscar_relative_path": {"type": "string|null", "meaning": "POSCAR path relative to source_root."},
+      "elfcar_relative_path": {"type": "string|null", "meaning": "ELFCAR path relative to source_root."},
+      "poscar_sha256": {"type": "string|null", "meaning": "SHA-256 of original POSCAR; null when missing or hashing disabled."},
+      "elfcar_sha256": {"type": "string|null", "meaning": "SHA-256 of original ELFCAR; null when missing or hashing disabled."},
+      "atom_count": {"type": "int64|null", "meaning": "Number of atoms parsed from POSCAR counts."},
+      "element_symbols": {"type": "list<string>|null", "meaning": "Element labels from POSCAR (empty for VASP4 style)."},
+      "grid_shape_x": {"type": "int64|null", "units": "grid points", "meaning": "First ELFCAR volumetric grid dimension."},
+      "grid_shape_y": {"type": "int64|null", "units": "grid points", "meaning": "Second ELFCAR volumetric grid dimension."},
+      "grid_shape_z": {"type": "int64|null", "units": "grid points", "meaning": "Third ELFCAR volumetric grid dimension."},
+      "grid_shape": {"type": "list<int64>|null", "meaning": "Grid dimensions in file order [x,y,z]."},
+      "processing_status": {"type": "string", "allowed": ["ready", "processed", "failed", "failed_processing"], "meaning": "ready means the POSCAR/ELFCAR pair and headers parsed; processed means graph and targets were written; failed or failed_processing means an input or processing step failed."},
+      "failure_reason": {"type": "string|null", "meaning": "Input, parse, hash or processing error; null on success."}
+    }
+  },
+  "graph_storage": {
+    "format": "HDF5 shards",
+    "group_key": "samples/<sample_id>",
+    "coordinate_convention": "Fractional coordinates in the original POSCAR basis; periodic image shifts are integer lattice translations.",
+    "distance_unit": "angstrom",
+    "elf_unit": "dimensionless",
+    "required_groups": ["atoms", "voids", "edges", "targets"],
+    "node_features": {
+      "atoms": {
+        "coordinates": "fractional_coords [n_atoms,3]",
+        "feature_array": "features [n_atoms,n_features]",
+        "feature_names_in_order": ["atomic_number", "electronegativity", "atomic_radius_angstrom", "period", "group", "is_s_block", "is_p_block", "is_d_block", "is_f_block"],
+        "feature_validity_array": "feature_validity [n_atoms,n_validity_features]",
+        "feature_validity_names_in_order": ["electronegativity_valid", "atomic_radius_valid", "period_valid", "group_valid", "block_valid"],
+        "atomic_numbers": "integer [n_atoms]",
+        "elements": "UTF-8 [n_atoms]"
+      },
+      "voids": {
+        "coordinates": "fractional_coords [n_voids,3]",
+        "feature_array": "features [n_voids,n_features]",
+        "feature_names_in_order": ["clearance_angstrom", "nearest_atom_distance_angstrom", "atom_count_within_3A", "atom_count_within_4A", "atom_count_within_5A", "nearest_1_distance_angstrom", "nearest_2_distance_angstrom", "nearest_3_distance_angstrom", "nearest_4_distance_angstrom"],
+        "method_multi_hot": "uint8 [n_voids,2], columns named by method_names",
+        "method_names_in_order": ["Voronoi", "distance"],
+        "orbit_multiplicity": "integer [n_voids]"
+      }
+    },
+    "edge_types": {
+      "atom_atom": {"source": "atom", "destination": "atom", "index": "atom_atom_index [2,E]", "distance": "atom_atom_distance_angstrom [E]", "image_shift": "atom_atom_image_shift [E,3]"},
+      "void_atom": {"source": "void", "destination": "atom", "index": "void_atom_index [2,E]", "distance": "void_atom_distance_angstrom [E]", "image_shift": "void_atom_image_shift [E,3]"},
+      "directed_edge_convention": "image_shift is added to destination fractional coordinates; all destination images within the configured cutoff are stored. Derive atom-to-void by reversing endpoints and negating image_shift."
+    },
+    "targets": {
+      "per_void_arrays": {
+        "elf_at_center": "float [n_voids]; periodic trilinear interpolation of ELFCAR total grid",
+        "elf_max_0.5A": "float [n_voids]; raw local grid maximum within 0.5 angstrom",
+        "elf_max_1A": "float [n_voids]; raw local grid maximum within 1.0 angstrom",
+        "elf_max_1.5A": "float [n_voids]; raw local grid maximum within 1.5 angstrom",
+        "offset_0.5A": "float [n_voids,3]; Cartesian offset vector to local maximum in angstrom",
+        "offset_1A": "float [n_voids,3]; Cartesian offset vector to local maximum in angstrom",
+        "offset_1.5A": "float [n_voids,3]; Cartesian offset vector to local maximum in angstrom"
+      },
+      "shapes": {
+        "elf_at_center": ["n_voids"],
+        "elf_max_0.5A": ["n_voids"],
+        "elf_max_1A": ["n_voids"],
+        "elf_max_1.5A": ["n_voids"],
+        "offset_0.5A": ["n_voids", 3],
+        "offset_1A": ["n_voids", 3],
+        "offset_1.5A": ["n_voids", 3]
+      },
+      "caveat": "Local maxima are not masked against atoms and may lie in atomic basins."
+    },
+    "label_input_separation": "ELFCAR-derived targets are labels and must not be supplied to the GNN as input features."
+  },
+  "family_id_contract": "The family key is the case-folded, whitespace-trimmed parent-phase directory name (the second relative path component). Category is deliberately excluded, so matching parent-phase names under categories such as 2 and Mono receive the same family_id and remain in one split. This relies on the ELFNet directory name being the cross-category phase identity.",
+  "split_policy": "Assign all samples with a shared family_id to the same split."
+}

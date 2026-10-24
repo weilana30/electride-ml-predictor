@@ -1,0 +1,20 @@
+{
+  "dataset_name": "elfnet_atom_void_graphs",
+  "dataset_version": "v1",
+  "atom_cutoff_angstrom": 5.0,
+  "atom_void_cutoff_angstrom": 6.0,
+  "symprec": 0.01,
+  "elf_local_max_radii_angstrom": [0.5, 1.0, 1.5],
+  "shard_size": 256,
+  "split_seed": 20261023,
+  "split_fractions": {
+    "train": 0.8,
+    "validation": 0.1,
+    "test": 0.1
+  },
+  "notes": [
+    "ELFCAR-derived values are targets only and must not be passed as GNN inputs.",
+    "Local ELF maxima are unconstrained by atom distance and may select an atomic basin.",
+    "Family-level splitting groups variants sharing the same parent phase identifier."
+  ]
+}
