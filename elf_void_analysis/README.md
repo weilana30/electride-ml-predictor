@@ -98,10 +98,11 @@ images.
 
 ## Full build on Negishi
 
-The local builder is serial. For the complete 50,000-sample dataset, use the
-Slurm array workflow in [`cluster/negishi/README.md`](cluster/negishi/README.md).
-It prepares one manifest, builds independent chunks concurrently, then merges
-them and generates family-level splits globally.
+The local builder is serial. For the complete 50,000-sample dataset on Negishi,
+use the single-node parallel workflow in
+[`cluster/negishi/README.md`](cluster/negishi/README.md). It prepares one
+manifest, builds independent chunks across one 128-core node, then merges them
+and generates family-level splits globally.
 
 ## Build a bounded pilot
 
