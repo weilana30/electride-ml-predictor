@@ -12,7 +12,9 @@ destination fractional coordinate. Atom and void node indices are zero-based
 and refer to the corresponding coordinate arrays. Distances are in Angstrom;
 coordinates are fractional. ``void_atom_*`` edges are void-source to atom-
 destination. A consumer that wants atom-to-void message passing should reverse
-each edge and negate its image shift.
+each edge and negate its image shift. ``void_void_*`` edges are directed
+void-source to void-destination and include periodic images, with only the
+zero-shift self-edge excluded.
 """
 
 from __future__ import annotations
@@ -49,6 +51,7 @@ VOID_FEATURE_NAMES = [
     "nearest_3_distance_angstrom", "nearest_4_distance_angstrom",
 ]
 METHOD_NAMES = ("Voronoi", "distance")
+VOID_SYMMETRY_TOLERANCE_ANGSTROM = 0.2
 
 
 def _value_and_validity(value: Any) -> tuple[float, float]:
@@ -109,29 +112,146 @@ def _periodic_edges(
     return indices, distances, shifts
 
 
-def _orbit_multiplicity(structure: Structure, frac: np.ndarray, symprec: float) -> int:
-    """Count distinct symmetry images using the finder tolerance (0.2 A).
+def _fractional_sort_key(frac: np.ndarray) -> tuple[float, float, float]:
+    """Stable ordering for wrapped fractional coordinates."""
+    return tuple(float(value) for value in np.asarray(frac) % 1.0)
 
-    Returns 1 if symmetry analysis fails. This is metadata/weighting information,
-    not a node feature, since it depends on the chosen symmetry tolerance.
+
+def _expand_candidate_orbits(
+    structure: Structure,
+    candidates: list[dict[str, Any]],
+    *,
+    symprec: float,
+    tolerance_angstrom: float = VOID_SYMMETRY_TOLERANCE_ANGSTROM,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Expand detector representatives to unique explicit unit-cell void nodes.
+
+    The detector symmetry-reduces candidates. Applying the structure's symmetry
+    operations restores their distinct positions inside the unit cell, which
+    cannot be represented by translational edge image shifts. Near-duplicate
+    positions are merged using the same 0.2 A tolerance as the void detector.
+    Candidate and member ordering is coordinate-sorted for stable IDs.
+
+    On symmetry-analysis failure, retain each representative as a singleton
+    orbit and return an explicit fallback status so incomplete neighborhoods
+    are visible in record metadata.
     """
+    if not np.isfinite(tolerance_angstrom) or tolerance_angstrom <= 0:
+        raise ValueError("void symmetry tolerance must be finite and positive")
+    sorted_candidates = sorted(
+        candidates,
+        key=lambda candidate: (
+            _fractional_sort_key(candidate["fractional_coords"]),
+            float(candidate.get("clearance_angstrom", 0.0)),
+            tuple(sorted(str(x) for x in candidate.get("methods", []))),
+        ),
+    )
     try:
         from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 
-        ops = SpacegroupAnalyzer(structure, symprec=symprec).get_symmetry_operations(
-            cartesian=False
-        )
-        unique: list[np.ndarray] = []
-        for op in ops:
-            image = np.asarray(op.operate(frac), dtype=float) % 1.0
-            if not any(
-                structure.lattice.get_distance_and_image(image, prior)[0] < 0.2
-                for prior in unique
-            ):
-                unique.append(image)
-        return max(1, len(unique))
+        operations = SpacegroupAnalyzer(
+            structure, symprec=symprec
+        ).get_symmetry_operations(cartesian=False)
+        if not operations:
+            raise ValueError("symmetry analyzer returned no operations")
+        status = "expanded"
+        operation_count = len(operations)
     except Exception:
-        return 1
+        operations = []
+        status = "fallback_representatives_symmetry_analysis_failed"
+        operation_count = 0
+
+    # A union-find lets us defensively merge candidate representatives whose
+    # expanded symmetry orbits overlap within the position tolerance.
+    parent = list(range(len(sorted_candidates)))
+
+    def find(item: int) -> int:
+        while parent[item] != item:
+            parent[item] = parent[parent[item]]
+            item = parent[item]
+        return item
+
+    def union(left: int, right: int) -> None:
+        left_root, right_root = find(left), find(right)
+        if left_root != right_root:
+            parent[max(left_root, right_root)] = min(left_root, right_root)
+
+    nodes: list[dict[str, Any]] = []
+    for candidate_index, candidate in enumerate(sorted_candidates):
+        representative = np.asarray(candidate["fractional_coords"], dtype=float) % 1.0
+        if operations:
+            orbit_positions = [
+                np.asarray(operation.operate(representative), dtype=float) % 1.0
+                for operation in operations
+            ]
+        else:
+            orbit_positions = [representative]
+
+        unique_positions: list[np.ndarray] = []
+        for position in orbit_positions:
+            if not any(
+                structure.lattice.get_distance_and_image(position, prior)[0]
+                < tolerance_angstrom
+                for prior in unique_positions
+            ):
+                unique_positions.append(position)
+
+        for position in unique_positions:
+            duplicate = next((
+                node for node in nodes
+                if structure.lattice.get_distance_and_image(
+                    position, node["fractional_coords"]
+                )[0] < tolerance_angstrom
+            ), None)
+            if duplicate is None:
+                nodes.append({
+                    "fractional_coords": position,
+                    "candidate_indices": {candidate_index},
+                })
+            else:
+                prior_candidate = min(duplicate["candidate_indices"])
+                duplicate["candidate_indices"].add(candidate_index)
+                union(candidate_index, prior_candidate)
+
+    # Resolve all representative groups after overlap unions, and gather
+    # candidate-level method/clearance metadata for the resulting orbit.
+    groups: dict[int, list[dict[str, Any]]] = {}
+    for node in nodes:
+        root = find(min(node["candidate_indices"]))
+        groups.setdefault(root, []).append(node)
+
+    expanded: list[dict[str, Any]] = []
+    for root, group_nodes in sorted(groups.items()):
+        group_nodes.sort(key=lambda node: _fractional_sort_key(node["fractional_coords"]))
+        candidate_indices = sorted({
+            index for node in group_nodes for index in node["candidate_indices"]
+        })
+        methods = sorted({
+            str(method)
+            for index in candidate_indices
+            for method in sorted_candidates[index].get("methods", [])
+        })
+        clearance = max(
+            float(sorted_candidates[index]["clearance_angstrom"])
+            for index in candidate_indices
+        )
+        orbit_id = f"candidate:{root:04d}"
+        multiplicity = len(group_nodes)
+        for member_index, node in enumerate(group_nodes):
+            expanded.append({
+                "fractional_coords": np.asarray(node["fractional_coords"], dtype=float),
+                "clearance_angstrom": clearance,
+                "methods": methods,
+                "orbit_id": orbit_id,
+                "orbit_member_index": member_index,
+                "orbit_multiplicity": multiplicity,
+            })
+
+    return expanded, {
+        "status": status,
+        "operation_count": operation_count,
+        "tolerance_angstrom": float(tolerance_angstrom),
+    }
 
 
 def build_graph_record(
@@ -141,7 +261,9 @@ def build_graph_record(
     family_id: str | None = None,
     atom_cutoff_angstrom: float = 5.0,
     atom_void_cutoff_angstrom: float = 6.0,
+    void_void_cutoff_angstrom: float = 5.0,
     symprec: float = 0.01,
+    void_symmetry_tolerance_angstrom: float = VOID_SYMMETRY_TOLERANCE_ANGSTROM,
 ) -> dict[str, Any]:
     """Create one crystal's graph arrays and structural metadata from POSCAR."""
     path = Path(structure_path)
@@ -154,7 +276,11 @@ def build_graph_record(
 
     # Keep the established finder unchanged; its symmetry-reduced candidate
     # sites and method/clearance fields are carried into this record.
-    candidates = find_candidate_voids(structure, symprec=symprec)
+    detected_candidates = find_candidate_voids(structure, symprec=symprec)
+    candidates, symmetry_expansion = _expand_candidate_orbits(
+        structure, detected_candidates, symprec=symprec,
+        tolerance_angstrom=void_symmetry_tolerance_angstrom,
+    )
     void_frac = np.asarray(
         [v["fractional_coords"] for v in candidates], dtype=float
     ).reshape((-1, 3))
@@ -168,6 +294,10 @@ def build_graph_record(
     # second addresses atoms. Keep this direction explicit in the key name.
     va_idx, va_dist, va_shift = _periodic_edges(
         structure.lattice, void_frac, atom_frac, atom_void_cutoff_angstrom
+    )
+    vv_idx, vv_dist, vv_shift = _periodic_edges(
+        structure.lattice, void_frac, void_frac, void_void_cutoff_angstrom,
+        same_node_graph=True,
     )
 
     # These descriptors count distinct basis-site atoms using minimum-image
@@ -190,10 +320,12 @@ def build_graph_record(
             *[float(x) for x in padded],
         ])
         methods.append([int(name in candidate["methods"]) for name in METHOD_NAMES])
-        multiplicities.append(_orbit_multiplicity(structure, void_frac[i], symprec))
+        multiplicities.append(int(candidate["orbit_multiplicity"]))
+
+    resolved_sample_id = sample_id or path.parent.name or path.stem
 
     return {
-        "sample_id": sample_id or path.parent.name or path.stem,
+        "sample_id": resolved_sample_id,
         "source_poscar": str(path),
         "family_id": family_id,
         "schema_version": "1.0",
@@ -202,7 +334,8 @@ def build_graph_record(
             "directed source->destination; all periodic destination images within "
             "cutoff are retained; image_shift is added to destination fractional "
             "coordinates; void_atom_* is void->atom and reverse relation is derived "
-            "by swapping endpoints and negating image_shift"
+            "by swapping endpoints and negating image_shift; void_void_* is void->void "
+            "and excludes only the zero-shift self-edge"
         ),
         "lattice_angstrom": np.asarray(structure.lattice.matrix, dtype=np.float32),
         "atoms": {
@@ -215,8 +348,18 @@ def build_graph_record(
             "feature_validity": np.asarray(atom_feature_validity, dtype=np.uint8),
         },
         "voids": {
-            "void_id": [f"{sample_id or path.parent.name or path.stem}:void:{i:04d}"
-                        for i in range(len(void_frac))],
+            "void_id": [
+                f"{resolved_sample_id}:{candidate['orbit_id']}:member:{candidate['orbit_member_index']:04d}"
+                for candidate in candidates
+            ],
+            "orbit_id": [
+                f"{resolved_sample_id}:{candidate['orbit_id']}"
+                for candidate in candidates
+            ],
+            "orbit_member_index": np.asarray(
+                [candidate["orbit_member_index"] for candidate in candidates],
+                dtype=np.int16,
+            ),
             "fractional_coords": void_frac.astype(np.float32),
             "feature_names": VOID_FEATURE_NAMES,
             "features": np.asarray(void_features, dtype=np.float32).reshape(-1, len(VOID_FEATURE_NAMES)),
@@ -233,15 +376,23 @@ def build_graph_record(
             "void_atom_index": np.asarray(va_idx, dtype=np.int32).T.reshape(2, -1),
             "void_atom_distance_angstrom": np.asarray(va_dist, dtype=np.float32),
             "void_atom_image_shift": np.asarray(va_shift, dtype=np.int16).reshape(-1, 3),
+            "void_void_index": np.asarray(vv_idx, dtype=np.int32).T.reshape(2, -1),
+            "void_void_distance_angstrom": np.asarray(vv_dist, dtype=np.float32),
+            "void_void_image_shift": np.asarray(vv_shift, dtype=np.int16).reshape(-1, 3),
         },
         "counts": {
             "n_atoms": len(atom_frac), "n_voids": len(void_frac),
             "n_atom_atom_edges": len(aa_idx), "n_void_atom_edges": len(va_idx),
+            "n_void_void_edges": len(vv_idx),
         },
         "settings": {
             "atom_cutoff_angstrom": atom_cutoff_angstrom,
             "atom_void_cutoff_angstrom": atom_void_cutoff_angstrom,
+            "void_void_cutoff_angstrom": void_void_cutoff_angstrom,
             "symprec": symprec,
+            "void_symmetry_expansion_status": symmetry_expansion["status"],
+            "void_symmetry_tolerance_angstrom": symmetry_expansion["tolerance_angstrom"],
+            "void_symmetry_operation_count": symmetry_expansion["operation_count"],
             "void_finder": "void_detection.find_voronoi_voids.find_candidate_voids",
             "void_neighbor_count_definition": (
                 "counts distinct atom basis sites using minimum-image distance; "
@@ -258,11 +409,18 @@ def main() -> None:
     parser.add_argument("--output", "-o", help="JSON output path (default: stdout)")
     parser.add_argument("--atom-cutoff", type=float, default=5.0)
     parser.add_argument("--atom-void-cutoff", type=float, default=6.0)
+    parser.add_argument("--void-void-cutoff", type=float, default=5.0)
     parser.add_argument("--symprec", type=float, default=0.01)
+    parser.add_argument(
+        "--void-symmetry-tolerance", type=float,
+        default=VOID_SYMMETRY_TOLERANCE_ANGSTROM,
+    )
     args = parser.parse_args()
     record = build_graph_record(
         args.poscar, sample_id=args.sample_id, atom_cutoff_angstrom=args.atom_cutoff,
-        atom_void_cutoff_angstrom=args.atom_void_cutoff, symprec=args.symprec,
+        atom_void_cutoff_angstrom=args.atom_void_cutoff,
+        void_void_cutoff_angstrom=args.void_void_cutoff, symprec=args.symprec,
+        void_symmetry_tolerance_angstrom=args.void_symmetry_tolerance,
     )
     def json_ready(value):
         if isinstance(value, np.ndarray):

@@ -97,6 +97,7 @@ def validate_record(record: Mapping[str, Any]) -> int:
     relations = {
         "atom_atom": (n_atoms, n_atoms),
         "void_atom": (n_voids, n_atoms),
+        "void_void": (n_voids, n_voids),
     }
     for relation, (source_count, destination_count) in relations.items():
         index_key = f"{relation}_index"
@@ -111,6 +112,13 @@ def validate_record(record: Mapping[str, Any]) -> int:
             or np.any(indices[1] < 0) or np.any(indices[1] >= destination_count)
         ):
             raise ValueError(f"edges/{index_key} contains out-of-range node indices")
+        if relation == "void_void" and edge_count:
+            shifts = np.asarray(edges.get(f"{relation}_image_shift"))
+            if shifts.shape != (edge_count, 3):
+                raise ValueError(f"edges/{relation}_image_shift must have shape ({edge_count}, 3)")
+            zero_self = (indices[0] == indices[1]) & np.all(shifts == 0, axis=1)
+            if np.any(zero_self):
+                raise ValueError("void_void edges must exclude zero-shift self edges")
         for suffix, expected_shape in (("distance_angstrom", (edge_count,)),
                                        ("image_shift", (edge_count, 3))):
             key = f"{relation}_{suffix}"

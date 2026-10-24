@@ -8,7 +8,9 @@ Canonical layout (as written by the dataset builder)::
       voids/{void_id, fractional_coords, features, ...}
       edges/{atom_atom_index, atom_atom_distance_angstrom,
              atom_atom_image_shift, void_atom_index,
-             void_atom_distance_angstrom, void_atom_image_shift}
+             void_atom_distance_angstrom, void_atom_image_shift,
+             void_void_index, void_void_distance_angstrom,
+             void_void_image_shift}
       targets/<per-void label arrays>
 
 The loader opens the HDF5 file for each read and never retains a handle across
@@ -120,6 +122,7 @@ def _check_record(record: dict[str, Any]) -> None:
     edge_contracts = {
         "atom_atom": (n_atoms, n_atoms),
         "void_atom": (n_voids, n_atoms),
+        "void_void": (n_voids, n_voids),
     }
     for relation, (n_source, n_destination) in edge_contracts.items():
         index = np.asarray(edges[f"{relation}_index"])
@@ -242,6 +245,17 @@ def to_pyg_heterodata(record: dict[str, Any], *, y_key: str = "elf_at_center"):
     )
     atom_rel.edge_shift = torch.as_tensor(
         np.asarray(edges["atom_atom_image_shift"], dtype=np.int64)
+    )
+
+    void_void_rel = data["void", "to", "void"]
+    void_void_rel.edge_index = torch.as_tensor(
+        np.asarray(edges["void_void_index"], dtype=np.int64)
+    )
+    void_void_rel.edge_distance = torch.as_tensor(
+        np.asarray(edges["void_void_distance_angstrom"], dtype=np.float32)
+    )
+    void_void_rel.edge_shift = torch.as_tensor(
+        np.asarray(edges["void_void_image_shift"], dtype=np.int64)
     )
 
     void_index = np.asarray(edges["void_atom_index"], dtype=np.int64)

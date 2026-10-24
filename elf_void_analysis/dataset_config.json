@@ -3,8 +3,12 @@
   "dataset_version": "v1",
   "atom_cutoff_angstrom": 5.0,
   "atom_void_cutoff_angstrom": 6.0,
+  "void_void_cutoff_angstrom": 5.0,
+  "void_symmetry_tolerance_angstrom": 0.2,
   "symprec": 0.01,
   "elf_local_max_radii_angstrom": [0.5, 1.0, 1.5],
+  "void_dimension_probe_radius_angstrom": 1.0,
+  "void_dimension_grid_spacing_angstrom": 0.5,
   "shard_size": 256,
   "split_seed": 20261023,
   "split_fractions": {
@@ -15,6 +19,8 @@
   "notes": [
     "ELFCAR-derived values are targets only and must not be passed as GNN inputs.",
     "Local ELF maxima are unconstrained by atom distance and may select an atomic basin.",
-    "Family-level splitting groups variants sharing the same parent phase identifier."
+    "Family-level splitting groups variants sharing the same parent phase identifier.",
+    "void_dimension is a geometric accessible-space winding rank, not an electronic or ELF dimensionality label.",
+    "void_dimension_valid is 0 when the candidate center maps to an inactive grid voxel; the paired label is -1."
   ]
 }

@@ -52,13 +52,17 @@
         "feature_names_in_order": ["clearance_angstrom", "nearest_atom_distance_angstrom", "atom_count_within_3A", "atom_count_within_4A", "atom_count_within_5A", "nearest_1_distance_angstrom", "nearest_2_distance_angstrom", "nearest_3_distance_angstrom", "nearest_4_distance_angstrom"],
         "method_multi_hot": "uint8 [n_voids,2], columns named by method_names",
         "method_names_in_order": ["Voronoi", "distance"],
-        "orbit_multiplicity": "integer [n_voids]"
+        "void_id": "UTF-8 [n_voids]; stable per-sample ID `<sample>:candidate:<rep-index>:member:<member-index>`",
+        "orbit_id": "UTF-8 [n_voids]; common ID for members generated from one symmetry-reduced candidate",
+        "orbit_member_index": "integer [n_voids]; zero-based position in the sorted unique orbit members",
+        "orbit_multiplicity": "integer [n_voids]; number of explicit unique unit-cell nodes in this orbit, repeated on every member"
       }
     },
     "edge_types": {
       "atom_atom": {"source": "atom", "destination": "atom", "index": "atom_atom_index [2,E]", "distance": "atom_atom_distance_angstrom [E]", "image_shift": "atom_atom_image_shift [E,3]"},
       "void_atom": {"source": "void", "destination": "atom", "index": "void_atom_index [2,E]", "distance": "void_atom_distance_angstrom [E]", "image_shift": "void_atom_image_shift [E,3]"},
-      "directed_edge_convention": "image_shift is added to destination fractional coordinates; all destination images within the configured cutoff are stored. Derive atom-to-void by reversing endpoints and negating image_shift."
+      "void_void": {"source": "void", "destination": "void", "index": "void_void_index [2,E]", "distance": "void_void_distance_angstrom [E]", "image_shift": "void_void_image_shift [E,3]", "cutoff_angstrom": 5.0, "directed": true, "self_edge_policy": "exclude zero-shift self edges; retain translated periodic self images", "node_basis": "all explicit unique void members in the unit cell, including within-cell symmetry images"},
+      "directed_edge_convention": "image_shift is added to destination fractional coordinates; all destination images within the configured cutoff are stored. Relations store both directions when applicable; derive atom-to-void by reversing endpoints and negating image_shift."
     },
     "targets": {
       "per_void_arrays": {
@@ -68,7 +72,9 @@
         "elf_max_1.5A": "float [n_voids]; raw local grid maximum within 1.5 angstrom",
         "offset_0.5A": "float [n_voids,3]; Cartesian offset vector to local maximum in angstrom",
         "offset_1A": "float [n_voids,3]; Cartesian offset vector to local maximum in angstrom",
-        "offset_1.5A": "float [n_voids,3]; Cartesian offset vector to local maximum in angstrom"
+        "offset_1.5A": "float [n_voids,3]; Cartesian offset vector to local maximum in angstrom",
+        "void_dimension": "int8 [n_voids]; periodic accessible-space winding rank 0-3; -1 if candidate center maps to an inactive voxel",
+        "void_dimension_valid": "uint8 [n_voids]; 1 if candidate center maps to an active component, otherwise 0"
       },
       "shapes": {
         "elf_at_center": ["n_voids"],
@@ -77,11 +83,34 @@
         "elf_max_1.5A": ["n_voids"],
         "offset_0.5A": ["n_voids", 3],
         "offset_1A": ["n_voids", 3],
-        "offset_1.5A": ["n_voids", 3]
+        "offset_1.5A": ["n_voids", 3],
+        "void_dimension": ["n_voids"],
+        "void_dimension_valid": ["n_voids"]
+      },
+      "dimensionality": {
+        "probe_radius_angstrom": 1.0,
+        "grid_spacing_angstrom": 0.5,
+        "invalid_center_label": -1,
+        "class_names": ["0D", "1D", "2D", "3D"],
+        "definition": "nearest-atom clearance threshold, periodic six-neighbor accessible-voxel components, and rank of independent whole-cell winding vectors; geometric only, not ELF/electronic dimensionality"
       },
       "caveat": "Local maxima are not masked against atoms and may lie in atomic basins."
     },
     "label_input_separation": "ELFCAR-derived targets are labels and must not be supplied to the GNN as input features."
+  },
+  "void_orbit_contract": {
+    "expansion": "Expand each symmetry-reduced candidate into all unique symmetry-generated positions wrapped into the unit cell before constructing void-atom and void-void edges and before calculating per-void labels.",
+    "representative_order": "Sort wrapped representative fractional coordinates lexicographically before assigning representative indexes.",
+    "member_order": "Sort unique wrapped orbit member fractional coordinates lexicographically before assigning orbit_member_index.",
+    "symmetry_tolerance_angstrom": 0.2,
+    "settings_fields": {
+      "void_symmetry_expansion_status": ["expanded", "fallback_representatives_symmetry_analysis_failed"],
+      "void_symmetry_tolerance_angstrom": "positive float; deduplication tolerance used for symmetry-generated members",
+      "void_symmetry_operation_count": "nonnegative integer; zero on symmetry-analysis fallback"
+    },
+    "fallback_status": "fallback_representatives_symmetry_analysis_failed",
+    "fallback_behavior": "If symmetry analysis fails, keep each detected representative as a singleton orbit with member index 0 and multiplicity 1; include fallback status in per-sample settings metadata.",
+    "consequence": "Candidate void nodes correspond to physical unique void sites in the unit cell. ELF and dimensionality target arrays use this expanded node order; periodic image shifts then describe translations beyond the unit cell."
   },
   "family_id_contract": "The family key is the case-folded, whitespace-trimmed parent-phase directory name (the second relative path component). Category is deliberately excluded, so matching parent-phase names under categories such as 2 and Mono receive the same family_id and remain in one split. This relies on the ELFNet directory name being the cross-category phase identity.",
   "split_policy": "Assign all samples with a shared family_id to the same split."

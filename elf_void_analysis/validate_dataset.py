@@ -34,7 +34,7 @@ def _attr(group: h5py.Group, *names: str) -> Any:
 
 
 def _metadata_attr(sample: h5py.Group, *names: str) -> Any:
-    """Read metadata written as attributes under metadata/ by the shard writer."""
+    """Read scalar metadata attrs or direct metadata datasets from a sample."""
     metadata = sample.get("metadata")
     if isinstance(metadata, h5py.Group):
         value = _attr(metadata, *names)
@@ -164,15 +164,59 @@ def _validate_sample(sample: h5py.Group, manifest_row: dict[str, Any] | None,
     if expected_methods is not None and _decode_list(method_names[...]) != list(expected_methods):
         errors.append(f"{method_names.name}: method multi-hot order differs from schema")
     orbit_multiplicity = _require_dataset(voids, "orbit_multiplicity")
+    orbit_id_ds = _require_dataset(voids, "orbit_id")
+    orbit_member_ds = _require_dataset(voids, "orbit_member_index")
+    void_ids_ds = _require_dataset(voids, "void_id", ("void_ids",))
     if orbit_multiplicity.shape != (n_voids,):
         errors.append(f"{orbit_multiplicity.name}: expected one value per void")
-    void_ids_ds = _dataset(voids, "void_id", ("void_ids",))
-    if void_ids_ds is not None:
-        void_ids = _decode_list(void_ids_ds[...])
-        if len(void_ids) != n_voids or len(set(void_ids)) != len(void_ids):
-            errors.append(f"{void_ids_ds.name}: IDs must be unique and count must equal n_voids")
+    if orbit_id_ds.shape != (n_voids,):
+        errors.append(f"{orbit_id_ds.name}: expected one orbit ID per void")
+    if orbit_member_ds.shape != (n_voids,) or not np.issubdtype(orbit_member_ds.dtype, np.integer):
+        errors.append(f"{orbit_member_ds.name}: expected integer member index per void")
+    if void_ids_ds.shape != (n_voids,):
+        errors.append(f"{void_ids_ds.name}: expected one unique ID per void")
+    void_ids = _decode_list(void_ids_ds[...])
+    orbit_ids = _decode_list(orbit_id_ds[...])
+    member_indices = np.asarray(orbit_member_ds[...], dtype=int)
+    multiplicities = np.asarray(orbit_multiplicity[...], dtype=int)
+    if len(set(void_ids)) != len(void_ids):
+        errors.append(f"{void_ids_ds.name}: IDs must be unique within the sample")
+    if orbit_multiplicity.dtype.kind not in "iu" or np.any(multiplicities < 1):
+        errors.append(f"{orbit_multiplicity.name}: multiplicities must be positive integers")
+    if len(orbit_ids) == n_voids and member_indices.shape == (n_voids,) and multiplicities.shape == (n_voids,):
+        for orbit in sorted(set(orbit_ids)):
+            rows = [i for i, value in enumerate(orbit_ids) if value == orbit]
+            orbit_sizes = set(int(multiplicities[i]) for i in rows)
+            orbit_members = sorted(int(member_indices[i]) for i in rows)
+            if orbit_sizes != {len(rows)}:
+                errors.append(f"{orbit_id_ds.name}: orbit {orbit!r} size and repeated multiplicity disagree")
+            if orbit_members != list(range(len(rows))):
+                errors.append(f"{orbit_member_ds.name}: orbit {orbit!r} member indexes must be 0..size-1")
+            if void_frac.shape[0] == n_voids:
+                coordinate_order = sorted(rows, key=lambda i: tuple(float(x) for x in void_frac[i]))
+                if [int(member_indices[i]) for i in coordinate_order] != list(range(len(rows))):
+                    errors.append(f"{orbit_member_ds.name}: members for orbit {orbit!r} are not coordinate-sorted")
+
+    settings = sample.get("metadata/settings")
+    expansion_status = _attr(settings, "void_symmetry_expansion_status") if isinstance(settings, h5py.Group) else None
+    allowed_statuses = {"expanded", "fallback_representatives_symmetry_analysis_failed"}
+    if expansion_status is None:
+        errors.append(f"{sample.name}: missing void_symmetry_expansion_status metadata")
     else:
-        void_ids = [str(i) for i in range(max(0, n_voids))]
+        expansion_status = _text(expansion_status)
+        if expansion_status not in allowed_statuses:
+            errors.append(f"{sample.name}: unknown void symmetry expansion status {expansion_status!r}")
+        operation_count = _attr(settings, "void_symmetry_operation_count") if isinstance(settings, h5py.Group) else None
+        tolerance = _attr(settings, "void_symmetry_tolerance_angstrom") if isinstance(settings, h5py.Group) else None
+        if operation_count is None or int(operation_count) < 0:
+            errors.append(f"{sample.name}: missing or invalid symmetry operation count")
+        if tolerance is None or not np.isfinite(float(tolerance)) or float(tolerance) <= 0:
+            errors.append(f"{sample.name}: missing or invalid symmetry tolerance")
+        if expansion_status == "fallback_representatives_symmetry_analysis_failed":
+            if np.any(multiplicities != 1) or np.any(member_indices != 0):
+                errors.append(f"{sample.name}: symmetry fallback must use singleton void orbits")
+            if operation_count is not None and int(operation_count) != 0:
+                errors.append(f"{sample.name}: symmetry fallback must report zero operations")
 
     # Any target dataset is a per-void label: scalar targets have shape [Nv],
     # vector targets [Nv, ...]. The first axis must always index void nodes.
@@ -196,10 +240,30 @@ def _validate_sample(sample: h5py.Group, manifest_row: dict[str, Any] | None,
             if obj.shape != expected_shape:
                 errors.append(f"{obj.name}: expected schema shape {expected_shape}, got {obj.shape}")
 
+    if "void_dimension" in targets or "void_dimension_valid" in targets:
+        dimension_ds = _require_dataset(targets, "void_dimension")
+        valid_ds = _require_dataset(targets, "void_dimension_valid")
+        dimension = np.asarray(dimension_ds[...])
+        dimension_valid = np.asarray(valid_ds[...])
+        if dimension_ds.dtype != np.dtype("int8"):
+            errors.append(f"{dimension_ds.name}: dimensionality labels must use int8")
+        if valid_ds.dtype != np.dtype("uint8"):
+            errors.append(f"{valid_ds.name}: validity mask must use uint8")
+        if dimension.shape != (n_voids,) or dimension_valid.shape != (n_voids,):
+            errors.append(f"{targets.name}: dimensionality targets must have shape [n_voids]")
+        elif np.any(~np.isin(dimension, [-1, 0, 1, 2, 3])) or np.any(~np.isin(dimension_valid, [0, 1])):
+            errors.append(f"{targets.name}: dimensionality/validity values outside allowed classes")
+        else:
+            if np.any((dimension_valid == 1) & (dimension < 0)):
+                errors.append(f"{dimension_ds.name}: valid centers must have a 0D-3D rank")
+            if np.any((dimension_valid == 0) & (dimension != -1)):
+                errors.append(f"{dimension_ds.name}: invalid centers must use label -1")
+
     edge_counts: dict[str, int] = {}
     edge_specs = (
         ("atom_atom", n_atoms, n_atoms, "atom_atom_index", "atom_atom_distance_angstrom", "atom_atom_image_shift"),
         ("void_atom", n_voids, n_atoms, "void_atom_index", "void_atom_distance_angstrom", "void_atom_image_shift"),
+        ("void_void", n_voids, n_voids, "void_void_index", "void_void_distance_angstrom", "void_void_image_shift"),
     )
     for edge_name, src_count, dst_count, index_name, dist_name, shift_name in edge_specs:
         idx_ds = _require_dataset(edges, index_name, (index_name.replace("atom_atom", "atom_atom"),))
@@ -228,11 +292,23 @@ def _validate_sample(sample: h5py.Group, manifest_row: dict[str, Any] | None,
             errors.append(f"{idx_ds.name}: destination index out of bounds for {dst_count} nodes")
         if len(dist) and np.any(dist < 0):
             errors.append(f"{dist_ds.name}: distances must be nonnegative")
+        if edge_name == "void_void" and idx.shape == (2, count) and shifts.shape == (count, 3):
+            zero_self = (idx[0] == idx[1]) & np.all(shifts == 0, axis=1)
+            if np.any(zero_self):
+                errors.append(f"{idx_ds.name}: contains forbidden zero-shift self edge")
+            edge_set = {
+                (int(idx[0, i]), int(idx[1, i]), *map(int, shifts[i]))
+                for i in range(count)
+            }
+            missing_reverse = [edge for edge in edge_set
+                               if (edge[1], edge[0], -edge[2], -edge[3], -edge[4]) not in edge_set]
+            if missing_reverse:
+                errors.append(f"{idx_ds.name}: missing reverse directed edge(s), examples: {missing_reverse[:3]}")
         # The contract says image_shift translates the destination coordinate.
         # Recompute distances to catch transposed edge arrays or shift signs.
         if lattice is not None and idx.shape == (2, count) and shifts.shape == (count, 3) and count:
             src_coords = atom_frac if edge_name == "atom_atom" else void_frac
-            dst_coords = atom_frac
+            dst_coords = atom_frac if edge_name != "void_void" else void_frac
             if src_coords.ndim == 2 and dst_coords.ndim == 2 and np.max(idx) < len(src_coords) + len(dst_coords):
                 valid_indices = ((idx[0] >= 0) & (idx[0] < len(src_coords)) &
                                  (idx[1] >= 0) & (idx[1] < len(dst_coords)))

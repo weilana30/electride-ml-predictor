@@ -19,11 +19,13 @@ from typing import Any
 try:
     from .build_graph_records import build_graph_record
     from .build_manifest import build_manifest
+    from .label_void_dimensionality import label_void_dimensionality
     from .label_voids_from_elf import label_voids
     from .write_hdf5_shards import write_hdf5_shard
 except ImportError:  # direct script invocation
     from build_graph_records import build_graph_record
     from build_manifest import build_manifest
+    from label_void_dimensionality import label_void_dimensionality
     from label_voids_from_elf import label_voids
     from write_hdf5_shards import write_hdf5_shard
 
@@ -45,6 +47,12 @@ def _write_parquet(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     table = pa.Table.from_pylist(rows)
     pq.write_table(table, path)
+
+
+def _read_parquet_rows(path: Path) -> list[dict[str, Any]]:
+    """Read prepared manifest rows in their stored deterministic order."""
+    _, pq = _arrow()
+    return pq.read_table(path).to_pylist()
 
 
 def _fingerprint(rows: list[dict[str, Any]], config: dict[str, Any]) -> str:
@@ -96,8 +104,21 @@ def _json_write(path: Path, payload: Any) -> None:
 def _schema_for_config(config: dict[str, Any], schema_path: Path) -> dict[str, Any]:
     """Bind the storage schema's target names to the configured ELF radii."""
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
-    targets = {"elf_at_center": "periodic trilinear interpolation of ELFCAR total grid"}
-    shapes = {"elf_at_center": ["n_voids"]}
+    targets = {
+        "elf_at_center": "periodic trilinear interpolation of ELFCAR total grid",
+        "void_dimension": (
+            "int8 [n_voids]; periodic accessible-space winding rank 0-3; "
+            "-1 if candidate center maps to an inactive voxel"
+        ),
+        "void_dimension_valid": (
+            "uint8 [n_voids]; 1 if candidate center maps to an active component, otherwise 0"
+        ),
+    }
+    shapes = {
+        "elf_at_center": ["n_voids"],
+        "void_dimension": ["n_voids"],
+        "void_dimension_valid": ["n_voids"],
+    }
     for radius_value in config["elf_local_max_radii_angstrom"]:
         radius = float(radius_value)
         key = f"{radius:g}A"
@@ -110,6 +131,16 @@ def _schema_for_config(config: dict[str, Any], schema_path: Path) -> dict[str, A
     schema["graph_storage"]["targets"]["configured_local_max_radii_angstrom"] = [
         float(value) for value in config["elf_local_max_radii_angstrom"]
     ]
+    schema["graph_storage"]["edge_types"]["void_void"]["cutoff_angstrom"] = float(
+        config.get("void_void_cutoff_angstrom", 5.0)
+    )
+    schema["void_orbit_contract"]["symmetry_tolerance_angstrom"] = float(
+        config.get("void_symmetry_tolerance_angstrom", 0.2)
+    )
+    schema["graph_storage"]["targets"]["dimensionality"].update({
+        "probe_radius_angstrom": float(config.get("void_dimension_probe_radius_angstrom", 1.0)),
+        "grid_spacing_angstrom": float(config.get("void_dimension_grid_spacing_angstrom", 0.5)),
+    })
     return schema
 
 
@@ -123,7 +154,27 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     output.mkdir(parents=True, exist_ok=True)
     source = args.source_root.expanduser().resolve()
 
-    manifest = build_manifest(source, hash_files=not args.no_hashes, limit=args.limit)
+    if args.manifest is not None:
+        if args.limit is not None:
+            raise ValueError("--limit cannot be combined with --manifest")
+        if args.chunk_index is None or args.samples_per_task is None:
+            raise ValueError(
+                "--manifest requires both --chunk-index and --samples-per-task"
+            )
+        if args.chunk_index < 0 or args.samples_per_task < 1:
+            raise ValueError("chunk index must be nonnegative and samples per task positive")
+        all_rows = _read_parquet_rows(args.manifest.expanduser().resolve())
+        first = args.chunk_index * args.samples_per_task
+        manifest = all_rows[first:first + args.samples_per_task]
+        if not manifest:
+            raise ValueError(
+                f"chunk {args.chunk_index} is outside the prepared manifest "
+                f"with {len(all_rows)} rows"
+            )
+    else:
+        if args.chunk_index is not None or args.samples_per_task is not None:
+            raise ValueError("chunk options require --manifest")
+        manifest = build_manifest(source, hash_files=not args.no_hashes, limit=args.limit)
     manifest_by_id = {str(row["sample_id"]): row for row in manifest}
     ready = [r for r in manifest if r["processing_status"] == "ready"]
     fingerprint = _fingerprint(ready, config)
@@ -133,6 +184,8 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     _json_write(output / "schema.json", _schema_for_config(config, schema_path))
 
     radii = tuple(float(x) for x in config["elf_local_max_radii_angstrom"])
+    dimension_probe = float(config.get("void_dimension_probe_radius_angstrom", 1.0))
+    dimension_spacing = float(config.get("void_dimension_grid_spacing_angstrom", 0.5))
     shard_size = int(args.shard_size or config["shard_size"])
     if shard_size < 1:
         raise ValueError("shard size must be positive")
@@ -164,13 +217,28 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
                 poscar, sample_id=row["sample_id"], family_id=row["family_id"],
                 atom_cutoff_angstrom=float(config["atom_cutoff_angstrom"]),
                 atom_void_cutoff_angstrom=float(config["atom_void_cutoff_angstrom"]),
+                void_void_cutoff_angstrom=float(config.get("void_void_cutoff_angstrom", 5.0)),
                 symprec=float(config["symprec"]),
+                void_symmetry_tolerance_angstrom=float(
+                    config.get("void_symmetry_tolerance_angstrom", 0.2)
+                ),
             )
             graph["targets"] = label_voids(
                 elfcar, graph["lattice_angstrom"],
                 graph["voids"]["fractional_coords"], radii,
                 poscar_path=poscar,
             )
+            dimensionality = label_void_dimensionality(
+                graph["lattice_angstrom"], graph["atoms"]["fractional_coords"],
+                graph["voids"]["fractional_coords"],
+                probe_radius_A=dimension_probe,
+                grid_spacing_A=dimension_spacing,
+            )
+            graph["targets"].update({
+                "void_dimension": dimensionality["void_dimension"],
+                "void_dimension_valid": dimensionality["void_dimension_valid"],
+            })
+            graph["settings"]["void_dimensionality"] = dimensionality["metadata"]
             graph["source_poscar_relative_path"] = row["poscar_relative_path"]
             graph["source_elfcar_relative_path"] = row["elfcar_relative_path"]
             graph["grid_shape"] = row["grid_shape"]
@@ -217,6 +285,12 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--config", type=Path, default=Path(__file__).with_name("dataset_config.json"))
     parser.add_argument("--limit", type=int, help="Bounded pilot run over first N sample directories")
+    parser.add_argument("--manifest", type=Path,
+                        help="Prepared Parquet manifest; use with chunk options for array jobs")
+    parser.add_argument("--chunk-index", type=int,
+                        help="Zero-based manifest chunk index for a Slurm array task")
+    parser.add_argument("--samples-per-task", type=int,
+                        help="Number of manifest rows assigned to each array task")
     parser.add_argument("--shard-size", type=int, help="Override config shard size")
     parser.add_argument("--no-hashes", action="store_true", help="Skip source SHA-256 hashing")
     parser.add_argument("--progress-every", type=int, default=100)
