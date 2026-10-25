@@ -6,7 +6,7 @@ import unittest
 from unittest.mock import patch
 
 import numpy as np
-from pymatgen.core import Lattice, Structure
+from pymatgen.core import Lattice, Structure, SymmOp
 
 from elf_void_analysis.build_graph_records import _expand_candidate_orbits
 
@@ -45,6 +45,36 @@ class SymmetryOrbitExpansionTests(unittest.TestCase):
                 )
         self.assertTrue(all(node["methods"] == ["Voronoi"] for node in expanded))
         self.assertTrue(all(node["clearance_angstrom"] == 1.25 for node in expanded))
+
+    def test_member_order_matches_stored_float32_coordinates(self) -> None:
+        operations = [
+            SymmOp.from_rotation_and_translation(
+                np.eye(3), [0.5, 0.50000001, 0.4]
+            ),
+            SymmOp.from_rotation_and_translation(
+                np.eye(3), [0.5, 0.50000002, 0.1]
+            ),
+        ]
+        with patch(
+            "pymatgen.symmetry.analyzer.SpacegroupAnalyzer.get_symmetry_operations",
+            return_value=operations,
+        ):
+            expanded, _ = _expand_candidate_orbits(
+                self.structure,
+                [{"fractional_coords": [0.0, 0.0, 0.0],
+                  "clearance_angstrom": 1.25, "methods": ["Voronoi"]}],
+                symprec=0.01,
+            )
+
+        self.assertEqual(len(expanded), 2)
+        stored_coordinates = [
+            tuple(float(value) for value in np.asarray(node["fractional_coords"], dtype=np.float32))
+            for node in expanded
+        ]
+        self.assertEqual(stored_coordinates, sorted(stored_coordinates))
+        self.assertEqual(
+            [node["orbit_member_index"] for node in expanded], [0, 1]
+        )
 
     def test_symmetry_analysis_failure_is_marked_and_keeps_representative(self) -> None:
         with patch(

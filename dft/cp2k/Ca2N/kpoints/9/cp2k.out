@@ -1,0 +1,563 @@
+ DBCSR| CPU Multiplication driver                                           XSMM
+ DBCSR| Multrec recursion limit                                              512
+ DBCSR| Multiplication stack size                                           1000
+ DBCSR| Maximum elements for images                                    UNLIMITED
+ DBCSR| Multiplicative factor virtual images                                   1
+ DBCSR| Use multiplication densification                                       T
+ DBCSR| Multiplication size stacks                                             3
+ DBCSR| Use memory pool for CPU allocation                                     F
+ DBCSR| Number of 3D layers                                               SINGLE
+ DBCSR| Use MPI memory allocation                                              F
+ DBCSR| Use RMA algorithm                                                      F
+ DBCSR| Use Communication thread                                               T
+ DBCSR| Communication thread load                                             87
+ DBCSR| MPI: My node id                                                        0
+ DBCSR| MPI: Number of nodes                                                   9
+ DBCSR| OMP: Current number of threads                                         1
+ DBCSR| OMP: Max number of threads                                             1
+ DBCSR| Split modifier for TAS multiplication algorithm                  1.0E+00
+
+
+  **** **** ******  **  PROGRAM STARTED AT               2026-10-08 20:15:40.590
+ ***** ** ***  *** **   PROGRAM STARTED ON          a067.negishi.rcac.purdue.edu
+ **    ****   ******    PROGRAM STARTED BY                               weilana
+ ***** **    ** ** **   PROGRAM PROCESS ID                               4119190
+  **** **  *******  **  PROGRAM STARTED IN /scratch/negishi/weilana/electride-ml
+                                           -predictor/cp2k/Ca2N_kpoints_9_439342
+                                           77
+
+ CP2K| version string:                                       CP2K version 2022.1
+ CP2K| source code revision number:                                  git:2caeb6f
+ CP2K| cp2kflags: omp libint fftw3 parallel mpi3 scalapack xsmm plumed2 sirius  
+ CP2K| is freely available from                            https://www.cp2k.org/
+ CP2K| Program compiled at                          Wed Jan 11 15:01:11 EST 2023
+ CP2K| Program compiled on                           aux.negishi.rcac.purdue.edu
+ CP2K| Program compiled for                                linux-rocky8-zen3-gcc
+ CP2K| Data directory path    /apps/spack/negishi/apps/cp2k/2022.1-gcc-12.2.0-nk
+ CP2K| Input file name                                                  cp2k.inp
+
+ GLOBAL| Force Environment number                                              1
+ GLOBAL| Basis set file name                                        BASIS_MOLOPT
+ GLOBAL| Potential file name                                      GTH_POTENTIALS
+ GLOBAL| MM Potential file name                                     MM_POTENTIAL
+ GLOBAL| Coordinate file name                                      __STD_INPUT__
+ GLOBAL| Method name                                                        CP2K
+ GLOBAL| Project name                                             Ca2N_kpoints_9
+ GLOBAL| Run type                                                         ENERGY
+ GLOBAL| FFT library                                                       FFTW3
+ GLOBAL| Diagonalization library                                       ScaLAPACK
+ GLOBAL| Orthonormality check for eigenvectors                          DISABLED
+ GLOBAL| Matrix multiplication library                                 ScaLAPACK
+ GLOBAL| All-to-all communication in single precision                          F
+ GLOBAL| FFTs using library dependent lengths                                  F
+ GLOBAL| Grid backend                                                       AUTO
+ GLOBAL| Global print level                                               MEDIUM
+ GLOBAL| MPI I/O enabled                                                       T
+ GLOBAL| Total number of message passing processes                             9
+ GLOBAL| Number of threads for this process                                    1
+ GLOBAL| This output is from process                                           0
+ GLOBAL| Stack size for threads created by OpenMP (OMP_STACKSIZE)        default
+ GLOBAL| CPU model name                          AMD EPYC 7763 64-Core Processor
+ GLOBAL| CPUID                                                              1002
+
+ MEMORY| system memory details [Kb]
+ MEMORY|                        rank 0           min           max       average
+ MEMORY| MemTotal            263692244     263692244     263692244     263692244
+ MEMORY| MemFree             227602720     227602720     227603128     227603082
+ MEMORY| Buffers                     0             0             0             0
+ MEMORY| Cached               11550320      11549800      11550320      11549857
+ MEMORY| Slab                  2015860       2015860       2015948       2015938
+ MEMORY| SReclaimable           344068        344068        344068        344068
+ MEMORY| MemLikelyFree       239497108     239496996     239497108     239497008
+
+
+ *** Fundamental physical constants (SI units) ***
+
+ *** Literature: B. J. Mohr and B. N. Taylor,
+ ***             CODATA recommended values of the fundamental physical
+ ***             constants: 2006, Web Version 5.1
+ ***             http://physics.nist.gov/constants
+
+ Speed of light in vacuum [m/s]                             2.99792458000000E+08
+ Magnetic constant or permeability of vacuum [N/A**2]       1.25663706143592E-06
+ Electric constant or permittivity of vacuum [F/m]          8.85418781762039E-12
+ Planck constant (h) [J*s]                                  6.62606896000000E-34
+ Planck constant (h-bar) [J*s]                              1.05457162825177E-34
+ Elementary charge [C]                                      1.60217648700000E-19
+ Electron mass [kg]                                         9.10938215000000E-31
+ Electron g factor [ ]                                     -2.00231930436220E+00
+ Proton mass [kg]                                           1.67262163700000E-27
+ Fine-structure constant                                    7.29735253760000E-03
+ Rydberg constant [1/m]                                     1.09737315685270E+07
+ Avogadro constant [1/mol]                                  6.02214179000000E+23
+ Boltzmann constant [J/K]                                   1.38065040000000E-23
+ Atomic mass unit [kg]                                      1.66053878200000E-27
+ Bohr radius [m]                                            5.29177208590000E-11
+
+ *** Conversion factors ***
+
+ [u] -> [a.u.]                                              1.82288848426455E+03
+ [Angstrom] -> [Bohr] = [a.u.]                              1.88972613288564E+00
+ [a.u.] = [Bohr] -> [Angstrom]                              5.29177208590000E-01
+ [a.u.] -> [s]                                              2.41888432650478E-17
+ [a.u.] -> [fs]                                             2.41888432650478E-02
+ [a.u.] -> [J]                                              4.35974393937059E-18
+ [a.u.] -> [N]                                              8.23872205491840E-08
+ [a.u.] -> [K]                                              3.15774647902944E+05
+ [a.u.] -> [kJ/mol]                                         2.62549961709828E+03
+ [a.u.] -> [kcal/mol]                                       6.27509468713739E+02
+ [a.u.] -> [Pa]                                             2.94210107994716E+13
+ [a.u.] -> [bar]                                            2.94210107994716E+08
+ [a.u.] -> [atm]                                            2.90362800883016E+08
+ [a.u.] -> [eV]                                             2.72113838565563E+01
+ [a.u.] -> [Hz]                                             6.57968392072181E+15
+ [a.u.] -> [1/cm] (wave numbers)                            2.19474631370540E+05
+ [a.u./Bohr**2] -> [1/cm]                                   5.14048714338585E+03
+ 
+
+ CELL_TOP| Volume [angstrom^3]:                                        72.255075
+ CELL_TOP| Vector a [angstrom     6.755     0.000     0.000   |a| =     6.754855
+ CELL_TOP| Vector b [angstrom     5.794     3.473     0.000   |b| =     6.754855
+ CELL_TOP| Vector c [angstrom     5.794     1.603     3.080   |c| =     6.754856
+ CELL_TOP| Angle (b,c), alpha [degree]:                                30.936775
+ CELL_TOP| Angle (a,c), beta  [degree]:                                30.936774
+ CELL_TOP| Angle (a,b), gamma [degree]:                                30.936777
+ CELL_TOP| Numerically orthorhombic:                                          NO
+
+ GENERATE|  Preliminary Number of Bonds generated:                             0
+ GENERATE|  Achieved consistency in connectivity generation.
+
+ CELL| Volume [angstrom^3]:                                            72.255075
+ CELL| Vector a [angstrom]:       6.755     0.000     0.000   |a| =     6.754855
+ CELL| Vector b [angstrom]:       5.794     3.473     0.000   |b| =     6.754855
+ CELL| Vector c [angstrom]:       5.794     1.603     3.080   |c| =     6.754856
+ CELL| Angle (b,c), alpha [degree]:                                    30.936775
+ CELL| Angle (a,c), beta  [degree]:                                    30.936774
+ CELL| Angle (a,b), gamma [degree]:                                    30.936777
+ CELL| Numerically orthorhombic:                                              NO
+
+ CELL_REF| Volume [angstrom^3]:                                        72.255075
+ CELL_REF| Vector a [angstrom     6.755     0.000     0.000   |a| =     6.754855
+ CELL_REF| Vector b [angstrom     5.794     3.473     0.000   |b| =     6.754855
+ CELL_REF| Vector c [angstrom     5.794     1.603     3.080   |c| =     6.754856
+ CELL_REF| Angle (b,c), alpha [degree]:                                30.936775
+ CELL_REF| Angle (a,c), beta  [degree]:                                30.936774
+ CELL_REF| Angle (a,b), gamma [degree]:                                30.936777
+ CELL_REF| Numerically orthorhombic:                                          NO
+
+ *** WARNING in cryssym.F:165 :: Symmetry library SPGLIB not available ***
+
+
+ *******************************************************************************
+                                    Kpoints
+ *******************************************************************************
+ BRILLOUIN| K-point scheme                                        Monkhorst-Pack
+ BRILLOUIN| K-Point grid                                             9    9    9
+ BRILLOUIN| Accuracy in Symmetry determination                      0.100000E-05
+ BRILLOUIN| K-Point point group symmetrization                               OFF
+ BRILLOUIN| Wavefunction type                                            COMPLEX
+ BRILLOUIN| List of Kpoints [2 Pi/Bohr]                                      365
+ BRILLOUIN| Number           Weight            X              Y              Z
+ BRILLOUIN|     1           0.00274       -0.44444       -0.44444       -0.44444
+ BRILLOUIN|     2           0.00274       -0.44444       -0.44444       -0.33333
+ BRILLOUIN|     3           0.00274       -0.44444       -0.44444       -0.22222
+ BRILLOUIN|     4           0.00274       -0.44444       -0.44444       -0.11111
+ BRILLOUIN|     5           0.00274       -0.44444       -0.44444        0.00000
+ BRILLOUIN|     6           0.00274       -0.44444       -0.44444        0.11111
+ BRILLOUIN|     7           0.00274       -0.44444       -0.44444        0.22222
+ BRILLOUIN|     8           0.00274       -0.44444       -0.44444        0.33333
+ BRILLOUIN|     9           0.00274       -0.44444       -0.44444        0.44444
+ BRILLOUIN|    10           0.00274       -0.44444       -0.33333       -0.44444
+ BRILLOUIN|    11           0.00274       -0.44444       -0.33333       -0.33333
+ BRILLOUIN|    12           0.00274       -0.44444       -0.33333       -0.22222
+ BRILLOUIN|    13           0.00274       -0.44444       -0.33333       -0.11111
+ BRILLOUIN|    14           0.00274       -0.44444       -0.33333        0.00000
+ BRILLOUIN|    15           0.00274       -0.44444       -0.33333        0.11111
+ BRILLOUIN|    16           0.00274       -0.44444       -0.33333        0.22222
+ BRILLOUIN|    17           0.00274       -0.44444       -0.33333        0.33333
+ BRILLOUIN|    18           0.00274       -0.44444       -0.33333        0.44444
+ BRILLOUIN|    19           0.00274       -0.44444       -0.22222       -0.44444
+ BRILLOUIN|    20           0.00274       -0.44444       -0.22222       -0.33333
+ BRILLOUIN|    21           0.00274       -0.44444       -0.22222       -0.22222
+ BRILLOUIN|    22           0.00274       -0.44444       -0.22222       -0.11111
+ BRILLOUIN|    23           0.00274       -0.44444       -0.22222        0.00000
+ BRILLOUIN|    24           0.00274       -0.44444       -0.22222        0.11111
+ BRILLOUIN|    25           0.00274       -0.44444       -0.22222        0.22222
+ BRILLOUIN|    26           0.00274       -0.44444       -0.22222        0.33333
+ BRILLOUIN|    27           0.00274       -0.44444       -0.22222        0.44444
+ BRILLOUIN|    28           0.00274       -0.44444       -0.11111       -0.44444
+ BRILLOUIN|    29           0.00274       -0.44444       -0.11111       -0.33333
+ BRILLOUIN|    30           0.00274       -0.44444       -0.11111       -0.22222
+ BRILLOUIN|    31           0.00274       -0.44444       -0.11111       -0.11111
+ BRILLOUIN|    32           0.00274       -0.44444       -0.11111        0.00000
+ BRILLOUIN|    33           0.00274       -0.44444       -0.11111        0.11111
+ BRILLOUIN|    34           0.00274       -0.44444       -0.11111        0.22222
+ BRILLOUIN|    35           0.00274       -0.44444       -0.11111        0.33333
+ BRILLOUIN|    36           0.00274       -0.44444       -0.11111        0.44444
+ BRILLOUIN|    37           0.00274       -0.44444        0.00000       -0.44444
+ BRILLOUIN|    38           0.00274       -0.44444        0.00000       -0.33333
+ BRILLOUIN|    39           0.00274       -0.44444        0.00000       -0.22222
+ BRILLOUIN|    40           0.00274       -0.44444        0.00000       -0.11111
+ BRILLOUIN|    41           0.00274       -0.44444        0.00000        0.00000
+ BRILLOUIN|    42           0.00274       -0.44444        0.00000        0.11111
+ BRILLOUIN|    43           0.00274       -0.44444        0.00000        0.22222
+ BRILLOUIN|    44           0.00274       -0.44444        0.00000        0.33333
+ BRILLOUIN|    45           0.00274       -0.44444        0.00000        0.44444
+ BRILLOUIN|    46           0.00274       -0.44444        0.11111       -0.44444
+ BRILLOUIN|    47           0.00274       -0.44444        0.11111       -0.33333
+ BRILLOUIN|    48           0.00274       -0.44444        0.11111       -0.22222
+ BRILLOUIN|    49           0.00274       -0.44444        0.11111       -0.11111
+ BRILLOUIN|    50           0.00274       -0.44444        0.11111        0.00000
+ BRILLOUIN|    51           0.00274       -0.44444        0.11111        0.11111
+ BRILLOUIN|    52           0.00274       -0.44444        0.11111        0.22222
+ BRILLOUIN|    53           0.00274       -0.44444        0.11111        0.33333
+ BRILLOUIN|    54           0.00274       -0.44444        0.11111        0.44444
+ BRILLOUIN|    55           0.00274       -0.44444        0.22222       -0.44444
+ BRILLOUIN|    56           0.00274       -0.44444        0.22222       -0.33333
+ BRILLOUIN|    57           0.00274       -0.44444        0.22222       -0.22222
+ BRILLOUIN|    58           0.00274       -0.44444        0.22222       -0.11111
+ BRILLOUIN|    59           0.00274       -0.44444        0.22222        0.00000
+ BRILLOUIN|    60           0.00274       -0.44444        0.22222        0.11111
+ BRILLOUIN|    61           0.00274       -0.44444        0.22222        0.22222
+ BRILLOUIN|    62           0.00274       -0.44444        0.22222        0.33333
+ BRILLOUIN|    63           0.00274       -0.44444        0.22222        0.44444
+ BRILLOUIN|    64           0.00274       -0.44444        0.33333       -0.44444
+ BRILLOUIN|    65           0.00274       -0.44444        0.33333       -0.33333
+ BRILLOUIN|    66           0.00274       -0.44444        0.33333       -0.22222
+ BRILLOUIN|    67           0.00274       -0.44444        0.33333       -0.11111
+ BRILLOUIN|    68           0.00274       -0.44444        0.33333        0.00000
+ BRILLOUIN|    69           0.00274       -0.44444        0.33333        0.11111
+ BRILLOUIN|    70           0.00274       -0.44444        0.33333        0.22222
+ BRILLOUIN|    71           0.00274       -0.44444        0.33333        0.33333
+ BRILLOUIN|    72           0.00274       -0.44444        0.33333        0.44444
+ BRILLOUIN|    73           0.00274       -0.44444        0.44444       -0.44444
+ BRILLOUIN|    74           0.00274       -0.44444        0.44444       -0.33333
+ BRILLOUIN|    75           0.00274       -0.44444        0.44444       -0.22222
+ BRILLOUIN|    76           0.00274       -0.44444        0.44444       -0.11111
+ BRILLOUIN|    77           0.00274       -0.44444        0.44444        0.00000
+ BRILLOUIN|    78           0.00274       -0.44444        0.44444        0.11111
+ BRILLOUIN|    79           0.00274       -0.44444        0.44444        0.22222
+ BRILLOUIN|    80           0.00274       -0.44444        0.44444        0.33333
+ BRILLOUIN|    81           0.00274       -0.44444        0.44444        0.44444
+ BRILLOUIN|    82           0.00274       -0.33333       -0.44444       -0.44444
+ BRILLOUIN|    83           0.00274       -0.33333       -0.44444       -0.33333
+ BRILLOUIN|    84           0.00274       -0.33333       -0.44444       -0.22222
+ BRILLOUIN|    85           0.00274       -0.33333       -0.44444       -0.11111
+ BRILLOUIN|    86           0.00274       -0.33333       -0.44444        0.00000
+ BRILLOUIN|    87           0.00274       -0.33333       -0.44444        0.11111
+ BRILLOUIN|    88           0.00274       -0.33333       -0.44444        0.22222
+ BRILLOUIN|    89           0.00274       -0.33333       -0.44444        0.33333
+ BRILLOUIN|    90           0.00274       -0.33333       -0.44444        0.44444
+ BRILLOUIN|    91           0.00274       -0.33333       -0.33333       -0.44444
+ BRILLOUIN|    92           0.00274       -0.33333       -0.33333       -0.33333
+ BRILLOUIN|    93           0.00274       -0.33333       -0.33333       -0.22222
+ BRILLOUIN|    94           0.00274       -0.33333       -0.33333       -0.11111
+ BRILLOUIN|    95           0.00274       -0.33333       -0.33333        0.00000
+ BRILLOUIN|    96           0.00274       -0.33333       -0.33333        0.11111
+ BRILLOUIN|    97           0.00274       -0.33333       -0.33333        0.22222
+ BRILLOUIN|    98           0.00274       -0.33333       -0.33333        0.33333
+ BRILLOUIN|    99           0.00274       -0.33333       -0.33333        0.44444
+ BRILLOUIN|   100           0.00274       -0.33333       -0.22222       -0.44444
+ BRILLOUIN|   101           0.00274       -0.33333       -0.22222       -0.33333
+ BRILLOUIN|   102           0.00274       -0.33333       -0.22222       -0.22222
+ BRILLOUIN|   103           0.00274       -0.33333       -0.22222       -0.11111
+ BRILLOUIN|   104           0.00274       -0.33333       -0.22222        0.00000
+ BRILLOUIN|   105           0.00274       -0.33333       -0.22222        0.11111
+ BRILLOUIN|   106           0.00274       -0.33333       -0.22222        0.22222
+ BRILLOUIN|   107           0.00274       -0.33333       -0.22222        0.33333
+ BRILLOUIN|   108           0.00274       -0.33333       -0.22222        0.44444
+ BRILLOUIN|   109           0.00274       -0.33333       -0.11111       -0.44444
+ BRILLOUIN|   110           0.00274       -0.33333       -0.11111       -0.33333
+ BRILLOUIN|   111           0.00274       -0.33333       -0.11111       -0.22222
+ BRILLOUIN|   112           0.00274       -0.33333       -0.11111       -0.11111
+ BRILLOUIN|   113           0.00274       -0.33333       -0.11111        0.00000
+ BRILLOUIN|   114           0.00274       -0.33333       -0.11111        0.11111
+ BRILLOUIN|   115           0.00274       -0.33333       -0.11111        0.22222
+ BRILLOUIN|   116           0.00274       -0.33333       -0.11111        0.33333
+ BRILLOUIN|   117           0.00274       -0.33333       -0.11111        0.44444
+ BRILLOUIN|   118           0.00274       -0.33333        0.00000       -0.44444
+ BRILLOUIN|   119           0.00274       -0.33333        0.00000       -0.33333
+ BRILLOUIN|   120           0.00274       -0.33333        0.00000       -0.22222
+ BRILLOUIN|   121           0.00274       -0.33333        0.00000       -0.11111
+ BRILLOUIN|   122           0.00274       -0.33333        0.00000        0.00000
+ BRILLOUIN|   123           0.00274       -0.33333        0.00000        0.11111
+ BRILLOUIN|   124           0.00274       -0.33333        0.00000        0.22222
+ BRILLOUIN|   125           0.00274       -0.33333        0.00000        0.33333
+ BRILLOUIN|   126           0.00274       -0.33333        0.00000        0.44444
+ BRILLOUIN|   127           0.00274       -0.33333        0.11111       -0.44444
+ BRILLOUIN|   128           0.00274       -0.33333        0.11111       -0.33333
+ BRILLOUIN|   129           0.00274       -0.33333        0.11111       -0.22222
+ BRILLOUIN|   130           0.00274       -0.33333        0.11111       -0.11111
+ BRILLOUIN|   131           0.00274       -0.33333        0.11111        0.00000
+ BRILLOUIN|   132           0.00274       -0.33333        0.11111        0.11111
+ BRILLOUIN|   133           0.00274       -0.33333        0.11111        0.22222
+ BRILLOUIN|   134           0.00274       -0.33333        0.11111        0.33333
+ BRILLOUIN|   135           0.00274       -0.33333        0.11111        0.44444
+ BRILLOUIN|   136           0.00274       -0.33333        0.22222       -0.44444
+ BRILLOUIN|   137           0.00274       -0.33333        0.22222       -0.33333
+ BRILLOUIN|   138           0.00274       -0.33333        0.22222       -0.22222
+ BRILLOUIN|   139           0.00274       -0.33333        0.22222       -0.11111
+ BRILLOUIN|   140           0.00274       -0.33333        0.22222        0.00000
+ BRILLOUIN|   141           0.00274       -0.33333        0.22222        0.11111
+ BRILLOUIN|   142           0.00274       -0.33333        0.22222        0.22222
+ BRILLOUIN|   143           0.00274       -0.33333        0.22222        0.33333
+ BRILLOUIN|   144           0.00274       -0.33333        0.22222        0.44444
+ BRILLOUIN|   145           0.00274       -0.33333        0.33333       -0.44444
+ BRILLOUIN|   146           0.00274       -0.33333        0.33333       -0.33333
+ BRILLOUIN|   147           0.00274       -0.33333        0.33333       -0.22222
+ BRILLOUIN|   148           0.00274       -0.33333        0.33333       -0.11111
+ BRILLOUIN|   149           0.00274       -0.33333        0.33333        0.00000
+ BRILLOUIN|   150           0.00274       -0.33333        0.33333        0.11111
+ BRILLOUIN|   151           0.00274       -0.33333        0.33333        0.22222
+ BRILLOUIN|   152           0.00274       -0.33333        0.33333        0.33333
+ BRILLOUIN|   153           0.00274       -0.33333        0.33333        0.44444
+ BRILLOUIN|   154           0.00274       -0.33333        0.44444       -0.44444
+ BRILLOUIN|   155           0.00274       -0.33333        0.44444       -0.33333
+ BRILLOUIN|   156           0.00274       -0.33333        0.44444       -0.22222
+ BRILLOUIN|   157           0.00274       -0.33333        0.44444       -0.11111
+ BRILLOUIN|   158           0.00274       -0.33333        0.44444        0.00000
+ BRILLOUIN|   159           0.00274       -0.33333        0.44444        0.11111
+ BRILLOUIN|   160           0.00274       -0.33333        0.44444        0.22222
+ BRILLOUIN|   161           0.00274       -0.33333        0.44444        0.33333
+ BRILLOUIN|   162           0.00274       -0.33333        0.44444        0.44444
+ BRILLOUIN|   163           0.00274       -0.22222       -0.44444       -0.44444
+ BRILLOUIN|   164           0.00274       -0.22222       -0.44444       -0.33333
+ BRILLOUIN|   165           0.00274       -0.22222       -0.44444       -0.22222
+ BRILLOUIN|   166           0.00274       -0.22222       -0.44444       -0.11111
+ BRILLOUIN|   167           0.00274       -0.22222       -0.44444        0.00000
+ BRILLOUIN|   168           0.00274       -0.22222       -0.44444        0.11111
+ BRILLOUIN|   169           0.00274       -0.22222       -0.44444        0.22222
+ BRILLOUIN|   170           0.00274       -0.22222       -0.44444        0.33333
+ BRILLOUIN|   171           0.00274       -0.22222       -0.44444        0.44444
+ BRILLOUIN|   172           0.00274       -0.22222       -0.33333       -0.44444
+ BRILLOUIN|   173           0.00274       -0.22222       -0.33333       -0.33333
+ BRILLOUIN|   174           0.00274       -0.22222       -0.33333       -0.22222
+ BRILLOUIN|   175           0.00274       -0.22222       -0.33333       -0.11111
+ BRILLOUIN|   176           0.00274       -0.22222       -0.33333        0.00000
+ BRILLOUIN|   177           0.00274       -0.22222       -0.33333        0.11111
+ BRILLOUIN|   178           0.00274       -0.22222       -0.33333        0.22222
+ BRILLOUIN|   179           0.00274       -0.22222       -0.33333        0.33333
+ BRILLOUIN|   180           0.00274       -0.22222       -0.33333        0.44444
+ BRILLOUIN|   181           0.00274       -0.22222       -0.22222       -0.44444
+ BRILLOUIN|   182           0.00274       -0.22222       -0.22222       -0.33333
+ BRILLOUIN|   183           0.00274       -0.22222       -0.22222       -0.22222
+ BRILLOUIN|   184           0.00274       -0.22222       -0.22222       -0.11111
+ BRILLOUIN|   185           0.00274       -0.22222       -0.22222        0.00000
+ BRILLOUIN|   186           0.00274       -0.22222       -0.22222        0.11111
+ BRILLOUIN|   187           0.00274       -0.22222       -0.22222        0.22222
+ BRILLOUIN|   188           0.00274       -0.22222       -0.22222        0.33333
+ BRILLOUIN|   189           0.00274       -0.22222       -0.22222        0.44444
+ BRILLOUIN|   190           0.00274       -0.22222       -0.11111       -0.44444
+ BRILLOUIN|   191           0.00274       -0.22222       -0.11111       -0.33333
+ BRILLOUIN|   192           0.00274       -0.22222       -0.11111       -0.22222
+ BRILLOUIN|   193           0.00274       -0.22222       -0.11111       -0.11111
+ BRILLOUIN|   194           0.00274       -0.22222       -0.11111        0.00000
+ BRILLOUIN|   195           0.00274       -0.22222       -0.11111        0.11111
+ BRILLOUIN|   196           0.00274       -0.22222       -0.11111        0.22222
+ BRILLOUIN|   197           0.00274       -0.22222       -0.11111        0.33333
+ BRILLOUIN|   198           0.00274       -0.22222       -0.11111        0.44444
+ BRILLOUIN|   199           0.00274       -0.22222        0.00000       -0.44444
+ BRILLOUIN|   200           0.00274       -0.22222        0.00000       -0.33333
+ BRILLOUIN|   201           0.00274       -0.22222        0.00000       -0.22222
+ BRILLOUIN|   202           0.00274       -0.22222        0.00000       -0.11111
+ BRILLOUIN|   203           0.00274       -0.22222        0.00000        0.00000
+ BRILLOUIN|   204           0.00274       -0.22222        0.00000        0.11111
+ BRILLOUIN|   205           0.00274       -0.22222        0.00000        0.22222
+ BRILLOUIN|   206           0.00274       -0.22222        0.00000        0.33333
+ BRILLOUIN|   207           0.00274       -0.22222        0.00000        0.44444
+ BRILLOUIN|   208           0.00274       -0.22222        0.11111       -0.44444
+ BRILLOUIN|   209           0.00274       -0.22222        0.11111       -0.33333
+ BRILLOUIN|   210           0.00274       -0.22222        0.11111       -0.22222
+ BRILLOUIN|   211           0.00274       -0.22222        0.11111       -0.11111
+ BRILLOUIN|   212           0.00274       -0.22222        0.11111        0.00000
+ BRILLOUIN|   213           0.00274       -0.22222        0.11111        0.11111
+ BRILLOUIN|   214           0.00274       -0.22222        0.11111        0.22222
+ BRILLOUIN|   215           0.00274       -0.22222        0.11111        0.33333
+ BRILLOUIN|   216           0.00274       -0.22222        0.11111        0.44444
+ BRILLOUIN|   217           0.00274       -0.22222        0.22222       -0.44444
+ BRILLOUIN|   218           0.00274       -0.22222        0.22222       -0.33333
+ BRILLOUIN|   219           0.00274       -0.22222        0.22222       -0.22222
+ BRILLOUIN|   220           0.00274       -0.22222        0.22222       -0.11111
+ BRILLOUIN|   221           0.00274       -0.22222        0.22222        0.00000
+ BRILLOUIN|   222           0.00274       -0.22222        0.22222        0.11111
+ BRILLOUIN|   223           0.00274       -0.22222        0.22222        0.22222
+ BRILLOUIN|   224           0.00274       -0.22222        0.22222        0.33333
+ BRILLOUIN|   225           0.00274       -0.22222        0.22222        0.44444
+ BRILLOUIN|   226           0.00274       -0.22222        0.33333       -0.44444
+ BRILLOUIN|   227           0.00274       -0.22222        0.33333       -0.33333
+ BRILLOUIN|   228           0.00274       -0.22222        0.33333       -0.22222
+ BRILLOUIN|   229           0.00274       -0.22222        0.33333       -0.11111
+ BRILLOUIN|   230           0.00274       -0.22222        0.33333        0.00000
+ BRILLOUIN|   231           0.00274       -0.22222        0.33333        0.11111
+ BRILLOUIN|   232           0.00274       -0.22222        0.33333        0.22222
+ BRILLOUIN|   233           0.00274       -0.22222        0.33333        0.33333
+ BRILLOUIN|   234           0.00274       -0.22222        0.33333        0.44444
+ BRILLOUIN|   235           0.00274       -0.22222        0.44444       -0.44444
+ BRILLOUIN|   236           0.00274       -0.22222        0.44444       -0.33333
+ BRILLOUIN|   237           0.00274       -0.22222        0.44444       -0.22222
+ BRILLOUIN|   238           0.00274       -0.22222        0.44444       -0.11111
+ BRILLOUIN|   239           0.00274       -0.22222        0.44444        0.00000
+ BRILLOUIN|   240           0.00274       -0.22222        0.44444        0.11111
+ BRILLOUIN|   241           0.00274       -0.22222        0.44444        0.22222
+ BRILLOUIN|   242           0.00274       -0.22222        0.44444        0.33333
+ BRILLOUIN|   243           0.00274       -0.22222        0.44444        0.44444
+ BRILLOUIN|   244           0.00274       -0.11111       -0.44444       -0.44444
+ BRILLOUIN|   245           0.00274       -0.11111       -0.44444       -0.33333
+ BRILLOUIN|   246           0.00274       -0.11111       -0.44444       -0.22222
+ BRILLOUIN|   247           0.00274       -0.11111       -0.44444       -0.11111
+ BRILLOUIN|   248           0.00274       -0.11111       -0.44444        0.00000
+ BRILLOUIN|   249           0.00274       -0.11111       -0.44444        0.11111
+ BRILLOUIN|   250           0.00274       -0.11111       -0.44444        0.22222
+ BRILLOUIN|   251           0.00274       -0.11111       -0.44444        0.33333
+ BRILLOUIN|   252           0.00274       -0.11111       -0.44444        0.44444
+ BRILLOUIN|   253           0.00274       -0.11111       -0.33333       -0.44444
+ BRILLOUIN|   254           0.00274       -0.11111       -0.33333       -0.33333
+ BRILLOUIN|   255           0.00274       -0.11111       -0.33333       -0.22222
+ BRILLOUIN|   256           0.00274       -0.11111       -0.33333       -0.11111
+ BRILLOUIN|   257           0.00274       -0.11111       -0.33333        0.00000
+ BRILLOUIN|   258           0.00274       -0.11111       -0.33333        0.11111
+ BRILLOUIN|   259           0.00274       -0.11111       -0.33333        0.22222
+ BRILLOUIN|   260           0.00274       -0.11111       -0.33333        0.33333
+ BRILLOUIN|   261           0.00274       -0.11111       -0.33333        0.44444
+ BRILLOUIN|   262           0.00274       -0.11111       -0.22222       -0.44444
+ BRILLOUIN|   263           0.00274       -0.11111       -0.22222       -0.33333
+ BRILLOUIN|   264           0.00274       -0.11111       -0.22222       -0.22222
+ BRILLOUIN|   265           0.00274       -0.11111       -0.22222       -0.11111
+ BRILLOUIN|   266           0.00274       -0.11111       -0.22222        0.00000
+ BRILLOUIN|   267           0.00274       -0.11111       -0.22222        0.11111
+ BRILLOUIN|   268           0.00274       -0.11111       -0.22222        0.22222
+ BRILLOUIN|   269           0.00274       -0.11111       -0.22222        0.33333
+ BRILLOUIN|   270           0.00274       -0.11111       -0.22222        0.44444
+ BRILLOUIN|   271           0.00274       -0.11111       -0.11111       -0.44444
+ BRILLOUIN|   272           0.00274       -0.11111       -0.11111       -0.33333
+ BRILLOUIN|   273           0.00274       -0.11111       -0.11111       -0.22222
+ BRILLOUIN|   274           0.00274       -0.11111       -0.11111       -0.11111
+ BRILLOUIN|   275           0.00274       -0.11111       -0.11111        0.00000
+ BRILLOUIN|   276           0.00274       -0.11111       -0.11111        0.11111
+ BRILLOUIN|   277           0.00274       -0.11111       -0.11111        0.22222
+ BRILLOUIN|   278           0.00274       -0.11111       -0.11111        0.33333
+ BRILLOUIN|   279           0.00274       -0.11111       -0.11111        0.44444
+ BRILLOUIN|   280           0.00274       -0.11111        0.00000       -0.44444
+ BRILLOUIN|   281           0.00274       -0.11111        0.00000       -0.33333
+ BRILLOUIN|   282           0.00274       -0.11111        0.00000       -0.22222
+ BRILLOUIN|   283           0.00274       -0.11111        0.00000       -0.11111
+ BRILLOUIN|   284           0.00274       -0.11111        0.00000        0.00000
+ BRILLOUIN|   285           0.00274       -0.11111        0.00000        0.11111
+ BRILLOUIN|   286           0.00274       -0.11111        0.00000        0.22222
+ BRILLOUIN|   287           0.00274       -0.11111        0.00000        0.33333
+ BRILLOUIN|   288           0.00274       -0.11111        0.00000        0.44444
+ BRILLOUIN|   289           0.00274       -0.11111        0.11111       -0.44444
+ BRILLOUIN|   290           0.00274       -0.11111        0.11111       -0.33333
+ BRILLOUIN|   291           0.00274       -0.11111        0.11111       -0.22222
+ BRILLOUIN|   292           0.00274       -0.11111        0.11111       -0.11111
+ BRILLOUIN|   293           0.00274       -0.11111        0.11111        0.00000
+ BRILLOUIN|   294           0.00274       -0.11111        0.11111        0.11111
+ BRILLOUIN|   295           0.00274       -0.11111        0.11111        0.22222
+ BRILLOUIN|   296           0.00274       -0.11111        0.11111        0.33333
+ BRILLOUIN|   297           0.00274       -0.11111        0.11111        0.44444
+ BRILLOUIN|   298           0.00274       -0.11111        0.22222       -0.44444
+ BRILLOUIN|   299           0.00274       -0.11111        0.22222       -0.33333
+ BRILLOUIN|   300           0.00274       -0.11111        0.22222       -0.22222
+ BRILLOUIN|   301           0.00274       -0.11111        0.22222       -0.11111
+ BRILLOUIN|   302           0.00274       -0.11111        0.22222        0.00000
+ BRILLOUIN|   303           0.00274       -0.11111        0.22222        0.11111
+ BRILLOUIN|   304           0.00274       -0.11111        0.22222        0.22222
+ BRILLOUIN|   305           0.00274       -0.11111        0.22222        0.33333
+ BRILLOUIN|   306           0.00274       -0.11111        0.22222        0.44444
+ BRILLOUIN|   307           0.00274       -0.11111        0.33333       -0.44444
+ BRILLOUIN|   308           0.00274       -0.11111        0.33333       -0.33333
+ BRILLOUIN|   309           0.00274       -0.11111        0.33333       -0.22222
+ BRILLOUIN|   310           0.00274       -0.11111        0.33333       -0.11111
+ BRILLOUIN|   311           0.00274       -0.11111        0.33333        0.00000
+ BRILLOUIN|   312           0.00274       -0.11111        0.33333        0.11111
+ BRILLOUIN|   313           0.00274       -0.11111        0.33333        0.22222
+ BRILLOUIN|   314           0.00274       -0.11111        0.33333        0.33333
+ BRILLOUIN|   315           0.00274       -0.11111        0.33333        0.44444
+ BRILLOUIN|   316           0.00274       -0.11111        0.44444       -0.44444
+ BRILLOUIN|   317           0.00274       -0.11111        0.44444       -0.33333
+ BRILLOUIN|   318           0.00274       -0.11111        0.44444       -0.22222
+ BRILLOUIN|   319           0.00274       -0.11111        0.44444       -0.11111
+ BRILLOUIN|   320           0.00274       -0.11111        0.44444        0.00000
+ BRILLOUIN|   321           0.00274       -0.11111        0.44444        0.11111
+ BRILLOUIN|   322           0.00274       -0.11111        0.44444        0.22222
+ BRILLOUIN|   323           0.00274       -0.11111        0.44444        0.33333
+ BRILLOUIN|   324           0.00274       -0.11111        0.44444        0.44444
+ BRILLOUIN|   325           0.00274        0.00000       -0.44444       -0.44444
+ BRILLOUIN|   326           0.00274        0.00000       -0.44444       -0.33333
+ BRILLOUIN|   327           0.00274        0.00000       -0.44444       -0.22222
+ BRILLOUIN|   328           0.00274        0.00000       -0.44444       -0.11111
+ BRILLOUIN|   329           0.00274        0.00000       -0.44444        0.00000
+ BRILLOUIN|   330           0.00274        0.00000       -0.44444        0.11111
+ BRILLOUIN|   331           0.00274        0.00000       -0.44444        0.22222
+ BRILLOUIN|   332           0.00274        0.00000       -0.44444        0.33333
+ BRILLOUIN|   333           0.00274        0.00000       -0.44444        0.44444
+ BRILLOUIN|   334           0.00274        0.00000       -0.33333       -0.44444
+ BRILLOUIN|   335           0.00274        0.00000       -0.33333       -0.33333
+ BRILLOUIN|   336           0.00274        0.00000       -0.33333       -0.22222
+ BRILLOUIN|   337           0.00274        0.00000       -0.33333       -0.11111
+ BRILLOUIN|   338           0.00274        0.00000       -0.33333        0.00000
+ BRILLOUIN|   339           0.00274        0.00000       -0.33333        0.11111
+ BRILLOUIN|   340           0.00274        0.00000       -0.33333        0.22222
+ BRILLOUIN|   341           0.00274        0.00000       -0.33333        0.33333
+ BRILLOUIN|   342           0.00274        0.00000       -0.33333        0.44444
+ BRILLOUIN|   343           0.00274        0.00000       -0.22222       -0.44444
+ BRILLOUIN|   344           0.00274        0.00000       -0.22222       -0.33333
+ BRILLOUIN|   345           0.00274        0.00000       -0.22222       -0.22222
+ BRILLOUIN|   346           0.00274        0.00000       -0.22222       -0.11111
+ BRILLOUIN|   347           0.00274        0.00000       -0.22222        0.00000
+ BRILLOUIN|   348           0.00274        0.00000       -0.22222        0.11111
+ BRILLOUIN|   349           0.00274        0.00000       -0.22222        0.22222
+ BRILLOUIN|   350           0.00274        0.00000       -0.22222        0.33333
+ BRILLOUIN|   351           0.00274        0.00000       -0.22222        0.44444
+ BRILLOUIN|   352           0.00274        0.00000       -0.11111       -0.44444
+ BRILLOUIN|   353           0.00274        0.00000       -0.11111       -0.33333
+ BRILLOUIN|   354           0.00274        0.00000       -0.11111       -0.22222
+ BRILLOUIN|   355           0.00274        0.00000       -0.11111       -0.11111
+ BRILLOUIN|   356           0.00274        0.00000       -0.11111        0.00000
+ BRILLOUIN|   357           0.00274        0.00000       -0.11111        0.11111
+ BRILLOUIN|   358           0.00274        0.00000       -0.11111        0.22222
+ BRILLOUIN|   359           0.00274        0.00000       -0.11111        0.33333
+ BRILLOUIN|   360           0.00274        0.00000       -0.11111        0.44444
+ BRILLOUIN|   361           0.00274        0.00000        0.00000       -0.44444
+ BRILLOUIN|   362           0.00274        0.00000        0.00000       -0.33333
+ BRILLOUIN|   363           0.00274        0.00000        0.00000       -0.22222
+ BRILLOUIN|   364           0.00274        0.00000        0.00000       -0.11111
+ BRILLOUIN|   365           0.00137        0.00000        0.00000        0.00000
+ *******************************************************************************
+
+ *******************************************************************************
+ *******************************************************************************
+ **                                                                           **
+ **     #####                         ##              ##                      **
+ **    ##   ##            ##          ##              ##                      **
+ **   ##     ##                       ##            ######                    **
+ **   ##     ##  ##   ##  ##   #####  ##  ##   ####   ##    #####    #####    **
+ **   ##     ##  ##   ##  ##  ##      ## ##   ##      ##   ##   ##  ##   ##   **
+ **   ##  ## ##  ##   ##  ##  ##      ####     ###    ##   ######   ######    **
+ **    ##  ###   ##   ##  ##  ##      ## ##      ##   ##   ##       ##        **
+ **     #######   #####   ##   #####  ##  ##  ####    ##    #####   ##        **
+ **           ##                                                    ##        **
+ **                                                                           **
+ **                                                ... make the atoms dance   **
+ **                                                                           **
+ **            Copyright (C) by CP2K developers group (2000-2022)             **
+ **                      J. Chem. Phys. 152, 194103 (2020)                    **
+ **                                                                           **
+ *******************************************************************************
+
+ *******************************************************************************
+ *   ___                                                                       *
+ *  /   \                                                                      *
+ * [ABORT]                                                                     *
+ *  \___/            Use the LSD option for an odd number of electrons         *
+ *    |                                                                        *
+ *  O/|                                                                        *
+ * /| |                                                                        *
+ * / \                                                   qs_environment.F:1343 *
+ *******************************************************************************
+
+
+ ===== Routine Calling Stack ===== 
+
+            2 qs_init_subsys
+            1 CP2K

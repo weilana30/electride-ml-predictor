@@ -3,12 +3,14 @@ set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 source "$script_dir/negishi.env"
+export ELFNET_CLUSTER_DIR="$script_dir"
 mkdir -p "$ELFNET_RUN_ROOT/logs"
 if [[ -e "$ELFNET_RUN_ROOT/manifest.parquet" ]]; then
   echo "Run manifest already exists. Set a new ELFNET_RUN_ID or inspect the existing run." >&2
   exit 2
 fi
 job_id="$(sbatch --parsable \
+  --export=ALL \
   --account="$ELFNET_SLURM_ACCOUNT" \
   --qos="$ELFNET_SLURM_QOS" \
   --partition="$ELFNET_SLURM_PARTITION" \

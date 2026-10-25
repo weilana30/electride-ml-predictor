@@ -7,8 +7,7 @@
 #SBATCH --time=01:00:00
 
 set -euo pipefail
-script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
-source "$script_dir/negishi.env"
+: "${ELFNET_CLUSTER_DIR:?Submit through submit_array.sh so cluster paths are exported}"
 cd "$ELFNET_REPO"
 module load conda
 conda activate "$ELFNET_CONDA_PREFIX"

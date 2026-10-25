@@ -222,6 +222,12 @@ def _expand_candidate_orbits(
 
     expanded: list[dict[str, Any]] = []
     for root, group_nodes in sorted(groups.items()):
+        # Sort the coordinates at their stored float32 precision so the member
+        # indexes remain consistent with the HDF5 coordinates checked later.
+        for node in group_nodes:
+            node["fractional_coords"] = (
+                np.asarray(node["fractional_coords"], dtype=np.float32).astype(float) % 1.0
+            )
         group_nodes.sort(key=lambda node: _fractional_sort_key(node["fractional_coords"]))
         candidate_indices = sorted({
             index for node in group_nodes for index in node["candidate_indices"]
