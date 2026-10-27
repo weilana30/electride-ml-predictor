@@ -1,0 +1,52 @@
+name: elf-center-architecture-test
+dataset_root: /home/weilana/elfnet-datasets/elfnet-gnn-2026-10-23
+run_root: /home/weilana/elfnet-runs/elf_void_gnn/architecture-test/runs
+seeds: [20261023, 20261024, 20261025]
+training:
+  batch_size: 8
+  max_epochs: 30
+  early_stopping_patience: 5
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  num_workers: 4
+model_defaults:
+  radial_channels: 8
+  dropout: 0.1
+configurations:
+  - id: hetero_w32_d2
+    type: hetero_mpnn
+    hidden_channels: 32
+    message_layers: 2
+  - id: hetero_w64_d2
+    type: hetero_mpnn
+    hidden_channels: 64
+    message_layers: 2
+  - id: hetero_w128_d2
+    type: hetero_mpnn
+    hidden_channels: 128
+    message_layers: 2
+  - id: hetero_w64_d1
+    type: hetero_mpnn
+    hidden_channels: 64
+    message_layers: 1
+  - id: hetero_w64_d3
+    type: hetero_mpnn
+    hidden_channels: 64
+    message_layers: 3
+  - id: void_mlp_w64_d2
+    type: void_mlp
+    hidden_channels: 64
+    message_layers: 2
+  - id: fixed_context_mlp_w64_d2
+    type: fixed_context_mlp
+    hidden_channels: 64
+    message_layers: 2
+  - id: gated_mpnn_w64_d2
+    type: gated_mpnn
+    hidden_channels: 64
+    message_layers: 2
+  - id: tree_hgb_context
+    type: tree_baseline
+    hidden_channels: 0
+    message_layers: 0
+    seeds: [20261023]

@@ -4,10 +4,14 @@ from __future__ import annotations
 from typing import Any, Mapping
 
 from .hetero_mpnn import HeteroMPNN
+from .variants import FixedContextMLP, GatedMPNN, VoidMLP
 
 
 MODEL_REGISTRY = {
     "hetero_mpnn": HeteroMPNN,
+    "void_mlp": VoidMLP,
+    "fixed_context_mlp": FixedContextMLP,
+    "gated_mpnn": GatedMPNN,
 }
 
 
@@ -19,4 +23,4 @@ def build_model(name: str, config: Mapping[str, Any]):
     return model_type(**dict(config))
 
 
-__all__ = ["HeteroMPNN", "MODEL_REGISTRY", "build_model"]
+__all__ = ["FixedContextMLP", "GatedMPNN", "HeteroMPNN", "MODEL_REGISTRY", "VoidMLP", "build_model"]
