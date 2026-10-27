@@ -146,32 +146,35 @@ def _check_record(record: dict[str, Any]) -> None:
             raise ValueError(f"targets/{name} must have first dimension n_voids={n_voids}")
 
 
+def load_graph_record_from_group(group: h5py.Group, sample_id: str) -> dict[str, Any]:
+    """Read and validate one sample from an already-open HDF5 group."""
+    record: dict[str, Any] = {key: _read_group(group[key]) for key in (
+        "atoms", "voids", "edges", "targets"
+    )}
+    if "lattice_angstrom" not in group:
+        raise ValueError(f"{group.name} is missing lattice_angstrom")
+    record["lattice_angstrom"] = group["lattice_angstrom"][()]
+    record["sample_id"] = sample_id
+    record["metadata"] = (
+        _read_group(group["metadata"], include_attrs=True)
+        if "metadata" in group else
+        {key: _attr_value(value) for key, value in group.attrs.items()}
+    )
+    _check_record(record)
+    return record
+
+
 def load_graph_record(h5_path: str | Path, sample_id: str) -> dict[str, Any]:
     """Load and validate one graph record from a shard.
 
-    All returned arrays are NumPy arrays detached from the file. The result is
-    a mapping with ``atoms``, ``voids``, ``edges``, ``targets``, lattice and
-    group attributes. Targets are never merged into node feature arrays.
+    All returned arrays are detached from the file. Targets stay separate from
+    node features and can be attached as labels by downstream loaders.
     """
     group_key = f"samples/{sample_id}"
     with h5py.File(h5_path, "r") as handle:
         if group_key not in handle:
             raise KeyError(f"Sample {sample_id!r} not found in {h5_path}")
-        group = handle[group_key]
-        record: dict[str, Any] = {key: _read_group(group[key]) for key in (
-            "atoms", "voids", "edges", "targets"
-        )}
-        if "lattice_angstrom" not in group:
-            raise ValueError(f"{group_key} is missing lattice_angstrom")
-        record["lattice_angstrom"] = group["lattice_angstrom"][()]
-        record["sample_id"] = sample_id
-        record["metadata"] = (
-            _read_group(group["metadata"], include_attrs=True)
-            if "metadata" in group else
-            {key: _attr_value(value) for key, value in group.attrs.items()}
-        )
-    _check_record(record)
-    return record
+        return load_graph_record_from_group(handle[group_key], sample_id)
 
 
 class HDF5GraphDataset:
@@ -283,4 +286,4 @@ def to_pyg_heterodata(record: dict[str, Any], *, y_key: str = "elf_at_center"):
     return data
 
 
-__all__ = ["HDF5GraphDataset", "load_graph_record", "to_pyg_heterodata"]
+__all__ = ["HDF5GraphDataset", "load_graph_record", "load_graph_record_from_group", "to_pyg_heterodata"]
