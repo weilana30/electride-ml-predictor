@@ -1,0 +1,16 @@
+# Optional later-stage variants; not included in screen_variants.slurm.
+atomic_number_only
+atom_chemistry_only
+atom_periodic_table_groups
+atom_validity_only
+void_nearest_distance_only
+void_clearance_only
+void_coordination_counts_only
+void_nearest_distances_only
+edge_distances_only
+atom_derived_coordination
+void_derived_neighborhood
+void_derived_environment
+richer_edge_context
+void_only_no_edge_distance
+atom_only_no_edge_distance

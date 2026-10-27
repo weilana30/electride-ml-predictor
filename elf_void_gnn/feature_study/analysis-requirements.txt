@@ -1,0 +1,5 @@
+# Additive overlay for the existing Python 3.11 elf_void_gnn training environment.
+# Core requirements (NumPy, h5py, PyArrow, PyTorch and PyG) remain supplied there.
+scipy==1.13.1
+pandas==2.2.3
+matplotlib==3.9.4

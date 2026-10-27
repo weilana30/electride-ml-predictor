@@ -21,11 +21,11 @@ from torch_geometric.loader import DataLoader
 from elf_void_gnn.data import (
     ShardShuffleSampler,
     ShardedGraphDataset,
-    fit_training_statistics,
     read_split_table,
 )
 from elf_void_gnn.metrics import evaluation_metrics
 from elf_void_gnn.models import build_model
+from elf_void_gnn.feature_study import FEATURE_VARIANTS, apply_feature_variant
 
 
 SPLIT_NOTE = (
@@ -140,12 +140,91 @@ def atomic_json(path: Path, payload: Any) -> None:
     os.replace(temporary, path)
 
 
+class FeatureVariantDataset(torch.utils.data.Dataset):
+    """Apply a fixed-shape feature adapter before PyG batches graphs."""
+    def __init__(self, dataset, variant: str):
+        self.dataset = dataset
+        self.variant = variant
+
+    def __len__(self):
+        return len(self.dataset)
+
+    def __getitem__(self, index):
+        graph = self.dataset[index]
+        topology = {relation: graph[relation].edge_index for relation in graph.edge_types}
+        graph = apply_feature_variant(graph, self.variant, copy_graph=False)
+        if graph["atom"].x.shape[1] != 14 or graph["void"].x.shape[1] != 9:
+            raise RuntimeError(f"{self.variant} changed the fixed 14/9 node feature widths")
+        for relation in graph.edge_types:
+            store = graph[relation]
+            if store.edge_index is not topology[relation]:
+                raise RuntimeError(f"{self.variant} changed graph topology for {relation}")
+            if store.edge_index.ndim != 2 or store.edge_index.shape[0] != 2:
+                raise RuntimeError(f"{self.variant} changed graph topology for {relation}")
+            edge_features = getattr(store, "edge_features", None)
+            if edge_features is not None and edge_features.shape[-1] != 8:
+                raise RuntimeError(f"{self.variant} must retain eight edge channels for {relation}")
+        return graph
+
+
+def transformed_training_statistics(dataset) -> dict[str, Any]:
+    """Fit normalization moments on adapted training graphs only."""
+    atom_sum = np.zeros(5, dtype=np.float64)
+    atom_sq = np.zeros(5, dtype=np.float64)
+    void_sum = np.zeros(9, dtype=np.float64)
+    void_sq = np.zeros(9, dtype=np.float64)
+    atom_count = void_count = target_count = 0
+    target_sum = target_sq = 0.0
+    for index in range(len(dataset)):
+        graph = dataset[index]
+        atoms = graph["atom"].x.detach().cpu().numpy().astype(np.float64)[:, :5]
+        voids = graph["void"].x.detach().cpu().numpy().astype(np.float64)
+        targets = graph["void"].y.detach().cpu().numpy().astype(np.float64)
+        atom_sum += atoms.sum(axis=0)
+        atom_sq += np.square(atoms).sum(axis=0)
+        atom_count += len(atoms)
+        if len(voids):
+            void_sum += voids.sum(axis=0)
+            void_sq += np.square(voids).sum(axis=0)
+            void_count += len(voids)
+            target_sum += float(targets.sum())
+            target_sq += float(np.square(targets).sum())
+            target_count += len(targets)
+    if not atom_count or not void_count or not target_count:
+        raise ValueError("Training split has no atom, void, or ELF target values")
+
+    def moments(total, square_total, count):
+        mean = total / count
+        variance = np.maximum(square_total / count - np.square(mean), 1e-12)
+        return mean.astype(np.float32).tolist(), np.sqrt(variance).astype(np.float32).tolist()
+    atom_mean, atom_std = moments(atom_sum, atom_sq, atom_count)
+    void_mean, void_std = moments(void_sum, void_sq, void_count)
+    target_mean = target_sum / target_count
+    target_std = float(np.sqrt(max(target_sq / target_count - target_mean**2, 1e-12)))
+    return {"atom_mean": atom_mean, "atom_std": atom_std,
+            "void_mean": void_mean, "void_std": void_std,
+            "target_mean": float(target_mean), "target_std": target_std,
+            "atom_count": atom_count, "void_count": void_count}
+
+
+def build_split_datasets(dataset_root: Path, split_rows: dict[str, list[dict[str, Any]]], evaluation_mode: str):
+    """Open only splits allowed by the selected evaluation mode."""
+    return {
+        split: ShardedGraphDataset(dataset_root, rows)
+        for split, rows in split_rows.items()
+        if split != "test" or evaluation_mode == "final-test"
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=Path(__file__).parent / "configs/elf_center_v1.yaml")
     parser.add_argument("--dataset-root", type=Path)
     parser.add_argument("--run-dir", type=Path)
     parser.add_argument("--require-gpu", action="store_true")
+    parser.add_argument("--feature-variant", choices=sorted(FEATURE_VARIANTS))
+    parser.add_argument("--evaluation-mode", choices=("validation-only", "final-test"), default="final-test")
+    parser.add_argument("--seed", type=int)
     args = parser.parse_args()
 
     config = yaml.safe_load(args.config.read_text())
@@ -160,7 +239,7 @@ def main() -> int:
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     if args.require_gpu and device.type != "cuda":
         raise RuntimeError("A ROCm GPU is required for this run but is not available")
-    seed = int(config["seed"])
+    seed = args.seed if args.seed is not None else int(config["seed"])
     seed_everything(seed)
     logger.info("device=%s torch=%s hip=%s", device, torch.__version__, torch.version.hip)
     if device.type == "cuda":
@@ -168,10 +247,9 @@ def main() -> int:
         torch.cuda.reset_peak_memory_stats(device)
 
     split_rows = read_split_table(dataset_root)
-    datasets = {
-        split: ShardedGraphDataset(dataset_root, rows)
-        for split, rows in split_rows.items()
-    }
+    raw_datasets = build_split_datasets(dataset_root, split_rows, args.evaluation_mode)
+    variant = args.feature_variant or config.get("feature_variant", "baseline")
+    datasets = {split: FeatureVariantDataset(dataset, variant) for split, dataset in raw_datasets.items()}
     logger.info(
         "splits samples=%s families=%s",
         {name: len(rows) for name, rows in split_rows.items()},
@@ -180,10 +258,17 @@ def main() -> int:
             for name, rows in split_rows.items()
         },
     )
-    stats = fit_training_statistics(datasets["train"])
+    stats = transformed_training_statistics(datasets["train"])
     model = build_model(config["model"]["type"], {
         key: value for key, value in config["model"].items() if key != "type"
     }).to(device)
+    if config["model"]["type"] != "hetero_mpnn":
+        raise ValueError("Feature study requires the unchanged hetero_mpnn architecture")
+    if int(config["model"].get("radial_channels", 8)) != 8:
+        raise ValueError("Feature study requires the fixed eight-channel edge representation")
+    parameter_count = sum(parameter.numel() for parameter in model.parameters())
+    if parameter_count != 80001:
+        raise ValueError(f"Unexpected HeteroMPNN parameter count: {parameter_count} (expected 80001)")
     model.set_training_statistics(stats)
     optimizer = torch.optim.Adam(
         model.parameters(),
@@ -191,7 +276,7 @@ def main() -> int:
         weight_decay=float(config["training"]["weight_decay"]),
     )
 
-    train_sampler = ShardShuffleSampler(datasets["train"], seed)
+    train_sampler = ShardShuffleSampler(raw_datasets["train"], seed)
     num_workers = int(config["training"]["num_workers"])
     loader_options = {
         "batch_size": int(config["training"]["batch_size"]),
@@ -200,7 +285,8 @@ def main() -> int:
     }
     train_loader = DataLoader(datasets["train"], sampler=train_sampler, **loader_options)
     validation_loader = DataLoader(datasets["validation"], shuffle=False, **loader_options)
-    test_loader = DataLoader(datasets["test"], shuffle=False, **loader_options)
+    test_loader = (DataLoader(datasets["test"], shuffle=False, **loader_options)
+                   if args.evaluation_mode == "final-test" else None)
 
     history = []
     best_rmse = float("inf")
@@ -290,15 +376,15 @@ def main() -> int:
     validation_metrics, _ = evaluate(
         model, validation_loader, device, collect_predictions=False
     )
-    test_metrics, predictions = evaluate(
-        model, test_loader, device, collect_predictions=True
-    )
+    test_metrics, predictions = (evaluate(model, test_loader, device, collect_predictions=True)
+                                 if test_loader is not None else (None, []))
     training_mean = float(stats["target_mean"])
     train_mean_baseline = {
         "validation": evaluate_constant(validation_loader, training_mean, device),
-        "test": evaluate_constant(test_loader, training_mean, device),
+        "test": evaluate_constant(test_loader, training_mean, device) if test_loader is not None else None,
     }
-    pq.write_table(pa.Table.from_pylist(predictions), run_dir / "test_predictions.parquet")
+    if test_loader is not None:
+        pq.write_table(pa.Table.from_pylist(predictions), run_dir / "test_predictions.parquet")
 
     peak_memory = (
         int(torch.cuda.max_memory_allocated(device))
@@ -316,9 +402,21 @@ def main() -> int:
             for name, rows in split_rows.items()
         },
         "seed": seed,
+        "feature_variant": variant,
+        "evaluation_mode": args.evaluation_mode,
         "best_epoch": best_epoch,
         "best_validation_rmse": best_rmse,
         "model": config["model"],
+        "architecture_signature": {
+            "type": "hetero_mpnn",
+            "hidden_channels": int(config["model"].get("hidden_channels", 64)),
+            "message_layers": int(config["model"].get("message_layers", 2)),
+            "radial_channels": int(config["model"].get("radial_channels", 8)),
+            "atom_input_width": 14,
+            "void_input_width": 9,
+            "edge_width": 8,
+            "parameter_count": parameter_count,
+        },
         "validation": validation_metrics,
         "test": test_metrics,
         "training_mean_baseline": train_mean_baseline,
@@ -336,7 +434,8 @@ def main() -> int:
         "history": history,
     }
     atomic_json(run_dir / "metrics.json", metrics)
-    logger.info("test_rmse=%.6f test_mae=%.6f", test_metrics["pooled"]["rmse"], test_metrics["pooled"]["mae"])
+    if test_metrics is not None:
+        logger.info("test_rmse=%.6f test_mae=%.6f", test_metrics["pooled"]["rmse"], test_metrics["pooled"]["mae"])
     logger.info("artifacts=%s", run_dir)
     return 0
 

@@ -68,7 +68,11 @@ class HeteroMessageLayer(nn.Module):
             if name not in self.messages or edge_index.numel() == 0:
                 continue
             source_index, destination_index = edge_index
-            radial = self.radial(relation.edge_distance)
+            # Feature studies may supply a fixed-width structural encoding;
+            # otherwise preserve the baseline radial-distance transform.
+            radial = getattr(relation, "edge_features", None)
+            if radial is None:
+                radial = self.radial(relation.edge_distance)
             messages = self.messages[name](
                 torch.cat((states[source_type][source_index], radial), dim=-1)
             )
