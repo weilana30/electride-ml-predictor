@@ -1,0 +1,7 @@
+# Frozen 2026-10-27 from validation-only Stage A/B results; test remained sealed.
+# baseline: required reference, pooled validation RMSE 0.065512
+# minimal: required anchor, pooled validation RMSE 0.080854
+# atom-only: strongest macro-family improvement and nearly best pooled RMSE 0.059312
+baseline
+atomic_number_nearest_void_distances_edge_distances
+atom_full_chemistry_and_periodicity
