@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -uo pipefail
-: "${ELFNET_CLUSTER_DIR:?Submit through submit_node.sh so cluster paths are exported}"
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+source "$script_dir/negishi.env"
 cd "$ELFNET_REPO"
 
 worker_id="${SLURM_PROCID:?Must be launched by srun}"

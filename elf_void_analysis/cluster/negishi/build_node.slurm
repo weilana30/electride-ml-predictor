@@ -3,11 +3,13 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=128
 #SBATCH --cpus-per-task=1
+#SBATCH --mem=0
 #SBATCH --exclusive
 #SBATCH --time=04:00:00
 
 set -euo pipefail
-: "${ELFNET_CLUSTER_DIR:?Submit through submit_node.sh so cluster paths are exported}"
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+source "$script_dir/negishi.env"
 cd "$ELFNET_REPO"
 module load conda
 conda activate "$ELFNET_CONDA_PREFIX"
@@ -40,4 +42,4 @@ export ELFNET_CHUNK_COUNT="$chunk_count"
 mkdir -p "$ELFNET_RUN_ROOT/chunks"
 echo "Running $chunk_count chunks across $SLURM_NTASKS workers on one Negishi node"
 srun --ntasks="$SLURM_NTASKS" --cpus-per-task=1 --kill-on-bad-exit=0 \
-  bash "$ELFNET_CLUSTER_DIR/node_worker.sh"
+  bash "$script_dir/node_worker.sh"
