@@ -23,6 +23,33 @@ FEATURE_VARIANTS: dict[str, dict[str, Any]] = {
         "mode": "mask", "atom_columns": tuple(range(14)), "void_columns": (),
         "description": "All stored atom chemistry and periodic-table channels."
     },
+    # Schema-defined ablations retain all other atom groups, including the
+    # validity flag paired with each descriptor group.
+    "atom_ablate_chemistry": {
+        "mode": "mask", "atom_columns": (0, 3, 4, 5, 6, 7, 8, 11, 12, 13),
+        "void_columns": tuple(range(9)),
+        "description": "Remove electronegativity and radius and their validity flags."
+    },
+    "atom_ablate_electronegativity": {
+        "mode": "mask", "atom_columns": (0, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13),
+        "void_columns": tuple(range(9)),
+        "description": "Remove electronegativity and its validity flag."
+    },
+    "atom_ablate_period_group": {
+        "mode": "mask", "atom_columns": (0, 1, 2, 5, 6, 7, 8, 9, 10, 13),
+        "void_columns": tuple(range(9)),
+        "description": "Remove period/group and their validity flags."
+    },
+    "atom_ablate_radius": {
+        "mode": "mask", "atom_columns": (0, 1, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13),
+        "void_columns": tuple(range(9)),
+        "description": "Remove atomic radius and its validity flag."
+    },
+    "atom_ablate_block_indicators": {
+        "mode": "mask", "atom_columns": (0, 1, 2, 3, 4, 9, 10, 11, 12),
+        "void_columns": tuple(range(9)),
+        "description": "Remove s/p/d/f block indicators and their shared validity flag."
+    },
     "void_nearest_distance_only": {"mode": "mask", "atom_columns": (), "void_columns": (1,)},
     "void_clearance_only": {"mode": "mask", "atom_columns": (), "void_columns": (0,)},
     "void_coordination_counts_only": {"mode": "mask", "atom_columns": (), "void_columns": (2, 3, 4)},
@@ -30,6 +57,38 @@ FEATURE_VARIANTS: dict[str, dict[str, Any]] = {
     "void_full_geometry": {
         "mode": "mask", "atom_columns": (), "void_columns": tuple(range(9)),
         "description": "All stored clearance, neighbor counts, and nearest-distance geometry."
+    },
+    "void_ablate_coordination": {
+        "mode": "mask", "atom_columns": tuple(range(14)),
+        "void_columns": (0, 1, 5, 6, 7, 8),
+        "description": "Remove atom-count coordination descriptors (void slots 2–4)."
+    },
+    "void_ablate_nearest_distances": {
+        "mode": "mask", "atom_columns": tuple(range(14)),
+        "void_columns": (0, 1, 2, 3, 4),
+        "description": "Remove four nearest-atom distances (void slots 5–8)."
+    },
+    "void_ablate_clearance_nearest_alias": {
+        "mode": "mask", "atom_columns": tuple(range(14)),
+        "void_columns": (2, 3, 4, 5, 6, 7, 8),
+        "description": "Remove clearance and nearest-atom alias slots 0–1; slot 1 duplicates retained slot 5."
+    },
+    "atom_chemistry_void_coordination_removed": {
+        "mode": "mask", "atom_columns": (0, 3, 4, 5, 6, 7, 8, 11, 12, 13),
+        "void_columns": (0, 1, 5, 6, 7, 8),
+        "description": "Joint cell: remove atom chemistry/radius and void coordination counts."
+    },
+    "atom_chemistry_no_edge_distance": {
+        "mode": "ablation",
+        "atom_columns": (0, 3, 4, 5, 6, 7, 8, 11, 12, 13),
+        "void_columns": tuple(range(9)), "zero_edge_relations": ("all",),
+        "description": "Joint cell: remove atom chemistry/radius and all edge-distance channels."
+    },
+    "void_nearest_no_void_atom_distance": {
+        "mode": "ablation", "atom_columns": tuple(range(14)),
+        "void_columns": (0, 1, 2, 3, 4),
+        "zero_edge_relations": ("void_to_atom", "atom_to_void"),
+        "description": "Joint cell: remove nearest-atom void distances and void-atom edge distances."
     },
     "atomic_number_void_geometry": {
         "mode": "mask", "atom_columns": (0,), "void_columns": tuple(range(9))

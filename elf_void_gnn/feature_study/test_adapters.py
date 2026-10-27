@@ -11,6 +11,7 @@ class FeatureAdapterTests(unittest.TestCase):
         graph = HeteroData()
         graph["atom"].x = torch.arange(42, dtype=torch.float32).reshape(3, 14)
         graph["void"].x = torch.arange(18, dtype=torch.float32).reshape(2, 9)
+        graph["void"].x[:, 1] = graph["void"].x[:, 5]  # schema alias: nearest_atom_distance == nearest_1_distance
         graph["void"].y = torch.tensor([99.0, 100.0])
         for relation in (("atom", "to", "atom"), ("void", "to", "atom"),
                          ("atom", "to", "void"), ("void", "to", "void")):
@@ -87,6 +88,49 @@ class FeatureAdapterTests(unittest.TestCase):
                 self.assertTrue(torch.equal(varied[relation].edge_index, original_edges[relation]))
                 self.assertEqual(tuple(varied[relation].edge_features.shape), (1, 8))
                 self.assertEqual(torch.count_nonzero(varied[relation].edge_features).item(), 0)
+
+    def test_stage_b_group_masks_pair_validity_flags(self):
+        source = self.graph()
+        checks = {
+            "atom_ablate_chemistry": ("atom", (1, 2, 9, 10)),
+            "atom_ablate_electronegativity": ("atom", (1, 9)),
+            "atom_ablate_period_group": ("atom", (3, 4, 11, 12)),
+            "atom_ablate_radius": ("atom", (2, 10)),
+            "atom_ablate_block_indicators": ("atom", (5, 6, 7, 8, 13)),
+            "void_ablate_coordination": ("void", (2, 3, 4)),
+            "void_ablate_nearest_distances": ("void", (5, 6, 7, 8)),
+            "void_ablate_clearance_nearest_alias": ("void", (0, 1)),
+        }
+        for name, (node_type, removed) in checks.items():
+            varied = apply_feature_variant(source, name, copy_graph=True)
+            self.assertEqual(torch.count_nonzero(varied[node_type].x[:, list(removed)]).item(), 0)
+            keep = [i for i in range(varied[node_type].x.shape[1]) if i not in removed]
+            self.assertTrue(torch.equal(varied[node_type].x[:, keep], source[node_type].x[:, keep]))
+            if name == "void_ablate_clearance_nearest_alias":
+                self.assertTrue(torch.equal(varied["void"].x[:, 5], source["void"].x[:, 5]))
+
+    def test_stage_b_joint_cells_remove_only_prespecified_groups(self):
+        source = self.graph()
+        full_edges = ("atom", "to", "atom")
+        cases = {
+            "atom_chemistry_void_coordination_removed": (("atom", (1, 2, 9, 10)), ("void", (2, 3, 4)), ()),
+            "atom_chemistry_no_edge_distance": (("atom", (1, 2, 9, 10)), ("void", ()), ("all",)),
+            "void_nearest_no_void_atom_distance": (("void", (5, 6, 7, 8)), ("atom", ()), ("void_atom",)),
+        }
+        for name, (first_removed, second_removed, edge_mask) in cases.items():
+            varied = apply_feature_variant(source, name, copy_graph=True)
+            for node_type, removed in (first_removed, second_removed):
+                if removed:
+                    self.assertEqual(torch.count_nonzero(varied[node_type].x[:, list(removed)]).item(), 0)
+            if edge_mask == ("all",):
+                for relation in varied.edge_types:
+                    self.assertEqual(torch.count_nonzero(varied[relation].edge_features).item(), 0)
+            elif edge_mask == ("void_atom",):
+                self.assertEqual(torch.count_nonzero(varied["void", "to", "atom"].edge_features).item(), 0)
+                self.assertEqual(torch.count_nonzero(varied["atom", "to", "void"].edge_features).item(), 0)
+                self.assertTrue(torch.equal(
+                    varied[full_edges].edge_distance, source[full_edges].edge_distance
+                ))
 
 
 if __name__ == "__main__":

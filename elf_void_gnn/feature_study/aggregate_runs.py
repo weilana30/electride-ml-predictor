@@ -2,8 +2,8 @@
 """Aggregate declared feature-study variants on one explicit evaluation split.
 
 Screening defaults to validation. Only use ``--split test`` for a frozen final
-comparison. Manifest columns are run_id, variant, feature_groups, baseline,
-split_id. split_id must be the same opaque split fingerprint for paired runs.
+comparison. Manifest columns include run_id, variant, feature_groups, baseline,
+split_id, and seed. split_id must be the same opaque split fingerprint for paired runs.
 Run metrics must include per-family metrics for the selected split.
 """
 
@@ -15,7 +15,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 METRICS = ("mae", "rmse", "r2")
-REQUIRED = {"run_id", "variant", "feature_groups", "baseline", "split_id"}
+REQUIRED = {"run_id", "variant", "feature_groups", "baseline", "split_id", "seed"}
+INTERACTION_GRIDS = (
+    ("atom chemistry/radius × void coordination", "atom_chemistry_void_coordination_removed",
+     "atom_ablate_chemistry", "void_ablate_coordination"),
+    ("atom chemistry/radius × all edge distances", "atom_chemistry_no_edge_distance",
+     "atom_ablate_chemistry", "no_edge_distance"),
+    ("nearest void distances × void–atom edge distances", "void_nearest_no_void_atom_distance",
+     "void_ablate_nearest_distances", "no_void_atom_distance"),
+)
 
 
 def ci(values, seed=20261026, draws=20000):
@@ -25,6 +33,77 @@ def ci(values, seed=20261026, draws=20000):
         return np.nan, np.nan
     sims = v[rng.integers(0, len(v), size=(draws, len(v)))].mean(axis=1)
     return tuple(float(x) for x in np.quantile(sims, [0.025, 0.975]))
+
+
+def interaction_rows(manifest, loaded, byid, draws):
+    """Compute exact, seed-matched difference-in-differences for planned grids."""
+    run_by_variant_seed = {}
+    for row in manifest:
+        key = (row["variant"].strip(), row["seed"].strip())
+        if key in run_by_variant_seed:
+            raise ValueError(f"duplicate run for variant={key[0]}, seed={key[1]}")
+        run_by_variant_seed[key] = row["run_id"].strip()
+
+    effects = []
+    for grid, joint_variant, single_a_variant, single_b_variant in INTERACTION_GRIDS:
+        for joint in (r for r in manifest if r["variant"].strip() == joint_variant):
+            joint_id = joint["run_id"].strip()
+            baseline_id = joint["baseline"].strip()
+            seed = joint["seed"].strip()
+            single_a = run_by_variant_seed.get((single_a_variant, seed))
+            single_b = run_by_variant_seed.get((single_b_variant, seed))
+            cells = {
+                "baseline": baseline_id,
+                single_a_variant: single_a,
+                single_b_variant: single_b,
+            }
+            missing = [cell for cell, run_id in cells.items() if not run_id]
+            if missing:
+                raise ValueError(
+                    f"interaction {grid} seed {seed} is missing cells: {', '.join(missing)}"
+                )
+            for cell, run_id in cells.items():
+                if run_id not in loaded:
+                    raise ValueError(f"interaction {grid}: {cell} run {run_id} is not loaded")
+                cell_row = byid[run_id]
+                if cell_row["split_id"].strip() != joint["split_id"].strip():
+                    raise ValueError(f"interaction {grid}: split IDs differ")
+                if cell == "baseline" and (
+                    cell_row["variant"].strip() != "baseline"
+                    or cell_row["seed"].strip() != seed
+                ):
+                    raise ValueError(f"interaction {grid}: baseline cell has wrong variant or seed")
+                if cell != "baseline" and cell_row["baseline"].strip() != baseline_id:
+                    raise ValueError(f"interaction {grid}: {cell} does not share baseline")
+            joint_fam = loaded[joint_id][1]
+            base_fam = loaded[baseline_id][1]
+            a_fam = loaded[single_a][1]
+            b_fam = loaded[single_b][1]
+            if not (set(joint_fam) == set(base_fam) == set(a_fam) == set(b_fam)):
+                raise ValueError(f"interaction {grid}: family IDs differ across cells")
+            did = np.asarray(
+                [
+                    float(joint_fam[k]["rmse"]) - float(a_fam[k]["rmse"])
+                    - float(b_fam[k]["rmse"]) + float(base_fam[k]["rmse"])
+                    for k in sorted(joint_fam)
+                ]
+            )
+            low, high = ci(did, seed=20261026 + len(effects), draws=draws)
+            effects.append(
+                {
+                    "grid": grid,
+                    "run_id": joint_id,
+                    "seed": seed,
+                    "baseline": baseline_id,
+                    "single_a": single_a,
+                    "single_b": single_b,
+                    "macro_rmse_interaction": float(did.mean()),
+                    "ci95_low": low,
+                    "ci95_high": high,
+                    "family_count": len(did),
+                }
+            )
+    return effects
 
 
 def main():
@@ -144,62 +223,7 @@ def main():
         )
     df.to_csv(a.out_dir / "run_metrics.csv", index=False)
     edf.to_csv(a.out_dir / "paired_effects.csv", index=False)
-    # Interactions are residuals from additive macro-family RMSE changes, paired to one baseline.
-    interactions = []
-    for r in manifest:
-        groups = [
-            x.strip()
-            for x in r["feature_groups"].replace(";", ",").split(",")
-            if x.strip()
-        ]
-        if len(groups) < 2 or not r["baseline"].strip():
-            continue
-        base = r["baseline"].strip()
-        idsingle = []
-        for group in groups:
-            candidates = [
-                x
-                for x in manifest
-                if x["baseline"].strip() == base
-                and [
-                    z.strip()
-                    for z in x["feature_groups"].replace(";", ",").split(",")
-                    if z.strip()
-                ]
-                == [group]
-            ]
-            if not candidates:
-                break
-            idsingle.append(candidates[0]["run_id"].strip())
-        if len(idsingle) != len(groups):
-            continue
-        r_fam = loaded[r["run_id"].strip()][1]
-        b_fam = loaded[base][1]
-        combo = np.asarray(
-            [float(r_fam[k]["rmse"]) - float(b_fam[k]["rmse"]) for k in sorted(r_fam)]
-        )
-        add = np.zeros_like(combo)
-        for one in idsingle:
-            onefam = loaded[one][1]
-            add += np.asarray(
-                [
-                    float(onefam[k]["rmse"]) - float(b_fam[k]["rmse"])
-                    for k in sorted(r_fam)
-                ]
-            )
-        resid = combo - add
-        lo, hi = ci(resid, seed=20261026 + len(interactions), draws=a.bootstrap_draws)
-        interactions.append(
-            {
-                "run_id": r["run_id"].strip(),
-                "baseline": base,
-                "feature_groups": ",".join(groups),
-                "macro_rmse_interaction": float(resid.mean()),
-                "ci95_low": lo,
-                "ci95_high": hi,
-                "family_count": len(resid),
-            }
-        )
+    interactions = interaction_rows(manifest, loaded, byid, a.bootstrap_draws)
     pd.DataFrame(interactions).to_csv(a.out_dir / "interactions.csv", index=False)
     # Figures identify the selected split in both title and axes, including frozen-test mode.
     fig, ax = plt.subplots(figsize=(7, 5))

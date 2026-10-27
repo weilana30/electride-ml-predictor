@@ -12,6 +12,7 @@ edges are paired. All are descriptive associations, not causal importance.
 from __future__ import annotations
 import argparse
 import csv
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -23,6 +24,24 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from elf_void_gnn.data import ShardedGraphDataset, read_split_table
 
 METHODS = ("pearson", "spearman")
+
+
+def update_missingness(stats, group, feature, values, valid_values=None):
+    values = np.asarray(values, float).reshape(-1)
+    finite = np.isfinite(values)
+    key = (group, feature)
+    item = stats.setdefault(
+        key,
+        {"samples": 0, "rows": 0, "finite_rows": 0, "valid_rows": 0, "valid_observations": 0},
+    )
+    item["samples"] += 1
+    item["rows"] += int(len(values))
+    item["finite_rows"] += int(finite.sum())
+    if valid_values is not None:
+        valid = np.asarray(valid_values, float).reshape(-1)
+        valid_finite = np.isfinite(valid)
+        item["valid_rows"] += int(valid_finite.sum())
+        item["valid_observations"] += int(np.nansum(valid))
 
 
 def pair_corr(x, y, method):
@@ -70,9 +89,37 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--dataset-root", type=Path, required=True)
     p.add_argument("--out-dir", type=Path, required=True)
+    p.add_argument(
+        "--max-per-family",
+        type=int,
+        default=100,
+        help=(
+            "Analyze a deterministic, hash-selected, family-stratified sample "
+            "of at most this many training structures per family (default: 100). "
+            "Use 0 for every training structure."
+        ),
+    )
     a = p.parse_args()
+    if a.max_per_family < 0:
+        p.error("--max-per-family must be nonnegative")
     a.out_dir.mkdir(parents=True, exist_ok=True)
-    ds = ShardedGraphDataset(a.dataset_root, read_split_table(a.dataset_root)["train"])
+    train_rows = read_split_table(a.dataset_root)["train"]
+    all_train_count = len(train_rows)
+    if a.max_per_family:
+        by_family = {}
+        for row in train_rows:
+            by_family.setdefault(row["family_id"], []).append(row)
+        train_rows = []
+        for family_id, rows in sorted(by_family.items()):
+            rows = sorted(
+                rows,
+                key=lambda row: hashlib.sha256(
+                    f"elfnet-feature-correlation-v1:{family_id}:{row['sample_id']}".encode()
+                ).digest(),
+            )
+            train_rows.extend(rows[: a.max_per_family])
+        train_rows.sort(key=lambda row: row["sample_id"])
+    ds = ShardedGraphDataset(a.dataset_root, train_rows)
     schema_path = a.dataset_root / "schema.json"
     if not schema_path.exists():
         schema_path = (
@@ -87,7 +134,7 @@ def main():
     }
     parts = {}
     sample_rows = {}
-    missing = []
+    missing_stats = {}
     target_balanced = {}
     target_parts = {}
     for shard, sid, family in ds.items:
@@ -108,39 +155,13 @@ def main():
                     )
                     for j, n in enumerate(vns):
                         cols[f"validity.{n}"] = valid[:, j]
-                        missing.append(
-                            dict(
-                                sample_id=sid,
-                                family_id=family,
-                                group="atom_validity",
-                                feature=n,
-                                rows=len(valid),
-                                finite_rate=(
-                                    float(np.isfinite(valid[:, j]).mean())
-                                    if len(valid)
-                                    else np.nan
-                                ),
-                                valid_rate=(
-                                    float(np.nanmean(valid[:, j]))
-                                    if len(valid)
-                                    else np.nan
-                                ),
-                            )
+                        update_missingness(
+                            missing_stats, "atom_validity", n, valid[:, j], valid[:, j]
                         )
                 for n, v in cols.items():
                     parts.setdefault((group, n), []).append((sid, v))
                     finite = np.isfinite(v)
-                    missing.append(
-                        dict(
-                            sample_id=sid,
-                            family_id=family,
-                            group=group,
-                            feature=n,
-                            rows=len(v),
-                            finite_rate=float(finite.mean()) if len(v) else np.nan,
-                            valid_rate=np.nan,
-                        )
-                    )
+                    update_missingness(missing_stats, group, n, v)
                     row[f"{group}.{n}"] = (
                         float(np.nanmean(v)) if len(v) and finite.any() else np.nan
                     )
@@ -169,19 +190,7 @@ def main():
                     z = v[np.isfinite(v)]
                     row[f"edge.{rel}.mean"] = float(np.mean(z)) if len(z) else np.nan
                     row[f"edge.{rel}.std"] = float(np.std(z)) if len(z) else np.nan
-                    missing.append(
-                        dict(
-                            sample_id=sid,
-                            family_id=family,
-                            group=rel,
-                            feature=key,
-                            rows=len(v),
-                            finite_rate=(
-                                float(np.isfinite(v).mean()) if len(v) else np.nan
-                            ),
-                            valid_rate=np.nan,
-                        )
-                    )
+                    update_missingness(missing_stats, rel, key, v)
         sample_rows[sid] = row
     # Within-group pooled and sample-balanced within-structure correlations.
     out = []
@@ -326,19 +335,69 @@ def main():
         w.writerows(out)
     with (a.out_dir / "missingness.csv").open("w", newline="") as f:
         fields = [
-            "sample_id",
-            "family_id",
             "group",
             "feature",
+            "samples",
             "rows",
             "finite_rate",
             "valid_rate",
         ]
         w = csv.DictWriter(f, fieldnames=fields)
         w.writeheader()
-        w.writerows(missing)
+        for (group, feature), stats in sorted(missing_stats.items()):
+            w.writerow(
+                {
+                    "group": group,
+                    "feature": feature,
+                    "samples": stats["samples"],
+                    "rows": stats["rows"],
+                    "finite_rate": (
+                        stats["finite_rows"] / stats["rows"] if stats["rows"] else np.nan
+                    ),
+                    "valid_rate": (
+                        stats["valid_observations"] / stats["valid_rows"]
+                        if stats["valid_rows"]
+                        else np.nan
+                    ),
+                }
+            )
+
+    import matplotlib.pyplot as plt
+
+    heat_names = summary_keys
+    heat = np.eye(len(heat_names), dtype=float)
+    for i, left in enumerate(heat_names):
+        for j in range(i):
+            r, _ = pair_corr(sample_arrays[left], sample_arrays[heat_names[j]], "pearson")
+            heat[i, j] = heat[j, i] = r
+    fig_size = max(8, min(16, 0.32 * len(heat_names)))
+    fig, ax = plt.subplots(figsize=(fig_size, fig_size))
+    image = ax.imshow(heat, cmap="coolwarm", vmin=-1, vmax=1, interpolation="nearest")
+    ax.set_xticks(range(len(heat_names)), heat_names, rotation=90, fontsize=6)
+    ax.set_yticks(range(len(heat_names)), heat_names, fontsize=6)
+    ax.set_title("Train-only Pearson correlation of structure-level feature means")
+    fig.colorbar(image, ax=ax, fraction=0.046, pad=0.04, label="Pearson r")
+    fig.tight_layout()
+    fig.savefig(a.out_dir / "train_feature_correlation_heatmap.png", dpi=180)
+    plt.close(fig)
     print(
-        f"wrote {len(out)} correlation rows and {len(missing)} missingness rows to {a.out_dir}"
+        f"wrote {len(out)} correlation rows and {len(missing_stats)} missingness summaries "
+        f"from {len(ds)} of {all_train_count} training structures to {a.out_dir}"
+    )
+    (a.out_dir / "analysis_meta.json").write_text(
+        json.dumps(
+            {
+                "source_split": "train",
+                "selection": "all" if not a.max_per_family else "deterministic_hash_stratified_by_family",
+                "max_per_family": a.max_per_family or None,
+                "structures_analyzed": len(ds),
+                "training_structures_available": all_train_count,
+                "family_count": len({family for _, _, family in ds.items}),
+                "statistics": ["Pearson", "Spearman"],
+            },
+            indent=2,
+        )
+        + "\n"
     )
 
 

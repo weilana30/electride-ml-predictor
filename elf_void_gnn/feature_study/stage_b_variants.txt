@@ -1,16 +1,21 @@
-# Optional later-stage variants; not included in screen_variants.slurm.
-atomic_number_only
-atom_chemistry_only
-atom_periodic_table_groups
-atom_validity_only
-void_nearest_distance_only
-void_clearance_only
-void_coordination_counts_only
-void_nearest_distances_only
-edge_distances_only
+# Stage B shortlist: each name maps to a fixed 14/9/8 input shape and the same
+# HeteroMPNN parameterization. Rows 1–8 are node-group ablations. Rows 1, 6,
+# and 9 complete the atom-chemistry × void-coordination 2x2 grid with Stage A
+# baseline. Rows 1 and 10 complete atom-chemistry × all-edge distance; rows 7
+# and 11 complete nearest-void-distance × void-atom-edge distance grids.
+# The last three evaluate richer structural contexts derived only from the
+# existing graph, without adding learned projections.
+atom_ablate_chemistry
+atom_ablate_electronegativity
+atom_ablate_period_group
+atom_ablate_radius
+atom_ablate_block_indicators
+void_ablate_coordination
+void_ablate_nearest_distances
+void_ablate_clearance_nearest_alias
+atom_chemistry_void_coordination_removed
+atom_chemistry_no_edge_distance
+void_nearest_no_void_atom_distance
 atom_derived_coordination
-void_derived_neighborhood
 void_derived_environment
 richer_edge_context
-void_only_no_edge_distance
-atom_only_no_edge_distance
