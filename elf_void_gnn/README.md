@@ -4,6 +4,14 @@
 
 Inputs are atom structural features plus validity flags and void structural features. Edge distances are encoded with eight radial basis channels. Target values are only used as labels. The registry interface is `forward(batch) -> one raw-scale ELF prediction per void`; add a model in `models/`, register its name in `models/__init__.py`, and keep the shared loader/trainer unchanged.
 
+## Research records
+
+- [`DATASET_PROVENANCE.md`](DATASET_PROVENANCE.md) records the raw ELFNet source, processed graph dataset, split fingerprint, graph contract, and label separation.
+- [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) records the extraction, training, architecture-sweep, and feature-study workflows.
+- [`architecture_test/research.md`](architecture_test/research.md) documents the architecture benchmark design and literature rationale.
+- [`architecture_test/RESULTS.md`](architecture_test/RESULTS.md) and [`architecture_test/DETAILED_RESULTS.md`](architecture_test/DETAILED_RESULTS.md) contain the benchmark results and interpretation.
+- [`feature_study/RESULTS.md`](feature_study/RESULTS.md) summarizes the completed fixed-architecture feature study.
+
 ## Negishi
 
 Create the separate environment using PyTorch 2.7.1 ROCm 6.3 and the pins in `requirements-rocm63.txt`; leave the extraction environment alone. From the repository root, create `/home/weilana/elfnet-runs/elf_void_gnn/logs`, then submit the GPU smoke script followed by the training script only after smoke succeeds:
