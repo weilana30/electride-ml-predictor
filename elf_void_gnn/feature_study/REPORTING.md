@@ -21,3 +21,16 @@ Install the plotting/data dependencies into the training environment once, if ne
 /home/weilana/.conda/envs/elfnet-train/bin/python -m pip install \
   -r elf_void_gnn/feature_study/analysis-requirements.txt
 ```
+
+After the frozen test evaluation and compact summary are complete, generate the
+ranked redundancy and predicted-versus-actual diagnostics with:
+
+```bash
+python -m elf_void_gnn.feature_study.plot_final_diagnostics \
+  --report-dir /home/weilana/elfnet-runs/feature-study/analysis/final-report \
+  --test-predictions /home/weilana/elfnet-runs/feature-study/final-test/job-44702592/test_predictions.parquet
+```
+
+This reads the existing report tables and frozen prediction artifact without
+training or evaluating a model. It writes `top_feature_redundancies.png` and
+`test_predicted_vs_actual.png` into the report directory.
