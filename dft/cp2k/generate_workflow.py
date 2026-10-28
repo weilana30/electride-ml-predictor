@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import csv
+import os
 import re
 from pathlib import Path
 
@@ -25,6 +26,13 @@ PSEUDO = {"Ba": ("DZVP-MOLOPT-SR-GTH-q10", "GTH-PBE-q10"),
           "Se": ("DZVP-MOLOPT-SR-GTH-q6", "GTH-PBE-q6"),
           "Mg": ("DZVP-MOLOPT-SR-GTH-q10", "GTH-PBE-q10"),
           "S": ("DZVP-MOLOPT-SR-GTH-q6", "GTH-PBE-q6")}
+
+
+def slurm_account() -> str:
+    account = os.environ.get("SLURM_ACCOUNT")
+    if not account:
+        raise RuntimeError("Set SLURM_ACCOUNT before generating Slurm files")
+    return account
 
 
 def read_qe_structure(path: Path):
@@ -138,7 +146,7 @@ def write_submit(case_dir: Path, material: str, group: str, case: str, memory_gb
     name = f"{material}_{group}_{case}"[:60]
     content = f"""#!/bin/bash
 #SBATCH --job-name={name}
-#SBATCH --account=andre176
+#SBATCH --account={slurm_account()}
 #SBATCH --output=slurm-%x-%j.out
 #SBATCH --error=slurm-%x-%j.err
 #SBATCH --time=03:00:00
@@ -224,7 +232,15 @@ def main():
             (case_dir / "cp2k.inp").write_text(make_cp2k_input(material, cart_atoms, lattice, cutoff, rel_cutoff, mesh, project, basis_level), encoding="utf-8")
             write_submit(case_dir, material, group, case, memory_gb)
         all_submit = outdir / "submit_all.slurm"
-        all_submit.write_text("#!/bin/bash\n#SBATCH --job-name=" + material + "_cp2k_submit\n#SBATCH --account=andre176\n#SBATCH --time=00:05:00\n#SBATCH --nodes=1\n#SBATCH --ntasks-per-node=1\n#SBATCH --mem=1G\n#SBATCH --partition=cpu\nset -euo pipefail\nfor case in cutoff/* kpoints/* basis/*; do (cd \"$case\" && sbatch submit.slurm); done\n", encoding="utf-8")
+        all_submit.write_text(
+            "#!/bin/bash\n#SBATCH --job-name=" + material
+            + f"_cp2k_submit\n#SBATCH --account={slurm_account()}\n"
+            "#SBATCH --time=00:05:00\n#SBATCH --nodes=1\n"
+            "#SBATCH --ntasks-per-node=1\n#SBATCH --mem=1G\n#SBATCH --partition=cpu\n"
+            "set -euo pipefail\nfor case in cutoff/* kpoints/* basis/*; do "
+            "(cd \"$case\" && sbatch submit.slurm); done\n",
+            encoding="utf-8",
+        )
         all_submit.chmod(0o755)
         print(f"{material}: {len(cart_atoms)} atoms, {len(sites)} structural void candidates, {len(cases)} CP2K cases -> {outdir}")
 

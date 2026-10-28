@@ -3,12 +3,20 @@
 
 from __future__ import annotations
 
+import os
 import re
 import shutil
 from pathlib import Path
 
 
 ROOT = Path(__file__).parent
+
+
+def slurm_account() -> str:
+    account = os.environ.get("SLURM_ACCOUNT")
+    if not account:
+        raise RuntimeError("Set SLURM_ACCOUNT before generating Slurm files")
+    return account
 
 
 def set_value(text: str, key: str, value: str) -> str:
@@ -93,7 +101,7 @@ def case_submit(material: str, parameter: str, label: str, levels_to_root: int, 
     parameter_name = "relax" if relax else parameter
     return f'''#!/bin/bash
 #SBATCH --job-name={job_name}
-#SBATCH --account=andre176
+#SBATCH --account={slurm_account()}
 #SBATCH --output=slurm-%x-%j.out
 #SBATCH --error=slurm-%x-%j.err
 #SBATCH --time={time_limit}
@@ -113,7 +121,7 @@ def submit_children(material: str, parameter: str, labels: list[str]) -> str:
     lines = [
         "#!/bin/bash",
         f"#SBATCH --job-name={material}_pbe_{parameter}_submit",
-        "#SBATCH --account=andre176",
+        f"#SBATCH --account={slurm_account()}",
         "#SBATCH --output=slurm-%x-%j.out",
         "#SBATCH --error=slurm-%x-%j.err",
         "#SBATCH --time=00:05:00",
@@ -140,7 +148,7 @@ def submit_children(material: str, parameter: str, labels: list[str]) -> str:
 def submit_relax(material: str) -> str:
     return f'''#!/bin/bash
 #SBATCH --job-name={material}_pbe_relax_submit
-#SBATCH --account=andre176
+#SBATCH --account={slurm_account()}
 #SBATCH --output=slurm-%x-%j.out
 #SBATCH --error=slurm-%x-%j.err
 #SBATCH --time=00:05:00
@@ -161,7 +169,7 @@ sbatch --chdir="$parent_dir/relax" \\
 def material_submit(material: str) -> str:
     return f'''#!/bin/bash
 #SBATCH --job-name={material}_pbe_parameter_tests
-#SBATCH --account=andre176
+#SBATCH --account={slurm_account()}
 #SBATCH --output=slurm-%x-%j.out
 #SBATCH --error=slurm-%x-%j.err
 #SBATCH --time=00:05:00

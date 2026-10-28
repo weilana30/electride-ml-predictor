@@ -7,11 +7,11 @@ and creates family-safe train/validation/test splits across the full dataset.
 
 ## Before submitting
 
-The repository already uses Negishi and Slurm. The defaults use account
-`andre176`, partition `cpu`, and QOS `normal`; confirm the account with `slist`
-and change `negishi.env` if your current allocation differs. Negishi requires
-an explicit account, partition, QOS, and time limit for jobs. The requested
-resources/time are in the `.slurm` files.
+The repository already uses Negishi and Slurm. Set `ELFNET_SLURM_ACCOUNT` in
+your shell or in an ignored `negishi.local.env` file before sourcing
+`negishi.env`. Confirm the allocation with `slist`. Negishi requires an
+explicit account, partition, QOS, and time limit for jobs. The requested
+resources/time are in the local `.slurm` files.
 
 The repository can stay in home while the 21 GB ELFNet source tree and all
 working outputs stay in scratch. The default source path is
