@@ -28,9 +28,9 @@ print('SEED=' + shlex.quote(str(row['seed'])))
 PY
 )"
 if [ "$MODEL_TYPE" = "tree_baseline" ]; then
-  /home/weilana/.conda/envs/elfnet-train/bin/python architecture_test/tree_baseline.py \
+  /home/weilana/.conda/envs/elfnet-train/bin/python elf_void_gnn/architecture_test/tree_baseline.py \
     --dataset-root "$DATASET_ROOT" --run-dir "$RUN_DIR" --seed "$SEED"
 else
-  /home/weilana/.conda/envs/elfnet-train/bin/python architecture_test/train_architectures.py \
+  /home/weilana/.conda/envs/elfnet-train/bin/python elf_void_gnn/architecture_test/train_architectures.py \
     --require-gpu --config "$CONFIG" --dataset-root "$DATASET_ROOT" --run-dir "$RUN_DIR"
 fi

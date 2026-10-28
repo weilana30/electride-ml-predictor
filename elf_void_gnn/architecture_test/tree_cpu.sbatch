@@ -25,5 +25,5 @@ print('DATASET_ROOT=' + shlex.quote(row['dataset_root']))
 print('SEED=' + shlex.quote(str(row['seed'])))
 PY
 )"
-"$PYTHON" architecture_test/tree_baseline.py \
+"$PYTHON" elf_void_gnn/architecture_test/tree_baseline.py \
   --dataset-root "$DATASET_ROOT" --run-dir "$RUN_DIR" --seed "$SEED"

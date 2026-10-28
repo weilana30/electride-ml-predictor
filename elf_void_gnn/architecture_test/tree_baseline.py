@@ -17,7 +17,7 @@ try:
     from sklearn.ensemble import HistGradientBoostingRegressor
 except ImportError as exc:  # pragma: no cover - environment-specific message
     raise SystemExit(
-        "scikit-learn is required; install architecture_test/requirements.txt in the training environment"
+        "scikit-learn is required; install elf_void_gnn/architecture_test/requirements.txt in the training environment"
     ) from exc
 
 from elf_void_gnn.data import ShardedGraphDataset, read_split_table
