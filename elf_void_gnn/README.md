@@ -2,6 +2,8 @@
 
 `hetero_mpnn` is the first registered per-void regressor. The pipeline consumes the saved train/validation/test assignment, derives normalization from training rows only, selects the checkpoint by validation RMSE, and evaluates the test rows once after selection. It reports pooled and per-family MAE, RMSE, and R² against the training-mean baseline. The split holds out exact named phase folders; related composition or pressure variants can appear on both sides, so this is preliminary held-out named-phase evaluation.
 
+The [direct confirmation study](confirmation_study/README.md) repeats three predeclared models over three new seeds on the existing family split used by the architecture and feature studies. It reports the partition's generalization limits and uses validation-only selection before descriptive test evaluation.
+
 Inputs are atom structural features plus validity flags and void structural features. Edge distances are encoded with eight radial basis channels. Target values are only used as labels. The registry interface is `forward(batch) -> one raw-scale ELF prediction per void`; add a model in `models/`, register its name in `models/__init__.py`, and keep the shared loader/trainer unchanged.
 
 ## Research records

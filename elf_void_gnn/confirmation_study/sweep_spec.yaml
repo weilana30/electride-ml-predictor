@@ -1,0 +1,31 @@
+name: elf-center-existing-split-confirmation
+dataset_root: /home/weilana/elfnet-datasets/elfnet-gnn-2026-10-23
+split_sha256: cdb3fc87b80cb05ce1cfdd8b94267696cfb0bb9e810004512144b0c2f2aac7f4
+run_root: /home/weilana/elfnet-runs/elf_void_gnn/confirmation-study-2026-10-28/runs
+default_evaluation_mode: validation-only
+seeds: [20261028, 20261029, 20261030]
+training:
+  batch_size: 8
+  max_epochs: 30
+  early_stopping_patience: 5
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  num_workers: 4
+model_defaults:
+  type: hetero_mpnn
+  message_layers: 2
+  radial_channels: 8
+  dropout: 0.1
+configurations:
+  - id: w128_d2_baseline
+    hidden_channels: 128
+    feature_variant: baseline
+    expected_parameters: 307457
+  - id: w128_d2_atom_only
+    hidden_channels: 128
+    feature_variant: atom_full_chemistry_and_periodicity
+    expected_parameters: 307457
+  - id: w64_d2_atom_only
+    hidden_channels: 64
+    feature_variant: atom_full_chemistry_and_periodicity
+    expected_parameters: 80001
