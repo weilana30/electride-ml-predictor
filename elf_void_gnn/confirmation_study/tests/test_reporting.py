@@ -3,9 +3,17 @@ import pandas as pd
 import pytest
 
 from elf_void_gnn.confirmation_study.report import (
-    CONFIGURATIONS, SEEDS, grouped_bootstrap, grouped_metrics, validate_manifest,
+    COMPARISONS, CONFIGURATIONS, SEEDS, grouped_bootstrap, grouped_metrics, validate_manifest,
     validate_prediction_identity,
 )
+
+
+def test_comparisons_cover_feature_width_and_combined_effects():
+    assert COMPARISONS == (
+        ("w128_d2_atom_only", "w128_d2_baseline"),
+        ("w128_d2_atom_only", "w64_d2_atom_only"),
+        ("w64_d2_atom_only", "w128_d2_baseline"),
+    )
 
 
 def test_requires_all_nine_unique_configuration_seed_pairs():

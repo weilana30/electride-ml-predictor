@@ -19,7 +19,8 @@ import pandas as pd
 CONFIGURATIONS = ("w128_d2_baseline", "w128_d2_atom_only", "w64_d2_atom_only")
 SEEDS = (20261028, 20261029, 20261030)
 COMPARISONS = (("w128_d2_atom_only", "w128_d2_baseline"),
-               ("w128_d2_atom_only", "w64_d2_atom_only"))
+               ("w128_d2_atom_only", "w64_d2_atom_only"),
+               ("w64_d2_atom_only", "w128_d2_baseline"))
 METRICS = ("mae", "rmse", "r2")
 
 
@@ -225,16 +226,27 @@ def aggregate(manifest_path: Path, out_dir: Path, bootstrap_draws: int = 10000,
     seed_summary = val.groupby("configuration", as_index=False).agg(seed_mean_rmse=("pooled_rmse", "mean"), seed_sd_rmse=("pooled_rmse", "std"))
     seed_summary.to_csv(out_dir / "seed_summary.csv", index=False)
 
-    comparison = summary.copy()
-    if "test" in outputs:
-        test_summary = outputs["test"][0].groupby("configuration", as_index=False).agg(
-            mean_test_pooled_rmse=("pooled_rmse", "mean"), mean_test_pooled_mae=("pooled_mae", "mean"),
-            mean_test_macro_family_rmse=("macro_rmse", "mean"))
-        comparison = comparison.merge(test_summary, on="configuration")
-    comparison["parameter_count"] = [
-        next((x for x in outputs["validation"][0].loc[outputs["validation"][0].configuration == c, "parameter_count"] if pd.notna(x)), np.nan)
-        for c in comparison.configuration]
-    comparison.to_csv(out_dir / "model_comparison.csv", index=False)
+    comparison_rows = []
+    for split in splits:
+        run_frame = outputs[split][0]
+        for model, comparator in COMPARISONS:
+            left = run_frame.query("configuration == @model")
+            right = run_frame.query("configuration == @comparator")
+            d = pairs[(pairs.split == split) & (pairs.model == model) &
+                      (pairs.comparator == comparator) & (pairs.seed == "mean_across_seeds")].iloc[0]
+            comparison_rows.append({"split": split, "model": model, "comparator": comparator,
+                "mean_pooled_rmse_delta": float(left.pooled_rmse.mean() - right.pooled_rmse.mean()),
+                "mean_macro_family_rmse_delta": float(left.macro_family_rmse.mean() - right.macro_family_rmse.mean()),
+                "mean_pooled_mae_delta": float(left.pooled_mae.mean() - right.pooled_mae.mean()),
+                "family_rmse_delta": d.mean_group_rmse_delta, "ci95_low": d.ci95_low,
+                "ci95_high": d.ci95_high,
+                "seed_sd_pooled_rmse_delta": float((left.set_index("seed").pooled_rmse - right.set_index("seed").pooled_rmse).std(ddof=1)),
+                "parameter_count_model": left.parameter_count.dropna().iloc[0] if left.parameter_count.notna().any() else np.nan,
+                "parameter_count_comparator": right.parameter_count.dropna().iloc[0] if right.parameter_count.notna().any() else np.nan,
+                "mean_training_seconds_model": left.training_seconds.mean(),
+                "mean_training_seconds_comparator": right.training_seconds.mean(),
+                "interpretation": "descriptive only" if split == "test" else "validation comparison"})
+    pd.DataFrame(comparison_rows).to_csv(out_dir / "model_comparison.csv", index=False)
     split_rows = []
     for split, (_, loaded) in outputs.items():
         reference = loaded[(CONFIGURATIONS[0], SEEDS[0])]
@@ -269,11 +281,21 @@ def aggregate(manifest_path: Path, out_dir: Path, bootstrap_draws: int = 10000,
         low = min(pred.y_true.min(), pred.y_pred.min()); high = max(pred.y_true.max(), pred.y_pred.max())
         ax.plot([low, high], [low, high], color="red"); ax.set(xlabel="True", ylabel="Predicted", title="Test prediction diagnostic (descriptive only)")
         fig.tight_layout(); fig.savefig(out_dir / "prediction_diagnostics.png", dpi=180); plt.close(fig)
+    selected_configuration = str(summary.sort_values("mean_validation_pooled_rmse").iloc[0].configuration)
+    metric_table = val.groupby("configuration", as_index=False).agg(
+        pooled_rmse_mean=("pooled_rmse", "mean"), pooled_rmse_seed_sd=("pooled_rmse", "std"),
+        pooled_mae_mean=("pooled_mae", "mean"), pooled_r2_mean=("pooled_r2", "mean"),
+        macro_family_rmse_mean=("macro_family_rmse", "mean"), macro_family_mae_mean=("macro_family_mae", "mean"),
+        parameters=("parameter_count", "first"), training_seconds_mean=("training_seconds", "mean"))
+    def markdown_table(frame):
+        frame = frame.copy().round(4)
+        return "| " + " | ".join(map(str, frame.columns)) + " |\n| " + " | ".join(["---"] * len(frame.columns)) + " |\n" + "\n".join("| " + " | ".join(map(str, row)) + " |" for row in frame.itertuples(index=False, name=None))
     report = (
         "# Confirmation study report\n\n"
         "## Validation-based selection\n\n"
         "Configurations are ranked by mean pooled validation RMSE across the three predeclared seeds. "
-        "See `selection_summary.csv`; no test metric enters this rule.\n\n"
+        f"The selected configuration is **{selected_configuration}**. No test metric enters this rule.\n\n"
+        "### Validation performance across seeds\n\n" + markdown_table(metric_table) + "\n\n"
         "## Study specification\n\n"
         f"- Dataset path: {manifest.dataset_path.iloc[0] if 'dataset_path' in manifest else 'not recorded in manifest'}\n"
         f"- Dataset build fingerprint: {manifest.build_fingerprint.iloc[0] if 'build_fingerprint' in manifest else 'not recorded in manifest'}\n"
@@ -281,11 +303,49 @@ def aggregate(manifest_path: Path, out_dir: Path, bootstrap_draws: int = 10000,
         f"{manifest.split_sha256.iloc[0] if 'split_sha256' in manifest else 'not recorded in manifest'}\n"
         f"- Grouping definition: {manifest.grouping_definition.iloc[0] if 'grouping_definition' in manifest else 'existing family-based split'}\n"
         f"- Seeds: {', '.join(map(str, SEEDS))}; configurations: {', '.join(CONFIGURATIONS)}\n"
-        "- Selection rule: minimum mean pooled validation RMSE across three seeds.\n\n")
+        "- Selection rule: minimum mean pooled validation RMSE across three seeds.\n"
+        "- Parameter and cost figures are per-run trainable parameter count and recorded training seconds.\n\n")
+    report += ("### Paired validation comparisons\n\n"
+               "RMSE deltas are model minus comparator; negative values favor the first model. Intervals resample families.\n\n" +
+               markdown_table(pd.DataFrame(comparison_rows).query("split == 'validation'").drop(columns="split")) + "\n\n")
+    validation_comparisons = pd.DataFrame(comparison_rows).query("split == 'validation'")
+    def comparison_readout(model, comparator):
+        row = validation_comparisons[(validation_comparisons.model == model) &
+                                     (validation_comparisons.comparator == comparator)].iloc[0]
+        per_seed = val[val.configuration == model].set_index("seed").pooled_rmse - val[val.configuration == comparator].set_index("seed").pooled_rmse
+        wins = int((per_seed < 0).sum())
+        if row.ci95_high < 0:
+            interval_text = "the family-bootstrap interval is below zero"
+        elif row.ci95_low > 0:
+            interval_text = "the family-bootstrap interval is above zero"
+        else:
+            interval_text = "the family-bootstrap interval includes zero"
+        return (f"{wins}/3 seeds have lower pooled RMSE for {model}; mean pooled RMSE delta is "
+                f"{row.mean_pooled_rmse_delta:.4g}, and the paired family-RMSE delta is "
+                f"{row.family_rmse_delta:.4g} (95% CI {row.ci95_low:.4g} to {row.ci95_high:.4g}; {interval_text}).")
+    report += ("### Validation interpretation\n\n"
+               f"**Atom-only versus baseline:** {comparison_readout(*COMPARISONS[0])}\n\n"
+               f"**Width 128 versus width 64 with atom-only features:** {comparison_readout(*COMPARISONS[1])}\n\n"
+               f"**Combined width-64 atom-only model versus baseline:** {comparison_readout(*COMPARISONS[2])} "
+               "Assess the combined configuration against its validation pooled and macro-family errors, parameter count, and training cost before carrying it forward.\n\n")
     if "test" in outputs:
+        feature_readout = comparison_readout(*COMPARISONS[0])
+        width_readout = comparison_readout(*COMPARISONS[1])
+        combined_readout = comparison_readout(*COMPARISONS[2])
         report += ("## Test-set descriptive confirmation\n\n"
                    "Test results are descriptive only and do not alter the selected configuration, features, hyperparameters, or split. "
-                   "Paired intervals resample held-out family IDs, preserving within-family dependence. The existing family split is reused.\n\n")
+                   "All comparisons below use paired group differences; the 95% percentile intervals resample held-out family IDs, "
+                   "not individual void rows, after averaging per-family differences across seeds. Negative deltas favor the named model.\n\n"
+                   "### Test model comparisons (descriptive only)\n\n" + markdown_table(pd.DataFrame(comparison_rows).query("split == 'test'").drop(columns="split")) + "\n\n"
+                   "### Interpretation\n\n"
+                   f"**Atom-only effect:** {feature_readout} A negative delta indicates an improvement.\n\n"
+                   f"**Width effect:** {width_readout} This compares width 128 with width 64 at atom-only features.\n\n"
+                   f"**Combined model:** {combined_readout} This compares the width-64 atom-only model with baseline. "
+                   "Carry it forward only if validation pooled and macro-family errors support the gain at its recorded parameter and training cost; "
+                   "the test rows provide descriptive confirmation only.\n\n"
+                   "### Limitations\n\n"
+                   "This confirmation reuses the same underlying corpus and existing family-based split, so it is not an independent external dataset or a new split. "
+                   "Any prior exposure of the test split during earlier model development limits the strength of the test confirmation.\n\n")
     else:
         report += "Test evaluation is not included in this validation-only aggregation stage.\n\n"
     report += ("## Results files\n\n"
