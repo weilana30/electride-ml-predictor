@@ -176,3 +176,41 @@ A center mapped to an inactive voxel receives `void_dimension=-1` and
 claim ELF connectivity or electronic dimensionality. The probe radius, grid
 spacing, and periodic six-neighbor connectivity are part of the label
 definition and are saved in the build config and per-sample settings.
+
+## Adaptive void connectivity and VESTA export
+
+`adaptive_void_connectivity.py` is an optional structure-only analysis. It
+recomputes the same symmetry-expanded candidate sites as the graph builder,
+starts from those sites, and explores face-adjacent blocks of probe-accessible
+space. The nearest-atom distance at a block center and the Cartesian distance
+to its farthest corner certify whole blocks as open or blocked. Other blocks
+are divided into eight children. Periodic face crossings retain integer cell
+translations; their independent winding rank gives the geometric dimension.
+The saved training dataset and GNN predictions are not changed by this script.
+
+Run it with the graph-building environment on a POSCAR or CIF, using a fresh
+output directory **outside the repository**:
+
+```bash
+python -m elf_void_analysis.adaptive_void_connectivity /path/to/POSCAR \
+  --output /path/to/external/adaptive-void-output \
+  --probe-radius 1.0 --min-block-width 0.25 --export-spacing 0.25
+```
+
+`report.json` maps saved-style void IDs to regions, records a certified
+periodic winding rank, unresolved boundaries, resource counts, and the XSF
+file for each region. Open `region-000.xsf` in VESTA and display the
+`accessible_space` isosurface at 0.5. `unresolved.xsf`, when present, marks
+blocks that could not be certified at the requested minimum size. Region XSF
+grids rasterize certified open blocks; they are for visualization and are not
+the topology calculation. A rank of 3 certifies the 3D dimension even with
+unresolved boundary blocks. For ranks 0–2, an unresolved frontier makes
+`dimension` null: `certified_winding_rank` is then a lower bound, not a final
+0D/1D/2D claim. `--max-blocks` sets a safety budget and reports when it is hit.
+Separate reported regions may also connect through unresolved blocks.
+
+This adaptive method can use more distance checks and memory than a uniform
+grid when most of the cell is open or the atom boundary is complex. Benchmark
+it on representative structures before applying it broadly. Like the
+existing labeler, this is geometry measured from atom centers, not electronic
+connectivity or an electride classification.
