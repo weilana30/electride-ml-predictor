@@ -59,3 +59,29 @@ python -m elf_void_analysis.adaptive_void_connectivity data/cifs/mp-12905.cif \
   --probe-radius 2.0 --min-block-width 0.5 --export-spacing 0.25 \
   --max-blocks 50000
 ```
+
+## Exact labels and element-dependent radii
+
+`power_void_connectivity.py` (see the package README) removes the unresolved
+frontier above. With the same uniform 2.0 Å cutoff it gives exact labels:
+K4Al3(SiO4)3 0D, Ba3CrN3 1D (plus 0D pockets), and Ca2N 2D. The certified
+ranks above are therefore the true geometric dimensions at that cutoff.
+
+A probe sweep in 0.05 Å steps gives the range where the literature dimension
+is the highest open dimension in each structure:
+
+| Material | Uniform cutoff (Å) | Shannon crystal radius + probe (Å) |
+| --- | --- | --- |
+| K4Al3(SiO4)3 (0D) | 2.00–3.00 | 0.75–1.45 |
+| Ba3CrN3 (1D) | 2.00–2.70 | 0.65–1.20 |
+| Ca2N (2D) | 1.65–2.40 | 0.50–1.25 |
+| Shared window | 2.00–2.40 | 0.75–1.20 |
+
+The 2.0 Å cutoff used above sits on the lower edge of two windows: at 1.95 Å,
+K4Al3(SiO4)3 and Ba3CrN3 become 3D. A 1.0 Å probe on ionic radii is at least
+0.2 Å inside all three windows. At that setting the controls MgS and
+Cu2SiSe3 have no open space and BaSn3 has only 0D pockets, whereas at a
+uniform 2.0 Å Cu2SiSe3 and BaSn3 have 3D open space. BaSn3 and Ba2As use
+fallback atomic radii for Sn and As (no Shannon anion radius). Three
+literature structures and three controls cannot fix a cutoff; this is a
+starting point for a calibration on the ELF-labeled dataset.

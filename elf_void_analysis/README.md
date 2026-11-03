@@ -230,3 +230,42 @@ connectivity or an electride classification.
 
 See [`case_studies/`](case_studies/) for literature-guided 0D, 1D, and 2D
 reference structures, probe-cutoff comparisons, and VESTA-ready XSF files.
+
+## Exact void connectivity with element radii
+
+`power_void_connectivity.py` answers the same question without unresolved
+regions, and lets the excluded radius depend on the element. Each atom
+excludes a ball of radius `element radius + probe`. Inside an atom's power
+(radical Voronoi) cell, the union of all balls is exactly that atom's ball, so
+open space retracts onto the open edges and vertices of the power diagram.
+Components and periodic winding ranks of that finite network are therefore
+exact: every region has `label_status: exact`, and every open candidate void
+is placed in one by a chain of straight moves that are checked to stay open.
+The diagram comes from a weighted Delaunay triangulation of periodic images,
+and each power vertex used is checked against the image shell. Power vertices
+are identified by position modulo the lattice, so degenerate (cospherical)
+sites in symmetric cells are handled consistently. "Exact" means no
+resolution limit: the only approximation is floating-point roundoff, which
+matters only when a probe exactly grazes a bottleneck.
+
+```bash
+python -m elf_void_analysis.power_void_connectivity /path/to/POSCAR \
+  --output /path/to/external/power-void-output \
+  --radius-scheme ionic --probe-radius 0.75
+```
+
+Radius schemes are `none` (zero element radius; the probe alone reproduces a
+uniform atom-center cutoff), `ionic`, `atomic` (pymatgen empirical atomic
+radii), and `custom` (`--radii-json` mapping element symbols to Å). `ionic`
+uses pymatgen's Shannon crystal radii for six-fold coordination. Electrides
+are not charge balanced, so oxidation states are assigned per element: the
+most electronegative element takes its common negative state and every other
+element its smallest common positive state that has a radius. When no Shannon
+radius exists (for example As3- or Sn4-), the empirical atomic radius is used
+and `element_radius_sources` in `report.json` says so. Check those notes, and
+prefer `custom` radii for intermetallics or unusual oxidation states.
+
+This script writes `report.json` only; it uses the same region and void fields
+as the adaptive report. Use `adaptive_void_connectivity.py` for VESTA grids.
+Like the other labelers, it measures geometry, not ELF or electronic
+dimensionality.
