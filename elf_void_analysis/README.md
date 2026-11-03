@@ -214,3 +214,6 @@ grid when most of the cell is open or the atom boundary is complex. Benchmark
 it on representative structures before applying it broadly. Like the
 existing labeler, this is geometry measured from atom centers, not electronic
 connectivity or an electride classification.
+
+See [`case_studies/`](case_studies/) for literature-guided 0D, 1D, and 2D
+reference structures, probe-cutoff comparisons, and VESTA-ready XSF files.

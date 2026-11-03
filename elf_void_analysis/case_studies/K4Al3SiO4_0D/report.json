@@ -1,0 +1,356 @@
+{
+  "source_structure": "data/cifs/mp-1019788.cif",
+  "probe_radius_angstrom": 2.0,
+  "minimum_block_width_angstrom": 0.5,
+  "export_grid_spacing_angstrom": 0.25,
+  "max_depth": 5,
+  "distance_queries": 5693,
+  "allocated_blocks": 9097,
+  "budget_hit": false,
+  "regions": [
+    {
+      "region_id": 0,
+      "dimension": null,
+      "certified_winding_rank": 0,
+      "uncertain": true,
+      "open_block_count": 1096,
+      "unresolved_block_count": 1168,
+      "xsf_file": "region-000.xsf",
+      "export_grid_shape": [
+        38,
+        38,
+        38
+      ],
+      "export_open_samples": 2523
+    },
+    {
+      "region_id": 1,
+      "dimension": null,
+      "certified_winding_rank": 0,
+      "uncertain": true,
+      "open_block_count": 1096,
+      "unresolved_block_count": 1168,
+      "xsf_file": "region-001.xsf",
+      "export_grid_shape": [
+        38,
+        38,
+        38
+      ],
+      "export_open_samples": 2523
+    }
+  ],
+  "voids": [
+    {
+      "void_id": "cifs:candidate:0000:member:0000",
+      "fractional_coords": [
+        0.0,
+        0.0,
+        0.5
+      ],
+      "region_id": null,
+      "invalid": true,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0001",
+      "fractional_coords": [
+        0.0,
+        0.5,
+        0.0
+      ],
+      "region_id": null,
+      "invalid": true,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0002",
+      "fractional_coords": [
+        2.220446049250313e-16,
+        0.5,
+        0.5
+      ],
+      "region_id": null,
+      "invalid": true,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0003",
+      "fractional_coords": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "region_id": null,
+      "invalid": true,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0004",
+      "fractional_coords": [
+        0.5,
+        2.220446049250313e-16,
+        0.5
+      ],
+      "region_id": null,
+      "invalid": true,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0005",
+      "fractional_coords": [
+        0.5,
+        0.5,
+        2.220446049250313e-16
+      ],
+      "region_id": null,
+      "invalid": true,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0000",
+      "fractional_coords": [
+        9.48890313522855e-17,
+        7.116677516857535e-17,
+        4.744451567614275e-17
+      ],
+      "region_id": 0,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0001",
+      "fractional_coords": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "region_id": 1,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0000",
+      "fractional_coords": [
+        2.1361195194913307e-06,
+        0.9999978542327881,
+        0.290563702583313
+      ],
+      "region_id": 0,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0001",
+      "fractional_coords": [
+        0.2094363123178482,
+        0.5000021457672119,
+        0.5000021457672119
+      ],
+      "region_id": 1,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0002",
+      "fractional_coords": [
+        0.290563702583313,
+        2.1361195194913307e-06,
+        0.9999978542327881
+      ],
+      "region_id": 0,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0003",
+      "fractional_coords": [
+        0.4999978542327881,
+        0.790563702583313,
+        0.5000021457672119
+      ],
+      "region_id": 1,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0004",
+      "fractional_coords": [
+        0.5000021457672119,
+        0.2094363123178482,
+        0.5000021457672119
+      ],
+      "region_id": 1,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0005",
+      "fractional_coords": [
+        0.5000021457672119,
+        0.4999978542327881,
+        0.790563702583313
+      ],
+      "region_id": 1,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0006",
+      "fractional_coords": [
+        0.5000021457672119,
+        0.5000021457672119,
+        0.2094363123178482
+      ],
+      "region_id": 1,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0007",
+      "fractional_coords": [
+        0.709436297416687,
+        0.9999978542327881,
+        0.9999978542327881
+      ],
+      "region_id": 0,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0008",
+      "fractional_coords": [
+        0.790563702583313,
+        0.5000021457672119,
+        0.4999978542327881
+      ],
+      "region_id": 1,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0009",
+      "fractional_coords": [
+        0.9999978542327881,
+        0.290563702583313,
+        2.1361195194913307e-06
+      ],
+      "region_id": 0,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0010",
+      "fractional_coords": [
+        0.9999978542327881,
+        0.709436297416687,
+        0.9999978542327881
+      ],
+      "region_id": 0,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0011",
+      "fractional_coords": [
+        0.9999978542327881,
+        0.9999978542327881,
+        0.709436297416687
+      ],
+      "region_id": 0,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0000",
+      "fractional_coords": [
+        0.13101252913475037,
+        0.13101257383823395,
+        0.8689191937446594
+      ],
+      "region_id": 0,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0001",
+      "fractional_coords": [
+        0.13101252913475037,
+        0.8689874410629272,
+        0.13108080625534058
+      ],
+      "region_id": 0,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0002",
+      "fractional_coords": [
+        0.36898744106292725,
+        0.36898747086524963,
+        0.3689191937446594
+      ],
+      "region_id": 1,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0003",
+      "fractional_coords": [
+        0.36898744106292725,
+        0.6310125589370728,
+        0.6310808062553406
+      ],
+      "region_id": 1,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0004",
+      "fractional_coords": [
+        0.6310125589370728,
+        0.36898747086524963,
+        0.6310808062553406
+      ],
+      "region_id": 1,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0005",
+      "fractional_coords": [
+        0.6310125589370728,
+        0.6310125589370728,
+        0.3689191937446594
+      ],
+      "region_id": 1,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0006",
+      "fractional_coords": [
+        0.8689874410629272,
+        0.13101257383823395,
+        0.13108080625534058
+      ],
+      "region_id": 0,
+      "invalid": false,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0007",
+      "fractional_coords": [
+        0.8689874410629272,
+        0.8689874410629272,
+        0.8689191937446594
+      ],
+      "region_id": 0,
+      "invalid": false,
+      "dimension": null
+    }
+  ],
+  "unresolved_xsf": "unresolved.xsf",
+  "display_in_vesta": "Open region-*.xsf and display accessible_space isosurface at 0.5.",
+  "interpretation": "Geometric space accessible to a spherical probe, not ELF or electronic dimensionality.",
+  "export_note": "XSF is a raster of certified open blocks; uncertain boundary space is omitted from region files."
+}

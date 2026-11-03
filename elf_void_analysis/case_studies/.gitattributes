@@ -1,0 +1,2 @@
+# Generated VESTA grids are reviewed through the case-study reports, not line diffs.
+*.xsf -diff -merge
