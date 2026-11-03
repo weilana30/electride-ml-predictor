@@ -21,7 +21,16 @@
         55,
         55
       ],
-      "export_open_samples": 16383
+      "export_open_samples": 16383,
+      "region_key": "region-000",
+      "region_uid": "051661fc993823c2:region-000",
+      "connectivity_label": "2D",
+      "label_status": "lower_bound",
+      "void_ids": [
+        "cifs:candidate:0001:member:0000",
+        "cifs:candidate:0001:member:0001",
+        "cifs:candidate:0002:member:0000"
+      ]
     }
   ],
   "voids": [
@@ -34,7 +43,11 @@
       ],
       "region_id": null,
       "invalid": true,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null
     },
     {
       "void_id": "cifs:candidate:0000:member:0001",
@@ -45,7 +58,11 @@
       ],
       "region_id": null,
       "invalid": true,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null
     },
     {
       "void_id": "cifs:candidate:0000:member:0002",
@@ -56,7 +73,11 @@
       ],
       "region_id": null,
       "invalid": true,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null
     },
     {
       "void_id": "cifs:candidate:0000:member:0003",
@@ -67,7 +88,11 @@
       ],
       "region_id": null,
       "invalid": true,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null
     },
     {
       "void_id": "cifs:candidate:0000:member:0004",
@@ -78,7 +103,11 @@
       ],
       "region_id": null,
       "invalid": true,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null
     },
     {
       "void_id": "cifs:candidate:0000:member:0005",
@@ -89,7 +118,11 @@
       ],
       "region_id": null,
       "invalid": true,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null
     },
     {
       "void_id": "cifs:candidate:0001:member:0000",
@@ -100,7 +133,11 @@
       ],
       "region_id": 0,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "051661fc993823c2:region-000",
+      "connectivity_label": "2D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0001:member:0001",
@@ -111,7 +148,11 @@
       ],
       "region_id": 0,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "051661fc993823c2:region-000",
+      "connectivity_label": "2D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0002:member:0000",
@@ -122,7 +163,11 @@
       ],
       "region_id": 0,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "051661fc993823c2:region-000",
+      "connectivity_label": "2D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0003:member:0000",
@@ -133,7 +178,11 @@
       ],
       "region_id": null,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "unresolved_seed",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null
     },
     {
       "void_id": "cifs:candidate:0003:member:0001",
@@ -144,11 +193,20 @@
       ],
       "region_id": null,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "unresolved_seed",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null
     }
   ],
   "unresolved_xsf": "unresolved.xsf",
   "display_in_vesta": "Open region-*.xsf and display accessible_space isosurface at 0.5.",
   "interpretation": "Geometric space accessible to a spherical probe, not ELF or electronic dimensionality.",
-  "export_note": "XSF is a raster of certified open blocks; uncertain boundary space is omitted from region files."
+  "export_note": "XSF is a raster of certified open blocks; uncertain boundary space is omitted from region files.",
+  "structure_id": "4e869e3191984ebe",
+  "source_sha256": "4e869e3191984ebe14aadf231ed9d9ea27de62a600ca1ec48410b29d8040cd9f",
+  "analysis_id": "051661fc993823c2",
+  "report_only": false,
+  "max_blocks": 100000
 }

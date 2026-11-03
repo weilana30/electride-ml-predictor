@@ -21,7 +21,24 @@
         38,
         38
       ],
-      "export_open_samples": 2523
+      "export_open_samples": 2523,
+      "region_key": "region-000",
+      "region_uid": "17a9f2559eed2b22:region-000",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound",
+      "void_ids": [
+        "cifs:candidate:0001:member:0000",
+        "cifs:candidate:0002:member:0000",
+        "cifs:candidate:0002:member:0002",
+        "cifs:candidate:0002:member:0007",
+        "cifs:candidate:0002:member:0009",
+        "cifs:candidate:0002:member:0010",
+        "cifs:candidate:0002:member:0011",
+        "cifs:candidate:0003:member:0000",
+        "cifs:candidate:0003:member:0001",
+        "cifs:candidate:0003:member:0006",
+        "cifs:candidate:0003:member:0007"
+      ]
     },
     {
       "region_id": 1,
@@ -36,7 +53,24 @@
         38,
         38
       ],
-      "export_open_samples": 2523
+      "export_open_samples": 2523,
+      "region_key": "region-001",
+      "region_uid": "17a9f2559eed2b22:region-001",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound",
+      "void_ids": [
+        "cifs:candidate:0001:member:0001",
+        "cifs:candidate:0002:member:0001",
+        "cifs:candidate:0002:member:0003",
+        "cifs:candidate:0002:member:0004",
+        "cifs:candidate:0002:member:0005",
+        "cifs:candidate:0002:member:0006",
+        "cifs:candidate:0002:member:0008",
+        "cifs:candidate:0003:member:0002",
+        "cifs:candidate:0003:member:0003",
+        "cifs:candidate:0003:member:0004",
+        "cifs:candidate:0003:member:0005"
+      ]
     }
   ],
   "voids": [
@@ -49,7 +83,11 @@
       ],
       "region_id": null,
       "invalid": true,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null
     },
     {
       "void_id": "cifs:candidate:0000:member:0001",
@@ -60,7 +98,11 @@
       ],
       "region_id": null,
       "invalid": true,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null
     },
     {
       "void_id": "cifs:candidate:0000:member:0002",
@@ -71,7 +113,11 @@
       ],
       "region_id": null,
       "invalid": true,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null
     },
     {
       "void_id": "cifs:candidate:0000:member:0003",
@@ -82,7 +128,11 @@
       ],
       "region_id": null,
       "invalid": true,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null
     },
     {
       "void_id": "cifs:candidate:0000:member:0004",
@@ -93,7 +143,11 @@
       ],
       "region_id": null,
       "invalid": true,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null
     },
     {
       "void_id": "cifs:candidate:0000:member:0005",
@@ -104,7 +158,11 @@
       ],
       "region_id": null,
       "invalid": true,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null
     },
     {
       "void_id": "cifs:candidate:0001:member:0000",
@@ -115,7 +173,11 @@
       ],
       "region_id": 0,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-000",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0001:member:0001",
@@ -126,7 +188,11 @@
       ],
       "region_id": 1,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-001",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0002:member:0000",
@@ -137,7 +203,11 @@
       ],
       "region_id": 0,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-000",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0002:member:0001",
@@ -148,7 +218,11 @@
       ],
       "region_id": 1,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-001",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0002:member:0002",
@@ -159,7 +233,11 @@
       ],
       "region_id": 0,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-000",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0002:member:0003",
@@ -170,7 +248,11 @@
       ],
       "region_id": 1,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-001",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0002:member:0004",
@@ -181,7 +263,11 @@
       ],
       "region_id": 1,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-001",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0002:member:0005",
@@ -192,7 +278,11 @@
       ],
       "region_id": 1,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-001",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0002:member:0006",
@@ -203,7 +293,11 @@
       ],
       "region_id": 1,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-001",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0002:member:0007",
@@ -214,7 +308,11 @@
       ],
       "region_id": 0,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-000",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0002:member:0008",
@@ -225,7 +323,11 @@
       ],
       "region_id": 1,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-001",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0002:member:0009",
@@ -236,7 +338,11 @@
       ],
       "region_id": 0,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-000",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0002:member:0010",
@@ -247,7 +353,11 @@
       ],
       "region_id": 0,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-000",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0002:member:0011",
@@ -258,7 +368,11 @@
       ],
       "region_id": 0,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-000",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0003:member:0000",
@@ -269,7 +383,11 @@
       ],
       "region_id": 0,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-000",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0003:member:0001",
@@ -280,7 +398,11 @@
       ],
       "region_id": 0,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-000",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0003:member:0002",
@@ -291,7 +413,11 @@
       ],
       "region_id": 1,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-001",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0003:member:0003",
@@ -302,7 +428,11 @@
       ],
       "region_id": 1,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-001",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0003:member:0004",
@@ -313,7 +443,11 @@
       ],
       "region_id": 1,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-001",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0003:member:0005",
@@ -324,7 +458,11 @@
       ],
       "region_id": 1,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-001",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0003:member:0006",
@@ -335,7 +473,11 @@
       ],
       "region_id": 0,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-000",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     },
     {
       "void_id": "cifs:candidate:0003:member:0007",
@@ -346,11 +488,20 @@
       ],
       "region_id": 0,
       "invalid": false,
-      "dimension": null
+      "dimension": null,
+      "assignment_status": "assigned",
+      "region_uid": "17a9f2559eed2b22:region-000",
+      "connectivity_label": "0D",
+      "label_status": "lower_bound"
     }
   ],
   "unresolved_xsf": "unresolved.xsf",
   "display_in_vesta": "Open region-*.xsf and display accessible_space isosurface at 0.5.",
   "interpretation": "Geometric space accessible to a spherical probe, not ELF or electronic dimensionality.",
-  "export_note": "XSF is a raster of certified open blocks; uncertain boundary space is omitted from region files."
+  "export_note": "XSF is a raster of certified open blocks; uncertain boundary space is omitted from region files.",
+  "structure_id": "1813875495a93e69",
+  "source_sha256": "1813875495a93e69b54dac94b0cd62fceb0a3f15b67675001367c1cf11184d84",
+  "analysis_id": "17a9f2559eed2b22",
+  "report_only": false,
+  "max_blocks": 50000
 }

@@ -16,6 +16,10 @@ of a universal cutoff.
 
 All three reports have `dimension: null`: uncertain boundary blocks could hide
 additional connections, so the certified winding ranks are lower bounds. The
+reports now include `region_uid`, `connectivity_label`, `label_status`, and
+`void_ids` for grouping candidate voids by certified region. These identifiers
+and labels were added to the saved reports without changing the computed
+regions or XSF grids. The
 `region-*.xsf` files show certified open space; `unresolved.xsf` shows those
 boundary blocks. In VESTA, display the `accessible_space` isosurface at 0.5.
 For the intended examples, open `region-000.xsf` or `region-001.xsf` for

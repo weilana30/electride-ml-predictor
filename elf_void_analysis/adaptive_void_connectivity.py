@@ -10,6 +10,7 @@ VESTA; the raster is a visualization, not the connectivity calculation.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 from collections import deque
@@ -268,50 +269,81 @@ class AdaptiveSpace:
 
 def run(structure_path: Path, output: Path, *, probe_A: float = 1.0,
         min_width_A: float = 0.25, export_spacing_A: float = 0.25,
-        max_blocks: int = 1_000_000) -> dict[str, Any]:
+        max_blocks: int = 1_000_000, report_only: bool = False) -> dict[str, Any]:
     """Recompute the established GNN void sites and export certified regions."""
     structure_path = structure_path.resolve()
     output = output.resolve()
     if output.exists() and any(output.iterdir()):
         raise FileExistsError(f"output directory is not empty: {output}")
+    if not report_only and (not np.isfinite(export_spacing_A) or export_spacing_A <= 0):
+        raise ValueError("export spacing must be finite and positive")
     graph = build_graph_record(structure_path)
+    structure_hash = hashlib.sha256(structure_path.read_bytes()).hexdigest()
+    structure_id = structure_hash[:16]
+    analysis_settings = {"source_sha256": structure_hash,
+                         "probe_radius_angstrom": float(probe_A),
+                         "minimum_block_width_angstrom": float(min_width_A),
+                         "max_blocks": int(max_blocks)}
+    analysis_id = hashlib.sha256(json.dumps(analysis_settings, sort_keys=True).encode()).hexdigest()[:16]
     lattice = np.asarray(graph["lattice_angstrom"], dtype=float)
     atoms = np.asarray(graph["atoms"]["fractional_coords"], dtype=float)
     voids = np.asarray(graph["voids"]["fractional_coords"], dtype=float)
     space = AdaptiveSpace(lattice, atoms, probe_A, min_width_A, max_blocks)
     analysis = space.explore(voids)
     output.mkdir(parents=True, exist_ok=True)
-    atomic_numbers = np.asarray(graph["atoms"]["atomic_numbers"], dtype=int)
-    cart_coords = np.asarray(graph["atoms"]["fractional_coords"], dtype=float) @ lattice
+    if not report_only:
+        atomic_numbers = np.asarray(graph["atoms"]["atomic_numbers"], dtype=int)
+        cart_coords = atoms @ lattice
     region_rows = []
     for region in analysis["regions"]:
         region_id = region["region_id"]
-        keys = {key for key, value in analysis["membership"].items() if value == region_id}
-        mask = space.raster(keys, export_spacing_A)
-        filename = f"region-{region_id:03d}.xsf"
-        write_xsf(output / filename, lattice, atomic_numbers, cart_coords, mask)
-        region_rows.append({k: v for k, v in region.items() if not k.startswith("_")} |
-                           {"xsf_file": filename, "export_grid_shape": list(mask.shape),
-                            "export_open_samples": int(mask.sum())})
+        region_key = f"region-{region_id:03d}"
+        row = {k: v for k, v in region.items() if not k.startswith("_")}
+        row.update({"region_key": region_key,
+                    "region_uid": f"{analysis_id}:{region_key}",
+                    "connectivity_label": f"{region['certified_winding_rank']}D",
+                    "label_status": "exact" if region["dimension"] is not None else "lower_bound",
+                    "void_ids": [void_id for void_id, assignment in zip(
+                        graph["voids"]["void_id"], analysis["assignments"])
+                        if assignment == region_id],
+                    "xsf_file": None, "export_grid_shape": None, "export_open_samples": None})
+        if not report_only:
+            keys = {key for key, value in analysis["membership"].items() if value == region_id}
+            mask = space.raster(keys, export_spacing_A)
+            filename = f"{region_key}.xsf"
+            write_xsf(output / filename, lattice, atomic_numbers, cart_coords, mask)
+            row.update({"xsf_file": filename, "export_grid_shape": list(mask.shape),
+                        "export_open_samples": int(mask.sum())})
+        region_rows.append(row)
     unresolved_keys = set().union(*(r["_unresolved_keys"] for r in analysis["regions"])) if analysis["regions"] else set()
-    if unresolved_keys:
+    if unresolved_keys and not report_only:
         write_xsf(output / "unresolved.xsf", lattice, atomic_numbers, cart_coords,
                   space.raster(unresolved_keys, export_spacing_A))
     void_rows = [{"void_id": void_id, "fractional_coords": np.asarray(frac, dtype=float).tolist(),
                   "region_id": region_id, "invalid": invalid,
+                  "assignment_status": "below_probe_cutoff" if invalid else
+                                       "unresolved_seed" if region_id is None else "assigned",
+                  "region_uid": region_rows[region_id]["region_uid"] if region_id is not None else None,
+                  "connectivity_label": region_rows[region_id]["connectivity_label"] if region_id is not None else None,
+                  "label_status": region_rows[region_id]["label_status"] if region_id is not None else None,
                   "dimension": region_rows[region_id]["dimension"] if region_id is not None else None}
                  for void_id, frac, region_id, invalid in zip(
                      graph["voids"]["void_id"], voids, analysis["assignments"], analysis["invalid"])]
-    report = {"source_structure": str(structure_path), "probe_radius_angstrom": float(probe_A),
+    report = {"source_structure": str(structure_path), "structure_id": structure_id,
+              "analysis_id": analysis_id,
+              "source_sha256": structure_hash, "report_only": bool(report_only),
+              "probe_radius_angstrom": float(probe_A),
               "minimum_block_width_angstrom": float(min_width_A),
-              "export_grid_spacing_angstrom": float(export_spacing_A),
-              "max_depth": space.max_depth, "distance_queries": space.distance_queries,
+              "export_grid_spacing_angstrom": None if report_only else float(export_spacing_A),
+              "max_depth": space.max_depth, "max_blocks": space.max_blocks,
+              "distance_queries": space.distance_queries,
               "allocated_blocks": len(space.nodes), "budget_hit": space.budget_hit,
               "regions": region_rows, "voids": void_rows,
-              "unresolved_xsf": "unresolved.xsf" if unresolved_keys else None,
-              "display_in_vesta": "Open region-*.xsf and display accessible_space isosurface at 0.5.",
+              "unresolved_xsf": "unresolved.xsf" if unresolved_keys and not report_only else None,
+              "display_in_vesta": None if report_only else "Open region-*.xsf and display accessible_space isosurface at 0.5.",
               "interpretation": "Geometric space accessible to a spherical probe, not ELF or electronic dimensionality.",
-              "export_note": "XSF is a raster of certified open blocks; uncertain boundary space is omitted from region files."}
+              "export_note": "XSF is a raster of certified open blocks; uncertain boundary space is omitted from region files."
+                             if not report_only else "No XSF files requested; region connectivity was still calculated."}
     (output / "report.json").write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
     return report
 
@@ -323,14 +355,16 @@ def main() -> None:
     parser.add_argument("--probe-radius", type=float, default=1.0, help="Atom-center exclusion radius in Å")
     parser.add_argument("--min-block-width", type=float, default=0.25, help="Maximum side-vector length at finest level in Å")
     parser.add_argument("--export-spacing", type=float, default=0.25, help="Approximate XSF grid spacing in Å")
+    parser.add_argument("--report-only", action="store_true", help="Write connectivity report without XSF grids")
     parser.add_argument("--max-blocks", type=int, default=1_000_000)
     args = parser.parse_args()
-    if not np.isfinite(args.export_spacing) or args.export_spacing <= 0:
+    if not args.report_only and (not np.isfinite(args.export_spacing) or args.export_spacing <= 0):
         parser.error("export spacing must be finite and positive")
     report = run(args.structure, args.output, probe_A=args.probe_radius,
                  min_width_A=args.min_block_width, export_spacing_A=args.export_spacing,
-                 max_blocks=args.max_blocks)
-    print(f"Wrote {len(report['regions'])} region XSF files to {args.output.resolve()}; "
+                 max_blocks=args.max_blocks, report_only=args.report_only)
+    mode = "connectivity report" if args.report_only else f"{len(report['regions'])} region XSF files"
+    print(f"Wrote {mode} to {args.output.resolve()}; "
           f"{report['distance_queries']} atom-distance checks")
 
 
