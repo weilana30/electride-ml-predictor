@@ -1,0 +1,2182 @@
+{
+  "source_structure": "data/cifs/mp-721592.cif",
+  "analysis_id": "46e22695c6a19e82",
+  "source_sha256": "6d1204d9e547b7887b092c79c9dd18760bc628983771422933fced157e64d979",
+  "method": "power_diagram",
+  "probe_radius_angstrom": 1.0,
+  "radius_scheme": "ionic",
+  "element_radii_angstrom": {
+    "Al": 0.675,
+    "Ca": 1.14,
+    "O": 1.26
+  },
+  "element_radius_sources": {
+    "Al": "Shannon crystal radius for Al+3",
+    "Ca": "Shannon crystal radius for Ca+2",
+    "O": "Shannon crystal radius for O-2"
+  },
+  "regions": [
+    {
+      "region_id": 0,
+      "dimension": 0,
+      "power_vertex_count": 32,
+      "max_vertex_power_A2": 3.669858116939622,
+      "region_key": "region-000",
+      "region_uid": "46e22695c6a19e82:region-000",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0008",
+        "cifs:candidate:0001:member:0009",
+        "cifs:candidate:0001:member:0010",
+        "cifs:candidate:0001:member:0011",
+        "cifs:candidate:0004:member:0008",
+        "cifs:candidate:0004:member:0009",
+        "cifs:candidate:0004:member:0010",
+        "cifs:candidate:0004:member:0011"
+      ],
+      "export_open_samples": 2776,
+      "xsf_file": "region-000-0D.xsf"
+    },
+    {
+      "region_id": 1,
+      "dimension": 0,
+      "power_vertex_count": 32,
+      "max_vertex_power_A2": 3.669674506084675,
+      "region_key": "region-001",
+      "region_uid": "46e22695c6a19e82:region-001",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0020",
+        "cifs:candidate:0001:member:0021",
+        "cifs:candidate:0001:member:0022",
+        "cifs:candidate:0001:member:0023",
+        "cifs:candidate:0004:member:0020",
+        "cifs:candidate:0004:member:0021",
+        "cifs:candidate:0004:member:0022",
+        "cifs:candidate:0004:member:0023"
+      ],
+      "export_open_samples": 2776,
+      "xsf_file": "region-001-0D.xsf"
+    },
+    {
+      "region_id": 2,
+      "dimension": 0,
+      "power_vertex_count": 32,
+      "max_vertex_power_A2": 3.6696727200430246,
+      "region_key": "region-002",
+      "region_uid": "46e22695c6a19e82:region-002",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0012",
+        "cifs:candidate:0001:member:0013",
+        "cifs:candidate:0001:member:0014",
+        "cifs:candidate:0001:member:0015",
+        "cifs:candidate:0004:member:0012",
+        "cifs:candidate:0004:member:0013",
+        "cifs:candidate:0004:member:0014",
+        "cifs:candidate:0004:member:0015"
+      ],
+      "export_open_samples": 2776,
+      "xsf_file": "region-002-0D.xsf"
+    },
+    {
+      "region_id": 3,
+      "dimension": 0,
+      "power_vertex_count": 32,
+      "max_vertex_power_A2": 3.669673897758713,
+      "region_key": "region-003",
+      "region_uid": "46e22695c6a19e82:region-003",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0004",
+        "cifs:candidate:0001:member:0005",
+        "cifs:candidate:0001:member:0006",
+        "cifs:candidate:0001:member:0007",
+        "cifs:candidate:0004:member:0004",
+        "cifs:candidate:0004:member:0005",
+        "cifs:candidate:0004:member:0006",
+        "cifs:candidate:0004:member:0007"
+      ],
+      "export_open_samples": 2776,
+      "xsf_file": "region-003-0D.xsf"
+    },
+    {
+      "region_id": 4,
+      "dimension": 0,
+      "power_vertex_count": 32,
+      "max_vertex_power_A2": 3.6696756327895628,
+      "region_key": "region-004",
+      "region_uid": "46e22695c6a19e82:region-004",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0016",
+        "cifs:candidate:0001:member:0017",
+        "cifs:candidate:0001:member:0018",
+        "cifs:candidate:0001:member:0019",
+        "cifs:candidate:0004:member:0016",
+        "cifs:candidate:0004:member:0017",
+        "cifs:candidate:0004:member:0018",
+        "cifs:candidate:0004:member:0019"
+      ],
+      "export_open_samples": 2776,
+      "xsf_file": "region-004-0D.xsf"
+    },
+    {
+      "region_id": 5,
+      "dimension": 0,
+      "power_vertex_count": 32,
+      "max_vertex_power_A2": 3.669832553400852,
+      "region_key": "region-005",
+      "region_uid": "46e22695c6a19e82:region-005",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0000",
+        "cifs:candidate:0001:member:0001",
+        "cifs:candidate:0001:member:0002",
+        "cifs:candidate:0001:member:0003",
+        "cifs:candidate:0004:member:0000",
+        "cifs:candidate:0004:member:0001",
+        "cifs:candidate:0004:member:0002",
+        "cifs:candidate:0004:member:0003"
+      ],
+      "export_open_samples": 2776,
+      "xsf_file": "region-005-0D.xsf"
+    }
+  ],
+  "voids": [
+    {
+      "void_id": "cifs:candidate:0000:member:0000",
+      "fractional_coords": [
+        0.03986502066254616,
+        0.6116771697998047,
+        0.20391027629375458
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0001",
+      "fractional_coords": [
+        0.07181214541196823,
+        0.16404524445533752,
+        0.9601349830627441
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0002",
+      "fractional_coords": [
+        0.0922330990433693,
+        0.42818784713745117,
+        0.3883228302001953
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0003",
+      "fractional_coords": [
+        0.11167716979980469,
+        0.5398650169372559,
+        0.7039102911949158
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0004",
+      "fractional_coords": [
+        0.16404524445533752,
+        0.9601349830627441,
+        0.07181214541196823
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0005",
+      "fractional_coords": [
+        0.20391027629375458,
+        0.03986502066254616,
+        0.6116771697998047
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0006",
+      "fractional_coords": [
+        0.2960897386074066,
+        0.9077668786048889,
+        0.8359547257423401
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0007",
+      "fractional_coords": [
+        0.3359547555446625,
+        0.4077669084072113,
+        0.7960897088050842
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0008",
+      "fractional_coords": [
+        0.3883228302001953,
+        0.0922330990433693,
+        0.42818784713745117
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0009",
+      "fractional_coords": [
+        0.4077669084072113,
+        0.7960897088050842,
+        0.3359547555446625
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0010",
+      "fractional_coords": [
+        0.42818784713745117,
+        0.3883228302001953,
+        0.0922330990433693
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0011",
+      "fractional_coords": [
+        0.46013498306274414,
+        0.6640452742576599,
+        0.5718121528625488
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0012",
+      "fractional_coords": [
+        0.5398650169372559,
+        0.7039102911949158,
+        0.11167716979980469
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0013",
+      "fractional_coords": [
+        0.5718121528625488,
+        0.46013498306274414,
+        0.6640452742576599
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0014",
+      "fractional_coords": [
+        0.5922331213951111,
+        0.8883228302001953,
+        0.9281878471374512
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0015",
+      "fractional_coords": [
+        0.6116771697998047,
+        0.20391027629375458,
+        0.03986502066254616
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0016",
+      "fractional_coords": [
+        0.6640452742576599,
+        0.5718121528625488,
+        0.46013498306274414
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0017",
+      "fractional_coords": [
+        0.7039102911949158,
+        0.11167716979980469,
+        0.5398650169372559
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0018",
+      "fractional_coords": [
+        0.7960897088050842,
+        0.3359547555446625,
+        0.4077669084072113
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0019",
+      "fractional_coords": [
+        0.8359547257423401,
+        0.2960897386074066,
+        0.9077668786048889
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0020",
+      "fractional_coords": [
+        0.8883228302001953,
+        0.9281878471374512,
+        0.5922331213951111
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0021",
+      "fractional_coords": [
+        0.9077668786048889,
+        0.8359547257423401,
+        0.2960897386074066
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0022",
+      "fractional_coords": [
+        0.9281878471374512,
+        0.5922331213951111,
+        0.8883228302001953
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0023",
+      "fractional_coords": [
+        0.9601349830627441,
+        0.07181214541196823,
+        0.16404524445533752
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0000",
+      "fractional_coords": [
+        0.07838315516710281,
+        0.883261501789093,
+        0.21164937317371368
+      ],
+      "region_id": 5,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-005",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0001",
+      "fractional_coords": [
+        0.11673850566148758,
+        0.8283878564834595,
+        0.1951216608285904
+      ],
+      "region_id": 5,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-005",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0002",
+      "fractional_coords": [
+        0.13326622545719147,
+        0.9216168522834778,
+        0.3048783540725708
+      ],
+      "region_id": 5,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-005",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0003",
+      "fractional_coords": [
+        0.17161212861537933,
+        0.8667337894439697,
+        0.2883506119251251
+      ],
+      "region_id": 5,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-005",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0004",
+      "fractional_coords": [
+        0.1951216608285904,
+        0.11673850566148758,
+        0.8283878564834595
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-003",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0005",
+      "fractional_coords": [
+        0.21164937317371368,
+        0.07838315516710281,
+        0.883261501789093
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-003",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0006",
+      "fractional_coords": [
+        0.2883506119251251,
+        0.17161212861537933,
+        0.8667337894439697
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-003",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0007",
+      "fractional_coords": [
+        0.3048783540725708,
+        0.13326622545719147,
+        0.9216168522834778
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-003",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0008",
+      "fractional_coords": [
+        0.32838788628578186,
+        0.616738498210907,
+        0.6951216459274292
+      ],
+      "region_id": 0,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-000",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0009",
+      "fractional_coords": [
+        0.3667337894439697,
+        0.6716121435165405,
+        0.7883506417274475
+      ],
+      "region_id": 0,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-000",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0010",
+      "fractional_coords": [
+        0.383261501789093,
+        0.5783831477165222,
+        0.7116493582725525
+      ],
+      "region_id": 0,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-000",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0011",
+      "fractional_coords": [
+        0.4216168522834778,
+        0.6332662105560303,
+        0.8048783540725708
+      ],
+      "region_id": 0,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-000",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0012",
+      "fractional_coords": [
+        0.5783831477165222,
+        0.7116493582725525,
+        0.383261501789093
+      ],
+      "region_id": 2,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-002",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0013",
+      "fractional_coords": [
+        0.616738498210907,
+        0.6951216459274292,
+        0.32838788628578186
+      ],
+      "region_id": 2,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-002",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0014",
+      "fractional_coords": [
+        0.6332662105560303,
+        0.8048783540725708,
+        0.4216168522834778
+      ],
+      "region_id": 2,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-002",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0015",
+      "fractional_coords": [
+        0.6716121435165405,
+        0.7883506417274475,
+        0.3667337894439697
+      ],
+      "region_id": 2,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-002",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0016",
+      "fractional_coords": [
+        0.6951216459274292,
+        0.32838788628578186,
+        0.616738498210907
+      ],
+      "region_id": 4,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-004",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0017",
+      "fractional_coords": [
+        0.7116493582725525,
+        0.383261501789093,
+        0.5783831477165222
+      ],
+      "region_id": 4,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-004",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0018",
+      "fractional_coords": [
+        0.7883506417274475,
+        0.3667337894439697,
+        0.6716121435165405
+      ],
+      "region_id": 4,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-004",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0019",
+      "fractional_coords": [
+        0.8048783540725708,
+        0.4216168522834778,
+        0.6332662105560303
+      ],
+      "region_id": 4,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-004",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0020",
+      "fractional_coords": [
+        0.8283878564834595,
+        0.1951216608285904,
+        0.11673850566148758
+      ],
+      "region_id": 1,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-001",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0021",
+      "fractional_coords": [
+        0.8667337894439697,
+        0.2883506119251251,
+        0.17161212861537933
+      ],
+      "region_id": 1,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-001",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0022",
+      "fractional_coords": [
+        0.883261501789093,
+        0.21164937317371368,
+        0.07838315516710281
+      ],
+      "region_id": 1,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-001",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0023",
+      "fractional_coords": [
+        0.9216168522834778,
+        0.3048783540725708,
+        0.13326622545719147
+      ],
+      "region_id": 1,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-001",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0000",
+      "fractional_coords": [
+        0.011023766361176968,
+        0.20099438726902008,
+        0.48852595686912537
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0001",
+      "fractional_coords": [
+        0.011474032886326313,
+        0.21246843039989471,
+        0.5224977731704712
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0002",
+      "fractional_coords": [
+        0.02249779924750328,
+        0.7124684453010559,
+        0.5114740133285522
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0003",
+      "fractional_coords": [
+        0.18997062742710114,
+        0.48897624015808105,
+        0.9775022268295288
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0004",
+      "fractional_coords": [
+        0.20099438726902008,
+        0.48852595686912537,
+        0.011023766361176968
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0005",
+      "fractional_coords": [
+        0.21246843039989471,
+        0.5224977731704712,
+        0.011474032886326313
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0006",
+      "fractional_coords": [
+        0.2875315845012665,
+        0.2990055978298187,
+        0.31002938747406006
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0007",
+      "fractional_coords": [
+        0.2990055978298187,
+        0.31002938747406006,
+        0.2875315845012665
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0008",
+      "fractional_coords": [
+        0.31002938747406006,
+        0.2875315845012665,
+        0.2990055978298187
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0009",
+      "fractional_coords": [
+        0.4775021970272064,
+        0.988976240158081,
+        0.6899706125259399
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0010",
+      "fractional_coords": [
+        0.48852595686912537,
+        0.011023766361176968,
+        0.20099438726902008
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0011",
+      "fractional_coords": [
+        0.48897624015808105,
+        0.9775022268295288,
+        0.18997062742710114
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0012",
+      "fractional_coords": [
+        0.511023759841919,
+        0.9885259866714478,
+        0.7009943723678589
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0013",
+      "fractional_coords": [
+        0.5114740133285522,
+        0.02249779924750328,
+        0.7124684453010559
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0014",
+      "fractional_coords": [
+        0.5224977731704712,
+        0.011474032886326313,
+        0.21246843039989471
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0015",
+      "fractional_coords": [
+        0.6899706125259399,
+        0.4775021970272064,
+        0.988976240158081
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0016",
+      "fractional_coords": [
+        0.7009943723678589,
+        0.511023759841919,
+        0.9885259866714478
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0017",
+      "fractional_coords": [
+        0.7124684453010559,
+        0.5114740133285522,
+        0.02249779924750328
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0018",
+      "fractional_coords": [
+        0.7875315546989441,
+        0.8100293874740601,
+        0.7990056276321411
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0019",
+      "fractional_coords": [
+        0.7990056276321411,
+        0.7875315546989441,
+        0.8100293874740601
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0020",
+      "fractional_coords": [
+        0.8100293874740601,
+        0.7990056276321411,
+        0.7875315546989441
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0021",
+      "fractional_coords": [
+        0.9775022268295288,
+        0.18997062742710114,
+        0.48897624015808105
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0022",
+      "fractional_coords": [
+        0.9885259866714478,
+        0.7009943723678589,
+        0.511023759841919
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0023",
+      "fractional_coords": [
+        0.988976240158081,
+        0.6899706125259399,
+        0.4775021970272064
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0000",
+      "fractional_coords": [
+        0.03079855814576149,
+        0.5857404470443726,
+        0.2052801251411438
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0001",
+      "fractional_coords": [
+        0.054941900074481964,
+        0.1744815707206726,
+        0.9692014455795288
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0002",
+      "fractional_coords": [
+        0.08574046194553375,
+        0.5307985544204712,
+        0.7052801251411438
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0003",
+      "fractional_coords": [
+        0.11953966319561005,
+        0.44505810737609863,
+        0.41425955295562744
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0004",
+      "fractional_coords": [
+        0.1744815707206726,
+        0.9692014455795288,
+        0.054941900074481964
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0005",
+      "fractional_coords": [
+        0.2052801251411438,
+        0.03079855814576149,
+        0.5857404470443726
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0006",
+      "fractional_coords": [
+        0.2947198748588562,
+        0.8804603219032288,
+        0.8255184292793274
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0007",
+      "fractional_coords": [
+        0.3255184292793274,
+        0.38046035170555115,
+        0.7947198748588562
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0008",
+      "fractional_coords": [
+        0.38046035170555115,
+        0.7947198748588562,
+        0.3255184292793274
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0009",
+      "fractional_coords": [
+        0.41425955295562744,
+        0.11953966319561005,
+        0.44505810737609863
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0010",
+      "fractional_coords": [
+        0.44505810737609863,
+        0.41425955295562744,
+        0.11953966319561005
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0011",
+      "fractional_coords": [
+        0.4692014455795288,
+        0.6744815707206726,
+        0.5549418926239014
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0012",
+      "fractional_coords": [
+        0.5307985544204712,
+        0.7052801251411438,
+        0.08574046194553375
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0013",
+      "fractional_coords": [
+        0.5549418926239014,
+        0.4692014455795288,
+        0.6744815707206726
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0014",
+      "fractional_coords": [
+        0.5857404470443726,
+        0.2052801251411438,
+        0.03079855814576149
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0015",
+      "fractional_coords": [
+        0.6195396780967712,
+        0.9142595529556274,
+        0.9450581073760986
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0016",
+      "fractional_coords": [
+        0.6744815707206726,
+        0.5549418926239014,
+        0.4692014455795288
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0017",
+      "fractional_coords": [
+        0.7052801251411438,
+        0.08574046194553375,
+        0.5307985544204712
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0018",
+      "fractional_coords": [
+        0.7947198748588562,
+        0.3255184292793274,
+        0.38046035170555115
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0019",
+      "fractional_coords": [
+        0.8255184292793274,
+        0.2947198748588562,
+        0.8804603219032288
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0020",
+      "fractional_coords": [
+        0.8804603219032288,
+        0.8255184292793274,
+        0.2947198748588562
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0021",
+      "fractional_coords": [
+        0.9142595529556274,
+        0.9450581073760986,
+        0.6195396780967712
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0022",
+      "fractional_coords": [
+        0.9450581073760986,
+        0.6195396780967712,
+        0.9142595529556274
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0023",
+      "fractional_coords": [
+        0.9692014455795288,
+        0.054941900074481964,
+        0.1744815707206726
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0000",
+      "fractional_coords": [
+        0.09790843725204468,
+        0.8969184160232544,
+        0.24482977390289307
+      ],
+      "region_id": 5,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-005",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0001",
+      "fractional_coords": [
+        0.10308156162500381,
+        0.8479113578796387,
+        0.2009900063276291
+      ],
+      "region_id": 5,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-005",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0002",
+      "fractional_coords": [
+        0.1469213366508484,
+        0.9020915627479553,
+        0.2990100085735321
+      ],
+      "region_id": 5,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-005",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0003",
+      "fractional_coords": [
+        0.15208865702152252,
+        0.8530786633491516,
+        0.25517022609710693
+      ],
+      "region_id": 5,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-005",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0004",
+      "fractional_coords": [
+        0.2009900063276291,
+        0.10308156162500381,
+        0.8479113578796387
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-003",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0005",
+      "fractional_coords": [
+        0.24482977390289307,
+        0.09790843725204468,
+        0.8969184160232544
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-003",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0006",
+      "fractional_coords": [
+        0.25517022609710693,
+        0.15208865702152252,
+        0.8530786633491516
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-003",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0007",
+      "fractional_coords": [
+        0.2990100085735321,
+        0.1469213366508484,
+        0.9020915627479553
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-003",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0008",
+      "fractional_coords": [
+        0.3479113280773163,
+        0.6030815839767456,
+        0.7009900212287903
+      ],
+      "region_id": 0,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-000",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0009",
+      "fractional_coords": [
+        0.3530786633491516,
+        0.6520886421203613,
+        0.7551702260971069
+      ],
+      "region_id": 0,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-000",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0010",
+      "fractional_coords": [
+        0.3969184458255768,
+        0.5979084372520447,
+        0.7448297739028931
+      ],
+      "region_id": 0,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-000",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0011",
+      "fractional_coords": [
+        0.4020915627479553,
+        0.6469213366508484,
+        0.7990099787712097
+      ],
+      "region_id": 0,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-000",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0012",
+      "fractional_coords": [
+        0.5979084372520447,
+        0.7448297739028931,
+        0.3969184458255768
+      ],
+      "region_id": 2,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-002",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0013",
+      "fractional_coords": [
+        0.6030815839767456,
+        0.7009900212287903,
+        0.3479113280773163
+      ],
+      "region_id": 2,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-002",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0014",
+      "fractional_coords": [
+        0.6469213366508484,
+        0.7990099787712097,
+        0.4020915627479553
+      ],
+      "region_id": 2,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-002",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0015",
+      "fractional_coords": [
+        0.6520886421203613,
+        0.7551702260971069,
+        0.3530786633491516
+      ],
+      "region_id": 2,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-002",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0016",
+      "fractional_coords": [
+        0.7009900212287903,
+        0.3479113280773163,
+        0.6030815839767456
+      ],
+      "region_id": 4,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-004",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0017",
+      "fractional_coords": [
+        0.7448297739028931,
+        0.3969184458255768,
+        0.5979084372520447
+      ],
+      "region_id": 4,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-004",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0018",
+      "fractional_coords": [
+        0.7551702260971069,
+        0.3530786633491516,
+        0.6520886421203613
+      ],
+      "region_id": 4,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-004",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0019",
+      "fractional_coords": [
+        0.7990099787712097,
+        0.4020915627479553,
+        0.6469213366508484
+      ],
+      "region_id": 4,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-004",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0020",
+      "fractional_coords": [
+        0.8479113578796387,
+        0.2009900063276291,
+        0.10308156162500381
+      ],
+      "region_id": 1,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-001",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0021",
+      "fractional_coords": [
+        0.8530786633491516,
+        0.25517022609710693,
+        0.15208865702152252
+      ],
+      "region_id": 1,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-001",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0022",
+      "fractional_coords": [
+        0.8969184160232544,
+        0.24482977390289307,
+        0.09790843725204468
+      ],
+      "region_id": 1,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-001",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0023",
+      "fractional_coords": [
+        0.9020915627479553,
+        0.2990100085735321,
+        0.1469213366508484
+      ],
+      "region_id": 1,
+      "assignment_status": "assigned",
+      "region_uid": "46e22695c6a19e82:region-001",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0000",
+      "fractional_coords": [
+        0.02764204889535904,
+        0.20899610221385956,
+        0.47123926877975464
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0001",
+      "fractional_coords": [
+        0.028760727494955063,
+        0.23775683343410492,
+        0.5564028024673462
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0002",
+      "fractional_coords": [
+        0.0564027763903141,
+        0.7377568483352661,
+        0.5287607312202454
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0003",
+      "fractional_coords": [
+        0.18135406076908112,
+        0.47235795855522156,
+        0.9435971975326538
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0004",
+      "fractional_coords": [
+        0.20899610221385956,
+        0.47123926877975464,
+        0.02764204889535904
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0005",
+      "fractional_coords": [
+        0.23775683343410492,
+        0.5564028024673462,
+        0.028760727494955063
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0006",
+      "fractional_coords": [
+        0.2622431814670563,
+        0.29100388288497925,
+        0.3186459541320801
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0007",
+      "fractional_coords": [
+        0.29100388288497925,
+        0.3186459541320801,
+        0.2622431814670563
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0008",
+      "fractional_coords": [
+        0.3186459541320801,
+        0.2622431814670563,
+        0.29100388288497925
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0009",
+      "fractional_coords": [
+        0.4435972273349762,
+        0.9723579287528992,
+        0.6813540458679199
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0010",
+      "fractional_coords": [
+        0.47123926877975464,
+        0.02764204889535904,
+        0.20899610221385956
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0011",
+      "fractional_coords": [
+        0.47235795855522156,
+        0.9435971975326538,
+        0.18135406076908112
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0012",
+      "fractional_coords": [
+        0.5276420712471008,
+        0.9712392687797546,
+        0.7089961171150208
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0013",
+      "fractional_coords": [
+        0.5287607312202454,
+        0.0564027763903141,
+        0.7377568483352661
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0014",
+      "fractional_coords": [
+        0.5564028024673462,
+        0.028760727494955063,
+        0.23775683343410492
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0015",
+      "fractional_coords": [
+        0.6813540458679199,
+        0.4435972273349762,
+        0.9723579287528992
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0016",
+      "fractional_coords": [
+        0.7089961171150208,
+        0.5276420712471008,
+        0.9712392687797546
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0017",
+      "fractional_coords": [
+        0.7377568483352661,
+        0.5287607312202454,
+        0.0564027763903141
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0018",
+      "fractional_coords": [
+        0.7622431516647339,
+        0.8186459541320801,
+        0.7910038828849792
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0019",
+      "fractional_coords": [
+        0.7910038828849792,
+        0.7622431516647339,
+        0.8186459541320801
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0020",
+      "fractional_coords": [
+        0.8186459541320801,
+        0.7910038828849792,
+        0.7622431516647339
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0021",
+      "fractional_coords": [
+        0.9435971975326538,
+        0.18135406076908112,
+        0.47235795855522156
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0022",
+      "fractional_coords": [
+        0.9712392687797546,
+        0.7089961171150208,
+        0.5276420712471008
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0005:member:0023",
+      "fractional_coords": [
+        0.9723579287528992,
+        0.6813540458679199,
+        0.4435972273349762
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    }
+  ],
+  "interpretation": "Exact connectivity of space outside balls of radius element radius + probe; geometry, not ELF or electronic dimensionality.",
+  "export_grid_shape": [
+    70,
+    70,
+    70
+  ],
+  "grid_components": 6,
+  "grid_components_with_several_regions": 0,
+  "unplaced_open_grid_points": 0,
+  "export_grid_spacing_angstrom": 0.15,
+  "open_space_xsf": "open_space.xsf",
+  "display_in_vesta": "Open an .xsf file and show the accessible_space isosurface at 0.5. Regions smaller than the grid spacing have no XSF file."
+}

@@ -27,9 +27,12 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
+from scipy import ndimage
 from scipy.spatial import ConvexHull, cKDTree
 
 from .build_graph_records import build_graph_record
+from .export_open_space_vesta import write_xsf
+from .label_void_dimensionality import _grid_shape
 
 
 RADIUS_SCHEMES = ("none", "ionic", "atomic", "custom")
@@ -296,10 +299,78 @@ class PowerSpace:
         coeff = np.linalg.solve(rows @ basis, rhs - rows @ c[0])
         return c[0] + basis @ coeff
 
+    # ---------------------------------------------------------------- raster
+    def raster(self, spacing_A: float, samples: int = 5) -> tuple[np.ndarray, dict[str, Any]]:
+        """Grid of exact region IDs for display (-1 is covered space).
+
+        Open grid points are exact. Grid components are then given the exact
+        region of a few of their most open points; a component whose samples
+        disagree (two regions closer than the grid spacing) is located point
+        by point. The grid only draws the regions; it never decides them.
+        """
+        shape = _grid_shape(self.lattice, spacing_A)
+        if np.prod(shape, dtype=np.int64) > 10_000_000:
+            raise ValueError("XSF grid exceeds 10 million points; increase export spacing")
+        frac = np.stack(np.meshgrid(*[np.arange(n) / n for n in shape], indexing="ij"), -1).reshape(-1, 3)
+        x = frac @ self.lattice - self.origin
+        tree = cKDTree(self.centers)
+        k = min(32, len(self.centers))
+        wmax = float(self.weights.max())
+        power = np.empty(len(x))
+        for start in range(0, len(x), 200_000):
+            chunk = x[start:start + 200_000]
+            dist, idx = tree.query(chunk, k=k)
+            dist, idx = dist.reshape(len(chunk), -1), idx.reshape(len(chunk), -1)
+            best = (dist ** 2 - self.weights[idx]).min(1)
+            # A farther site can only win if its distance bound allows it.
+            unsure = np.flatnonzero(dist[:, -1] ** 2 - wmax < best)
+            for i in unsure:
+                best[i] = self._power_all(chunk[i]).min()
+            power[start:start + len(chunk)] = best
+        power = power.reshape(shape)
+        open_mask = power > TOL
+        labels, count = ndimage.label(open_mask)
+        parent = list(range(count + 1))
+
+        def find(a: int) -> int:
+            while parent[a] != a:
+                parent[a] = parent[parent[a]]
+                a = parent[a]
+            return a
+        for axis in range(3):
+            first = np.take(labels, 0, axis=axis)
+            last = np.take(labels, -1, axis=axis)
+            for a, b in set(zip(first[(first > 0) & (last > 0)], last[(first > 0) & (last > 0)])):
+                parent[find(int(a))] = find(int(b))
+        roots = np.array([find(i) for i in range(count + 1)])
+        components = roots[labels]
+        out = np.full(shape, -1, dtype=int)
+        conflicts = unplaced = 0
+        for comp in np.unique(components[open_mask]):
+            points = np.flatnonzero((components == comp).ravel())
+            order = points[np.argsort(power.ravel()[points])[::-1][:samples]]
+            found = {self.membership.get(self.locate(frac[i])[0]) for i in order}
+            found.discard(None)
+            if len(found) == 1:
+                out.ravel()[points] = found.pop()
+                continue
+            conflicts += len(found) > 1
+            for i in points:
+                node = self.locate(frac[i])[0]
+                region = self.membership.get(node)
+                if region is None:
+                    unplaced += 1
+                else:
+                    out.ravel()[i] = region
+        return out, {"export_grid_shape": list(shape), "grid_components": int(len(np.unique(components[open_mask]))),
+                     "grid_components_with_several_regions": int(conflicts),
+                     "unplaced_open_grid_points": int(unplaced)}
+
 
 def run(structure_path: Path, output: Path, *, probe_A: float = 1.0,
-        radius_scheme: str = "none", custom_radii: dict[str, float] | None = None) -> dict[str, Any]:
-    """Label every candidate void with an exact geometric dimension."""
+        radius_scheme: str = "none", custom_radii: dict[str, float] | None = None,
+        export_spacing_A: float | None = None) -> dict[str, Any]:
+    """Label every candidate void with an exact geometric dimension; optionally write XSF."""
     structure_path = structure_path.resolve()
     output = output.resolve()
     if output.exists() and any(output.iterdir()):
@@ -343,6 +414,24 @@ def run(structure_path: Path, output: Path, *, probe_A: float = 1.0,
               "interpretation": "Exact connectivity of space outside balls of radius element radius + probe; "
                                 "geometry, not ELF or electronic dimensionality."}
     output.mkdir(parents=True, exist_ok=True)
+    if export_spacing_A is not None:
+        if not np.isfinite(export_spacing_A) or export_spacing_A <= 0:
+            raise ValueError("export spacing must be finite and positive")
+        grid, export = space.raster(export_spacing_A)
+        numbers = np.asarray(graph["atoms"]["atomic_numbers"], dtype=int)
+        cart = np.asarray(graph["atoms"]["fractional_coords"], dtype=float) @ space.lattice
+        write_xsf(output / "open_space.xsf", space.lattice, numbers, cart, grid >= 0)
+        for row in region_rows:
+            mask = grid == row["region_id"]
+            row["export_open_samples"] = int(mask.sum())
+            row["xsf_file"] = None
+            if mask.any():
+                row["xsf_file"] = f"{row['region_key']}-{row['connectivity_label']}.xsf"
+                write_xsf(output / row["xsf_file"], space.lattice, numbers, cart, mask)
+        report.update(export | {"export_grid_spacing_angstrom": float(export_spacing_A),
+                                "open_space_xsf": "open_space.xsf",
+                                "display_in_vesta": "Open an .xsf file and show the accessible_space isosurface at 0.5. "
+                                                    "Regions smaller than the grid spacing have no XSF file."})
     (output / "report.json").write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
     return report
 
@@ -355,10 +444,13 @@ def main() -> None:
                         help="Probe radius in Å, added to every element radius")
     parser.add_argument("--radius-scheme", choices=RADIUS_SCHEMES, default="none")
     parser.add_argument("--radii-json", type=Path, help="Element-to-radius table for --radius-scheme custom")
+    parser.add_argument("--export-spacing", type=float,
+                        help="Also write VESTA XSF grids at this approximate spacing in Å")
     args = parser.parse_args()
     custom = json.loads(args.radii_json.read_text()) if args.radii_json else None
     report = run(args.structure, args.output, probe_A=args.probe_radius,
-                 radius_scheme=args.radius_scheme, custom_radii=custom)
+                 radius_scheme=args.radius_scheme, custom_radii=custom,
+                 export_spacing_A=args.export_spacing)
     labels = ", ".join(r["connectivity_label"] for r in report["regions"]) or "no open regions"
     print(f"Wrote {args.output.resolve() / 'report.json'}: {labels}")
 

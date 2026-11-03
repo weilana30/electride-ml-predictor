@@ -92,6 +92,26 @@ class RadiusAndReportTests(unittest.TestCase):
         self.assertEqual(atom["assignment_status"], "below_probe_cutoff")
         self.assertEqual(report["regions"][0]["void_ids"], ["body"])
 
+    def test_xsf_export_draws_each_exact_region(self) -> None:
+        points = np.array(list(np.ndindex(6, 6, 6)), dtype=int)
+        atoms = points[np.any(np.isin(points[:, (1, 2)], [0, 3]), axis=1)] / 6
+        graph = {"lattice_angstrom": (np.eye(3) * 6).tolist(),
+                 "atoms": {"fractional_coords": atoms.tolist(), "atomic_numbers": [1] * len(atoms)},
+                 "voids": {"fractional_coords": [[.25, .25, .25]], "void_id": ["channel"]}}
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "structure.cif"
+            source.write_text("test source\n")
+            out = Path(directory) / "out"
+            with patch("elf_void_analysis.power_void_connectivity.build_graph_record", return_value=graph):
+                report = run(source, out, probe_A=1.0, export_spacing_A=0.25)
+            self.assertEqual(len(report["regions"]), 4)
+            self.assertEqual(report["unplaced_open_grid_points"], 0)
+            for region in report["regions"]:
+                self.assertEqual(region["connectivity_label"], "1D")
+                self.assertGreater(region["export_open_samples"], 0)
+                self.assertIn("BEGIN_DATAGRID_3D_accessible_space", (out / region["xsf_file"]).read_text())
+            self.assertTrue((out / "open_space.xsf").is_file())
+
 
 if __name__ == "__main__":
     unittest.main()

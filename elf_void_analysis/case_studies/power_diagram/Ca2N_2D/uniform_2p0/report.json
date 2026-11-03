@@ -1,0 +1,205 @@
+{
+  "source_structure": "data/cifs/mp-2686.cif",
+  "analysis_id": "1cdb8ff9002f7e6c",
+  "source_sha256": "4e869e3191984ebe14aadf231ed9d9ea27de62a600ca1ec48410b29d8040cd9f",
+  "method": "power_diagram",
+  "probe_radius_angstrom": 2.0,
+  "radius_scheme": "none",
+  "element_radii_angstrom": {
+    "Ca": 0.0,
+    "N": 0.0
+  },
+  "element_radius_sources": {
+    "Ca": "zero (uniform atom-center cutoff)",
+    "N": "zero (uniform atom-center cutoff)"
+  },
+  "regions": [
+    {
+      "region_id": 0,
+      "dimension": 2,
+      "power_vertex_count": 13,
+      "max_vertex_power_A2": 4.1890539061241725,
+      "region_key": "region-000",
+      "region_uid": "1cdb8ff9002f7e6c:region-000",
+      "connectivity_label": "2D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0000",
+        "cifs:candidate:0001:member:0001",
+        "cifs:candidate:0002:member:0000",
+        "cifs:candidate:0003:member:0000",
+        "cifs:candidate:0003:member:0001"
+      ],
+      "export_open_samples": 16124,
+      "xsf_file": "region-000-2D.xsf"
+    }
+  ],
+  "voids": [
+    {
+      "void_id": "cifs:candidate:0000:member:0000",
+      "fractional_coords": [
+        0.0056978864595294,
+        0.5448271036148071,
+        0.4515068233013153
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0001",
+      "fractional_coords": [
+        0.4515068233013153,
+        0.0056978864595294,
+        0.5448271036148071
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0002",
+      "fractional_coords": [
+        0.45517292618751526,
+        0.5484932065010071,
+        0.9943020939826965
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0003",
+      "fractional_coords": [
+        0.5448271036148071,
+        0.4515068233013153,
+        0.0056978864595294
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0004",
+      "fractional_coords": [
+        0.5484932065010071,
+        0.9943020939826965,
+        0.45517292618751526
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0005",
+      "fractional_coords": [
+        0.9943020939826965,
+        0.45517292618751526,
+        0.5484932065010071
+      ],
+      "region_id": null,
+      "assignment_status": "below_probe_cutoff",
+      "region_uid": null,
+      "connectivity_label": null,
+      "label_status": null,
+      "dimension": null
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0000",
+      "fractional_coords": [
+        0.13811062276363373,
+        0.13811010122299194,
+        0.1381109356880188
+      ],
+      "region_id": 0,
+      "assignment_status": "assigned",
+      "region_uid": "1cdb8ff9002f7e6c:region-000",
+      "connectivity_label": "2D",
+      "label_status": "exact",
+      "dimension": 2
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0001",
+      "fractional_coords": [
+        0.8618893623352051,
+        0.8618898987770081,
+        0.8618890643119812
+      ],
+      "region_id": 0,
+      "assignment_status": "assigned",
+      "region_uid": "1cdb8ff9002f7e6c:region-000",
+      "connectivity_label": "2D",
+      "label_status": "exact",
+      "dimension": 2
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0000",
+      "fractional_coords": [
+        0.5000000596046448,
+        0.5000000596046448,
+        0.49999985098838806
+      ],
+      "region_id": 0,
+      "assignment_status": "assigned",
+      "region_uid": "1cdb8ff9002f7e6c:region-000",
+      "connectivity_label": "2D",
+      "label_status": "exact",
+      "dimension": 2
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0000",
+      "fractional_coords": [
+        0.3782992660999298,
+        0.3782857060432434,
+        0.37828516960144043
+      ],
+      "region_id": 0,
+      "assignment_status": "assigned",
+      "region_uid": "1cdb8ff9002f7e6c:region-000",
+      "connectivity_label": "2D",
+      "label_status": "exact",
+      "dimension": 2
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0001",
+      "fractional_coords": [
+        0.6217007040977478,
+        0.6217142939567566,
+        0.6217148303985596
+      ],
+      "region_id": 0,
+      "assignment_status": "assigned",
+      "region_uid": "1cdb8ff9002f7e6c:region-000",
+      "connectivity_label": "2D",
+      "label_status": "exact",
+      "dimension": 2
+    }
+  ],
+  "interpretation": "Exact connectivity of space outside balls of radius element radius + probe; geometry, not ELF or electronic dimensionality.",
+  "export_grid_shape": [
+    46,
+    46,
+    46
+  ],
+  "grid_components": 7,
+  "grid_components_with_several_regions": 0,
+  "unplaced_open_grid_points": 0,
+  "export_grid_spacing_angstrom": 0.15,
+  "open_space_xsf": "open_space.xsf",
+  "display_in_vesta": "Open an .xsf file and show the accessible_space isosurface at 0.5. Regions smaller than the grid spacing have no XSF file."
+}

@@ -1,0 +1,1648 @@
+{
+  "source_structure": "data/cifs/mp-2538.cif",
+  "analysis_id": "c7b744b21501c811",
+  "source_sha256": "cb31f4ebf8baffc0dbc831d64cc00eaf4d2d6947f301710aa7f3a3adb3472a54",
+  "method": "power_diagram",
+  "probe_radius_angstrom": 2.0,
+  "radius_scheme": "none",
+  "element_radii_angstrom": {
+    "Si": 0.0,
+    "Y": 0.0
+  },
+  "element_radius_sources": {
+    "Si": "zero (uniform atom-center cutoff)",
+    "Y": "zero (uniform atom-center cutoff)"
+  },
+  "regions": [
+    {
+      "region_id": 0,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.5820065102654937,
+      "region_key": "region-000",
+      "region_uid": "c7b744b21501c811:region-000",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0002:member:0001"
+      ],
+      "export_open_samples": 26,
+      "xsf_file": "region-000-0D.xsf"
+    },
+    {
+      "region_id": 1,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.5820064631806687,
+      "region_key": "region-001",
+      "region_uid": "c7b744b21501c811:region-001",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0002:member:0005"
+      ],
+      "export_open_samples": 26,
+      "xsf_file": "region-001-0D.xsf"
+    },
+    {
+      "region_id": 2,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.17885761434362024,
+      "region_key": "region-002",
+      "region_uid": "c7b744b21501c811:region-002",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0019"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-002-0D.xsf"
+    },
+    {
+      "region_id": 3,
+      "dimension": 1,
+      "power_vertex_count": 14,
+      "max_vertex_power_A2": 2.7924151686341787,
+      "region_key": "region-003",
+      "region_uid": "c7b744b21501c811:region-003",
+      "connectivity_label": "1D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0003:member:0000",
+        "cifs:candidate:0003:member:0001",
+        "cifs:candidate:0003:member:0002",
+        "cifs:candidate:0003:member:0003",
+        "cifs:candidate:0003:member:0004",
+        "cifs:candidate:0003:member:0005",
+        "cifs:candidate:0003:member:0006",
+        "cifs:candidate:0003:member:0007",
+        "cifs:candidate:0003:member:0008",
+        "cifs:candidate:0003:member:0009",
+        "cifs:candidate:0003:member:0010",
+        "cifs:candidate:0003:member:0011",
+        "cifs:candidate:0004:member:0000",
+        "cifs:candidate:0004:member:0001"
+      ],
+      "export_open_samples": 2341,
+      "xsf_file": "region-003-1D.xsf"
+    },
+    {
+      "region_id": 4,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.17885778928757645,
+      "region_key": "region-004",
+      "region_uid": "c7b744b21501c811:region-004",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0004"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-004-0D.xsf"
+    },
+    {
+      "region_id": 5,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.1788575783740214,
+      "region_key": "region-005",
+      "region_uid": "c7b744b21501c811:region-005",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0013"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-005-0D.xsf"
+    },
+    {
+      "region_id": 6,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.16252625749476124,
+      "region_key": "region-006",
+      "region_uid": "c7b744b21501c811:region-006",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0000:member:0008"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-006-0D.xsf"
+    },
+    {
+      "region_id": 7,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.1788576534660038,
+      "region_key": "region-007",
+      "region_uid": "c7b744b21501c811:region-007",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0002"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-007-0D.xsf"
+    },
+    {
+      "region_id": 8,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.5820061574932112,
+      "region_key": "region-008",
+      "region_uid": "c7b744b21501c811:region-008",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0002:member:0006"
+      ],
+      "export_open_samples": 24,
+      "xsf_file": "region-008-0D.xsf"
+    },
+    {
+      "region_id": 9,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.582006204578029,
+      "region_key": "region-009",
+      "region_uid": "c7b744b21501c811:region-009",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0002:member:0010"
+      ],
+      "export_open_samples": 24,
+      "xsf_file": "region-009-0D.xsf"
+    },
+    {
+      "region_id": 10,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.1625262133388503,
+      "region_key": "region-010",
+      "region_uid": "c7b744b21501c811:region-010",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0000:member:0003"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-010-0D.xsf"
+    },
+    {
+      "region_id": 11,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.17885761772222253,
+      "region_key": "region-011",
+      "region_uid": "c7b744b21501c811:region-011",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0006"
+      ],
+      "export_open_samples": 0,
+      "xsf_file": null
+    },
+    {
+      "region_id": 12,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.5820062918075237,
+      "region_key": "region-012",
+      "region_uid": "c7b744b21501c811:region-012",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0002:member:0009"
+      ],
+      "export_open_samples": 26,
+      "xsf_file": "region-012-0D.xsf"
+    },
+    {
+      "region_id": 13,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.1788577457559981,
+      "region_key": "region-013",
+      "region_uid": "c7b744b21501c811:region-013",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0009"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-013-0D.xsf"
+    },
+    {
+      "region_id": 14,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.16252637859739494,
+      "region_key": "region-014",
+      "region_uid": "c7b744b21501c811:region-014",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0000:member:0000"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-014-0D.xsf"
+    },
+    {
+      "region_id": 15,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.5820065102655008,
+      "region_key": "region-015",
+      "region_uid": "c7b744b21501c811:region-015",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0002:member:0000"
+      ],
+      "export_open_samples": 24,
+      "xsf_file": "region-015-0D.xsf"
+    },
+    {
+      "region_id": 16,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.5820061574932254,
+      "region_key": "region-016",
+      "region_uid": "c7b744b21501c811:region-016",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0002:member:0007"
+      ],
+      "export_open_samples": 26,
+      "xsf_file": "region-016-0D.xsf"
+    },
+    {
+      "region_id": 17,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.1788577533179705,
+      "region_key": "region-017",
+      "region_uid": "c7b744b21501c811:region-017",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0011"
+      ],
+      "export_open_samples": 0,
+      "xsf_file": null
+    },
+    {
+      "region_id": 18,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.16252611333481326,
+      "region_key": "region-018",
+      "region_uid": "c7b744b21501c811:region-018",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0000:member:0004"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-018-0D.xsf"
+    },
+    {
+      "region_id": 19,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.16252620282480024,
+      "region_key": "region-019",
+      "region_uid": "c7b744b21501c811:region-019",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0000:member:0001"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-019-0D.xsf"
+    },
+    {
+      "region_id": 20,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.16252589610314772,
+      "region_key": "region-020",
+      "region_uid": "c7b744b21501c811:region-020",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0000:member:0011"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-020-0D.xsf"
+    },
+    {
+      "region_id": 21,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.17885761772221542,
+      "region_key": "region-021",
+      "region_uid": "c7b744b21501c811:region-021",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0007"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-021-0D.xsf"
+    },
+    {
+      "region_id": 22,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.17885765870455828,
+      "region_key": "region-022",
+      "region_uid": "c7b744b21501c811:region-022",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0017"
+      ],
+      "export_open_samples": 0,
+      "xsf_file": null
+    },
+    {
+      "region_id": 23,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.17885778928757645,
+      "region_key": "region-023",
+      "region_uid": "c7b744b21501c811:region-023",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0005"
+      ],
+      "export_open_samples": 0,
+      "xsf_file": null
+    },
+    {
+      "region_id": 24,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.1625262046281577,
+      "region_key": "region-024",
+      "region_uid": "c7b744b21501c811:region-024",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0000:member:0009"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-024-0D.xsf"
+    },
+    {
+      "region_id": 25,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.16252615866887865,
+      "region_key": "region-025",
+      "region_uid": "c7b744b21501c811:region-025",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0000:member:0010"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-025-0D.xsf"
+    },
+    {
+      "region_id": 26,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.1788576587045725,
+      "region_key": "region-026",
+      "region_uid": "c7b744b21501c811:region-026",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0016"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-026-0D.xsf"
+    },
+    {
+      "region_id": 27,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.17885765346603222,
+      "region_key": "region-027",
+      "region_uid": "c7b744b21501c811:region-027",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0003"
+      ],
+      "export_open_samples": 0,
+      "xsf_file": null
+    },
+    {
+      "region_id": 28,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.1625258594798069,
+      "region_key": "region-028",
+      "region_uid": "c7b744b21501c811:region-028",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0000:member:0005"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-028-0D.xsf"
+    },
+    {
+      "region_id": 29,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.16252651218473346,
+      "region_key": "region-029",
+      "region_uid": "c7b744b21501c811:region-029",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0000:member:0002"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-029-0D.xsf"
+    },
+    {
+      "region_id": 30,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.16252634197400084,
+      "region_key": "region-030",
+      "region_uid": "c7b744b21501c811:region-030",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0000:member:0006"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-030-0D.xsf"
+    },
+    {
+      "region_id": 31,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.1625264208913535,
+      "region_key": "region-031",
+      "region_uid": "c7b744b21501c811:region-031",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0000:member:0007"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-031-0D.xsf"
+    },
+    {
+      "region_id": 32,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.178857745755991,
+      "region_key": "region-032",
+      "region_uid": "c7b744b21501c811:region-032",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0008"
+      ],
+      "export_open_samples": 0,
+      "xsf_file": null
+    },
+    {
+      "region_id": 33,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.5820064631806758,
+      "region_key": "region-033",
+      "region_uid": "c7b744b21501c811:region-033",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0002:member:0004"
+      ],
+      "export_open_samples": 24,
+      "xsf_file": "region-033-0D.xsf"
+    },
+    {
+      "region_id": 34,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.5820062917569793,
+      "region_key": "region-034",
+      "region_uid": "c7b744b21501c811:region-034",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0002:member:0002"
+      ],
+      "export_open_samples": 24,
+      "xsf_file": "region-034-0D.xsf"
+    },
+    {
+      "region_id": 35,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.582006204578029,
+      "region_key": "region-035",
+      "region_uid": "c7b744b21501c811:region-035",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0002:member:0011"
+      ],
+      "export_open_samples": 26,
+      "xsf_file": "region-035-0D.xsf"
+    },
+    {
+      "region_id": 36,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.17885745526616859,
+      "region_key": "region-036",
+      "region_uid": "c7b744b21501c811:region-036",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0022"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-036-0D.xsf"
+    },
+    {
+      "region_id": 37,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.1788577764870709,
+      "region_key": "region-037",
+      "region_uid": "c7b744b21501c811:region-037",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0001"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-037-0D.xsf"
+    },
+    {
+      "region_id": 38,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.1788574245350958,
+      "region_key": "region-038",
+      "region_uid": "c7b744b21501c811:region-038",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0014"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-038-0D.xsf"
+    },
+    {
+      "region_id": 39,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.5820062917569757,
+      "region_key": "region-039",
+      "region_uid": "c7b744b21501c811:region-039",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0002:member:0003"
+      ],
+      "export_open_samples": 26,
+      "xsf_file": "region-039-0D.xsf"
+    },
+    {
+      "region_id": 40,
+      "dimension": 0,
+      "power_vertex_count": 2,
+      "max_vertex_power_A2": 0.5820062918075379,
+      "region_key": "region-040",
+      "region_uid": "c7b744b21501c811:region-040",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0002:member:0008"
+      ],
+      "export_open_samples": 24,
+      "xsf_file": "region-040-0D.xsf"
+    },
+    {
+      "region_id": 41,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.1788574245351029,
+      "region_key": "region-041",
+      "region_uid": "c7b744b21501c811:region-041",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0015"
+      ],
+      "export_open_samples": 0,
+      "xsf_file": null
+    },
+    {
+      "region_id": 42,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.17885775331792786,
+      "region_key": "region-042",
+      "region_uid": "c7b744b21501c811:region-042",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0010"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-042-0D.xsf"
+    },
+    {
+      "region_id": 43,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.17885761248368937,
+      "region_key": "region-043",
+      "region_uid": "c7b744b21501c811:region-043",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0021"
+      ],
+      "export_open_samples": 1,
+      "xsf_file": "region-043-0D.xsf"
+    },
+    {
+      "region_id": 44,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.17885777648706025,
+      "region_key": "region-044",
+      "region_uid": "c7b744b21501c811:region-044",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0000"
+      ],
+      "export_open_samples": 0,
+      "xsf_file": null
+    },
+    {
+      "region_id": 45,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.17885761248368937,
+      "region_key": "region-045",
+      "region_uid": "c7b744b21501c811:region-045",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0020"
+      ],
+      "export_open_samples": 0,
+      "xsf_file": null
+    },
+    {
+      "region_id": 46,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.17885745526615437,
+      "region_key": "region-046",
+      "region_uid": "c7b744b21501c811:region-046",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0023"
+      ],
+      "export_open_samples": 0,
+      "xsf_file": null
+    },
+    {
+      "region_id": 47,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.17885761434364156,
+      "region_key": "region-047",
+      "region_uid": "c7b744b21501c811:region-047",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0018"
+      ],
+      "export_open_samples": 0,
+      "xsf_file": null
+    },
+    {
+      "region_id": 48,
+      "dimension": 0,
+      "power_vertex_count": 1,
+      "max_vertex_power_A2": 0.17885757837406402,
+      "region_key": "region-048",
+      "region_uid": "c7b744b21501c811:region-048",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "void_ids": [
+        "cifs:candidate:0001:member:0012"
+      ],
+      "export_open_samples": 0,
+      "xsf_file": null
+    }
+  ],
+  "voids": [
+    {
+      "void_id": "cifs:candidate:0000:member:0000",
+      "fractional_coords": [
+        0.18384842574596405,
+        0.5166734457015991,
+        0.2499508112668991
+      ],
+      "region_id": 14,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-014",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0001",
+      "fractional_coords": [
+        0.18384842574596405,
+        0.6671749353408813,
+        0.7499508261680603
+      ],
+      "region_id": 19,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-019",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0002",
+      "fractional_coords": [
+        0.33282503485679626,
+        0.5166734457015991,
+        0.7500491738319397
+      ],
+      "region_id": 29,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-029",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0003",
+      "fractional_coords": [
+        0.33282503485679626,
+        0.8161515593528748,
+        0.2500491738319397
+      ],
+      "region_id": 10,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-010",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0004",
+      "fractional_coords": [
+        0.4833265244960785,
+        0.6671749353408813,
+        0.2499508112668991
+      ],
+      "region_id": 18,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-018",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0005",
+      "fractional_coords": [
+        0.4833265244960785,
+        0.8161515593528748,
+        0.7500491738319397
+      ],
+      "region_id": 28,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-028",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0006",
+      "fractional_coords": [
+        0.5166734457015991,
+        0.18384842574596405,
+        0.2499508112668991
+      ],
+      "region_id": 30,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-030",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0007",
+      "fractional_coords": [
+        0.5166734457015991,
+        0.33282503485679626,
+        0.7500491738319397
+      ],
+      "region_id": 31,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-031",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0008",
+      "fractional_coords": [
+        0.6671749353408813,
+        0.18384842574596405,
+        0.7499508261680603
+      ],
+      "region_id": 6,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-006",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0009",
+      "fractional_coords": [
+        0.6671749353408813,
+        0.4833265244960785,
+        0.2499508112668991
+      ],
+      "region_id": 24,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-024",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0010",
+      "fractional_coords": [
+        0.8161515593528748,
+        0.33282503485679626,
+        0.2500491738319397
+      ],
+      "region_id": 25,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-025",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0000:member:0011",
+      "fractional_coords": [
+        0.8161515593528748,
+        0.4833265244960785,
+        0.7500491738319397
+      ],
+      "region_id": 20,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-020",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0000",
+      "fractional_coords": [
+        0.07244717329740524,
+        0.4609735310077667,
+        0.055706318467855453
+      ],
+      "region_id": 44,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-044",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0001",
+      "fractional_coords": [
+        0.07244717329740524,
+        0.4609735310077667,
+        0.44429367780685425
+      ],
+      "region_id": 37,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-037",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0002",
+      "fractional_coords": [
+        0.07244717329740524,
+        0.6114736199378967,
+        0.5557063221931458
+      ],
+      "region_id": 7,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-007",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0003",
+      "fractional_coords": [
+        0.07244717329740524,
+        0.6114736199378967,
+        0.9442936778068542
+      ],
+      "region_id": 27,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-027",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0004",
+      "fractional_coords": [
+        0.38852638006210327,
+        0.4609735310077667,
+        0.5557063221931458
+      ],
+      "region_id": 4,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-004",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0005",
+      "fractional_coords": [
+        0.38852638006210327,
+        0.4609735310077667,
+        0.9442936778068542
+      ],
+      "region_id": 23,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-023",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0006",
+      "fractional_coords": [
+        0.38852638006210327,
+        0.9275528192520142,
+        0.055706318467855453
+      ],
+      "region_id": 11,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-011",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0007",
+      "fractional_coords": [
+        0.38852638006210327,
+        0.9275528192520142,
+        0.44429367780685425
+      ],
+      "region_id": 21,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-021",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0008",
+      "fractional_coords": [
+        0.4609735310077667,
+        0.07244717329740524,
+        0.055706318467855453
+      ],
+      "region_id": 32,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-032",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0009",
+      "fractional_coords": [
+        0.4609735310077667,
+        0.07244717329740524,
+        0.44429367780685425
+      ],
+      "region_id": 13,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-013",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0010",
+      "fractional_coords": [
+        0.4609735310077667,
+        0.38852638006210327,
+        0.5557063221931458
+      ],
+      "region_id": 42,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-042",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0011",
+      "fractional_coords": [
+        0.4609735310077667,
+        0.38852638006210327,
+        0.9442936778068542
+      ],
+      "region_id": 17,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-017",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0012",
+      "fractional_coords": [
+        0.5390264391899109,
+        0.6114736199378967,
+        0.055706318467855453
+      ],
+      "region_id": 48,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-048",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0013",
+      "fractional_coords": [
+        0.5390264391899109,
+        0.6114736199378967,
+        0.44429367780685425
+      ],
+      "region_id": 5,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-005",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0014",
+      "fractional_coords": [
+        0.5390264391899109,
+        0.9275528192520142,
+        0.5557063221931458
+      ],
+      "region_id": 38,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-038",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0015",
+      "fractional_coords": [
+        0.5390264391899109,
+        0.9275528192520142,
+        0.9442936778068542
+      ],
+      "region_id": 41,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-041",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0016",
+      "fractional_coords": [
+        0.6114736199378967,
+        0.07244717329740524,
+        0.5557063221931458
+      ],
+      "region_id": 26,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-026",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0017",
+      "fractional_coords": [
+        0.6114736199378967,
+        0.07244717329740524,
+        0.9442936778068542
+      ],
+      "region_id": 22,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-022",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0018",
+      "fractional_coords": [
+        0.6114736199378967,
+        0.5390264391899109,
+        0.055706318467855453
+      ],
+      "region_id": 47,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-047",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0019",
+      "fractional_coords": [
+        0.6114736199378967,
+        0.5390264391899109,
+        0.44429367780685425
+      ],
+      "region_id": 2,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-002",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0020",
+      "fractional_coords": [
+        0.9275528192520142,
+        0.38852638006210327,
+        0.055706318467855453
+      ],
+      "region_id": 45,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-045",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0021",
+      "fractional_coords": [
+        0.9275528192520142,
+        0.38852638006210327,
+        0.44429367780685425
+      ],
+      "region_id": 43,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-043",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0022",
+      "fractional_coords": [
+        0.9275528192520142,
+        0.5390264391899109,
+        0.5557063221931458
+      ],
+      "region_id": 36,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-036",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0001:member:0023",
+      "fractional_coords": [
+        0.9275528192520142,
+        0.5390264391899109,
+        0.9442936778068542
+      ],
+      "region_id": 46,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-046",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0000",
+      "fractional_coords": [
+        0.18762212991714478,
+        0.37524425983428955,
+        2.5197297581769362e-09
+      ],
+      "region_id": 15,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-015",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0001",
+      "fractional_coords": [
+        0.18762212991714478,
+        0.37524425983428955,
+        0.5
+      ],
+      "region_id": 0,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-000",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0002",
+      "fractional_coords": [
+        0.18762212991714478,
+        0.8123778700828552,
+        2.5197297581769362e-09
+      ],
+      "region_id": 34,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-034",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0003",
+      "fractional_coords": [
+        0.18762212991714478,
+        0.8123778700828552,
+        0.5
+      ],
+      "region_id": 39,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-039",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0004",
+      "fractional_coords": [
+        0.37524425983428955,
+        0.18762212991714478,
+        0.0
+      ],
+      "region_id": 33,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-033",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0005",
+      "fractional_coords": [
+        0.37524425983428955,
+        0.18762212991714478,
+        0.5
+      ],
+      "region_id": 1,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-001",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0006",
+      "fractional_coords": [
+        0.6247557401657104,
+        0.8123778700828552,
+        2.5197297581769362e-09
+      ],
+      "region_id": 8,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-008",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0007",
+      "fractional_coords": [
+        0.6247557401657104,
+        0.8123778700828552,
+        0.5
+      ],
+      "region_id": 16,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-016",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0008",
+      "fractional_coords": [
+        0.8123778700828552,
+        0.18762212991714478,
+        0.0
+      ],
+      "region_id": 40,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-040",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0009",
+      "fractional_coords": [
+        0.8123778700828552,
+        0.18762212991714478,
+        0.5
+      ],
+      "region_id": 12,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-012",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0010",
+      "fractional_coords": [
+        0.8123778700828552,
+        0.6247557401657104,
+        0.0
+      ],
+      "region_id": 9,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-009",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0002:member:0011",
+      "fractional_coords": [
+        0.8123778700828552,
+        0.6247557401657104,
+        0.5
+      ],
+      "region_id": 35,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-035",
+      "connectivity_label": "0D",
+      "label_status": "exact",
+      "dimension": 0
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0000",
+      "fractional_coords": [
+        0.0,
+        0.8238266706466675,
+        0.07475696504116058
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-003",
+      "connectivity_label": "1D",
+      "label_status": "exact",
+      "dimension": 1
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0001",
+      "fractional_coords": [
+        0.0,
+        0.8238266706466675,
+        0.4252430498600006
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-003",
+      "connectivity_label": "1D",
+      "label_status": "exact",
+      "dimension": 1
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0002",
+      "fractional_coords": [
+        2.1489490187320825e-09,
+        0.17617332935333252,
+        0.5747569799423218
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-003",
+      "connectivity_label": "1D",
+      "label_status": "exact",
+      "dimension": 1
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0003",
+      "fractional_coords": [
+        2.1489490187320825e-09,
+        0.17617332935333252,
+        0.9252430200576782
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-003",
+      "connectivity_label": "1D",
+      "label_status": "exact",
+      "dimension": 1
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0004",
+      "fractional_coords": [
+        0.17617331445217133,
+        0.0,
+        0.5747569799423218
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-003",
+      "connectivity_label": "1D",
+      "label_status": "exact",
+      "dimension": 1
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0005",
+      "fractional_coords": [
+        0.17617331445217133,
+        0.0,
+        0.9252430200576782
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-003",
+      "connectivity_label": "1D",
+      "label_status": "exact",
+      "dimension": 1
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0006",
+      "fractional_coords": [
+        0.17617332935333252,
+        0.17617331445217133,
+        0.07475696504116058
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-003",
+      "connectivity_label": "1D",
+      "label_status": "exact",
+      "dimension": 1
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0007",
+      "fractional_coords": [
+        0.17617332935333252,
+        0.17617331445217133,
+        0.4252430498600006
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-003",
+      "connectivity_label": "1D",
+      "label_status": "exact",
+      "dimension": 1
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0008",
+      "fractional_coords": [
+        0.8238266706466675,
+        2.1489490187320825e-09,
+        0.07475696504116058
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-003",
+      "connectivity_label": "1D",
+      "label_status": "exact",
+      "dimension": 1
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0009",
+      "fractional_coords": [
+        0.8238266706466675,
+        2.1489490187320825e-09,
+        0.4252430498600006
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-003",
+      "connectivity_label": "1D",
+      "label_status": "exact",
+      "dimension": 1
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0010",
+      "fractional_coords": [
+        0.8238266706466675,
+        0.8238266706466675,
+        0.5747569799423218
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-003",
+      "connectivity_label": "1D",
+      "label_status": "exact",
+      "dimension": 1
+    },
+    {
+      "void_id": "cifs:candidate:0003:member:0011",
+      "fractional_coords": [
+        0.8238266706466675,
+        0.8238266706466675,
+        0.9252430200576782
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-003",
+      "connectivity_label": "1D",
+      "label_status": "exact",
+      "dimension": 1
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0000",
+      "fractional_coords": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-003",
+      "connectivity_label": "1D",
+      "label_status": "exact",
+      "dimension": 1
+    },
+    {
+      "void_id": "cifs:candidate:0004:member:0001",
+      "fractional_coords": [
+        4.798497155178438e-09,
+        0.0,
+        0.5
+      ],
+      "region_id": 3,
+      "assignment_status": "assigned",
+      "region_uid": "c7b744b21501c811:region-003",
+      "connectivity_label": "1D",
+      "label_status": "exact",
+      "dimension": 1
+    }
+  ],
+  "interpretation": "Exact connectivity of space outside balls of radius element radius + probe; geometry, not ELF or electronic dimensionality.",
+  "export_grid_shape": [
+    57,
+    57,
+    43
+  ],
+  "grid_components": 41,
+  "grid_components_with_several_regions": 0,
+  "unplaced_open_grid_points": 0,
+  "export_grid_spacing_angstrom": 0.15,
+  "open_space_xsf": "open_space.xsf",
+  "display_in_vesta": "Open an .xsf file and show the accessible_space isosurface at 0.5. Regions smaller than the grid spacing have no XSF file."
+}
