@@ -26,12 +26,25 @@ exact region, and no open grid point was left unplaced.
 
 ## Viewing in VESTA
 
-Open an `.xsf` file, then set the `accessible_space` isosurface level to 0.5.
-`open_space.xsf` shows all open space together; each `region-NNN-<dim>.xsf`
+Each grid point in the `accessible_space` dataset has one of three values:
+
+| Value | Meaning |
+| --- | --- |
+| 2 | The center of a probe ball fits here |
+| 1 | Inside some probe ball that fits (within one probe radius of a fitting center) |
+| 0 | No fitting probe ball reaches here |
+
+Open an `.xsf` file and set the isosurface level to **0.5** to highlight all
+the space a fitting probe fills; it extends out to the blocked spheres. Add a
+second isosurface at **1.5** to see where the probe center itself can sit.
+`open_space.xsf` shows every region together; each `region-NNN-<dim>.xsf`
 shows one exact region. Region labels come from the exact calculation; the
-0.15 Å grid only draws them. Regions smaller than the grid have
-`xsf_file: null` in `report.json` (four Sr3CrN3 pockets in `ionic_1p0`, twelve
-Y5Si3 pockets in `uniform_2p0`).
+0.15 Å grid only draws them. The filled space is grown from both the region's
+grid points and its exact power-diagram vertices, so pockets smaller than the
+grid spacing are still drawn.
+
+With `uniform_2p0`, element radii are zero, so the filled space reaches the
+atom centers. With `ionic_1p0`, it reaches the ionic-radius spheres.
 
 ## Caveats
 

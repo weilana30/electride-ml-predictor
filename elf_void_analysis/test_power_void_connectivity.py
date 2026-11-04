@@ -109,6 +109,8 @@ class RadiusAndReportTests(unittest.TestCase):
             for region in report["regions"]:
                 self.assertEqual(region["connectivity_label"], "1D")
                 self.assertGreater(region["export_open_samples"], 0)
+                # Probe balls fill more space than their centers alone.
+                self.assertGreater(region["export_filled_samples"], region["export_open_samples"])
                 self.assertIn("BEGIN_DATAGRID_3D_accessible_space", (out / region["xsf_file"]).read_text())
             self.assertTrue((out / "open_space.xsf").is_file())
 

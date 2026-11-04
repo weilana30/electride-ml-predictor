@@ -362,9 +362,38 @@ class PowerSpace:
                     unplaced += 1
                 else:
                     out.ravel()[i] = region
+        self._grid_xyz = frac @ self.lattice
         return out, {"export_grid_shape": list(shape), "grid_components": int(len(np.unique(components[open_mask]))),
                      "grid_components_with_several_regions": int(conflicts),
                      "unplaced_open_grid_points": int(unplaced)}
+
+    def probe_reach(self, grid: np.ndarray, probe_A: float) -> dict[int, np.ndarray]:
+        """Grid points inside some probe ball whose center fits in each region.
+
+        Centers are the region's open grid points plus its exact power
+        vertices, so pockets smaller than the grid still get drawn.
+        """
+        xyz = self._grid_xyz
+        node_xyz: dict[int, np.ndarray] = {}
+        for f, n in self.node.items():
+            node_xyz.setdefault(n, self.vertex_xyz[f] + self.origin)
+        inverse = np.linalg.inv(self.lattice)
+        reach = int(math.ceil(probe_A / self.spacing.min())) + 1
+        shifts = np.array(list(product(range(-reach, reach + 1), repeat=3))) @ self.lattice
+        out = {}
+        regions = sorted(set(self.membership.values()))
+        for region in regions:
+            vertices = np.array([node_xyz[n] for n, r in self.membership.items()
+                                 if r == region and self.node_power[n] > TOL])
+            vertices = (vertices @ inverse % 1.0) @ self.lattice
+            centers = np.vstack([xyz[(grid == region).ravel()], vertices])
+            if probe_A <= 0:
+                out[region] = grid == region
+                continue
+            tree = cKDTree((centers[None] + shifts[:, None]).reshape(-1, 3))
+            dist, _ = tree.query(xyz, distance_upper_bound=probe_A + 1e-9)
+            out[region] = np.isfinite(dist).reshape(grid.shape)
+        return out
 
 
 def run(structure_path: Path, output: Path, *, probe_A: float = 1.0,
@@ -418,20 +447,30 @@ def run(structure_path: Path, output: Path, *, probe_A: float = 1.0,
         if not np.isfinite(export_spacing_A) or export_spacing_A <= 0:
             raise ValueError("export spacing must be finite and positive")
         grid, export = space.raster(export_spacing_A)
+        reach = space.probe_reach(grid, probe_A)
         numbers = np.asarray(graph["atoms"]["atomic_numbers"], dtype=int)
         cart = np.asarray(graph["atoms"]["fractional_coords"], dtype=float) @ space.lattice
-        write_xsf(output / "open_space.xsf", space.lattice, numbers, cart, grid >= 0)
+        # Grid values: 2 = a probe center fits here, 1 = covered by a fitted
+        # probe ball, 0 = neither. Isosurface 0.5 shows all probe-filled space.
+        everything = np.where(grid >= 0, 2, np.any(list(reach.values()), axis=0) if reach else 0)
+        write_xsf(output / "open_space.xsf", space.lattice, numbers, cart, everything)
         for row in region_rows:
-            mask = grid == row["region_id"]
-            row["export_open_samples"] = int(mask.sum())
+            centers = grid == row["region_id"]
+            filled = reach[row["region_id"]]
+            row["export_open_samples"] = int(centers.sum())
+            row["export_filled_samples"] = int(filled.sum())
             row["xsf_file"] = None
-            if mask.any():
+            if filled.any():
                 row["xsf_file"] = f"{row['region_key']}-{row['connectivity_label']}.xsf"
-                write_xsf(output / row["xsf_file"], space.lattice, numbers, cart, mask)
+                write_xsf(output / row["xsf_file"], space.lattice, numbers, cart,
+                          np.where(centers, 2, filled.astype(int)))
         report.update(export | {"export_grid_spacing_angstrom": float(export_spacing_A),
                                 "open_space_xsf": "open_space.xsf",
-                                "display_in_vesta": "Open an .xsf file and show the accessible_space isosurface at 0.5. "
-                                                    "Regions smaller than the grid spacing have no XSF file."})
+                                "export_grid_values": {"2": "a probe center fits here",
+                                                       "1": "inside a probe ball that fits",
+                                                       "0": "no probe ball reaches here"},
+                                "display_in_vesta": "Open an .xsf file. Isosurface 0.5 shows all space a fitted probe "
+                                                    "fills; 1.5 shows only where its center can sit."})
     (output / "report.json").write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
     return report
 
