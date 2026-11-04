@@ -1,5 +1,8 @@
 // Build poster.pptx: one 48 x 36 in slide (4 ft wide, 3 ft tall).
 //
+// WARNING: this generated the first draft only. poster.pptx is now edited by
+// hand in PowerPoint; running this script overwrites it and loses those edits.
+//
 //   npm install pptxgenjs@3.12.0   (once, anywhere on NODE_PATH)
 //   node poster/build_poster.js
 //

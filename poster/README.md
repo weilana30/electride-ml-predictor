@@ -10,18 +10,21 @@ Working folder for the research poster (48 × 36 in, landscape, one slide).
 | [`TODO.md`](TODO.md) | What still needs doing before printing |
 | [`figures/`](figures/) | Result figures copied from the analysis folders (PNG 300 dpi + PDF) |
 | [`diagrams/`](diagrams/) | Schematic diagrams and the script that draws them |
-| [`build_poster.js`](build_poster.js) | Rebuilds `poster.pptx` from scratch |
+| [`build_poster.js`](build_poster.js) | Script that generated the first draft (do not rerun; see below) |
 
-## Rebuilding
+## Editing
 
-Edits made by hand in PowerPoint are lost if the poster is rebuilt, so pick one
-way of working: either edit `poster.pptx` directly from now on, or change
-`build_poster.js` and rebuild.
+**`poster.pptx` is the master copy and is edited by hand in PowerPoint.**
+`build_poster.js` only produced the first draft. Running it again overwrites
+`poster.pptx` and discards every hand edit, so don't, unless you want to start
+over from the original draft.
+
+To update a figure, regenerate it (table below), copy it into `figures/` or
+`diagrams/`, then in PowerPoint right-click the picture → Change Picture → From a
+File, so it keeps its size and position.
 
 ```bash
-python poster/diagrams/make_diagrams.py        # diagrams (matplotlib)
-npm install pptxgenjs@3.12.0                   # once
-node poster/build_poster.js                    # poster.pptx
+python poster/diagrams/make_diagrams.py        # redraw the diagrams
 ```
 
 ## Where the figures come from

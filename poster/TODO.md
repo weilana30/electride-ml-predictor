@@ -1,6 +1,8 @@
 # Poster to-do list
 
 Items marked **(on poster)** have a dashed TO DO box in `poster.pptx`.
+Edit `poster.pptx` by hand in PowerPoint; do not rerun `build_poster.js`
+(it overwrites hand edits).
 
 ## Must do
 
@@ -23,7 +25,8 @@ Items marked **(on poster)** have a dashed TO DO box in `poster.pptx`.
 ## Should do
 
 - [ ] **Confirmation study:** finish it with the agent prompt; if it picks a different
-  best GNN, rerun `elf_void_gnn/poster_figures/make_figures.py` and update the RQ1 numbers.
+  best GNN, rerun `elf_void_gnn/poster_figures/make_figures.py`, swap the new figures
+  into PowerPoint (Change Picture), and update the RQ1 numbers by hand.
 - [ ] **QR code (on poster):** link to the repository or contact page.
 - [ ] **Proofread** all text against `CONTENT.md`; check every number against its source file.
 - [ ] **Print a test page** at 25% or one card at 100% to check readability.

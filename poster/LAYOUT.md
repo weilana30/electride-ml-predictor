@@ -1,5 +1,8 @@
 # Poster layout plan
 
+This describes the first draft. `poster.pptx` is now edited by hand, so treat
+the positions below as the starting plan, not a spec the file must match.
+
 ## Format
 
 - **Size:** 48 in wide × 36 in tall (4 ft × 3 ft, the maximum allowed), landscape, one slide.
