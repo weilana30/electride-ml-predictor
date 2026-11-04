@@ -274,3 +274,19 @@ file is a 0/1 grid; use isosurface level 0.5.
 The grid only draws regions; their labels come from the exact calculation.
 Like the other labelers, it measures geometry, not ELF or electronic
 dimensionality.
+
+### Test against known electrides
+
+`registry_dimensionality_test.py` runs the exact method on every registry
+electride with one literature dimensionality and a local CIF, over a sweep of
+probe radii, and scores the highest open-region dimension against the
+literature label. Results and poster figures are in
+[`case_studies/registry_test/`](case_studies/registry_test/README.md).
+
+```bash
+python -m elf_void_analysis.registry_dimensionality_test \
+  --output /path/to/external/registry-test
+```
+
+Figures need matplotlib (`registry_dimensionality_figures.py`); pass
+`--no-figures` without it.

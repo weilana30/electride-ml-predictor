@@ -1,0 +1,292 @@
+mp_id,formula,literature_labels,electride_status,primary_reference,registry_ids,literature_dimension,calibration,scored,ionic_atomic_radius_fallback,predicted_ionic_1.00,predicted_none_2.00
+mp-10000,Hf2S,0D;2D,experimentally_confirmed;theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0143;ELD-0144,,False,False,False,0,0
+mp-10045,Ba5As3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0022,1,False,True,True,0,3
+mp-10047,Ca5As3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0061,1,False,True,True,1,1
+mp-10078,TbTiGe,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0398,0,False,True,True,0,0
+mp-1007992,CrH,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0104,0,False,True,True,0,-1
+mp-10087,CeScSi,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0102,0,False,True,True,0,0
+mp-10106,Ca2As,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0044,0,False,True,True,0,2
+mp-1017530,VH,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0413,0,False,True,True,0,-1
+mp-1018740,LaCoSi,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0197,0,False,True,True,2,2
+mp-1019519,NaBa2O,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0253,1,False,True,False,3,3
+mp-1019788,K4Al3(SiO4)3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0170,0,True,False,False,0,0
+mp-1020010,Li2Ca3N6,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0212,1,False,True,False,1,1
+mp-1025473,Li2NdGe,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0213,0,False,True,True,0,0
+mp-10454,SmTiGe,0D;2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0340;ELD-0341,,False,False,True,0,0
+mp-10455,YTiGe,0D;2D,experimentally_suggested;theoretically_predicted,Polymorphic Electrides in YTiGe (Chem. Mater. 2025),ELD-0452;ELD-0453,,False,False,True,0,0
+mp-1064508,K3Pd,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0166,0,False,True,False,0,3
+mp-1065428,Rb3Re,0D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0313,0,False,True,False,3,3
+mp-1065933,YI,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0449,0,False,True,False,0,3
+mp-1066774,Rb3Os,0D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0311,0,False,True,False,0,3
+mp-1067281,Rb3Pt,0D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0312,0,False,True,False,0,3
+mp-1069676,Na3Cl2,1D;2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0248;ELD-0249,,False,False,False,1,2
+mp-1071468,TbMgSn,2D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0395,2,False,True,True,0,2
+mp-1071863,PrMgSn,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0302,0,False,True,True,0,2
+mp-1072345,TmMgSn,2D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0412,2,False,True,True,0,2
+mp-1077015,Na2Cl,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0245,0,False,True,False,0,3
+mp-1077034,NdMgSn,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0276,0,False,True,True,0,2
+mp-1077197,CeScSb,0D;2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0100;ELD-0101,,False,False,True,0,2
+mp-1077443,NdScSb,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0281,0,False,True,True,0,2
+mp-1077837,LaScGe,0D;2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0209;ELD-0210,,False,False,True,0,2
+mp-1079127,Ti2H3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0400,0,False,True,True,0,-1
+mp-1079567,K2RbPt,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0164,0,False,True,False,0,3
+mp-1079867,Li2PrGe,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0214,0,False,True,True,0,0
+mp-1091362,LiNd2Si2,2D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0233,2,False,True,True,0,0
+mp-10961,La5Si3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0188,0,False,True,True,0,2
+mp-1104164,Ba3Au2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0013,0,False,True,False,0,3
+mp-1105543,Tb5Pt3,1D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0388,1,False,True,False,1,1
+mp-1105551,Tb5Rh3,0D;1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0389;ELD-0390,,False,False,False,0,1
+mp-1105600,Lu5Ir3,1D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0235,1,False,True,False,1,1
+mp-1105869,Tm5Pt3,1D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0410,1,False,True,False,1,1
+mp-1105896,La5Pb3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0186,1,False,True,False,1,3
+mp-1105908,La5Sn3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0190,1,False,True,True,1,3
+mp-1105962,La5Bi3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0184,1,False,True,False,1,3
+mp-1105965,Er5Tl3,1D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0134,1,False,True,False,1,1
+mp-1106032,Ho5Ge3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0157,1,False,True,True,0,1
+mp-1106061,Ca3Pd,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0058,0,False,True,False,3,3
+mp-1106084,La5Sb3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0187,1,False,True,True,1,3
+mp-1106092,Sr7Ag3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0365,0,False,True,False,3,3
+mp-1106152,Nd5Pb3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0267,1,False,True,False,1,3
+mp-1106322,Lu5Tl3,1D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0238,1,False,True,False,1,1
+mp-1106373,Sm5Si3,1D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0337,1,False,True,True,1,1
+mp-11368,Er5Ga3,1D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0127,1,False,True,False,3,1
+mp-11404,PrGa,2D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0299,2,False,True,False,2,2
+mp-11406,Pr3Ga,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0291,0,False,True,False,0,0
+mp-11437,Er3Rh,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0124,0,False,True,False,3,3
+mp-1182146,Ca5Pb3,1D,experimentally_confirmed,Electron-Deficient-Type Electride Ca5Pb3 (JACS 2021),ELD-0071,1,False,True,False,1,3
+mp-1183475,CaBr,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0080,0,False,True,False,2,3
+mp-1183545,CaF,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0082,0,False,True,False,1,3
+mp-1183723,Cr3H,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0103,0,False,True,True,0,-1
+mp-11840,BaAg,0D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0032,0,False,True,False,0,3
+mp-1184661,Hf3I,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0148,1,False,True,False,0,0
+mp-11854,Er5Ge3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0128,1,False,True,True,0,1
+mp-1187162,SrF,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0373,0,False,True,False,1,3
+mp-1187728,VI,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0414,0,False,True,False,0,3
+mp-1188032,Zr3Cl,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0460,1,False,True,False,0,0
+mp-1188037,Zr3Br,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0458,1,False,True,False,0,0
+mp-1188257,Yb5Si3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0442,1,False,True,True,0,0
+mp-1188469,La5Ge3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0185,1,False,True,True,1,3
+mp-1188498,Nd5Si3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0268,0,False,True,True,1,1
+mp-1188653,Dy5Rh3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0118,0,False,True,False,1,1
+mp-1189245,Tm5Rh3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0411,0,False,True,False,1,1
+mp-1189366,La5Si3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0189,1,False,True,True,1,3
+mp-1189687,Pr5Sn3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0298,0,False,True,True,1,3
+mp-1190343,Er5Pb3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0129,1,False,True,False,1,3
+mp-1197242,Sr5Bi3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0357,0,False,True,False,0,3
+mp-1197374,Zr2S,0D;1D,experimentally_confirmed;theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0456;ELD-0457,,False,False,False,0,0
+mp-1205301,Y3H,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0426,0,False,True,True,3,3
+mp-1205494,Nd2MgSi2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0258,0,False,True,True,0,0
+mp-1205496,Y2MgSi2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0424,0,False,True,True,0,0
+mp-1205516,Er2MgNi2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0122,0,False,True,False,0,0
+mp-1205589,Pr2MgSi2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0289,0,False,True,True,0,0
+mp-1205657,Gd2MgNi2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0140,0,False,True,False,0,0
+mp-1205744,Y2MgGa2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0421,0,False,True,False,0,0
+mp-1205813,Gd2MgSi2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0141,0,False,True,True,0,0
+mp-1205816,Tb2MgSi2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0382,0,False,True,True,0,0
+mp-1206447,Dy2MgNi2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0114,0,False,True,False,0,0
+mp-1206554,Tb2MgNi2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0381,0,False,True,False,0,0
+mp-1206569,Tm2MgSi2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0409,0,False,True,True,0,0
+mp-1206769,Tm2MgNi2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0408,0,False,True,False,0,0
+mp-1206813,Er2MgSi2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0123,0,False,True,True,0,0
+mp-1206927,Hf2Se,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0145,0,False,True,False,0,0
+mp-1208484,Tb4MgRu,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0385,0,False,True,False,3,3
+mp-1208848,Sm2MgSi2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0335,0,False,True,True,0,0
+mp-1212321,Ho4MgRu,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0156,0,False,True,False,3,3
+mp-1214016,Ca5Sn3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0075,0,False,True,True,0,2
+mp-1216546,Tm2C,2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0406,2,False,True,True,2,2
+mp-1218743,Sr2LiN,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0345,0,False,True,False,2,2
+mp-1224869,Gd2C,2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0138,2,False,True,True,2,2
+mp-1225044,Er2C,2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0120,2,False,True,True,2,2
+mp-1245,Sr2N,2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0347,2,False,True,False,2,2
+mp-12467,Ca5Sb3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0072,1,False,True,True,1,3
+mp-12574,Dy2C,2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0111,2,False,True,True,2,2
+mp-12612,Ba3Ag2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0012,0,False,True,False,0,3
+mp-12723,CaAu,2D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0078,2,False,True,False,0,0
+mp-12905,Ba3CrN3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0014,1,True,False,False,1,1
+mp-12906,Sr3CrN3,1D,experimentally_confirmed,Sr3CrN3: A New Electride with a Partially Filled d-Shell (JACS 2019),ELD-0352,1,False,True,False,1,1
+mp-13053,SrSi,0D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0376,0,False,True,True,0,3
+mp-13236,Ho5Si3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0160,1,False,True,True,0,1
+mp-13288,Ba3LiN,3D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0016,3,False,True,False,3,3
+mp-1334,Y2C,2D,experimentally_confirmed,Direct Observation of Electride States in Y2C (Phys. Rev. B 2017),ELD-0417,2,False,True,True,2,2
+mp-13357,Yb2MgSi2,2D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0433,2,False,True,True,0,0
+mp-13570,Sc2MgGa2,0D;2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0318;ELD-0319,,False,False,False,2,0
+mp-1363,Na2Au,1D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0244,1,False,True,False,0,1
+mp-14378,Li12Al3Si4,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0230,0,False,True,True,0,-1
+mp-1448,NdGa,2D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0273,2,False,True,False,2,2
+mp-1533,Nd3Tl,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0262,0,False,True,False,0,3
+mp-15624,Sr2Sb,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0348,0,False,True,True,0,3
+mp-1563,CaSi,2D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0084,2,False,True,True,0,0
+mp-15697,Sr2As,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0342,0,False,True,True,0,3
+mp-15698,Sr5As3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0355,1,False,True,True,0,3
+mp-16275,CeScGe,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0099,0,False,True,True,0,0
+mp-1640,Ho2C,2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0151,2,False,True,True,2,2
+mp-1698,SrSn,2D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0377,2,False,True,True,0,3
+mp-17124,Pr5Ge3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0297,1,False,True,True,1,3
+mp-17190,Sc5Ge3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0325,1,False,True,True,1,0
+mp-1730,BaGe,2D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0041,2,False,True,True,0,3
+mp-17325,Ba5Sn3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0029,0,False,True,True,0,3
+mp-17332,Sc5Ga3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0324,1,False,True,False,3,0
+mp-17564,Ca5Sb3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0073,0,False,True,True,0,3
+mp-17695,Sc5Sn3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0327,1,False,True,True,1,0
+mp-17720,Sr5Sn3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0364,0,False,True,True,0,3
+mp-17739,Sr5Sb3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0362,0,False,True,True,0,3
+mp-17751,Y5Ge3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0429,1,False,True,True,1,1
+mp-17757,Sr5Ge3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0358,0,False,True,True,0,2
+mp-18167,Ca3Cd2,0D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0055,0,False,True,False,1,3
+mp-18316,Mg2Pd,0D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0239,0,False,True,False,3,0
+mp-1884,Ca5Ge3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0068,0,False,True,True,0,2
+mp-1892,Ba2N,2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0010,2,False,True,False,2,2
+mp-19737,LaMnSi,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0204,0,False,True,True,0,2
+mp-19764,Pr3In,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0292,0,False,True,False,0,3
+mp-19898,LaRuGe,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0206,0,False,True,False,2,2
+mp-19910,Ce2MgNi2,2D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0087,2,False,True,False,0,0
+mp-201,Yb5Sb3,1D,experimentally_confirmed,Polymorphic Electrides in Yb5Sb3 (Phys. Rev. B 2018),ELD-0440,1,False,True,True,1,1
+mp-20195,LaMnGe,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0203,0,False,True,True,0,2
+mp-20487,La3Ga,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0179,0,False,True,False,0,3
+mp-206,Tb5Si3,1D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0391,1,False,True,True,0,1
+mp-20909,La3In,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0180,0,False,True,False,0,3
+mp-21350,Pr2MgGe2,0D;2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0285;ELD-0286,,False,False,True,0,2
+mp-21399,CeMnGe,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0094,0,False,True,True,0,0
+mp-2147,SrGe,2D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0374,2,False,True,True,0,3
+mp-21483,Nd3In,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0260,0,False,True,False,0,3
+mp-22511,Ce2MgGe2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0086,0,False,True,True,0,0
+mp-22860,LaI,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0202,0,False,True,False,-1,3
+mp-2322,YAl2,0D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0432,0,False,True,False,0,-1
+mp-2360,CaGe,2D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0083,2,False,True,True,0,0
+mp-24095,PrH2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0301,0,False,True,True,0,0
+mp-24096,NdH2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0275,0,False,True,True,0,0
+mp-24153,LaH2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0201,0,False,True,True,0,0
+mp-24237,ScH2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0331,0,False,True,True,0,0
+mp-24650,YH2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0448,0,False,True,True,0,0
+mp-24658,SmH2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0338,0,False,True,True,0,0
+mp-24669,CrH,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0105,0,False,True,True,0,-1
+mp-2538,Y5Si3,1D,experimentally_confirmed,Realization of a Stable Electride in the Mn5Si3-Type Intermetallic Compound Y5Si3 (JACS 2016),ELD-0430,1,False,True,True,1,1
+mp-2585,Sr5Sb3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0361,1,False,True,True,1,3
+mp-2610,Tb5Ge3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0387,1,False,True,True,1,1
+mp-2631,Ba4Al5,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0021,0,False,True,False,2,2
+mp-2661,SrSi,2D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0375,2,False,True,True,0,3
+mp-2686,Ca2N,2D,experimentally_confirmed,Two-Dimensional Electride (Nature 2013),ELD-0049,2,True,False,False,2,2
+mp-27145,Ca5Bi3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0065,0,False,True,False,3,3
+mp-27440,ZrCl,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0462,0,False,True,False,2,2
+mp-27507,ScCl,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0330,0,False,True,False,2,2
+mp-27679,LaBr,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0193,0,False,True,False,2,3
+mp-2768,Ba2As,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0003,0,False,True,True,0,3
+mp-27929,LaCl,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0195,0,False,True,False,2,3
+mp-2836,Dy5Si3,1D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0119,1,False,True,True,0,1
+mp-28489,Ca5Ga2N4,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0066,0,False,True,False,2,1
+mp-28571,La2Br5,1D,theoretically_predicted,Discovery of New Layered Electrides from First-Principles Calculations (Chem. Mater. 2019),ELD-0174,1,False,True,False,0,3
+mp-28572,LaBr2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0194,0,False,True,False,0,3
+mp-29082,Ba5CrN5,1D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0024,1,False,True,False,2,2
+mp-2926,Pr2MgNi2,0D;2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0287;ELD-0288,,False,False,False,0,0
+mp-29619,Sr2Bi,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0343,0,False,True,False,0,3
+mp-29620,Sr5Bi3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0356,1,False,True,False,1,3
+mp-29621,Ba5Bi3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0023,1,False,True,False,3,3
+mp-29941,Sc2C,0D;2D,experimentally_confirmed;theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0316;ELD-0317,,False,False,True,2,2
+mp-30357,Sr3Ag2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0350,0,False,True,False,0,3
+mp-30366,Ca3Au,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0054,0,False,True,False,3,3
+mp-30367,Ca5Au2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0062,0,False,True,False,3,3
+mp-30368,Ca5Au3,0D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0063,0,False,True,False,0,2
+mp-30421,Sr3Au2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0351,0,False,True,False,0,3
+mp-30422,Sr7Au3,0D;1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0366;ELD-0367,,False,False,False,3,3
+mp-30479,Ca3Pb,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0057,0,False,True,False,0,3
+mp-30490,Mg3Cd,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0240,1,False,True,False,0,0
+mp-30730,Ho5Pb3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0158,1,False,True,False,1,1
+mp-30734,Ho5Rh3,1D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0159,1,False,True,False,1,1
+mp-30735,Ho5Sn3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0161,1,False,True,True,1,1
+mp-30879,Tb5Tl3,1D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0392,1,False,True,False,1,1
+mp-31154,Ca5Hg3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0069,0,False,True,False,0,2
+mp-31167,Er5Si3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0132,1,False,True,True,0,1
+mp-31385,Er5Sn3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0133,1,False,True,True,1,1
+mp-371,La3Tl,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0181,0,False,True,False,0,3
+mp-391,HoAl2,0D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0162,0,False,True,False,0,-1
+mp-4395,TbScGe,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0396,0,False,True,True,0,0
+mp-4579,LaRuSi,0D;2D,experimentally_confirmed;theoretically_predicted,An Intermetallic Electride as a Catalyst for Ammonia Synthesis (Angew. Chem. Int. Ed. 2019),ELD-0207;ELD-0208,,False,False,False,2,2
+mp-4738,PrScGe,0D;2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0306;ELD-0307,,False,False,True,0,2
+mp-4854,NdScGe,0D;2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0279;ELD-0280,,False,False,True,0,0
+mp-4901,Y2MgCu2,2D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0420,2,False,True,False,0,0
+mp-4952,La2MgNi2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0176,0,False,True,False,0,0
+mp-5042,YTiGe,0D,experimentally_suggested,Polymorphic Electrides in YTiGe (Chem. Mater. 2025),ELD-0454,0,False,True,True,0,0
+mp-504574,Li7IN2,0D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0225,0,False,True,False,3,0
+mp-504594,ZrBr,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0461,0,False,True,False,2,2
+mp-505296,Ce2MgSi2,0D;2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0088;ELD-0089,,False,False,True,0,0
+mp-505331,CeMnSi,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0095,0,False,True,True,0,0
+mp-505332,LaFeSi,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0200,0,False,True,True,0,2
+mp-505569,CeH2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0093,0,False,True,True,0,0
+mp-510232,Nd12Co6Sn,0D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0271,0,False,True,True,0,3
+mp-510493,Ce5Ge3,1D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0092,1,False,True,True,1,1
+mp-510503,Nd5Sn3,0D;1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0269;ELD-0270,,False,False,True,1,3
+mp-5239,NdRuSi,0D,experimentally_confirmed,"Acid-Durable Electride LnRuSi (Ln = La, Ce, Pr, Nd) (Chem. Sci. 2019)",ELD-0278,0,False,True,False,2,2
+mp-540884,YCl,0D;2D,experimentally_confirmed;theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0446;ELD-0447,,False,False,False,2,3
+mp-542138,Ca3Si2Ni3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0059,1,False,True,False,1,1
+mp-542680,Na3In2Au,0D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0251,0,False,True,False,3,3
+mp-542681,Na3In2Ag,0D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0250,0,False,True,False,3,3
+mp-542879,Nd12Ni6Sn,0D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0272,0,False,True,True,0,3
+mp-567342,Nd4MgIr,0D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0263,0,False,True,False,3,3
+mp-567351,Tb4MgIr,0D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0384,0,False,True,False,3,3
+mp-567479,Ho4InIr,0D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0155,0,False,True,False,3,3
+mp-567685,Er4InIr,0D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0125,0,False,True,False,3,3
+mp-567872,Ba2Bi,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0004,0,False,True,False,0,3
+mp-568366,Tb4CdRh,0D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0383,0,False,True,False,3,3
+mp-568944,Yb5Au3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0436,0,False,True,False,0,0
+mp-569037,Y3H2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0427,0,False,True,True,3,3
+mp-569535,Ca2Bi,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0045,0,False,True,False,2,3
+mp-569915,Er5Rh3,0D;1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0130;ELD-0131,,False,False,False,1,1
+mp-570050,Yb2Sn,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0434,0,False,True,True,-1,0
+mp-570362,Sr5In3,0D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0359,0,False,True,False,2,3
+mp-570400,Ba7Al10,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0031,0,False,True,False,2,2
+mp-570561,Dy2MgSi2,0D;2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0115;ELD-0116,,False,False,True,0,0
+mp-570820,La4CdRu,0D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0182,0,False,True,False,3,3
+mp-571212,Yb5Ag3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0435,0,False,True,False,0,0
+mp-573908,Sr11(MgSi5)2,0D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0368,0,False,True,True,0,3
+mp-5925,Nd2MgNi2,0D;2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0256;ELD-0257,,False,False,False,0,0
+mp-605860,Ba2LiN,0D;2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0006;ELD-0007,,False,False,False,3,3
+mp-605873,Pr4MgRu,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0295,0,False,True,False,3,3
+mp-605878,La4MgRu,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0183,0,False,True,False,3,3
+mp-616559,Ti2S,0D;1D,experimentally_confirmed;theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0402;ELD-0403,,False,False,False,0,0
+mp-622106,Ba5Pb3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0026,0,False,True,False,0,3
+mp-622565,Ho3Co,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0154,0,False,True,False,3,3
+mp-630923,Ba3Pb5,0D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0020,0,False,True,False,0,3
+mp-645130,Pr4MgCo,0D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0294,0,False,True,False,3,3
+mp-646392,Dy3Co,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0117,0,False,True,False,3,3
+mp-646824,Ca3Ag8,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0052,0,False,True,False,0,0
+mp-690760,TiH,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0405,0,False,True,True,3,-1
+mp-692,Tb2C,2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0378,2,False,True,True,2,2
+mp-693,Pr3Tl,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0293,0,False,True,False,0,3
+mp-697179,ZrH,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0463,0,False,True,True,3,0
+mp-7192,Sc2Sb,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0321,0,False,True,True,0,0
+mp-721592,Ca6Al7O16,0D,experimentally_confirmed;theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0076;ELD-0077,0,False,True,False,0,0
+mp-7376,Sr3(AlSn)2,0D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0349,0,False,True,True,0,3
+mp-7507,Sr3Li2,0D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0353,0,False,True,False,3,3
+mp-754185,Y2MgNi2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0423,0,False,True,False,0,0
+mp-7735,Pr5(CoB3)2,2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0296,2,False,True,False,2,2
+mp-793,Ca5Si3,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0074,0,False,True,True,0,2
+mp-8306,Ba3FeN3,1D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0015,1,False,True,False,1,1
+mp-8320,SmScSi,2D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0339,2,False,True,True,0,0
+mp-8331,Li12Mg3Si4,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0231,0,False,True,True,0,0
+mp-862697,Er2MgGe2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0121,0,False,True,True,0,0
+mp-862993,ErMgSn,2D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0136,2,False,True,True,0,2
+mp-8653,CeRuSi,0D,experimentally_confirmed,"Acid-Durable Electride LnRuSi (Ln = La, Ce, Pr, Nd) (Chem. Sci. 2019)",ELD-0098,0,False,True,False,2,2
+mp-8654,PrRuSi,0D,experimentally_confirmed,"Acid-Durable Electride LnRuSi (Ln = La, Ce, Pr, Nd) (Chem. Sci. 2019)",ELD-0305,0,False,True,False,2,2
+mp-865403,Tm2MgGe2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0407,0,False,True,True,0,0
+mp-865747,Y2MgGe2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0422,0,False,True,True,0,0
+mp-865778,Lu5Rh3,0D;1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0236;ELD-0237,,False,False,False,1,1
+mp-867301,Tb2MgGe2,0D;2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0379;ELD-0380,,False,False,True,0,0
+mp-867501,Sc2Ni,0D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0320,0,False,True,False,0,0
+mp-867932,Sm2MgGe2,0D;2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0333;ELD-0334,,False,False,True,0,0
+mp-872,BaSn,2D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0043,2,False,True,True,0,3
+mp-8806,Sr2Cu2O3,1D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0344,1,False,True,False,2,2
+mp-8868,Ba3NaN,3D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0019,3,False,True,False,3,3
+mp-9324,Ba3MnN3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0017,1,False,True,False,1,1
+mp-9325,Sr3MnN3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0354,1,False,True,False,1,1
+mp-971768,Ti3Br,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0404,1,False,True,False,0,0
+mp-973508,KRb3,0D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0172,0,False,True,False,3,3
+mp-974066,Nd3Sm,0D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0261,0,False,True,False,3,3
+mp-976115,K3Rb,0D,theoretically_predicted,High-Throughput Identification of Electrides from All Known Inorganic Materials (Chem. Mater. 2018),ELD-0167,0,False,True,False,3,3
+mp-977388,HoMgSn,2D,theoretically_predicted,Computational Screening of Electrides from Inorganic Crystal Structure Database (Matter 2019),ELD-0163,2,False,True,True,0,2
+mp-977548,Nd2MgGe2,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0255,0,False,True,True,0,0
+mp-977559,Dy2MgGe2,0D;2D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0112;ELD-0113,,False,False,True,0,0
+mp-978090,PrRuGe,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0304,0,False,True,False,2,2
+mp-984744,Ca3Tl,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0060,1,False,True,False,1,3
+mp-9908,Ba2Sb,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0011,0,False,True,True,0,3
+mp-9909,Ba5Sb3,1D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0027,1,False,True,True,1,3
+mp-9925,Ca2Sb,0D,theoretically_predicted,Magnetic Electrides: High-Throughput Identification and Intriguing Properties (J. Am. Chem. Soc. 2023),ELD-0050,0,False,True,True,0,3
