@@ -1,0 +1,5 @@
+{
+  "manifest_sha256": "a6319e256f8b9b91ad2834cab29266347a767093795b655d6bad5bf5149e56a5",
+  "selection_rule": "mean pooled validation RMSE across three predeclared seeds",
+  "selected_configuration": "w64_d2_atom_only"
+}

@@ -1,0 +1,3 @@
+split,prediction_rows,sample_count,void_count,family_count
+validation,80750,4969,80750,9
+test,88680,5000,88680,9

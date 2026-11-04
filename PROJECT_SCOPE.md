@@ -121,21 +121,28 @@ Same width-64 Hetero MPNN with different inputs. Details are in
 Main finding: the explicit void descriptors did not help. The model learns
 void environments better from atom descriptors and graph geometry.
 
-### Direct confirmation study (in progress)
+### Direct confirmation study (complete)
 
 A repeat on the same split with three new seeds and three predeclared
 configurations: width-128 baseline, width-128 atom-only and width-64
 atom-only. The plan is in
 [`confirmation_study/PLAN.md`](elf_void_gnn/confirmation_study/PLAN.md).
+Results are in
+[`confirmation_study/results/README.md`](elf_void_gnn/confirmation_study/results/README.md).
 
-- All 9 validation-only runs (Slurm array `44756430`) have finished and
-  written checkpoints.
-- The raw validation-RMSE means are 0.0629 for w128 baseline, 0.0636 for
-  w128 atom-only and **0.0600 for w64 atom-only**. These are preliminary
-  until `report.py` freezes the selection.
-- **Next:** run the validation report to freeze selection, then a single
-  gated final-test evaluation (`submit_final_test.sh`), then
-  `report.py --include-test`.
+| Configuration | Validation RMSE | Test RMSE | Test R² |
+| --- | ---: | ---: | ---: |
+| Width 128, baseline | 0.0629 ± 0.0022 | 0.0701 ± 0.0011 | 0.751 |
+| Width 128, atom-only | 0.0636 ± 0.0013 | 0.0603 ± 0.0017 | 0.816 |
+| **Width 64, atom-only (selected)** | **0.0600 ± 0.0008** | **0.0593 ± 0.0028** | **0.822** |
+
+Main finding: validation selected width-64 atom-only, the same winner as
+the feature study. Its test RMSE of 0.0593 is close to that study's 0.0576.
+It beats the width-128 baseline on all three test seeds; the
+family-bootstrap interval excludes zero on validation and test. Width 128
+gives no gain over width 64. The caveat is that this study used the same
+corpus, the same family split, and a test partition that earlier studies
+had already used.
 
 ## Component 3: Void connectivity identification (geometric question)
 

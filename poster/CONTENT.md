@@ -55,7 +55,10 @@ seen in training. Mean ± SD over 3 seeds.
 - Of voids with true ELF ≥ 0.5, it predicts ≥ 0.5 for 63% (precision 0.83).
   Of the rare voids with ELF ≥ 0.7 (0.7% of voids), it catches only 6%.
 - The two GNN rows come from different studies (width 64 vs 128) on the same
-  split. The confirmation study comparing them directly is in progress.
+  split. The confirmation study (new seeds, same split) compared them
+  directly and again selected width-64 atom-only: test RMSE 0.059 ± 0.003,
+  R² 0.82, against 0.070 ± 0.001 for the width-128 all-descriptor model
+  (`elf_void_gnn/confirmation_study/results/README.md`).
 
 ### RQ2: dimensionality (source: `elf_void_analysis/case_studies/registry_test/summary.json`)
 
