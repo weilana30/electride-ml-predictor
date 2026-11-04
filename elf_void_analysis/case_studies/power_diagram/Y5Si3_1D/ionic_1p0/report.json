@@ -26,9 +26,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0010"
       ],
-      "export_open_samples": 10,
+      "export_center_samples": 10,
       "export_filled_samples": 2398,
-      "xsf_file": "region-000-0D.xsf"
+      "xsf_centers_file": "region-000-0D-centers.xsf",
+      "xsf_filled_file": "region-000-0D-filled.xsf"
     },
     {
       "region_id": 1,
@@ -42,9 +43,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0011"
       ],
-      "export_open_samples": 12,
+      "export_center_samples": 12,
       "export_filled_samples": 2336,
-      "xsf_file": "region-001-0D.xsf"
+      "xsf_centers_file": "region-001-0D-centers.xsf",
+      "xsf_filled_file": "region-001-0D-filled.xsf"
     },
     {
       "region_id": 2,
@@ -71,9 +73,10 @@
         "cifs:candidate:0004:member:0000",
         "cifs:candidate:0004:member:0001"
       ],
-      "export_open_samples": 1735,
+      "export_center_samples": 1735,
       "export_filled_samples": 26719,
-      "xsf_file": "region-002-1D.xsf"
+      "xsf_centers_file": "region-002-1D-centers.xsf",
+      "xsf_filled_file": "region-002-1D-filled.xsf"
     },
     {
       "region_id": 3,
@@ -87,9 +90,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0009"
       ],
-      "export_open_samples": 12,
+      "export_center_samples": 12,
       "export_filled_samples": 2336,
-      "xsf_file": "region-003-0D.xsf"
+      "xsf_centers_file": "region-003-0D-centers.xsf",
+      "xsf_filled_file": "region-003-0D-filled.xsf"
     },
     {
       "region_id": 4,
@@ -103,9 +107,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0007"
       ],
-      "export_open_samples": 12,
+      "export_center_samples": 12,
       "export_filled_samples": 2336,
-      "xsf_file": "region-004-0D.xsf"
+      "xsf_centers_file": "region-004-0D-centers.xsf",
+      "xsf_filled_file": "region-004-0D-filled.xsf"
     },
     {
       "region_id": 5,
@@ -119,9 +124,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0004"
       ],
-      "export_open_samples": 10,
+      "export_center_samples": 10,
       "export_filled_samples": 2398,
-      "xsf_file": "region-005-0D.xsf"
+      "xsf_centers_file": "region-005-0D-centers.xsf",
+      "xsf_filled_file": "region-005-0D-filled.xsf"
     },
     {
       "region_id": 6,
@@ -135,9 +141,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0000"
       ],
-      "export_open_samples": 10,
+      "export_center_samples": 10,
       "export_filled_samples": 2398,
-      "xsf_file": "region-006-0D.xsf"
+      "xsf_centers_file": "region-006-0D-centers.xsf",
+      "xsf_filled_file": "region-006-0D-filled.xsf"
     },
     {
       "region_id": 7,
@@ -151,9 +158,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0001"
       ],
-      "export_open_samples": 12,
+      "export_center_samples": 12,
       "export_filled_samples": 2336,
-      "xsf_file": "region-007-0D.xsf"
+      "xsf_centers_file": "region-007-0D-centers.xsf",
+      "xsf_filled_file": "region-007-0D-filled.xsf"
     },
     {
       "region_id": 8,
@@ -167,9 +175,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0003"
       ],
-      "export_open_samples": 12,
+      "export_center_samples": 12,
       "export_filled_samples": 2336,
-      "xsf_file": "region-008-0D.xsf"
+      "xsf_centers_file": "region-008-0D-centers.xsf",
+      "xsf_filled_file": "region-008-0D-filled.xsf"
     },
     {
       "region_id": 9,
@@ -183,9 +192,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0002"
       ],
-      "export_open_samples": 10,
+      "export_center_samples": 10,
       "export_filled_samples": 2398,
-      "xsf_file": "region-009-0D.xsf"
+      "xsf_centers_file": "region-009-0D-centers.xsf",
+      "xsf_filled_file": "region-009-0D-filled.xsf"
     },
     {
       "region_id": 10,
@@ -199,9 +209,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0005"
       ],
-      "export_open_samples": 12,
+      "export_center_samples": 12,
       "export_filled_samples": 2336,
-      "xsf_file": "region-010-0D.xsf"
+      "xsf_centers_file": "region-010-0D-centers.xsf",
+      "xsf_filled_file": "region-010-0D-filled.xsf"
     },
     {
       "region_id": 11,
@@ -215,9 +226,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0008"
       ],
-      "export_open_samples": 10,
+      "export_center_samples": 10,
       "export_filled_samples": 2398,
-      "xsf_file": "region-011-0D.xsf"
+      "xsf_centers_file": "region-011-0D-centers.xsf",
+      "xsf_filled_file": "region-011-0D-filled.xsf"
     },
     {
       "region_id": 12,
@@ -231,9 +243,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0006"
       ],
-      "export_open_samples": 10,
+      "export_center_samples": 10,
       "export_filled_samples": 2398,
-      "xsf_file": "region-012-0D.xsf"
+      "xsf_centers_file": "region-012-0D-centers.xsf",
+      "xsf_filled_file": "region-012-0D-filled.xsf"
     }
   ],
   "voids": [
@@ -1116,11 +1129,9 @@
   "grid_components_with_several_regions": 0,
   "unplaced_open_grid_points": 0,
   "export_grid_spacing_angstrom": 0.15,
-  "open_space_xsf": "open_space.xsf",
-  "export_grid_values": {
-    "2": "a probe center fits here",
-    "1": "inside a probe ball that fits",
-    "0": "no probe ball reaches here"
+  "open_space_xsf": {
+    "centers": "open_space-centers.xsf",
+    "filled": "open_space-filled.xsf"
   },
-  "display_in_vesta": "Open an .xsf file. Isosurface 0.5 shows all space a fitted probe fills; 1.5 shows only where its center can sit."
+  "display_in_vesta": "Open any .xsf file and set the isosurface level to 0.5. -centers files show where a probe center can sit; -filled files show all space a fitting probe ball covers."
 }

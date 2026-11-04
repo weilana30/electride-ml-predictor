@@ -12,13 +12,13 @@ Both used `--export-spacing 0.15`. The literature dimension is electronic;
 these labels are geometric. The probe settings were chosen on three other
 case studies (K4Al3(SiO4)3, Ba3CrN3, Ca2N), so Ca2N is not independent.
 
-| Material | Literature | Uniform 2.0 Å | Ionic + 1.0 Å | Open this file |
+| Material | Literature | Uniform 2.0 Å | Ionic + 1.0 Å | Files to open |
 | --- | --- | --- | --- | --- |
-| Ca2N (mp-2686) | 2D | one 2D region | one 2D region | `region-000-2D.xsf` |
-| Y2C (mp-1334) | 2D | one 2D region | one 2D region | `region-000-2D.xsf` |
-| Sr3CrN3 (mp-12906) | 1D | 1D channel + two 0D pockets | 1D channel + four tiny 0D pockets | `region-*-1D.xsf` |
-| Y5Si3 (mp-2538) | 1D | 1D channel + 48 0D pockets | 1D channel + 12 0D pockets | `region-*-1D.xsf` |
-| Ca6Al7O16 (mp-721592) | 0D | six separate 0D cages | six separate 0D cages | any `region-*-0D.xsf` |
+| Ca2N (mp-2686) | 2D | one 2D region | one 2D region | `region-000-2D-{centers,filled}.xsf` |
+| Y2C (mp-1334) | 2D | one 2D region | one 2D region | `region-000-2D-{centers,filled}.xsf` |
+| Sr3CrN3 (mp-12906) | 1D | 1D channel + two 0D pockets | 1D channel + four tiny 0D pockets | `region-*-1D-{centers,filled}.xsf` |
+| Y5Si3 (mp-2538) | 1D | 1D channel + 48 0D pockets | 1D channel + 12 0D pockets | `region-*-1D-{centers,filled}.xsf` |
+| Ca6Al7O16 (mp-721592) | 0D | six separate 0D cages | six separate 0D cages | any `region-*-0D-{centers,filled}.xsf` |
 
 All ten runs contain a region with the literature dimension, and none has a
 higher-dimensional open region. Every grid component mapped to a single
@@ -26,22 +26,23 @@ exact region, and no open grid point was left unplaced.
 
 ## Viewing in VESTA
 
-Each grid point in the `accessible_space` dataset has one of three values:
+Every file stores 0 or 1 at each grid point. Open any `.xsf` file and set
+the isosurface level to **0.5**. The file name says what is lit up:
 
-| Value | Meaning |
+| File | Shows |
 | --- | --- |
-| 2 | The center of a probe ball fits here |
-| 1 | Inside some probe ball that fits (within one probe radius of a fitting center) |
-| 0 | No fitting probe ball reaches here |
+| `*-centers.xsf` | Every point where the center of a probe ball fits; the connectivity label is computed on this space |
+| `*-filled.xsf` | All space covered by a probe ball that fits, extending out to the blocked spheres |
+| `open_space-centers.xsf`, `open_space-filled.xsf` | The same two views for all regions together |
+| `region-NNN-<dim>-centers.xsf`, `region-NNN-<dim>-filled.xsf` | One exact region, labeled 0D–3D |
 
-Open an `.xsf` file and set the isosurface level to **0.5** to highlight all
-the space a fitting probe fills; it extends out to the blocked spheres. Add a
-second isosurface at **1.5** to see where the probe center itself can sit.
-`open_space.xsf` shows every region together; each `region-NNN-<dim>.xsf`
-shows one exact region. Region labels come from the exact calculation; the
-0.15 Å grid only draws them. The filled space is grown from both the region's
-grid points and its exact power-diagram vertices, so pockets smaller than the
-grid spacing are still drawn.
+To see both views together, load a `-filled` and a `-centers` file and give
+them different colors or transparency. Region labels come from the exact
+calculation; the 0.15 Å grid only draws them. A pocket too small to contain a
+grid point is drawn at the grid points nearest its exact power-diagram
+vertices, so every region has files. Filled space can make two separate
+regions look touching where their probe balls meet across a neck too narrow
+to pass; the `-centers` files show the actual separation.
 
 With `uniform_2p0`, element radii are zero, so the filled space reaches the
 atom centers. With `ionic_1p0`, it reaches the ionic-radius spheres.

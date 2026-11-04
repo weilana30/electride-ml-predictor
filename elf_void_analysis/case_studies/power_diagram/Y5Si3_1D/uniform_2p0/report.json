@@ -26,9 +26,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0001"
       ],
-      "export_open_samples": 26,
+      "export_center_samples": 26,
       "export_filled_samples": 16676,
-      "xsf_file": "region-000-0D.xsf"
+      "xsf_centers_file": "region-000-0D-centers.xsf",
+      "xsf_filled_file": "region-000-0D-filled.xsf"
     },
     {
       "region_id": 1,
@@ -42,9 +43,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0005"
       ],
-      "export_open_samples": 26,
+      "export_center_samples": 26,
       "export_filled_samples": 16676,
-      "xsf_file": "region-001-0D.xsf"
+      "xsf_centers_file": "region-001-0D-centers.xsf",
+      "xsf_filled_file": "region-001-0D-filled.xsf"
     },
     {
       "region_id": 2,
@@ -58,9 +60,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0019"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 11991,
-      "xsf_file": "region-002-0D.xsf"
+      "xsf_centers_file": "region-002-0D-centers.xsf",
+      "xsf_filled_file": "region-002-0D-filled.xsf"
     },
     {
       "region_id": 3,
@@ -87,9 +90,10 @@
         "cifs:candidate:0004:member:0000",
         "cifs:candidate:0004:member:0001"
       ],
-      "export_open_samples": 2341,
+      "export_center_samples": 2341,
       "export_filled_samples": 80569,
-      "xsf_file": "region-003-1D.xsf"
+      "xsf_centers_file": "region-003-1D-centers.xsf",
+      "xsf_filled_file": "region-003-1D-filled.xsf"
     },
     {
       "region_id": 4,
@@ -103,9 +107,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0004"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 11991,
-      "xsf_file": "region-004-0D.xsf"
+      "xsf_centers_file": "region-004-0D-centers.xsf",
+      "xsf_filled_file": "region-004-0D-filled.xsf"
     },
     {
       "region_id": 5,
@@ -119,9 +124,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0013"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 11991,
-      "xsf_file": "region-005-0D.xsf"
+      "xsf_centers_file": "region-005-0D-centers.xsf",
+      "xsf_filled_file": "region-005-0D-filled.xsf"
     },
     {
       "region_id": 6,
@@ -135,9 +141,10 @@
       "void_ids": [
         "cifs:candidate:0000:member:0008"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 13756,
-      "xsf_file": "region-006-0D.xsf"
+      "xsf_centers_file": "region-006-0D-centers.xsf",
+      "xsf_filled_file": "region-006-0D-filled.xsf"
     },
     {
       "region_id": 7,
@@ -151,9 +158,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0002"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 11991,
-      "xsf_file": "region-007-0D.xsf"
+      "xsf_centers_file": "region-007-0D-centers.xsf",
+      "xsf_filled_file": "region-007-0D-filled.xsf"
     },
     {
       "region_id": 8,
@@ -167,9 +175,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0006"
       ],
-      "export_open_samples": 24,
+      "export_center_samples": 24,
       "export_filled_samples": 16829,
-      "xsf_file": "region-008-0D.xsf"
+      "xsf_centers_file": "region-008-0D-centers.xsf",
+      "xsf_filled_file": "region-008-0D-filled.xsf"
     },
     {
       "region_id": 9,
@@ -183,9 +192,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0010"
       ],
-      "export_open_samples": 24,
+      "export_center_samples": 24,
       "export_filled_samples": 16829,
-      "xsf_file": "region-009-0D.xsf"
+      "xsf_centers_file": "region-009-0D-centers.xsf",
+      "xsf_filled_file": "region-009-0D-filled.xsf"
     },
     {
       "region_id": 10,
@@ -199,9 +209,10 @@
       "void_ids": [
         "cifs:candidate:0000:member:0003"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 13756,
-      "xsf_file": "region-010-0D.xsf"
+      "xsf_centers_file": "region-010-0D-centers.xsf",
+      "xsf_filled_file": "region-010-0D-filled.xsf"
     },
     {
       "region_id": 11,
@@ -215,9 +226,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0006"
       ],
-      "export_open_samples": 0,
-      "export_filled_samples": 11815,
-      "xsf_file": "region-011-0D.xsf"
+      "export_center_samples": 1,
+      "export_filled_samples": 12112,
+      "xsf_centers_file": "region-011-0D-centers.xsf",
+      "xsf_filled_file": "region-011-0D-filled.xsf"
     },
     {
       "region_id": 12,
@@ -231,9 +243,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0009"
       ],
-      "export_open_samples": 26,
+      "export_center_samples": 26,
       "export_filled_samples": 16676,
-      "xsf_file": "region-012-0D.xsf"
+      "xsf_centers_file": "region-012-0D-centers.xsf",
+      "xsf_filled_file": "region-012-0D-filled.xsf"
     },
     {
       "region_id": 13,
@@ -247,9 +260,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0009"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 11991,
-      "xsf_file": "region-013-0D.xsf"
+      "xsf_centers_file": "region-013-0D-centers.xsf",
+      "xsf_filled_file": "region-013-0D-filled.xsf"
     },
     {
       "region_id": 14,
@@ -263,9 +277,10 @@
       "void_ids": [
         "cifs:candidate:0000:member:0000"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 13756,
-      "xsf_file": "region-014-0D.xsf"
+      "xsf_centers_file": "region-014-0D-centers.xsf",
+      "xsf_filled_file": "region-014-0D-filled.xsf"
     },
     {
       "region_id": 15,
@@ -279,9 +294,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0000"
       ],
-      "export_open_samples": 24,
+      "export_center_samples": 24,
       "export_filled_samples": 16829,
-      "xsf_file": "region-015-0D.xsf"
+      "xsf_centers_file": "region-015-0D-centers.xsf",
+      "xsf_filled_file": "region-015-0D-filled.xsf"
     },
     {
       "region_id": 16,
@@ -295,9 +311,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0007"
       ],
-      "export_open_samples": 26,
+      "export_center_samples": 26,
       "export_filled_samples": 16676,
-      "xsf_file": "region-016-0D.xsf"
+      "xsf_centers_file": "region-016-0D-centers.xsf",
+      "xsf_filled_file": "region-016-0D-filled.xsf"
     },
     {
       "region_id": 17,
@@ -311,9 +328,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0011"
       ],
-      "export_open_samples": 0,
-      "export_filled_samples": 11815,
-      "xsf_file": "region-017-0D.xsf"
+      "export_center_samples": 1,
+      "export_filled_samples": 12112,
+      "xsf_centers_file": "region-017-0D-centers.xsf",
+      "xsf_filled_file": "region-017-0D-filled.xsf"
     },
     {
       "region_id": 18,
@@ -327,9 +345,10 @@
       "void_ids": [
         "cifs:candidate:0000:member:0004"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 13756,
-      "xsf_file": "region-018-0D.xsf"
+      "xsf_centers_file": "region-018-0D-centers.xsf",
+      "xsf_filled_file": "region-018-0D-filled.xsf"
     },
     {
       "region_id": 19,
@@ -343,9 +362,10 @@
       "void_ids": [
         "cifs:candidate:0000:member:0001"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 13756,
-      "xsf_file": "region-019-0D.xsf"
+      "xsf_centers_file": "region-019-0D-centers.xsf",
+      "xsf_filled_file": "region-019-0D-filled.xsf"
     },
     {
       "region_id": 20,
@@ -359,9 +379,10 @@
       "void_ids": [
         "cifs:candidate:0000:member:0011"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 13756,
-      "xsf_file": "region-020-0D.xsf"
+      "xsf_centers_file": "region-020-0D-centers.xsf",
+      "xsf_filled_file": "region-020-0D-filled.xsf"
     },
     {
       "region_id": 21,
@@ -375,9 +396,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0007"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 11991,
-      "xsf_file": "region-021-0D.xsf"
+      "xsf_centers_file": "region-021-0D-centers.xsf",
+      "xsf_filled_file": "region-021-0D-filled.xsf"
     },
     {
       "region_id": 22,
@@ -391,9 +413,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0017"
       ],
-      "export_open_samples": 0,
-      "export_filled_samples": 11815,
-      "xsf_file": "region-022-0D.xsf"
+      "export_center_samples": 1,
+      "export_filled_samples": 12112,
+      "xsf_centers_file": "region-022-0D-centers.xsf",
+      "xsf_filled_file": "region-022-0D-filled.xsf"
     },
     {
       "region_id": 23,
@@ -407,9 +430,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0005"
       ],
-      "export_open_samples": 0,
-      "export_filled_samples": 11815,
-      "xsf_file": "region-023-0D.xsf"
+      "export_center_samples": 1,
+      "export_filled_samples": 12112,
+      "xsf_centers_file": "region-023-0D-centers.xsf",
+      "xsf_filled_file": "region-023-0D-filled.xsf"
     },
     {
       "region_id": 24,
@@ -423,9 +447,10 @@
       "void_ids": [
         "cifs:candidate:0000:member:0009"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 13756,
-      "xsf_file": "region-024-0D.xsf"
+      "xsf_centers_file": "region-024-0D-centers.xsf",
+      "xsf_filled_file": "region-024-0D-filled.xsf"
     },
     {
       "region_id": 25,
@@ -439,9 +464,10 @@
       "void_ids": [
         "cifs:candidate:0000:member:0010"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 13756,
-      "xsf_file": "region-025-0D.xsf"
+      "xsf_centers_file": "region-025-0D-centers.xsf",
+      "xsf_filled_file": "region-025-0D-filled.xsf"
     },
     {
       "region_id": 26,
@@ -455,9 +481,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0016"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 11991,
-      "xsf_file": "region-026-0D.xsf"
+      "xsf_centers_file": "region-026-0D-centers.xsf",
+      "xsf_filled_file": "region-026-0D-filled.xsf"
     },
     {
       "region_id": 27,
@@ -471,9 +498,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0003"
       ],
-      "export_open_samples": 0,
-      "export_filled_samples": 11815,
-      "xsf_file": "region-027-0D.xsf"
+      "export_center_samples": 1,
+      "export_filled_samples": 12112,
+      "xsf_centers_file": "region-027-0D-centers.xsf",
+      "xsf_filled_file": "region-027-0D-filled.xsf"
     },
     {
       "region_id": 28,
@@ -487,9 +515,10 @@
       "void_ids": [
         "cifs:candidate:0000:member:0005"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 13756,
-      "xsf_file": "region-028-0D.xsf"
+      "xsf_centers_file": "region-028-0D-centers.xsf",
+      "xsf_filled_file": "region-028-0D-filled.xsf"
     },
     {
       "region_id": 29,
@@ -503,9 +532,10 @@
       "void_ids": [
         "cifs:candidate:0000:member:0002"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 13756,
-      "xsf_file": "region-029-0D.xsf"
+      "xsf_centers_file": "region-029-0D-centers.xsf",
+      "xsf_filled_file": "region-029-0D-filled.xsf"
     },
     {
       "region_id": 30,
@@ -519,9 +549,10 @@
       "void_ids": [
         "cifs:candidate:0000:member:0006"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 13756,
-      "xsf_file": "region-030-0D.xsf"
+      "xsf_centers_file": "region-030-0D-centers.xsf",
+      "xsf_filled_file": "region-030-0D-filled.xsf"
     },
     {
       "region_id": 31,
@@ -535,9 +566,10 @@
       "void_ids": [
         "cifs:candidate:0000:member:0007"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 13756,
-      "xsf_file": "region-031-0D.xsf"
+      "xsf_centers_file": "region-031-0D-centers.xsf",
+      "xsf_filled_file": "region-031-0D-filled.xsf"
     },
     {
       "region_id": 32,
@@ -551,9 +583,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0008"
       ],
-      "export_open_samples": 0,
-      "export_filled_samples": 11815,
-      "xsf_file": "region-032-0D.xsf"
+      "export_center_samples": 1,
+      "export_filled_samples": 12112,
+      "xsf_centers_file": "region-032-0D-centers.xsf",
+      "xsf_filled_file": "region-032-0D-filled.xsf"
     },
     {
       "region_id": 33,
@@ -567,9 +600,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0004"
       ],
-      "export_open_samples": 24,
+      "export_center_samples": 24,
       "export_filled_samples": 16829,
-      "xsf_file": "region-033-0D.xsf"
+      "xsf_centers_file": "region-033-0D-centers.xsf",
+      "xsf_filled_file": "region-033-0D-filled.xsf"
     },
     {
       "region_id": 34,
@@ -583,9 +617,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0002"
       ],
-      "export_open_samples": 24,
+      "export_center_samples": 24,
       "export_filled_samples": 16829,
-      "xsf_file": "region-034-0D.xsf"
+      "xsf_centers_file": "region-034-0D-centers.xsf",
+      "xsf_filled_file": "region-034-0D-filled.xsf"
     },
     {
       "region_id": 35,
@@ -599,9 +634,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0011"
       ],
-      "export_open_samples": 26,
+      "export_center_samples": 26,
       "export_filled_samples": 16676,
-      "xsf_file": "region-035-0D.xsf"
+      "xsf_centers_file": "region-035-0D-centers.xsf",
+      "xsf_filled_file": "region-035-0D-filled.xsf"
     },
     {
       "region_id": 36,
@@ -615,9 +651,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0022"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 11991,
-      "xsf_file": "region-036-0D.xsf"
+      "xsf_centers_file": "region-036-0D-centers.xsf",
+      "xsf_filled_file": "region-036-0D-filled.xsf"
     },
     {
       "region_id": 37,
@@ -631,9 +668,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0001"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 11991,
-      "xsf_file": "region-037-0D.xsf"
+      "xsf_centers_file": "region-037-0D-centers.xsf",
+      "xsf_filled_file": "region-037-0D-filled.xsf"
     },
     {
       "region_id": 38,
@@ -647,9 +685,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0014"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 11991,
-      "xsf_file": "region-038-0D.xsf"
+      "xsf_centers_file": "region-038-0D-centers.xsf",
+      "xsf_filled_file": "region-038-0D-filled.xsf"
     },
     {
       "region_id": 39,
@@ -663,9 +702,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0003"
       ],
-      "export_open_samples": 26,
+      "export_center_samples": 26,
       "export_filled_samples": 16676,
-      "xsf_file": "region-039-0D.xsf"
+      "xsf_centers_file": "region-039-0D-centers.xsf",
+      "xsf_filled_file": "region-039-0D-filled.xsf"
     },
     {
       "region_id": 40,
@@ -679,9 +719,10 @@
       "void_ids": [
         "cifs:candidate:0002:member:0008"
       ],
-      "export_open_samples": 24,
+      "export_center_samples": 24,
       "export_filled_samples": 16829,
-      "xsf_file": "region-040-0D.xsf"
+      "xsf_centers_file": "region-040-0D-centers.xsf",
+      "xsf_filled_file": "region-040-0D-filled.xsf"
     },
     {
       "region_id": 41,
@@ -695,9 +736,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0015"
       ],
-      "export_open_samples": 0,
-      "export_filled_samples": 11815,
-      "xsf_file": "region-041-0D.xsf"
+      "export_center_samples": 1,
+      "export_filled_samples": 12112,
+      "xsf_centers_file": "region-041-0D-centers.xsf",
+      "xsf_filled_file": "region-041-0D-filled.xsf"
     },
     {
       "region_id": 42,
@@ -711,9 +753,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0010"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 11991,
-      "xsf_file": "region-042-0D.xsf"
+      "xsf_centers_file": "region-042-0D-centers.xsf",
+      "xsf_filled_file": "region-042-0D-filled.xsf"
     },
     {
       "region_id": 43,
@@ -727,9 +770,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0021"
       ],
-      "export_open_samples": 1,
+      "export_center_samples": 1,
       "export_filled_samples": 11991,
-      "xsf_file": "region-043-0D.xsf"
+      "xsf_centers_file": "region-043-0D-centers.xsf",
+      "xsf_filled_file": "region-043-0D-filled.xsf"
     },
     {
       "region_id": 44,
@@ -743,9 +787,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0000"
       ],
-      "export_open_samples": 0,
-      "export_filled_samples": 11815,
-      "xsf_file": "region-044-0D.xsf"
+      "export_center_samples": 1,
+      "export_filled_samples": 12112,
+      "xsf_centers_file": "region-044-0D-centers.xsf",
+      "xsf_filled_file": "region-044-0D-filled.xsf"
     },
     {
       "region_id": 45,
@@ -759,9 +804,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0020"
       ],
-      "export_open_samples": 0,
-      "export_filled_samples": 11815,
-      "xsf_file": "region-045-0D.xsf"
+      "export_center_samples": 1,
+      "export_filled_samples": 12112,
+      "xsf_centers_file": "region-045-0D-centers.xsf",
+      "xsf_filled_file": "region-045-0D-filled.xsf"
     },
     {
       "region_id": 46,
@@ -775,9 +821,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0023"
       ],
-      "export_open_samples": 0,
-      "export_filled_samples": 11815,
-      "xsf_file": "region-046-0D.xsf"
+      "export_center_samples": 1,
+      "export_filled_samples": 12112,
+      "xsf_centers_file": "region-046-0D-centers.xsf",
+      "xsf_filled_file": "region-046-0D-filled.xsf"
     },
     {
       "region_id": 47,
@@ -791,9 +838,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0018"
       ],
-      "export_open_samples": 0,
-      "export_filled_samples": 11815,
-      "xsf_file": "region-047-0D.xsf"
+      "export_center_samples": 1,
+      "export_filled_samples": 12112,
+      "xsf_centers_file": "region-047-0D-centers.xsf",
+      "xsf_filled_file": "region-047-0D-filled.xsf"
     },
     {
       "region_id": 48,
@@ -807,9 +855,10 @@
       "void_ids": [
         "cifs:candidate:0001:member:0012"
       ],
-      "export_open_samples": 0,
-      "export_filled_samples": 11815,
-      "xsf_file": "region-048-0D.xsf"
+      "export_center_samples": 1,
+      "export_filled_samples": 12112,
+      "xsf_centers_file": "region-048-0D-centers.xsf",
+      "xsf_filled_file": "region-048-0D-filled.xsf"
     }
   ],
   "voids": [
@@ -1692,11 +1741,9 @@
   "grid_components_with_several_regions": 0,
   "unplaced_open_grid_points": 0,
   "export_grid_spacing_angstrom": 0.15,
-  "open_space_xsf": "open_space.xsf",
-  "export_grid_values": {
-    "2": "a probe center fits here",
-    "1": "inside a probe ball that fits",
-    "0": "no probe ball reaches here"
+  "open_space_xsf": {
+    "centers": "open_space-centers.xsf",
+    "filled": "open_space-filled.xsf"
   },
-  "display_in_vesta": "Open an .xsf file. Isosurface 0.5 shows all space a fitted probe fills; 1.5 shows only where its center can sit."
+  "display_in_vesta": "Open any .xsf file and set the isosurface level to 0.5. -centers files show where a probe center can sit; -filled files show all space a fitting probe ball covers."
 }

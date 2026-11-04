@@ -108,11 +108,16 @@ class RadiusAndReportTests(unittest.TestCase):
             self.assertEqual(report["unplaced_open_grid_points"], 0)
             for region in report["regions"]:
                 self.assertEqual(region["connectivity_label"], "1D")
-                self.assertGreater(region["export_open_samples"], 0)
+                self.assertGreater(region["export_center_samples"], 0)
                 # Probe balls fill more space than their centers alone.
-                self.assertGreater(region["export_filled_samples"], region["export_open_samples"])
-                self.assertIn("BEGIN_DATAGRID_3D_accessible_space", (out / region["xsf_file"]).read_text())
-            self.assertTrue((out / "open_space.xsf").is_file())
+                self.assertGreater(region["export_filled_samples"], region["export_center_samples"])
+                for key in ("xsf_centers_file", "xsf_filled_file"):
+                    text = (out / region[key]).read_text()
+                    self.assertIn("BEGIN_DATAGRID_3D_accessible_space", text)
+                    values = set(text.split("END_DATAGRID_3D")[0].split("0 0 0\n", 1)[1].split()[9:])
+                    self.assertEqual(values, {"0", "1"})
+            for view in ("centers", "filled"):
+                self.assertTrue((out / f"open_space-{view}.xsf").is_file())
 
 
 if __name__ == "__main__":

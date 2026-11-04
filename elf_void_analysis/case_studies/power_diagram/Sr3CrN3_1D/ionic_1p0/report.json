@@ -41,9 +41,10 @@
         "cifs:candidate:0004:member:0010",
         "cifs:candidate:0004:member:0011"
       ],
-      "export_open_samples": 1211,
+      "export_center_samples": 1211,
       "export_filled_samples": 14189,
-      "xsf_file": "region-000-1D.xsf"
+      "xsf_centers_file": "region-000-1D-centers.xsf",
+      "xsf_filled_file": "region-000-1D-filled.xsf"
     },
     {
       "region_id": 1,
@@ -55,9 +56,10 @@
       "connectivity_label": "0D",
       "label_status": "exact",
       "void_ids": [],
-      "export_open_samples": 0,
-      "export_filled_samples": 1449,
-      "xsf_file": "region-001-0D.xsf"
+      "export_center_samples": 1,
+      "export_filled_samples": 1561,
+      "xsf_centers_file": "region-001-0D-centers.xsf",
+      "xsf_filled_file": "region-001-0D-filled.xsf"
     },
     {
       "region_id": 2,
@@ -69,9 +71,10 @@
       "connectivity_label": "0D",
       "label_status": "exact",
       "void_ids": [],
-      "export_open_samples": 0,
-      "export_filled_samples": 1449,
-      "xsf_file": "region-002-0D.xsf"
+      "export_center_samples": 1,
+      "export_filled_samples": 1561,
+      "xsf_centers_file": "region-002-0D-centers.xsf",
+      "xsf_filled_file": "region-002-0D-filled.xsf"
     },
     {
       "region_id": 3,
@@ -83,9 +86,10 @@
       "connectivity_label": "0D",
       "label_status": "exact",
       "void_ids": [],
-      "export_open_samples": 0,
-      "export_filled_samples": 1449,
-      "xsf_file": "region-003-0D.xsf"
+      "export_center_samples": 1,
+      "export_filled_samples": 1551,
+      "xsf_centers_file": "region-003-0D-centers.xsf",
+      "xsf_filled_file": "region-003-0D-filled.xsf"
     },
     {
       "region_id": 4,
@@ -97,9 +101,10 @@
       "connectivity_label": "0D",
       "label_status": "exact",
       "void_ids": [],
-      "export_open_samples": 0,
-      "export_filled_samples": 1449,
-      "xsf_file": "region-004-0D.xsf"
+      "export_center_samples": 1,
+      "export_filled_samples": 1551,
+      "xsf_centers_file": "region-004-0D-centers.xsf",
+      "xsf_filled_file": "region-004-0D-filled.xsf"
     }
   ],
   "voids": [
@@ -702,11 +707,9 @@
   "grid_components_with_several_regions": 0,
   "unplaced_open_grid_points": 0,
   "export_grid_spacing_angstrom": 0.15,
-  "open_space_xsf": "open_space.xsf",
-  "export_grid_values": {
-    "2": "a probe center fits here",
-    "1": "inside a probe ball that fits",
-    "0": "no probe ball reaches here"
+  "open_space_xsf": {
+    "centers": "open_space-centers.xsf",
+    "filled": "open_space-filled.xsf"
   },
-  "display_in_vesta": "Open an .xsf file. Isosurface 0.5 shows all space a fitted probe fills; 1.5 shows only where its center can sit."
+  "display_in_vesta": "Open any .xsf file and set the isosurface level to 0.5. -centers files show where a probe center can sit; -filled files show all space a fitting probe ball covers."
 }

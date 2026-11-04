@@ -266,10 +266,11 @@ and `element_radius_sources` in `report.json` says so. Check those notes, and
 prefer `custom` radii for intermetallics or unusual oxidation states.
 
 `report.json` uses the same region and void fields as the adaptive report.
-Add `--export-spacing 0.15` to also write VESTA XSF grids: `open_space.xsf`
-and one `region-NNN-<dim>.xsf` per region. Grid value 2 marks where a probe
-center fits and 1 marks space inside a fitting probe ball, so an isosurface at
-0.5 highlights all space the probe fills and 1.5 only its center positions.
+Add `--export-spacing 0.15` to also write VESTA XSF grids. Each region gets
+`region-NNN-<dim>-centers.xsf` (where a probe center fits) and
+`region-NNN-<dim>-filled.xsf` (all space a fitting probe ball covers), plus
+`open_space-centers.xsf` and `open_space-filled.xsf` for all regions. Every
+file is a 0/1 grid; use isosurface level 0.5.
 The grid only draws regions; their labels come from the exact calculation.
 Like the other labelers, it measures geometry, not ELF or electronic
 dimensionality.
