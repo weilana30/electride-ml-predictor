@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1260"
+   height="1260"
+   viewBox="0 0 1260 1260"
+   version="1.1"
+   id="svg26"
+   sodipodi:docname="electride_basic.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview26"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <title
+     id="title1">Basic electride schematic</title>
+  <defs
+     id="defs10">
+    <radialGradient
+       id="cat"
+       cx="0.36"
+       cy="0.32"
+       r="0.78">
+      <stop
+         offset="0"
+         stop-color="#e9e9ea"
+         id="stop1" />
+      <stop
+         offset="0.28"
+         stop-color="#9d9795"
+         id="stop2" />
+      <stop
+         offset="0.72"
+         stop-color="#555960"
+         id="stop3" />
+      <stop
+         offset="1"
+         stop-color="#1c1c1e"
+         id="stop4" />
+    </radialGradient>
+    <radialGradient
+       id="cloud">
+      <stop
+         offset="0"
+         stop-color="#daaa00"
+         stop-opacity="0.62"
+         id="stop5" />
+      <stop
+         offset="0.5"
+         stop-color="#daaa00"
+         stop-opacity="0.30"
+         id="stop6" />
+      <stop
+         offset="1"
+         stop-color="#daaa00"
+         stop-opacity="0"
+         id="stop7" />
+    </radialGradient>
+    <radialGradient
+       id="ele"
+       cx="0.38"
+       cy="0.33"
+       r="0.8">
+      <stop
+         offset="0"
+         stop-color="#f6e3a3"
+         id="stop8" />
+      <stop
+         offset="0.45"
+         stop-color="#daaa00"
+         id="stop9" />
+      <stop
+         offset="1"
+         stop-color="#9a7800"
+         id="stop10" />
+    </radialGradient>
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Electron clouds"
+     id="g13">
+    <circle
+       cx="408"
+       cy="408"
+       r="178"
+       fill="url(#cloud)"
+       id="circle10" />
+    <circle
+       cx="408"
+       cy="852"
+       r="178"
+       fill="url(#cloud)"
+       id="circle11" />
+    <circle
+       cx="852"
+       cy="408"
+       r="178"
+       fill="url(#cloud)"
+       id="circle12" />
+    <circle
+       cx="852"
+       cy="852"
+       r="178"
+       fill="url(#cloud)"
+       id="circle13" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Cations"
+     id="g22">
+    <circle
+       cx="186"
+       cy="186"
+       r="172"
+       fill="url(#cat)"
+       stroke="#000000"
+       stroke-width="5"
+       id="circle14" />
+    <path
+       d="M142 186H230M186 142V230"
+       stroke="#fff"
+       stroke-width="17"
+       stroke-linecap="round"
+       fill="none"
+       id="path14" />
+    <circle
+       cx="630"
+       cy="186"
+       r="172"
+       fill="url(#cat)"
+       stroke="#000000"
+       stroke-width="5"
+       id="circle15" />
+    <path
+       d="M586 186H674M630 142V230"
+       stroke="#fff"
+       stroke-width="17"
+       stroke-linecap="round"
+       fill="none"
+       id="path15" />
+    <circle
+       cx="1074"
+       cy="186"
+       r="172"
+       fill="url(#cat)"
+       stroke="#000000"
+       stroke-width="5"
+       id="circle16" />
+    <path
+       d="M1030 186H1118M1074 142V230"
+       stroke="#fff"
+       stroke-width="17"
+       stroke-linecap="round"
+       fill="none"
+       id="path16" />
+    <circle
+       cx="186"
+       cy="630"
+       r="172"
+       fill="url(#cat)"
+       stroke="#000000"
+       stroke-width="5"
+       id="circle17" />
+    <path
+       d="M142 630H230M186 586V674"
+       stroke="#fff"
+       stroke-width="17"
+       stroke-linecap="round"
+       fill="none"
+       id="path17" />
+    <circle
+       cx="630"
+       cy="630"
+       r="172"
+       fill="url(#cat)"
+       stroke="#000000"
+       stroke-width="5"
+       id="circle18" />
+    <path
+       d="M586 630H674M630 586V674"
+       stroke="#fff"
+       stroke-width="17"
+       stroke-linecap="round"
+       fill="none"
+       id="path18" />
+    <circle
+       cx="1074"
+       cy="630"
+       r="172"
+       fill="url(#cat)"
+       stroke="#000000"
+       stroke-width="5"
+       id="circle19" />
+    <path
+       d="M1030 630H1118M1074 586V674"
+       stroke="#fff"
+       stroke-width="17"
+       stroke-linecap="round"
+       fill="none"
+       id="path19" />
+    <circle
+       cx="186"
+       cy="1074"
+       r="172"
+       fill="url(#cat)"
+       stroke="#000000"
+       stroke-width="5"
+       id="circle20" />
+    <path
+       d="M142 1074H230M186 1030V1118"
+       stroke="#fff"
+       stroke-width="17"
+       stroke-linecap="round"
+       fill="none"
+       id="path20" />
+    <circle
+       cx="630"
+       cy="1074"
+       r="172"
+       fill="url(#cat)"
+       stroke="#000000"
+       stroke-width="5"
+       id="circle21" />
+    <path
+       d="M586 1074H674M630 1030V1118"
+       stroke="#fff"
+       stroke-width="17"
+       stroke-linecap="round"
+       fill="none"
+       id="path21" />
+    <circle
+       cx="1074"
+       cy="1074"
+       r="172"
+       fill="url(#cat)"
+       stroke="#000000"
+       stroke-width="5"
+       id="circle22" />
+    <path
+       d="M1030 1074H1118M1074 1030V1118"
+       stroke="#fff"
+       stroke-width="17"
+       stroke-linecap="round"
+       fill="none"
+       id="path22" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Electrons"
+     id="g26">
+    <circle
+       cx="408"
+       cy="408"
+       r="74"
+       fill="url(#ele)"
+       stroke="#6e5600"
+       stroke-width="4"
+       id="circle23" />
+    <text
+       x="405"
+       y="434"
+       text-anchor="middle"
+       font-family="Arial"
+       font-weight="700"
+       font-size="76"
+       fill="#000000"
+       id="text23">e<tspan
+   dy="-28"
+   font-size="50"
+   id="tspan23">−</tspan></text>
+    <circle
+       cx="408"
+       cy="852"
+       r="74"
+       fill="url(#ele)"
+       stroke="#6e5600"
+       stroke-width="4"
+       id="circle24" />
+    <text
+       x="405"
+       y="878"
+       text-anchor="middle"
+       font-family="Arial"
+       font-weight="700"
+       font-size="76"
+       fill="#000000"
+       id="text24">e<tspan
+   dy="-28"
+   font-size="50"
+   id="tspan24">−</tspan></text>
+    <circle
+       cx="852"
+       cy="408"
+       r="74"
+       fill="url(#ele)"
+       stroke="#6e5600"
+       stroke-width="4"
+       id="circle25" />
+    <text
+       x="849"
+       y="434"
+       text-anchor="middle"
+       font-family="Arial"
+       font-weight="700"
+       font-size="76"
+       fill="#000000"
+       id="text25">e<tspan
+   dy="-28"
+   font-size="50"
+   id="tspan25">−</tspan></text>
+    <circle
+       cx="852"
+       cy="852"
+       r="74"
+       fill="url(#ele)"
+       stroke="#6e5600"
+       stroke-width="4"
+       id="circle26" />
+    <text
+       x="849"
+       y="878"
+       text-anchor="middle"
+       font-family="Arial"
+       font-weight="700"
+       font-size="76"
+       fill="#000000"
+       id="text26">e<tspan
+   dy="-28"
+   font-size="50"
+   id="tspan26">−</tspan></text>
+  </g>
+</svg>
