@@ -45,25 +45,35 @@ seen in training. Mean ± SD over 3 seeds.
 | Model | Test RMSE (ELF) |
 | --- | ---: |
 | Atom–void GNN, atomic features (confirmation study) | 0.059 ± 0.003 |
-| Atom–void GNN, all descriptors (confirmation study) | 0.070 ± 0.001 |
-| Gated MPNN | 0.070 ± 0.003 |
-| Gradient-boosted tree (1 run) | 0.077 |
-| Fixed-context MLP | 0.085 ± 0.002 |
-| Void-only MLP | 0.140 |
+| Atom–void GNN, all descriptors (confirmation study) | 0.070 ± 0.001 ‡ |
+| Gated MPNN | 0.070 ± 0.003 ‡ |
+| Gradient-boosted tree (1 run) | 0.076 † |
+| Fixed-context MLP | 0.083 ± 0.002 † |
+| Void-only MLP | 0.139 ± 0.001 † |
 | Predict the average ELF | 0.141 |
+
+† Rerun on 2026-11-10 with corrected void descriptors (v2: neighbor counts and
+nearest distances over all periodic atom images; v1 counted each basis atom
+once and zero-padded missing distances). Same seeds and settings; old values
+were 0.077, 0.085 ± 0.002 and 0.140. Source:
+`elf_void_gnn/architecture_test/results_voidv2/`. These three are the gray
+bars on the poster.
+‡ Still the v1 void descriptors (not on the poster; rerun pending). The
+atom-only GNN uses no void descriptors, so it is unaffected.
 
 - Atom-only GNN: R² 0.83 ± 0.01, MAE 0.038.
 - Of voids with true ELF ≥ 0.5, it predicts ≥ 0.5 for 63% (precision 0.83).
   Of the rare voids with ELF ≥ 0.7 (0.7% of voids), it catches only 6%.
-- The comparison figure uses the direct confirmation values for the two
-  atom–void GNNs: width-64 atomic features (0.059 ± 0.003) and width-128 all
-  descriptors (0.070 ± 0.001). The atomic-features model still has void nodes
-  and atom–void messaging; it omits explicit void descriptors.
-- The parity plot uses the earlier feature study (0.058 ± 0.002, R² 0.83 ±
-  0.01). Its value differs slightly from the direct confirmation estimate
-  (R² 0.82 ± 0.02). These studies share a split and protocol but use different
-  seeds; the confirmation test figures are descriptive because earlier model
-  development used this test partition.
+- The comparison figure and stat card use the direct confirmation value for
+  the selected width-64 atomic-features GNN (0.059 ± 0.003, R² 0.82) beside the
+  three † baselines; the poster_v3 parity plot is the same model (seed
+  20261028). The atomic-features model still has void nodes and atom–void
+  messaging; it omits explicit void descriptors.
+- The width-128 all-descriptor GNN scored 0.070 ± 0.001 in the confirmation
+  study (v1 void descriptors; a same-seed rerun on v2 descriptors is running).
+- The earlier feature study gave 0.058 ± 0.002 (R² 0.83 ± 0.01) for the same
+  configuration with different seeds. All these test figures are descriptive:
+  earlier model development used this test partition.
 
 ### RQ2: dimensionality (source: `elf_void_analysis/case_studies/registry_test/summary.json`)
 
