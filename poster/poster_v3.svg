@@ -101,15 +101,15 @@
     </g>
     <text xml:space="preserve" x="48.0" y="1320.0" style="font-family:Arial;font-size:36px;line-height:1.22;fill:#333333;inline-size:800px;white-space:pre-wrap" id="bg-elf"><tspan style="font-weight:bold;fill:#000000">ELF</tspan> measures how localized electrons are compared with a uniform electron gas. In electrides, an ELF maximum in an interstitial void can signal localized interstitial electrons. Computing ELF requires a DFT calculation.</text>
     <text x="888.0" y="615" style="font-family:Arial;font-weight:bold;font-size:61.33px;fill:#000000" id="text12">Electron connectivity sets the dimensionality</text>
-    <text x="1243.0" y="690.0" style="font-family:Arial;font-size:36px;fill:#000000;text-anchor:middle" id="bg-lab0"><tspan style="font-weight:bold">0D</tspan>  Isolated pockets</text>
+    <text x="1243.0" y="690.0" style="font-family:Arial;font-size:44px;fill:#000000;text-anchor:middle" id="bg-lab0"><tspan style="font-weight:bold">0D</tspan>  Isolated pockets</text>
     <image xlink:href="diagrams/blender/crystals/electride_0d_v2_transparent.png" x="888.0" y="705.0" width="710" height="710" inkscape:label="0d" id="bg-img0"/>
-    <text xml:space="preserve" x="1243.0" y="1445.0" style="font-family:Arial;font-size:30.67px;line-height:1.2;fill:#333333;text-anchor:middle;text-align:center;inline-size:710px;white-space:pre-wrap" id="bg-cap0">Mayenite-type Ca<tspan style="font-size:65%;baseline-shift:sub">6</tspan>Al<tspan style="font-size:65%;baseline-shift:sub">7</tspan>O<tspan style="font-size:65%;baseline-shift:sub">16</tspan>: separate cages</text>
-    <text x="1848.0" y="690.0" style="font-family:Arial;font-size:36px;fill:#000000;text-anchor:middle" id="bg-lab1"><tspan style="font-weight:bold">1D</tspan>  Channels</text>
+    <text xml:space="preserve" x="1243.0" y="1445.0" style="font-family:Arial;font-size:38px;line-height:1.2;fill:#333333;text-anchor:middle;text-align:center;inline-size:560px;white-space:pre-wrap" id="bg-cap0">Mayenite-type Ca<tspan style="font-size:65%;baseline-shift:sub">6</tspan>Al<tspan style="font-size:65%;baseline-shift:sub">7</tspan>O<tspan style="font-size:65%;baseline-shift:sub">16</tspan>: separate cages</text>
+    <text x="1848.0" y="690.0" style="font-family:Arial;font-size:44px;fill:#000000;text-anchor:middle" id="bg-lab1"><tspan style="font-weight:bold">1D</tspan>  Channels</text>
     <image xlink:href="diagrams/blender/crystals/electride_1d_v2_transparent.png" x="1493.0" y="705.0" width="710" height="710" inkscape:label="1d" id="bg-img1"/>
-    <text xml:space="preserve" x="1848.0" y="1445.0" style="font-family:Arial;font-size:30.67px;line-height:1.2;fill:#333333;text-anchor:middle;text-align:center;inline-size:710px;white-space:pre-wrap" id="bg-cap1">Y<tspan style="font-size:65%;baseline-shift:sub">5</tspan>Si<tspan style="font-size:65%;baseline-shift:sub">3</tspan>: channels along one direction</text>
-    <text x="2453.0" y="690.0" style="font-family:Arial;font-size:36px;fill:#000000;text-anchor:middle" id="bg-lab2"><tspan style="font-weight:bold">2D</tspan>  Sheets</text>
+    <text xml:space="preserve" x="1848.0" y="1445.0" style="font-family:Arial;font-size:38px;line-height:1.2;fill:#333333;text-anchor:middle;text-align:center;inline-size:560px;white-space:pre-wrap" id="bg-cap1">Y<tspan style="font-size:65%;baseline-shift:sub">5</tspan>Si<tspan style="font-size:65%;baseline-shift:sub">3</tspan>: channels along one direction</text>
+    <text x="2453.0" y="690.0" style="font-family:Arial;font-size:44px;fill:#000000;text-anchor:middle" id="bg-lab2"><tspan style="font-weight:bold">2D</tspan>  Sheets</text>
     <image xlink:href="diagrams/blender/crystals/electride_2d_v2_transparent.png" x="2098.0" y="705.0" width="710" height="710" inkscape:label="2d" id="bg-img2"/>
-    <text xml:space="preserve" x="2453.0" y="1445.0" style="font-family:Arial;font-size:30.67px;line-height:1.2;fill:#333333;text-anchor:middle;text-align:center;inline-size:710px;white-space:pre-wrap" id="bg-cap2">Ca<tspan style="font-size:65%;baseline-shift:sub">2</tspan>N: layers between the atoms</text>
+    <text xml:space="preserve" x="2453.0" y="1445.0" style="font-family:Arial;font-size:38px;line-height:1.2;fill:#333333;text-anchor:middle;text-align:center;inline-size:560px;white-space:pre-wrap" id="bg-cap2">Ca<tspan style="font-size:65%;baseline-shift:sub">2</tspan>N: layers between the atoms</text>
   </g>
   <g id="layer-2" inkscape:groupmode="layer" inkscape:label="Goal">
     <rect x="2848.0" y="560.0" width="560.0" height="960.0" rx="18" fill="#1c1c1e" inkscape:label="Goal card" id="rect36"/>
@@ -125,8 +125,8 @@
   <g id="layer-3" inkscape:groupmode="layer" inkscape:label="Tool 1: Predict ELF">
     <rect x="0.0" y="1577.3" width="1728.0" height="1917.1" rx="0.0" ry="0.0" fill="#f4efe7" inkscape:label="Tool 1 panel" id="rect39"/>
     <rect x="0.0" y="1577.3" width="1728.0" height="15.4" rx="0.0" ry="0.0" fill="#8e6f3e" inkscape:label="Tool 1 color edge" id="rect40"/>
-    <rect x="105.6" y="1606.1" width="458.9" height="49.9" rx="5.8" ry="5.8" fill="#8e6f3e" inkscape:label="Tool 1 tag" transform="translate(-57.6 0)" id="rect41"/>
-    <text x="122.9" y="1637.8" style="font-family:Arial;font-weight:bold;font-size:29.33px;letter-spacing:3.81px;fill:#ffffff" transform="translate(-57.6 0)" id="text41">TOOL 1  ·  PREDICT ELF</text>
+    <rect x="105.6" y="1601.1" width="575.0" height="62.0" rx="6.5" ry="6.5" fill="#8e6f3e" inkscape:label="Tool 1 tag" transform="translate(-57.6 0)" id="rect41"/>
+    <text x="125.6" y="1644.6" style="font-family:Arial;font-weight:bold;font-size:37px;letter-spacing:4.5px;fill:#ffffff" transform="translate(-57.6 0)" id="text41">TOOL 1  ·  PREDICT ELF</text>
     <text xml:space="preserve" x="105.6" y="1733.7" style="font-family:Arial;font-size:54.67px;line-height:1.1;fill:#000000;text-anchor:start;text-align:start;inline-size:1557.2px;white-space:pre-wrap" transform="translate(-57.6 0)" id="text42"><tspan x="105.6" y="1733.7" id="tspan78"><tspan style="font-weight:bold" id="tspan77">Can a graph network predict ELF at each candidate void </tspan></tspan><tspan x="105.6" y="1793.8369" id="tspan80"><tspan style="font-weight:bold" id="tspan79">from the surrounding atoms?</tspan></tspan></text>
     <g id="elf" inkscape:label="ELF prediction workflow" style="stroke-linejoin:round;stroke-linecap:butt" transform="translate(-12.053 1860.539) scale(2.067240 2.067240)">
       <g id="elf-figure_1">
@@ -658,8 +658,8 @@
   <g id="layer-4" inkscape:groupmode="layer" inkscape:label="Tool 2: Map voids">
     <rect x="1728.0" y="1577.3" width="1728.0" height="1917.1" rx="0.0" ry="0.0" fill="#fcf5e1" inkscape:label="Tool 2 panel" id="rect225"/>
     <rect x="1728.0" y="1577.3" width="1728.0" height="15.4" rx="0.0" ry="0.0" fill="#daaa00" inkscape:label="Tool 2 color edge" id="rect226"/>
-    <rect x="1795.2" y="1606.1" width="702.7" height="49.9" rx="5.8" ry="5.8" fill="#daaa00" inkscape:label="Tool 2 tag" transform="translate(-27.2 0)" id="rect227"/>
-    <text x="1812.5" y="1637.8" style="font-family:Arial;font-weight:bold;font-size:29.33px;letter-spacing:3.81px;fill:#000000" transform="translate(-27.2 0)" id="text227">TOOL 2  ·  MAP HOW VOIDS CONNECT</text>
+    <rect x="1795.2" y="1601.1" width="880.0" height="62.0" rx="6.5" ry="6.5" fill="#daaa00" inkscape:label="Tool 2 tag" transform="translate(-27.2 0)" id="rect227"/>
+    <text x="1815.2" y="1644.6" style="font-family:Arial;font-weight:bold;font-size:37px;letter-spacing:4.5px;fill:#000000" transform="translate(-27.2 0)" id="text227">TOOL 2  ·  MAP HOW VOIDS CONNECT</text>
     <text xml:space="preserve" x="1795.2" y="1733.7" style="font-family:Arial;font-size:54.67px;line-height:1.1;fill:#000000;text-anchor:start;text-align:start;inline-size:1557.2px;white-space:pre-wrap" transform="translate(-27.2 0)" id="text228"><tspan x="1795.2" y="1733.7" id="tspan92"><tspan style="font-weight:bold" id="tspan91">Can geometry alone recover the dimensionality of known </tspan></tspan><tspan x="1795.2" y="1793.8369" id="tspan94"><tspan style="font-weight:bold" id="tspan93">electrides?</tspan></tspan></text>
     <g id="voidmap" inkscape:label="Void connectivity schematic" transform="translate(1768.0 1837.707) scale(0.911111 0.911111)">
       <rect width="1800" height="780" fill="#fcf5e1" id="voidmap-rect2"/>
@@ -1017,7 +1017,7 @@
     </g>
     <text xml:space="preserve" x="1795.2" y="2568.3999" style="font-size:28px;line-height:1.2;font-family:Arial;text-align:start;text-anchor:start;white-space:pre-wrap;inline-size:1614.8px;fill:#333333" id="text229"/>
     <rect x="1768.0" y="2578.0" width="1640.0" height="881.7" rx="18" ry="18" fill="#ffffff" inkscape:label="flow card" id="flow-card"/>
-    <image xlink:href="figures/connectivity_flow_sweep.png" x="1788.0" y="2598.0" width="1600.0" height="841.7" inkscape:label="flow" id="image229"/>
+    <image xlink:href="figures/connectivity_flow_sweep.png" x="1788.0" y="2603.2" width="1600.0" height="831.4" inkscape:label="flow" id="image229"/>
   </g>
   <g id="layer-5" inkscape:groupmode="layer" inkscape:label="Closing band">
     <rect x="0.0" y="3494.4" width="3456.0" height="936.0" rx="0.0" ry="0.0" fill="#f2f2f2" inkscape:label="Closing band" id="rect229"/>

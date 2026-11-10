@@ -125,10 +125,20 @@ def connectivity_flow(structures: Any, sweep: Any, path: Path) -> None:
     on_band = {0: "#000000", 1: "#ffffff", 2: "#000000"}
     labels = {0: "0D", 1: "1D", 2: "2D"}
     ink, box, gap, left, right, width = "#000000", 100.0, 24.0, 0.055, 0.91, 0.035
-    paper, accent, tint = "#ffffff", "#8e6f3e", "#efdfb4"
+    paper = "#ffffff"
+    # Mismatch bands use a light tint of their source class color, so every band
+    # reads as "where this class went"; correct bands use the full color.
+    faded = {0: "#d8d5d3", 1: "#b9bbbf", 2: "#f0dc8f"}
+    min_band = 1.6  # minimum drawn thickness so a one-structure flow stays visible
     left_totals, right_totals = counts.sum(axis=1), counts.sum(axis=0)
-    left_share = counts / np.maximum(left_totals[:, None], 1) * box
-    right_share = counts / np.maximum(right_totals[None, :], 1) * box
+    def shares(raw):
+        # Give tiny nonzero flows a minimum thickness, then renormalize to the box.
+        out = np.where(counts > 0, np.maximum(raw, min_band), 0.0)
+        return out
+    left_share = shares(counts / np.maximum(left_totals[:, None], 1) * box)
+    left_share = left_share / left_share.sum(axis=1, keepdims=True) * box
+    right_share = shares(counts / np.maximum(right_totals[None, :], 1) * box)
+    right_share = right_share / right_share.sum(axis=0, keepdims=True) * box
     hit_rate = np.diag(counts) / np.maximum(left_totals, 1)
     top = np.arange(len(counts)) * (box + gap)
     bottom = top[-1] + box
@@ -159,37 +169,30 @@ def connectivity_flow(structures: Any, sweep: Any, path: Path) -> None:
                 x = left * (1 - t) ** 3 + middle * (start - (1 - t) ** 3 + end - t ** 3) + right * t ** 3
                 ax.text(x, start * (a + na / 2) + end * (b + nb / 2),
                         f"{100 * hit_rate[i]:.0f}% identified correctly", ha="center", va="center",
-                        fontsize=24, fontweight="bold", color=on_band[i], zorder=3)
+                        fontsize=31, fontweight="bold", color=on_band[i], zorder=3)
                 continue
-            # The largest mismatch takes the key-finding tint; other mismatches fade.
-            key = (i, j) == worst
-            ax.add_patch(PathPatch(band, fc=tint if key else colors[i], alpha=1 if key else 0.2,
-                                   ec="none", zorder=1))
-            # A background-colored seam keeps neighboring faded bands apart.
-            ax.add_patch(PathPatch(band, fc="none", ec=paper, lw=1.5, zorder=1))
-            if key:
-                ax.add_patch(PathPatch(band, fc="none", ec=accent, lw=2.5, zorder=1.5))
-            if counts[i, j] <= 3:  # outline thin bands so a single structure still shows
-                ax.add_patch(PathPatch(band, fc="none", ec=colors[i], lw=2.2, alpha=0.8, zorder=1))
+            # Mismatch: light tint of the source class, no outline (outlines made kinks).
+            ax.add_patch(PathPatch(band, fc=faded[i], ec="none", alpha=0.9, zorder=1))
         for i in range(3):
             centre = top[i] + box / 2
             ax.add_patch(Rectangle((left - width, top[i]), width, box, fc=colors[i], ec="none"))
             ax.text(left - width - 0.012, centre, labels[i], ha="right", va="center",
-                    fontsize=28, fontweight="bold")
+                    fontsize=36, fontweight="bold")
             ax.add_patch(Rectangle((right, top[i]), width, box, fc=colors[i], ec="none"))
             ax.text(right + width + 0.012, centre, labels[i], ha="left", va="center",
-                    fontsize=28, fontweight="bold")
+                    fontsize=36, fontweight="bold")
         # Key finding about the class with the largest mismatch, boxed in the outline color.
-        ax.text(middle, bottom + 30, f"Many {labels[worst[0]]} electrides have connected open space",
-                ha="center", va="top", fontsize=27, fontweight="bold", color=ink, zorder=3,
-                bbox=dict(boxstyle="round,pad=0.45,rounding_size=0.5", fc=tint, ec=accent, lw=3))
+        ax.text(middle, bottom + 44, f"Many {labels[worst[0]]} electrides have connected open space",
+                ha="center", va="top", fontsize=33, fontweight="bold", color=ink, zorder=3,
+                bbox=dict(boxstyle="round,pad=0.45,rounding_size=0.5", fc=faded[worst[0]],
+                          ec=colors[worst[0]], lw=3))
         for x, align, heading in ((left - width, "left", "Actual (literature)"),
                                   (right + width, "right", "Geometry (probe sweep)")):
-            ax.text(x, -14, heading, ha=align, va="bottom", fontsize=24, fontweight="bold")
+            ax.text(x, -14, heading, ha=align, va="bottom", fontsize=30, fontweight="bold")
         ax.set_xlim(0, 1)
-        ax.text(middle, -62, "Predicted vs actual void connectivity", ha="center",
-                va="bottom", fontsize=28, fontweight="bold", color="#8e6f3e")
-        ax.set_ylim(bottom + 90, -96)
+        ax.text(middle, -70, "Predicted vs actual void connectivity", ha="center",
+                va="bottom", fontsize=35, fontweight="bold", color="#8e6f3e")
+        ax.set_ylim(bottom + 114, -112)
         # Crop to the drawn content; the hidden axes would otherwise pad the sides.
         fig.canvas.draw()
         renderer = fig.canvas.get_renderer()
