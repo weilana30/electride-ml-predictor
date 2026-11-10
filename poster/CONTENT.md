@@ -23,9 +23,8 @@ toward a fast electride screen.
 
 ## Title
 
-**Where Do the Extra Electrons Go?**
-Predicting interstitial electron localization and void dimensionality for
-electride screening
+**Predicting Interstitial ELF and Mapping Void Connectivity for Electride Screening**
+(as on poster_v3; an earlier draft title was "Where Do the Extra Electrons Go?")
 
 ## Research questions
 
