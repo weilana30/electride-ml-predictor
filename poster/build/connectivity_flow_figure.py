@@ -124,7 +124,8 @@ def connectivity_flow(structures: Any, sweep: Any, path: Path) -> None:
     colors = {0: "#9D9795", 1: "#555960", 2: "#DAAA00"}
     on_band = {0: "#000000", 1: "#ffffff", 2: "#000000"}
     labels = {0: "0D", 1: "1D", 2: "2D"}
-    ink, box, gap, left, right, width = "#000000", 100.0, 24.0, 0.10, 0.86, 0.035
+    ink, box, gap, left, right, width = "#000000", 100.0, 24.0, 0.055, 0.91, 0.035
+    paper, accent, tint = "#ffffff", "#8e6f3e", "#efdfb4"
     left_totals, right_totals = counts.sum(axis=1), counts.sum(axis=0)
     left_share = counts / np.maximum(left_totals[:, None], 1) * box
     right_share = counts / np.maximum(right_totals[None, :], 1) * box
@@ -134,7 +135,7 @@ def connectivity_flow(structures: Any, sweep: Any, path: Path) -> None:
     off_diagonal = counts * (1 - np.eye(len(counts), dtype=int))
     worst = np.unravel_index(np.argmax(off_diagonal), counts.shape)
     with plt.rc_context({"font.family": "Arial", "pdf.fonttype": 42, "text.color": ink}):
-        fig, ax = plt.subplots(figsize=(15.5, 9.0))
+        fig, ax = plt.subplots(figsize=(15.5, 8.75))
         ax.axis("off")
         left_next, right_next = top.astype(float), top.astype(float)
         middle = (left + right) / 2
@@ -160,9 +161,14 @@ def connectivity_flow(structures: Any, sweep: Any, path: Path) -> None:
                         f"{100 * hit_rate[i]:.0f}% identified correctly", ha="center", va="center",
                         fontsize=24, fontweight="bold", color=on_band[i], zorder=3)
                 continue
-            ax.add_patch(PathPatch(band, fc=colors[i], alpha=0.2, ec="none", zorder=1))
+            # The largest mismatch takes the key-finding tint; other mismatches fade.
+            key = (i, j) == worst
+            ax.add_patch(PathPatch(band, fc=tint if key else colors[i], alpha=1 if key else 0.2,
+                                   ec="none", zorder=1))
             # A background-colored seam keeps neighboring faded bands apart.
-            ax.add_patch(PathPatch(band, fc="none", ec="#fcf5e1", lw=1.5, zorder=1))
+            ax.add_patch(PathPatch(band, fc="none", ec=paper, lw=1.5, zorder=1))
+            if key:
+                ax.add_patch(PathPatch(band, fc="none", ec=accent, lw=2.5, zorder=1.5))
             if counts[i, j] <= 3:  # outline thin bands so a single structure still shows
                 ax.add_patch(PathPatch(band, fc="none", ec=colors[i], lw=2.2, alpha=0.8, zorder=1))
         for i in range(3):
@@ -173,22 +179,25 @@ def connectivity_flow(structures: Any, sweep: Any, path: Path) -> None:
             ax.add_patch(Rectangle((right, top[i]), width, box, fc=colors[i], ec="none"))
             ax.text(right + width + 0.012, centre, labels[i], ha="left", va="center",
                     fontsize=28, fontweight="bold")
-        # Remark under the flows about the class with the largest mismatch.
-        ax.text(middle, bottom + 14, f"Many {labels[worst[0]]} electrides have connected open space",
-                ha="center", va="top", fontsize=22, fontweight="bold", color="#3b3936")
-        for x, heading in ((left - width / 2, "Actual (literature)"),
-                           (right + width / 2, "Geometry (probe sweep)")):
-            ax.text(x, -14, heading, ha="center", va="bottom", fontsize=24, fontweight="bold")
+        # Key finding about the class with the largest mismatch, boxed in the outline color.
+        ax.text(middle, bottom + 30, f"Many {labels[worst[0]]} electrides have connected open space",
+                ha="center", va="top", fontsize=27, fontweight="bold", color=ink, zorder=3,
+                bbox=dict(boxstyle="round,pad=0.45,rounding_size=0.5", fc=tint, ec=accent, lw=3))
+        for x, align, heading in ((left - width, "left", "Actual (literature)"),
+                                  (right + width, "right", "Geometry (probe sweep)")):
+            ax.text(x, -14, heading, ha=align, va="bottom", fontsize=24, fontweight="bold")
         ax.set_xlim(0, 1)
         ax.text(middle, -62, "Predicted vs actual void connectivity", ha="center",
                 va="bottom", fontsize=28, fontweight="bold", color="#8e6f3e")
-        ax.set_ylim(bottom + 50, -96)
+        ax.set_ylim(bottom + 90, -96)
         # Crop to the drawn content; the hidden axes would otherwise pad the sides.
+        fig.canvas.draw()
         renderer = fig.canvas.get_renderer()
-        drawn = Bbox.union([artist.get_window_extent(renderer) for artist in ax.texts + ax.patches])
+        parts = ax.texts + ax.patches + [t.get_bbox_patch() for t in ax.texts if t.get_bbox_patch()]
+        drawn = Bbox.union([artist.get_window_extent(renderer) for artist in parts])
         crop = drawn.transformed(fig.dpi_scale_trans.inverted()).padded(0.08)
         for suffix in (".png", ".pdf"):
-            fig.savefig(path.with_suffix(suffix), dpi=300, bbox_inches=crop, facecolor="#fcf5e1")
+            fig.savefig(path.with_suffix(suffix), dpi=300, bbox_inches=crop, facecolor=paper)
         plt.close(fig)
 
 
