@@ -95,15 +95,17 @@ atom-only GNN uses no void descriptors, so it is unaffected.
 
 ## Text drafts (as on the poster)
 
-**Background**
-- Electrides are crystals whose extra electrons sit in the empty space between
-  atoms and act as anions.
-- How those electrons connect sets their properties: isolated 0D cages, 1D
-  channels, or 2D layers.
-- ELF (electron localization function, 0–1): a high value in a void marks a
-  trapped electron, the electride fingerprint.
-- Finding them needs a DFT calculation per crystal: too slow to screen large
-  databases.
+**Background** (three-column band: text, crystal renders, goal card)
+- Electride: "In an electride, extra electrons sit in the empty space between
+  atoms and act as anions. Whether those regions are isolated (0D) or
+  connected (1D, 2D) shapes the material’s properties."
+- ELF: "ELF (electron localization function, 0–1) measures how localized
+  electrons are, so a high-ELF peak in an empty void marks electrons trapped
+  there. Computing it requires a DFT calculation."
+- Crystal panel title: "Electron connectivity sets the dimensionality"
+- Goal card: "Screen for electrides from structure alone" · No DFT: predict ELF
+  from atom positions · Per void, not per crystal: shows where electrons sit
+  and how they could connect · Two tools, tested separately below.
 
 **Approach**
 - Voids: Voronoi interstitials plus points farthest from atoms, expanded by symmetry.
