@@ -8,6 +8,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from .registry_dimensionality_figures import connectivity_shares
 from .registry_dimensionality_test import half_split_tuning, load_test_set, score
 
 
@@ -25,6 +26,18 @@ class ScoreTests(unittest.TestCase):
         sweep = np.stack([np.full(30, -1), literature, np.full(30, 3)], axis=1)
         result = half_split_tuning(literature, sweep, repeats=20)
         self.assertEqual(result["held_out_exact_accuracy_mean"], 1.0)
+
+
+class ConnectivityTests(unittest.TestCase):
+    def test_channels_win_ties_and_unscored_or_3d_rows_are_left_out(self) -> None:
+        structures = pd.DataFrame({"mp_id": ["a", "b", "c", "d", "e"],
+                                   "literature_dimension": [0, 0, 2, 3, 1],
+                                   "scored": [True, True, True, True, False]})
+        dims = {"a": [3, 0], "b": [3, 2, 1, 0], "c": [3, 2, 0], "d": [3, 0], "e": [3, 1, 0]}
+        sweep = pd.DataFrame([{"mp_id": m, "radius_scheme": "ionic", "highest_dimension": d}
+                              for m, values in dims.items() for d in values])
+        self.assertEqual(connectivity_shares(structures, sweep).to_numpy().tolist(),
+                         [[1, 1, 0], [0, 0, 0], [0, 0, 1]])
 
 
 class LoadTests(unittest.TestCase):

@@ -80,7 +80,7 @@
   "predict_average_rmse": 0.140569552897538,
   "models": [
     {
-      "label": "Void-only MLP",
+      "label": "Void-only neural network",
       "source": "architecture_test/void_mlp_w64_d2",
       "runs": 3,
       "test_rmse": [
@@ -89,7 +89,7 @@
       ]
     },
     {
-      "label": "Fixed-context MLP",
+      "label": "Averaged-atom neural network",
       "source": "architecture_test/fixed_context_mlp_w64_d2",
       "runs": 3,
       "test_rmse": [
@@ -98,7 +98,7 @@
       ]
     },
     {
-      "label": "Gradient-boosted tree",
+      "label": "Boosted decision trees",
       "source": "architecture_test/tree_hgb_context",
       "runs": 1,
       "test_rmse": [
@@ -107,7 +107,7 @@
       ]
     },
     {
-      "label": "Gated MPNN",
+      "label": "Gated message-passing GNN",
       "source": "architecture_test/gated_mpnn_w64_d2",
       "runs": 3,
       "test_rmse": [
@@ -116,7 +116,7 @@
       ]
     },
     {
-      "label": "Hetero GNN, all descriptors",
+      "label": "Atom\u2013void GNN \u00b7 all descriptors",
       "source": "architecture_test/hetero_w128_d2",
       "runs": 3,
       "test_rmse": [
@@ -125,13 +125,45 @@
       ]
     },
     {
-      "label": "Hetero GNN, atom-only",
+      "label": "Atom\u2013void GNN \u00b7 atomic features (feature study)",
       "source": "feature_study/atom-only",
       "runs": 3,
       "test_rmse": [
         0.057592547871704126,
         0.0020860385190418214
       ]
+    }
+  ],
+  "confirmation_comparison": [
+    {
+      "label": "Atom\u2013void graph network",
+      "source": "confirmation_study/w64_d2_atom_only",
+      "runs": 3,
+      "test_rmse": [
+        0.05928854712530773,
+        0.0028304753541178885
+      ],
+      "selected": true
+    },
+    {
+      "label": "Atom\u2013void graph network (width 128)",
+      "source": "confirmation_study/w128_d2_atom_only",
+      "runs": 3,
+      "test_rmse": [
+        0.060314031225428395,
+        0.0017230260628395633
+      ],
+      "selected": false
+    },
+    {
+      "label": "Atom\u2013void graph network (all features)",
+      "source": "confirmation_study/w128_d2_baseline",
+      "runs": 3,
+      "test_rmse": [
+        0.07013763837235326,
+        0.0011402879712149724
+      ],
+      "selected": false
     }
   ],
   "notes": "Mean \u00b1 SD over seeds on the family-held-out test split. Recall/precision treat ELF >= threshold as a positive. predict_average_rmse uses the test mean, so it is slightly optimistic for a constant predictor."

@@ -64,6 +64,7 @@ steps. Balanced accuracy is the mean recall over 0D, 1D and 2D (chance is
 | `summary.json` | All metrics, the full accuracy curves and the confusion tables |
 | `accuracy_vs_probe.{png,pdf}` | Agreement vs probe for both schemes |
 | `confusion_ionic_1p0.{png,pdf}`, `confusion_none_2p0.{png,pdf}` | Literature vs predicted dimension at the default settings |
+| `connectivity_flow.{png,pdf}` | Literature dimension vs the channel or sheet stage found by the ionic probe sweep (exploratory; rule chosen after seeing the labels; 3D left out) |
 
 Reproduce from the repository root (about two minutes on 8 cores):
 

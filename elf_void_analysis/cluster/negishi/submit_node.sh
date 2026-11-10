@@ -3,6 +3,7 @@ set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 source "$script_dir/negishi.env"
+export ELFNET_CLUSTER_DIR="$script_dir"
 manifest="$ELFNET_RUN_ROOT/manifest.parquet"
 if [[ ! -s "$manifest" ]]; then
   echo "Manifest is missing. Submit and finish submit_prepare.sh first." >&2
@@ -15,6 +16,7 @@ fi
 mkdir -p "$ELFNET_RUN_ROOT/logs"
 
 node_job_id="$(sbatch --parsable \
+  --export=ALL \
   --account="$ELFNET_SLURM_ACCOUNT" \
   --qos="$ELFNET_SLURM_QOS" \
   --partition="$ELFNET_SLURM_PARTITION" \
@@ -25,6 +27,7 @@ node_job_id="${node_job_id%%;*}"
 printf '%s\n' "$node_job_id" > "$ELFNET_RUN_ROOT/node_job_id.txt"
 
 merge_job_id="$(sbatch --parsable \
+  --export=ALL \
   --account="$ELFNET_SLURM_ACCOUNT" \
   --qos="$ELFNET_SLURM_QOS" \
   --partition="$ELFNET_SLURM_PARTITION" \

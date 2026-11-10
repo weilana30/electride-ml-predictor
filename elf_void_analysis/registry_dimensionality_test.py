@@ -172,8 +172,9 @@ def run(registry_csv: Path, cif_dir: Path, output: Path, workers: int = 8,
     sweep.drop(columns="atomic_radius_fallback").to_csv(output / "probe_sweep.csv", index=False)
     (output / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     if figures:
-        from .registry_dimensionality_figures import plot_all
+        from .registry_dimensionality_figures import connectivity_flow, plot_all
         plot_all(summary, output)
+        connectivity_flow(table, sweep, output / "connectivity_flow")
     return summary
 
 

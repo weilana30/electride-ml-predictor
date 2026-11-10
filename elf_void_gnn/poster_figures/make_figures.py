@@ -17,8 +17,8 @@ import numpy as np
 import pandas as pd
 
 
-INK, INK_2, MUTED = "#0b0b0b", "#52514e", "#898781"
-GRID, AXIS, HIGHLIGHT, NEUTRAL = "#e1e0d9", "#c3c2b7", "#2a78d6", "#b4b2a9"
+INK, INK_2, MUTED = "#13294B", "#34445B", "#66758A"
+GRID, AXIS, HIGHLIGHT, NEUTRAL = "#DCE4ED", "#AAB8C8", "#2878C8", "#AEBBC9"
 SEQUENTIAL = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95", "#0d366b"]
 ATOM_ONLY = "atom_full_chemistry_and_periodicity"
 THRESHOLDS = (0.5, 0.7)
@@ -42,76 +42,81 @@ def mean_std(rows: list[dict[str, float]], key: str) -> list[float]:
 
 
 def _style(plt) -> None:
-    plt.rcParams.update({"font.size": 13, "axes.edgecolor": AXIS, "axes.labelcolor": INK_2,
+    plt.rcParams.update({"font.size": 18, "axes.edgecolor": AXIS, "axes.labelcolor": INK_2,
                          "xtick.color": MUTED, "ytick.color": MUTED, "text.color": INK,
                          "axes.spines.top": False, "axes.spines.right": False,
                          "figure.facecolor": "white", "savefig.facecolor": "white"})
 
 
-def parity(frame: pd.DataFrame, seed_rows: list[dict[str, float]], seed: int, path: Path) -> None:
+def parity(frame: pd.DataFrame, path: Path) -> None:
     import matplotlib.pyplot as plt
     from matplotlib.colors import LinearSegmentedColormap, LogNorm
     _style(plt)
-    fig, ax = plt.subplots(figsize=(6.4, 6.0))
-    hb = ax.hexbin(frame["y_true"], frame["y_pred"], gridsize=70, extent=(0, 1, 0, 1), mincnt=1,
-                   cmap=LinearSegmentedColormap.from_list("blue", SEQUENTIAL), norm=LogNorm(), linewidths=0)
-    ax.plot([0, 1], [0, 1], color=INK_2, lw=1.2, ls=(0, (4, 3)))
-    ax.text(0.97, 0.92, "perfect prediction", rotation=45, ha="right", va="top", color=INK_2, fontsize=10.5,
-            rotation_mode="anchor", transform_rotates_text=True)
-    ax.axvspan(0.7, 1.0, color=GRID, alpha=0.6, lw=0, zorder=0)
-    ax.text(0.85, 0.04, "true ELF ≥ 0.7\n(rare; under-\npredicted)", ha="center", va="bottom",
-            color=INK_2, fontsize=10.5)
-    rmse, r2 = mean_std(seed_rows, "rmse"), mean_std(seed_rows, "r2")
-    ax.text(0.03, 0.97, f"RMSE {rmse[0]:.3f} ± {rmse[1]:.3f}\nR² {r2[0]:.2f} ± {r2[1]:.2f}\n"
-                        f"{len(frame):,} test voids, 9 unseen families",
-            transform=ax.transAxes, va="top", fontsize=12, color=INK)
-    ax.set_xlim(0, 1)
-    ax.set_ylim(0, 1)
-    ax.set_aspect("equal")
-    ax.set_xlabel("DFT ELF at void center")
-    ax.set_ylabel("GNN-predicted ELF")
-    ax.set_title("Atom-only heterogeneous GNN, test set", loc="left", fontsize=14)
-    bar = fig.colorbar(hb, ax=ax, shrink=0.8, pad=0.02)
-    bar.set_label("Voids per hexagon", color=INK_2)
-    bar.outline.set_visible(False)
-    fig.text(0.01, 0.01, f"Plot shows seed {seed} (median RMSE); metrics are mean ± SD over 3 seeds.",
-             color=INK_2, fontsize=9.5)
-    fig.tight_layout(rect=(0, 0.03, 1, 1))
-    for suffix in (".png", ".pdf"):
-        fig.savefig(path.with_suffix(suffix), dpi=300)
-    plt.close(fig)
+    with plt.rc_context({"font.family": "Arial", "pdf.fonttype": 42}):
+        fig, ax = plt.subplots(figsize=(8.0, 7.0))
+        ax.set_facecolor("#F1F5FA")
+        hb = ax.hexbin(frame["y_true"], frame["y_pred"], gridsize=70, extent=(0, 1, 0, 1), mincnt=1,
+                       cmap=LinearSegmentedColormap.from_list("blue", SEQUENTIAL), norm=LogNorm(), linewidths=0)
+        # White reads over the dense core; past the data the same dashes turn dark for the pale background.
+        ax.plot([0.02, 0.68], [0.02, 0.68], color="white", lw=2.2, ls=(0, (4, 2.5)))
+        ax.plot([0.68, 1], [0.68, 1], color=INK_2, lw=2.2, ls=(0, (4, 2.5)))
+        ax.text(0.91, 0.975, "perfect prediction", rotation=45, ha="right", va="bottom", color=INK_2, fontsize=21,
+                rotation_mode="anchor", transform_rotates_text=True)
+        ax.axvspan(0.7, 1.0, color="#DCE4ED", alpha=0.75, lw=0, zorder=0)
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0, 1)
+        ax.set_aspect("equal")
+        ax.tick_params(labelsize=24, pad=10, length=6, color=AXIS, labelcolor=INK_2)
+        ax.set_xlabel("Actual DFT ELF", fontsize=30, labelpad=10, color=INK, fontweight="bold")
+        ax.set_ylabel("GNN Predicted ELF", fontsize=30, labelpad=10, color=INK, fontweight="bold")
+        for spine in ax.spines.values():
+            spine.set_visible(True)
+            spine.set_color(AXIS)
+            spine.set_linewidth(1.2)
+        bar = fig.colorbar(hb, ax=ax, shrink=0.943, pad=0.03)
+        bar.ax.tick_params(labelsize=24, color=AXIS, labelcolor=INK_2)
+        bar.set_label("Void count", color=INK, fontsize=20, labelpad=10)
+        bar.outline.set_visible(False)
+        for suffix in (".png", ".pdf"):
+            fig.savefig(path.with_suffix(suffix), dpi=300, bbox_inches="tight", pad_inches=0.12)
+        plt.close(fig)
 
 
 def comparison(models: list[dict], mean_baseline: float, path: Path) -> None:
     import matplotlib.pyplot as plt
     _style(plt)
-    models = sorted(models, key=lambda m: m["test_rmse"][0], reverse=True)
-    fig, ax = plt.subplots(figsize=(8.4, 4.6))
-    best = min(m["test_rmse"][0] for m in models)
-    for i, m in enumerate(models):
-        mean, sd = m["test_rmse"]
-        color = HIGHLIGHT if mean == best else NEUTRAL
-        ax.barh(i, mean, height=0.62, color=color)
-        if sd:
-            ax.errorbar(mean, i, xerr=sd, color=INK_2, capsize=3, lw=1.2)
-        ax.text(mean + max(sd, 0) + 0.002, i, f"{mean:.3f}", va="center", fontsize=11.5,
-                color=INK, fontweight="bold" if mean == best else "normal")
-    ax.axvline(mean_baseline, color=MUTED, lw=1.2, ls=(0, (2, 3)))
-    ax.text(mean_baseline - 0.002, len(models) - 1, "predict the\naverage ELF", color=INK_2, fontsize=10.5,
-            ha="right", va="center")
-    ax.set_yticks(range(len(models)), [m["label"] for m in models])
-    ax.set_xlabel("Test RMSE in ELF (lower is better)")
-    ax.set_xlim(0, mean_baseline * 1.18)
-    ax.grid(axis="x", color=GRID, lw=0.8)
-    ax.set_axisbelow(True)
-    ax.tick_params(axis="y", length=0, labelcolor=INK)
-    fig.suptitle("Message passing between atoms and voids halves the error", x=0.01, ha="left", fontsize=14)
-    fig.text(0.01, 0.01, "Mean ± SD over 3 seeds (tree: 1 run). Same family-held-out test split.",
-             color=INK_2, fontsize=9.5)
-    fig.tight_layout(rect=(0, 0.04, 1, 1))
-    for suffix in (".png", ".pdf"):
-        fig.savefig(path.with_suffix(suffix), dpi=300)
-    plt.close(fig)
+    # Poster palette: blue section color, paler tints for the baselines, orange accent.
+    bar_colors = ["#2A78D6", "#8DB6EA", "#B3CEF1", "#CADCFC"]
+    panel, grid, accent = "#F1F5FA", "#D3DDE9", "#EB6834"
+    models = sorted(models, key=lambda m: m["test_rmse"][0])
+    with plt.rc_context({"font.family": "Arial", "pdf.fonttype": 42}):
+        fig, ax = plt.subplots(figsize=(7.0, 6.2))
+        ax.set_facecolor(panel)
+        for i, m in enumerate(models):
+            mean = m["test_rmse"][0]
+            selected = m.get("selected", False)
+            ax.barh(i, mean, height=0.64, color=bar_colors[i], zorder=2)
+            ax.text(mean - 0.004, i, f"{mean:.3f}", ha="right", va="center", fontsize=25, zorder=4,
+                    color="white" if selected else INK, fontweight="bold")
+        ax.axvline(mean_baseline, color=accent, lw=3, ls=(0, (3.5, 2.2)), zorder=3)
+        ax.set_yticks(range(len(models)), [m["label"].replace(" ", "\n", 1) for m in models])
+        ax.tick_params(axis="y", length=0, labelcolor=INK, labelsize=23, pad=12)
+        for label, m in zip(ax.get_yticklabels(), models):
+            label.set_fontweight("bold" if m.get("selected", False) else "normal")
+        ax.tick_params(axis="x", labelsize=22, pad=8, length=6, color=AXIS, labelcolor=INK_2)
+        ax.set_xticks([0, 0.05, 0.10, 0.15, 0.20], ["0.00", "0.05", "0.10", "0.15", "0.20"])
+        ax.set_xlabel("Prediction error (RMSE)", fontsize=26, labelpad=10, color=INK, fontweight="bold")
+        ax.set_xlim(0, 0.20)
+        ax.set_ylim(len(models) - 0.5, -0.5)
+        ax.grid(axis="x", color=grid, lw=1.2, zorder=0)
+        ax.set_axisbelow(True)
+        for spine in ax.spines.values():
+            spine.set_visible(True)
+            spine.set_color(AXIS)
+            spine.set_linewidth(1.2)
+        for suffix in (".png", ".pdf"):
+            fig.savefig(path.with_suffix(suffix), dpi=300, bbox_inches="tight", pad_inches=0.12)
+        plt.close(fig)
 
 
 def main() -> None:
@@ -132,9 +137,9 @@ def main() -> None:
     mean_baseline = float(np.sqrt(np.mean((y - y.mean()) ** 2)))
 
     runs = pd.read_csv(args.run_metrics)
-    labels = {"void_mlp_w64_d2": "Void-only MLP", "fixed_context_mlp_w64_d2": "Fixed-context MLP",
-              "tree_hgb_context": "Gradient-boosted tree", "gated_mpnn_w64_d2": "Gated MPNN",
-              "hetero_w128_d2": "Hetero GNN, all descriptors"}
+    labels = {"void_mlp_w64_d2": "Void-only neural network", "fixed_context_mlp_w64_d2": "Averaged-atom neural network",
+              "tree_hgb_context": "Boosted decision trees", "gated_mpnn_w64_d2": "Gated message-passing GNN",
+              "hetero_w128_d2": "Atom–void GNN · all descriptors"}
     models = []
     for config, label in labels.items():
         sel = runs[runs["configuration"] == config]
@@ -143,17 +148,39 @@ def main() -> None:
         values = sel["test_pooled_rmse"].to_numpy()
         models.append({"label": label, "source": f"architecture_test/{config}", "runs": int(len(values)),
                        "test_rmse": [float(values.mean()), float(values.std(ddof=1)) if len(values) > 1 else 0.0]})
-    models.append({"label": "Hetero GNN, atom-only", "source": "feature_study/atom-only", "runs": len(rows),
-                   "test_rmse": mean_std(rows, "rmse")})
+    legacy_atom_only = {"label": "Atom–void GNN · atomic features (feature study)",
+                        "source": "feature_study/atom-only", "runs": len(rows),
+                        "test_rmse": mean_std(rows, "rmse")}
+    models.append(legacy_atom_only)
+    # Direct, same-protocol confirmation values for the selected model and its
+    # width-128 atom-only and all-descriptor comparators.
+    confirm = pd.read_csv(HERE.parent / "confirmation_study/results/run_metrics.csv")
+    confirm = confirm[confirm["split"] == "test"]
+    confirmation_models = []
+    for config, label, selected in [
+        ("w64_d2_atom_only", "Atom–void graph network", True),
+        ("w128_d2_atom_only", "Atom–void graph network (width 128)", False),
+        ("w128_d2_baseline", "Atom–void graph network (all features)", False),
+    ]:
+        values = confirm.loc[confirm.configuration == config, "pooled_rmse"].to_numpy()
+        confirmation_models.append({"label": label, "source": f"confirmation_study/{config}", "runs": len(values),
+                                    "test_rmse": [float(values.mean()), float(values.std(ddof=1))], "selected": selected})
 
     args.output.mkdir(parents=True, exist_ok=True)
-    parity(atom_only[atom_only["seed"] == median_seed], rows, median_seed, args.output / "gnn_parity_atom_only")
-    comparison(models, mean_baseline, args.output / "gnn_model_comparison")
+    parity(atom_only[atom_only["seed"] == median_seed], args.output / "gnn_parity_atom_only")
+    # The poster chart compares ways of using atom information: the selected graph
+    # model against the strongest non-graph baselines. All families stay in summary.json.
+    shown = {"Boosted decision trees", "Averaged-atom neural network",
+             "Void-only neural network"}
+    selected_models = ([m for m in confirmation_models if m["label"] == "Atom–void graph network"]
+                       + [m for m in models if m["label"] in shown])
+    comparison(selected_models, mean_baseline, args.output / "gnn_model_comparison")
     summary = {"atom_only_test": {k: mean_std(rows, k) for k in rows[0] if k != "n"},
                "atom_only_test_voids": rows[0]["n"], "atom_only_seeds": seed_rows,
                "parity_plot_seed": median_seed,
                "predict_average_rmse": mean_baseline,
                "models": models,
+               "confirmation_comparison": confirmation_models,
                "notes": "Mean ± SD over seeds on the family-held-out test split. Recall/precision treat "
                         "ELF >= threshold as a positive. predict_average_rmse uses the test mean, "
                         "so it is slightly optimistic for a constant predictor."}

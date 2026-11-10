@@ -5,14 +5,15 @@
 Electrides are crystals whose extra electrons sit in the empty space between
 atoms. Finding them, and telling whether those electrons are trapped (0D) or
 connected (1D/2D), normally needs a DFT calculation per crystal. We built two
-structure-only tools: a graph neural network that predicts the electron
-localization function (ELF) at each void, and an exact geometric method that
-labels how the empty space connects. Each works on its own; combining them is
-the next step toward a fast electride screen.
+complementary, void-centered tools: a heterogeneous atom–void graph neural
+network that predicts the electron localization function (ELF) at each
+candidate void, and an exact geometric method that labels how the empty space
+connects. Each component works on its own; combining them is the next step
+toward a fast electride screen.
 
 ## Framing
 
-- **End goal:** a fast, structure-only tool that says whether a crystal is likely
+- **End goal:** a fast, structure-informed tool that says whether a crystal is likely
   an electride, where its extra electrons sit, and whether they are trapped (0D)
   or connected (1D/2D/3D), without DFT on every candidate.
 - **This poster:** the two parts, built and tested separately.
@@ -30,8 +31,8 @@ electride screening
 
 | | Question | Status |
 | --- | --- | --- |
-| RQ1 | Can a GNN predict ELF at candidate voids from the crystal structure alone? | Answered |
-| RQ2 | Can geometry alone recover an electride's dimensionality (0D/1D/2D)? | Answered |
+| RQ1 | Can a GNN predict ELF at candidate voids from crystal structure and atomic environment? | Answered |
+| RQ2 | Can geometry alone recover the dimensionality associated with known electrides? | Answered |
 | RQ3 | How do the two combine into an electride screen? | Proposed (schematic only) |
 
 ## Key numbers and where they come from
@@ -43,8 +44,8 @@ seen in training. Mean ± SD over 3 seeds.
 
 | Model | Test RMSE (ELF) |
 | --- | ---: |
-| Hetero GNN, atom-only (best) | 0.058 ± 0.002 |
-| Hetero GNN, all descriptors (selected in architecture study) | 0.065 ± 0.001 |
+| Atom–void GNN, atomic features (confirmation study) | 0.059 ± 0.003 |
+| Atom–void GNN, all descriptors (confirmation study) | 0.070 ± 0.001 |
 | Gated MPNN | 0.070 ± 0.003 |
 | Gradient-boosted tree (1 run) | 0.077 |
 | Fixed-context MLP | 0.085 ± 0.002 |
@@ -54,11 +55,15 @@ seen in training. Mean ± SD over 3 seeds.
 - Atom-only GNN: R² 0.83 ± 0.01, MAE 0.038.
 - Of voids with true ELF ≥ 0.5, it predicts ≥ 0.5 for 63% (precision 0.83).
   Of the rare voids with ELF ≥ 0.7 (0.7% of voids), it catches only 6%.
-- The two GNN rows come from different studies (width 64 vs 128) on the same
-  split. The confirmation study (new seeds, same split) compared them
-  directly and again selected width-64 atom-only: test RMSE 0.059 ± 0.003,
-  R² 0.82, against 0.070 ± 0.001 for the width-128 all-descriptor model
-  (`elf_void_gnn/confirmation_study/results/README.md`).
+- The comparison figure uses the direct confirmation values for the two
+  atom–void GNNs: width-64 atomic features (0.059 ± 0.003) and width-128 all
+  descriptors (0.070 ± 0.001). The atomic-features model still has void nodes
+  and atom–void messaging; it omits explicit void descriptors.
+- The parity plot uses the earlier feature study (0.058 ± 0.002, R² 0.83 ±
+  0.01). Its value differs slightly from the direct confirmation estimate
+  (R² 0.82 ± 0.02). These studies share a split and protocol but use different
+  seeds; the confirmation test figures are descriptive because earlier model
+  development used this test partition.
 
 ### RQ2: dimensionality (source: `elf_void_analysis/case_studies/registry_test/summary.json`)
 
@@ -93,14 +98,18 @@ seen in training. Mean ± SD over 3 seeds.
 
 **Approach**
 - Voids: Voronoi interstitials plus points farthest from atoms, expanded by symmetry.
-- GNN: atoms and voids are nodes joined by distance edges; message passing
-  predicts ELF at each void.
+- GNN: atoms and candidate voids are both nodes joined by distance edges;
+  message passing predicts ELF at each void.
 - Void network: each atom blocks a sphere (ionic radius + 1.0 Å probe); an exact
   power-diagram network counts how many directions the open space repeats
   through the crystal.
 
-**RQ1 take-home:** Learning from the surrounding atoms predicts void ELF: test
-RMSE 0.058, R² 0.83.
+The selected “atom-only” feature variant still uses void nodes and atom–void
+message passing. It zeroes explicit void descriptors to test whether the
+surrounding atomic environment and graph geometry contain the useful signal.
+
+**RQ1 take-home:** Learning from the surrounding atoms predicts void ELF:
+RMSE ≈ 0.06 and R² ≈ 0.82 on the current confirmation study.
 
 **RQ2 take-home:** On 260 known electrides: 57% balanced accuracy (chance 33%).
 
@@ -108,9 +117,13 @@ RMSE 0.058, R² 0.83.
 pockets (localized 0D); ELF at the narrow necks between voids tells them apart.
 
 **Conclusions**
-- Void ELF can be predicted from structure alone (R² 0.83).
-- Geometry finds electride dimensionality well above chance; its errors show
+- Void ELF can be predicted from crystal structure and atomic environment
+  (R² ≈ 0.82).
+- Geometry recovers the dimensionality associated with known electrides above
+  balanced chance; its errors show
   where ELF is needed.
+- The two components establish a screening foundation; they do not yet form a
+  validated crystal-level electride classifier.
 
 **Next steps**
 - Run DFT on known electrides to test the GNN on real ones.

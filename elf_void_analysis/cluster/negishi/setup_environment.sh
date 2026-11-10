@@ -11,11 +11,12 @@ fi
 conda activate "$ELFNET_CONDA_PREFIX"
 python -m pip install -r "$ELFNET_REPO/elf_void_analysis/requirements.txt"
 python - <<'PY'
-import h5py, numpy, pyarrow, pymatgen, scipy
+from importlib.metadata import version
+import h5py, numpy, pyarrow, scipy
 print("ELFNet extraction environment is ready")
 print("numpy", numpy.__version__)
 print("scipy", scipy.__version__)
-print("pymatgen", pymatgen.__version__)
+print("pymatgen", version("pymatgen"))
 print("h5py", h5py.__version__)
 print("pyarrow", pyarrow.__version__)
 PY
