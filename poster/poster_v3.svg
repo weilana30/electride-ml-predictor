@@ -123,7 +123,7 @@
     <rect x="105.6" y="1606.1" width="458.9" height="49.9" rx="5.8" ry="5.8" fill="#8e6f3e" inkscape:label="Tool 1 tag" transform="translate(-57.6 0)" id="rect41"/>
     <text x="122.9" y="1637.8" style="font-family:Arial;font-weight:bold;font-size:29.33px;letter-spacing:3.81px;fill:#ffffff" transform="translate(-57.6 0)" id="text41">TOOL 1  ·  PREDICT ELF</text>
     <text xml:space="preserve" x="105.6" y="1733.7" style="font-family:Arial;font-size:54.67px;line-height:1.1;fill:#000000;text-anchor:start;text-align:start;inline-size:1557.2px;white-space:pre-wrap" transform="translate(-57.6 0)" id="text42"><tspan x="105.6" y="1733.7" id="tspan78"><tspan style="font-weight:bold" id="tspan77">Can a graph network predict ELF at each candidate void </tspan></tspan><tspan x="105.6" y="1793.8369" id="tspan80"><tspan style="font-weight:bold" id="tspan79">from the surrounding atoms?</tspan></tspan></text>
-    <g id="elf" inkscape:label="ELF prediction workflow" style="stroke-linejoin:round;stroke-linecap:butt" transform="translate(-12.054 2074.830) scale(2.067273 2.067273)">
+    <g id="elf" inkscape:label="ELF prediction workflow" style="stroke-linejoin:round;stroke-linecap:butt" transform="translate(-12.053 1860.539) scale(2.067240 2.067240)">
       <g id="elf-figure_1">
         <g id="elf-patch_1">
           <path d="M 0 338.0  L 851.4 338.0  L 851.4 0  L 0 0  z " style="fill: none" id="path48"/>
@@ -260,9 +260,6 @@
             <g id="elf-patch_31">
               <path d="M 644.994 241.79436  L 675.33525 241.79436  Q 682.03125 241.79436 682.03125 238.91148  L 682.03125 229.54212  Q 682.03125 226.65924 675.33525 226.65924  L 644.994 226.65924  Q 638.298 226.65924 638.298 229.54212  L 638.298 238.91148  Q 638.298 241.79436 644.994 241.79436  z " clip-path="url(#elf-p93c4c953a2)" style="fill: #cdb997" id="path89"/>
             </g>
-          </g>
-          <g id="elf-patch_8">
-            <path d="M 46.539 331.0  L 804.861 331.0  Q 821.601 331.0 821.601 323.8  L 821.601 295.2  Q 821.601 288.0 804.861 288.0  L 46.539 288.0  Q 29.799 288.0 29.799 295.2  L 29.799 323.8  Q 29.799 331.0 46.539 331.0  z " clip-path="url(#elf-p93c4c953a2)" style="fill: #ffffff" id="path90"/>
           </g>
           <g id="elf-line2d_1">
             <path d="M 145.000 152.000 L 125.000 186.641" clip-path="url(#elf-p93c4c953a2)" style="fill: none; stroke: #c4bfc0; stroke-width: 2; stroke-linecap: square" id="path91"/>
@@ -569,9 +566,6 @@
           <g id="elf-p2_atom_16">
             <path d="M 366.350 266.850 A 4.65 4.65 0 1 1 375.650 266.850 A 4.65 4.65 0 1 1 366.350 266.850 z" clip-path="url(#elf-p93c4c953a2)" style="fill: #333333; stroke: #ffffff; stroke-width: 1.2; stroke-linejoin: miter" id="path207"/>
           </g>
-          <g id="elf-text_1">
-            <text style="font-weight: 700; font-size: 22px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #000000" x="36.495" y="34.806287" transform="rotate(-0 36.495 34.806287)" id="text207">One ELF prediction per void, from its nearby atoms</text>
-          </g>
           <g id="elf-text_3">
             <text style="font-weight: 700; font-size: 16.25px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #000000" x="53.235" y="90.015606" transform="rotate(-0 53.235 90.015606)" id="text208">1  Crystal → voids</text>
           </g>
@@ -608,9 +602,6 @@
           <g id="elf-text_13">
             <text style="font-size: 16.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #6f727b" x="709.2" y="270.5" id="text216">ELF</text>
           </g>
-          <g id="elf-text_14">
-            <text style="font-weight: 700; font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #000000" x="425.7" y="315.8" transform="rotate(-0 425.7 315.8)" id="text217">One crystal → many voids → one ELF estimate per void</text>
-          </g>
           <g id="elf-patch_55" transform="translate(105 152) scale(1.6) translate(-105 -152)">
             <path d="M 97.500 152.000 A 7.5 7.5 0 1 1 112.500 152.000 A 7.5 7.5 0 1 1 97.500 152.000 z" clip-path="url(#elf-p93c4c953a2)" style="fill: #daaa00; stroke: #ffffff; stroke-width: 1.2; stroke-linejoin: miter" id="path217"/>
           </g>
@@ -641,9 +632,24 @@
         </g>
       </g>
     </g>
-    <image xlink:href="figures/gnn_model_comparison.png" x="48.0" y="2812.0" width="855.0" height="612.7" inkscape:label="comp" id="image224"/>
-    <image xlink:href="figures/gnn_parity_confirmation.png" x="926.0" y="2812.0" width="762.0" height="612.7" inkscape:label="parity" id="image225"/>
-  <g id="stat-card" transform="matrix(1.054527 0 0 1.054527 -63.358 -89.784)"><rect id="stat-bg" x="105.6" y="1830" width="1555.2" height="210" rx="18" style="fill:#ffffff;stroke:none"/><path id="stat-accent" style="fill:#8e6f3e;stroke:none" d="M 123.6 1830 L 123.6 2040 L 123.6 2040 A 18 18 0 0 1 105.6 2022 L 105.6 1848 A 18 18 0 0 1 123.6 1830 Z"/><text id="stat-head0" x="150" y="1922" style="font-size:48px;font-family:Arial;font-weight:bold;text-anchor:start;fill:#8e6f3e">Test-set</text><text id="stat-head1" x="150" y="1980" style="font-size:48px;font-family:Arial;font-weight:bold;text-anchor:start;fill:#8e6f3e">performance</text><line id="stat-div0" x1="480" y1="1860" x2="480" y2="2010" style="stroke:#d9cfbf;stroke-width:3"/><line id="stat-div1" x1="873.5999999999999" y1="1860" x2="873.5999999999999" y2="2010" style="stroke:#d9cfbf;stroke-width:3"/><line id="stat-div2" x1="1267.1999999999998" y1="1860" x2="1267.1999999999998" y2="2010" style="stroke:#d9cfbf;stroke-width:3"/><text id="stat-num0" x="676.8" y="1922" style="font-size:88px;font-family:Arial;font-weight:bold;text-anchor:middle;fill:#8e6f3e">0.82</text><text id="stat-lab0-0" x="676.8" y="1974" style="font-size:38px;font-family:Arial;text-anchor:middle;fill:#333333">R²</text><text id="stat-num1" x="1070.4" y="1922" style="font-size:88px;font-family:Arial;font-weight:bold;text-anchor:middle;fill:#8e6f3e">0.059</text><text id="stat-lab1-0" x="1070.4" y="1974" style="font-size:38px;font-family:Arial;text-anchor:middle;fill:#333333">RMSE (ELF)</text><text id="stat-num2" x="1464.0" y="1922" style="font-size:88px;font-family:Arial;font-weight:bold;text-anchor:middle;fill:#8e6f3e">88,680</text><text id="stat-lab2-0" x="1464.0" y="1974" style="font-size:38px;font-family:Arial;text-anchor:middle;fill:#333333">test voids from</text><text id="stat-lab2-1" x="1464.0" y="2018" style="font-size:38px;font-family:Arial;text-anchor:middle;fill:#333333">5,000 crystals</text></g></g>
+    <image xlink:href="figures/gnn_model_comparison.png" x="48.0" y="2729.0" width="715.9" height="724.6" inkscape:label="comp" id="image224"/>
+    <image xlink:href="figures/gnn_parity_confirmation.png" x="786.9" y="2729.0" width="901.1" height="724.6" inkscape:label="parity" id="image225"/>
+  <g id="elf-caption" inkscape:label="ELF caption"><rect id="elf-caption-bg" x="48" y="1865" width="1640" height="92" rx="18" ry="18" style="fill:#ffffff;stroke:#8e6f3e;stroke-width:3" /><text id="elf-caption-text" x="868" y="1926" style="font-size:42px;font-family:Arial;font-weight:bold;text-anchor:middle;fill:#000000">One ELF prediction per void, using only its local atomic region</text></g>
+    <g id="stat-card">
+    <rect id="stat-bg" x="48.0" y="2510.0" width="1640.0" height="150.0" rx="18" style="fill:#ffffff;stroke:none" />
+    <path id="stat-accent" style="fill:#8e6f3e;stroke:none" d="M 66.0 2510.0 L 66.0 2660.0 A 18 18 0 0 1 48.0 2642.0 L 48.0 2528.0 A 18 18 0 0 1 66.0 2510.0 Z" />
+    <text id="stat-head0" x="86" y="2576.0" style="font-size:40px;font-family:Arial;font-weight:bold;text-anchor:start;fill:#8e6f3e">Test-set</text>
+    <text id="stat-head1" x="86" y="2622.0" style="font-size:40px;font-family:Arial;font-weight:bold;text-anchor:start;fill:#8e6f3e">performance</text>
+    <line id="stat-div0" x1="380.0" y1="2535.0" x2="380.0" y2="2635.0" style="stroke:#d9cfbf;stroke-width:3" />
+    <text id="stat-num0" x="598.0" y="2592.0" style="font-size:72px;font-family:Arial;font-weight:bold;text-anchor:middle;fill:#8e6f3e">88,680</text>
+    <text id="stat-lab0" x="598.0" y="2634.0" style="font-size:32px;font-family:Arial;text-anchor:middle;fill:#333333">test voids, 5,000 crystals</text>
+    <line id="stat-div1" x1="816.0" y1="2535.0" x2="816.0" y2="2635.0" style="stroke:#d9cfbf;stroke-width:3" />
+    <text id="stat-num1" x="1034.0" y="2592.0" style="font-size:72px;font-family:Arial;font-weight:bold;text-anchor:middle;fill:#8e6f3e">0.059</text>
+    <text id="stat-lab1" x="1034.0" y="2634.0" style="font-size:32px;font-family:Arial;text-anchor:middle;fill:#333333">RMSE (ELF)</text>
+    <line id="stat-div2" x1="1252.0" y1="2535.0" x2="1252.0" y2="2635.0" style="stroke:#d9cfbf;stroke-width:3" />
+    <text id="stat-num2" x="1470.0" y="2592.0" style="font-size:72px;font-family:Arial;font-weight:bold;text-anchor:middle;fill:#8e6f3e">0.82</text>
+    <text id="stat-lab2" x="1470.0" y="2634.0" style="font-size:32px;font-family:Arial;text-anchor:middle;fill:#333333">R²</text>
+    </g></g>
   <g id="layer-4" inkscape:groupmode="layer" inkscape:label="Tool 2: Map voids">
     <rect x="1728.0" y="1577.3" width="1728.0" height="1917.1" rx="0.0" ry="0.0" fill="#fcf5e1" inkscape:label="Tool 2 panel" id="rect225"/>
     <rect x="1728.0" y="1577.3" width="1728.0" height="15.4" rx="0.0" ry="0.0" fill="#daaa00" inkscape:label="Tool 2 color edge" id="rect226"/>

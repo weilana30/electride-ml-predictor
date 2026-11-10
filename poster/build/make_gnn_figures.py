@@ -85,7 +85,8 @@ def parity(frame: pd.DataFrame, path: Path) -> None:
         plt.close(fig)
 
 
-def comparison(models: list[dict], mean_baseline: float, path: Path) -> None:
+def comparison(models: list[dict], mean_baseline: float, path: Path,
+               figsize: tuple[float, float] = (7.0, 6.2)) -> None:
     import matplotlib.pyplot as plt
     _style(plt)
     # Poster palette: blue section color, paler tints for the baselines, orange accent.
@@ -93,7 +94,7 @@ def comparison(models: list[dict], mean_baseline: float, path: Path) -> None:
     panel, grid, accent = "#F7F7F7", "#E3E3E3", "#000000"
     models = sorted(models, key=lambda m: m["test_rmse"][0])
     with plt.rc_context({"font.family": "Arial", "pdf.fonttype": 42}):
-        fig, ax = plt.subplots(figsize=(7.0, 6.2))
+        fig, ax = plt.subplots(figsize=figsize)
         ax.set_facecolor("#FFFFFF")
         for i, m in enumerate(models):
             mean = m["test_rmse"][0]

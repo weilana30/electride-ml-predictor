@@ -45,6 +45,7 @@ python poster/build/build_poster_v3.py /tmp/poster_rebuild.svg
 | File | Script | Input |
 | --- | --- | --- |
 | `figures/gnn_model_comparison`, `figures/gnn_parity_atom_only` | `build/make_gnn_figures.py --feature-predictions test_predictions.parquet` | GNN run results in `elf_void_gnn/` (the predictions parquet is on Negishi) |
+| `figures/gnn_model_comparison` (current poster version) | `build/make_comparison_from_summary.py elf_void_gnn/architecture_test/results_voidv2/poster_summary.json poster/figures/gnn_model_comparison 4.4 6.8` | the committed summary written by `make_gnn_figures.py`, redrawn taller |
 | `figures/gnn_parity_confirmation` | `build/make_parity_confirmation.py test_predictions.parquet` | Confirmation-study predictions (w64 atom-only, seed 20261028; on Negishi) |
 | `figures/connectivity_flow_sweep` | `build/connectivity_flow_figure.py elf_void_analysis/case_studies/registry_test` | Output of `python -m elf_void_analysis.registry_dimensionality_test` |
 | `figures/pipes_vs_electrons` | `build/make_pipes_figure.py` | none (schematic) |
