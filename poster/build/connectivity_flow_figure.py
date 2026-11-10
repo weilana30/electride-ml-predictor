@@ -108,22 +108,31 @@ def connectivity_shares(structures: Any, sweep: Any) -> Any:
 
 
 def connectivity_flow(structures: Any, sweep: Any, path: Path) -> None:
-    """Flow from literature dimension to the connected stage found by the probe sweep."""
+    """Flow from literature dimension to the connected stage found by the probe sweep.
+
+    Correct flows (literature class = geometry class) are solid; mismatches are faded,
+    and the largest mismatch gets a callout. Every number is computed from the counts.
+    """
     import matplotlib.pyplot as plt
     from matplotlib.patches import PathPatch, Rectangle
     from matplotlib.path import Path as Curve
+    from matplotlib.transforms import Bbox
     counts = connectivity_shares(structures, sweep).to_numpy()
     colors = {0: "#9D9795", 1: "#555960", 2: "#DAAA00"}
     labels = {0: "0D", 1: "1D", 2: "2D"}
-    navy, gap, left, right, width = "#000000", 16, 0.26, 0.76, 0.035
+    ink, gap, left, right, width = "#000000", 16, 0.34, 0.80, 0.035
     left_totals, right_totals = counts.sum(axis=1), counts.sum(axis=0)
+    hit_rate = np.diag(counts) / np.maximum(left_totals, 1)
     left_top = np.r_[0, np.cumsum(left_totals + gap)[:-1]]
     right_top = np.r_[0, np.cumsum(right_totals + gap)[:-1]]
-    with plt.rc_context({"font.family": "Arial", "pdf.fonttype": 42, "text.color": navy}):
+    off_diagonal = counts * (1 - np.eye(len(counts), dtype=int))
+    worst = np.unravel_index(np.argmax(off_diagonal), counts.shape)
+    with plt.rc_context({"font.family": "Arial", "pdf.fonttype": 42, "text.color": ink}):
         fig, ax = plt.subplots(figsize=(15.5, 6.9))
         ax.axis("off")
         left_next, right_next = left_top.astype(float), right_top.astype(float)
         middle = (left + right) / 2
+        bands = {}
         for i, j in np.ndindex(counts.shape):
             n = counts[i, j]
             if n == 0:
@@ -131,30 +140,43 @@ def connectivity_flow(structures: Any, sweep: Any, path: Path) -> None:
             a, b = left_next[i], right_next[j]
             left_next[i] += n
             right_next[j] += n
+            bands[i, j] = (a, b, n)
             points = [(left, a), (middle, a), (middle, b), (right, b), (right, b + n),
                       (middle, b + n), (middle, a + n), (left, a + n), (left, a)]
             codes = [Curve.MOVETO, Curve.CURVE4, Curve.CURVE4, Curve.CURVE4, Curve.LINETO,
                      Curve.CURVE4, Curve.CURVE4, Curve.CURVE4, Curve.CLOSEPOLY]
-            ax.add_patch(PathPatch(Curve(points, codes), fc=colors[i], ec="none",
-                                   alpha=0.85 if i == j else 0.55))
+            correct = i == j
+            # Thin mismatch bands get an outline so a single structure still shows.
+            ax.add_patch(PathPatch(Curve(points, codes), fc=colors[i], alpha=0.95 if correct else 0.2,
+                                   ec="none", zorder=2 if correct else 1))
+            if not correct:  # a background-colored seam keeps neighboring faded bands apart
+                ax.add_patch(PathPatch(Curve(points, codes), fc="none", ec="#fcf5e1", lw=1.5, zorder=1))
+            if not correct and n <= 3:
+                ax.add_patch(PathPatch(Curve(points, codes), fc="none", ec=colors[i], lw=2.2,
+                                       alpha=0.8, zorder=1))
         for i in range(3):
             ax.add_patch(Rectangle((left - width, left_top[i]), width, left_totals[i], fc=colors[i], ec="none"))
             ax.text(left - width - 0.012, left_top[i] + left_totals[i] / 2,
-                    f"{labels[i]}: {left_totals[i]}", ha="right", va="center",
-                    fontsize=26, fontweight="bold")
-            ax.add_patch(Rectangle((right, right_top[i]), width, right_totals[i], fc=navy, ec="none"))
+                    f"{labels[i]}: {left_totals[i]} \u00b7 {100 * hit_rate[i]:.0f}% found",
+                    ha="right", va="center", fontsize=24, fontweight="bold")
+            ax.add_patch(Rectangle((right, right_top[i]), width, right_totals[i], fc=colors[i], ec="none"))
             ax.text(right + width + 0.012, right_top[i] + right_totals[i] / 2,
                     f"{labels[i]}: {right_totals[i]}", ha="left", va="center",
                     fontsize=26, fontweight="bold")
+        # Callout on the largest mismatch, written along the start of its band.
+        a, _, n = bands[worst]
+        ax.text(left + 0.012, a + n / 2,
+                f"{n} {labels[worst[0]]} electrides\nhave connected\nopen space",
+                ha="left", va="center", fontsize=18, fontweight="bold", color="#3b3936",
+                linespacing=1.15, zorder=3)
         for x, heading in ((left - width / 2, "Actual (literature)"),
-                           (right + width / 2, "Predicted (probe sweep)")):
+                           (right + width / 2, "Geometry (probe sweep)")):
             ax.text(x, -14, heading, ha="center", va="bottom", fontsize=24, fontweight="bold")
         ax.set_xlim(0, 1)
-        ax.text(0.5, -62, "Predicted vs actual void connectivity", ha="center", va="bottom",
-                fontsize=28, fontweight="bold", color="#8e6f3e")
+        ax.text((left + right) / 2, -62, "Predicted vs actual void connectivity", ha="center",
+                va="bottom", fontsize=28, fontweight="bold", color="#8e6f3e")
         ax.set_ylim(max(left_top[-1] + left_totals[-1], right_top[-1] + right_totals[-1]) + 4, -96)
         # Crop to the drawn content; the hidden axes would otherwise pad the sides.
-        from matplotlib.transforms import Bbox
         renderer = fig.canvas.get_renderer()
         drawn = Bbox.union([artist.get_window_extent(renderer) for artist in ax.texts + ax.patches])
         crop = drawn.transformed(fig.dpi_scale_trans.inverted()).padded(0.08)
