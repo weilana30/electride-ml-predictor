@@ -147,11 +147,13 @@ def connectivity_flow(structures: Any, sweep: Any, path: Path) -> None:
             ax.text(right + width + 0.012, right_top[i] + right_totals[i] / 2,
                     f"{geometry[i]}\n{right_totals[i]} electrides", ha="left", va="center",
                     fontsize=22, fontweight="bold")
-        for x, heading in ((left - width / 2, "Where electrons are\n(literature)"),
-                           (right + width / 2, "What the empty space does\n(geometry)")):
+        for x, heading in ((left - width / 2, "Literature values"),
+                           (right + width / 2, "Probe-predicted connectivity")):
             ax.text(x, -14, heading, ha="center", va="bottom", fontsize=24, fontweight="bold")
         ax.set_xlim(0, 1)
-        ax.set_ylim(max(left_top[-1] + left_totals[-1], right_top[-1] + right_totals[-1]) + 4, -62)
+        ax.text(0.5, -62, "Probe sweep for connectivity prediction", ha="center", va="bottom",
+                fontsize=28, fontweight="bold", color="#8e6f3e")
+        ax.set_ylim(max(left_top[-1] + left_totals[-1], right_top[-1] + right_totals[-1]) + 4, -96)
         for suffix in (".png", ".pdf"):
             fig.savefig(path.with_suffix(suffix), dpi=300, bbox_inches="tight", facecolor="#fcf5e1")
         plt.close(fig)
@@ -168,5 +170,5 @@ if __name__ == "__main__":
     import sys
     import pandas as pd
     results = Path(sys.argv[1])
-    out = Path(sys.argv[2]) if len(sys.argv) > 2 else Path(__file__).resolve().parents[1] / "figures" / "connectivity_flow"
+    out = Path(sys.argv[2]) if len(sys.argv) > 2 else Path(__file__).resolve().parents[1] / "figures" / "connectivity_flow_sweep"
     connectivity_flow(pd.read_csv(results / "structures.csv"), pd.read_csv(results / "probe_sweep.csv"), out)

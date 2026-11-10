@@ -61,13 +61,15 @@ def parity(frame: pd.DataFrame, path: Path) -> None:
         # White reads over the dense core; past the data the same dashes turn dark for the pale background.
         ax.plot([0.02, 0.68], [0.02, 0.68], color="white", lw=2.2, ls=(0, (4, 2.5)))
         ax.plot([0.68, 1], [0.68, 1], color=INK_2, lw=2.2, ls=(0, (4, 2.5)))
-        ax.text(0.91, 0.975, "perfect prediction", rotation=45, ha="right", va="bottom", color=INK_2, fontsize=21,
+        ax.text(0.91, 0.975, "perfect prediction", rotation=45, ha="right", va="bottom", color=INK_2, fontsize=25,
                 rotation_mode="anchor", transform_rotates_text=True)
         ax.axvspan(0.7, 1.0, color="#E3E3E3", alpha=0.75, lw=0, zorder=0)
         ax.set_xlim(0, 1)
         ax.set_ylim(0, 1)
         ax.set_aspect("equal")
-        ax.tick_params(labelsize=24, pad=10, length=6, color=AXIS, labelcolor=INK_2)
+        ticks = [0, 0.2, 0.4, 0.6, 0.8, 1.0]
+        ax.set_xticks(ticks, [f"{t:.1f}" for t in ticks]); ax.set_yticks(ticks, [f"{t:.1f}" for t in ticks])
+        ax.tick_params(labelsize=26, pad=10, length=6, color=AXIS, labelcolor=INK_2)
         ax.set_xlabel("Actual DFT ELF", fontsize=30, labelpad=10, color=INK, fontweight="bold")
         ax.set_ylabel("GNN Predicted ELF", fontsize=30, labelpad=10, color=INK, fontweight="bold")
         for spine in ax.spines.values():
@@ -75,8 +77,8 @@ def parity(frame: pd.DataFrame, path: Path) -> None:
             spine.set_color(AXIS)
             spine.set_linewidth(1.2)
         bar = fig.colorbar(hb, ax=ax, shrink=0.943, pad=0.03)
-        bar.ax.tick_params(labelsize=24, color=AXIS, labelcolor=INK_2)
-        bar.set_label("Void count", color=INK, fontsize=20, labelpad=10)
+        bar.ax.tick_params(labelsize=26, color=AXIS, labelcolor=INK_2)
+        bar.set_label("Void count", color=INK, fontsize=26, labelpad=10)
         bar.outline.set_visible(False)
         for suffix in (".png", ".pdf"):
             fig.savefig(path.with_suffix(suffix), dpi=300, bbox_inches="tight", pad_inches=0.12)
