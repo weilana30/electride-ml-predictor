@@ -114,14 +114,13 @@ def connectivity_flow(structures: Any, sweep: Any, path: Path) -> None:
     from matplotlib.path import Path as Curve
     counts = connectivity_shares(structures, sweep).to_numpy()
     colors = {0: "#9D9795", 1: "#555960", 2: "#DAAA00"}
-    literature = {0: "0D: isolated electrons", 1: "1D: electron channels", 2: "2D: electron sheets"}
-    geometry = {0: "Isolated pockets", 1: "Channels", 2: "Sheets"}
+    labels = {0: "0D", 1: "1D", 2: "2D"}
     navy, gap, left, right, width = "#000000", 16, 0.26, 0.76, 0.035
     left_totals, right_totals = counts.sum(axis=1), counts.sum(axis=0)
     left_top = np.r_[0, np.cumsum(left_totals + gap)[:-1]]
     right_top = np.r_[0, np.cumsum(right_totals + gap)[:-1]]
     with plt.rc_context({"font.family": "Arial", "pdf.fonttype": 42, "text.color": navy}):
-        fig, ax = plt.subplots(figsize=(15.5, 7.6))
+        fig, ax = plt.subplots(figsize=(15.5, 6.9))
         ax.axis("off")
         left_next, right_next = left_top.astype(float), right_top.astype(float)
         middle = (left + right) / 2
@@ -141,21 +140,26 @@ def connectivity_flow(structures: Any, sweep: Any, path: Path) -> None:
         for i in range(3):
             ax.add_patch(Rectangle((left - width, left_top[i]), width, left_totals[i], fc=colors[i], ec="none"))
             ax.text(left - width - 0.012, left_top[i] + left_totals[i] / 2,
-                    f"{literature[i]}\n{left_totals[i]} electrides", ha="right", va="center",
-                    fontsize=22, fontweight="bold")
+                    f"{labels[i]}: {left_totals[i]}", ha="right", va="center",
+                    fontsize=26, fontweight="bold")
             ax.add_patch(Rectangle((right, right_top[i]), width, right_totals[i], fc=navy, ec="none"))
             ax.text(right + width + 0.012, right_top[i] + right_totals[i] / 2,
-                    f"{geometry[i]}\n{right_totals[i]} electrides", ha="left", va="center",
-                    fontsize=22, fontweight="bold")
-        for x, heading in ((left - width / 2, "Literature values"),
-                           (right + width / 2, "Probe-predicted connectivity")):
+                    f"{labels[i]}: {right_totals[i]}", ha="left", va="center",
+                    fontsize=26, fontweight="bold")
+        for x, heading in ((left - width / 2, "Actual (literature)"),
+                           (right + width / 2, "Predicted (probe sweep)")):
             ax.text(x, -14, heading, ha="center", va="bottom", fontsize=24, fontweight="bold")
         ax.set_xlim(0, 1)
-        ax.text(0.5, -62, "Probe sweep for connectivity prediction", ha="center", va="bottom",
+        ax.text(0.5, -62, "Predicted vs actual void connectivity", ha="center", va="bottom",
                 fontsize=28, fontweight="bold", color="#8e6f3e")
         ax.set_ylim(max(left_top[-1] + left_totals[-1], right_top[-1] + right_totals[-1]) + 4, -96)
+        # Crop to the drawn content; the hidden axes would otherwise pad the sides.
+        from matplotlib.transforms import Bbox
+        renderer = fig.canvas.get_renderer()
+        drawn = Bbox.union([artist.get_window_extent(renderer) for artist in ax.texts + ax.patches])
+        crop = drawn.transformed(fig.dpi_scale_trans.inverted()).padded(0.08)
         for suffix in (".png", ".pdf"):
-            fig.savefig(path.with_suffix(suffix), dpi=300, bbox_inches="tight", facecolor="#fcf5e1")
+            fig.savefig(path.with_suffix(suffix), dpi=300, bbox_inches=crop, facecolor="#fcf5e1")
         plt.close(fig)
 
 
