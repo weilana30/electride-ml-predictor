@@ -65,8 +65,8 @@ FEATURE_VARIANTS: dict[str, dict[str, Any]] = {
     },
     "void_ablate_nearest_distances": {
         "mode": "mask", "atom_columns": tuple(range(14)),
-        "void_columns": (0, 1, 2, 3, 4),
-        "description": "Remove four nearest-atom distances (void slots 5–8)."
+        "void_columns": (2, 3, 4),
+        "description": "Remove every nearest-atom distance: four nearest (slots 5–8) plus clearance and the nearest-atom alias (slots 0–1), which carry the same value."
     },
     "void_ablate_clearance_nearest_alias": {
         "mode": "mask", "atom_columns": tuple(range(14)),
@@ -86,9 +86,9 @@ FEATURE_VARIANTS: dict[str, dict[str, Any]] = {
     },
     "void_nearest_no_void_atom_distance": {
         "mode": "ablation", "atom_columns": tuple(range(14)),
-        "void_columns": (0, 1, 2, 3, 4),
+        "void_columns": (2, 3, 4),
         "zero_edge_relations": ("void_to_atom", "atom_to_void"),
-        "description": "Joint cell: remove nearest-atom void distances and void-atom edge distances."
+        "description": "Joint cell: remove every nearest-atom void distance (slots 0–1 and 5–8) and void-atom edge distances."
     },
     "atomic_number_void_geometry": {
         "mode": "mask", "atom_columns": (0,), "void_columns": tuple(range(9))

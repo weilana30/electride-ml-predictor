@@ -39,6 +39,15 @@ RADIUS_SCHEMES = ("none", "ionic", "atomic", "custom")
 TOL = 1e-9
 
 
+# Shannon's tables have no hydride entry, so pymatgen returns None for H- and
+# the ionic scheme used to fall back to H's 0.25 A empirical atomic radius.
+# Hydride radii in metal hydrides are about 1.3-1.5 A; 1.40 A is the commonly
+# quoted value.
+ANION_RADIUS_OVERRIDES = {
+    "H": (1.40, "H- hydride radius (1.40 A; no Shannon entry for H-)"),
+}
+
+
 def element_radii(symbols: list[str], scheme: str,
                   custom: dict[str, float] | None = None) -> tuple[dict[str, float], dict[str, str]]:
     """Return a radius per element in Å and a note on where each came from.
@@ -68,6 +77,9 @@ def element_radii(symbols: list[str], scheme: str,
     radii, notes = {}, {}
     for symbol in unique:
         element = Element(symbol)
+        if symbol == anion and symbol in ANION_RADIUS_OVERRIDES:
+            radii[symbol], notes[symbol] = ANION_RADIUS_OVERRIDES[symbol]
+            continue
         states = sorted(element.common_oxidation_states)
         if symbol == anion and any(o < 0 for o in states):
             candidates = [o for o in states if o < 0]

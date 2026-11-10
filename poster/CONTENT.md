@@ -45,12 +45,21 @@ seen in training. Mean ± SD over 3 seeds.
 | Model | Test RMSE (ELF) |
 | --- | ---: |
 | Hetero GNN, atom-only (best) | 0.058 ± 0.002 |
-| Hetero GNN, all descriptors (selected in architecture study) | 0.065 ± 0.001 |
-| Gated MPNN | 0.070 ± 0.003 |
-| Gradient-boosted tree (1 run) | 0.077 |
-| Fixed-context MLP | 0.085 ± 0.002 |
-| Void-only MLP | 0.140 |
+| Hetero GNN, all descriptors (selected in architecture study) | 0.065 ± 0.001 ‡ |
+| Gated MPNN | 0.070 ± 0.003 ‡ |
+| Gradient-boosted tree (1 run) | 0.076 † |
+| Fixed-context MLP | 0.083 ± 0.002 † |
+| Void-only MLP | 0.139 ± 0.001 † |
 | Predict the average ELF | 0.141 |
+
+† Rerun on 2026-11-10 with corrected void descriptors (v2: neighbor counts and
+nearest distances over all periodic atom images; v1 counted each basis atom
+once and zero-padded missing distances). Same seeds and settings; old values
+were 0.077, 0.085 ± 0.002 and 0.140. Source:
+`elf_void_gnn/architecture_test/results_voidv2/`. These three are the gray
+bars on the poster.
+‡ Still the v1 void descriptors (not on the poster; rerun pending). The
+atom-only GNN uses no void descriptors, so it is unaffected.
 
 - Atom-only GNN: R² 0.83 ± 0.01, MAE 0.038.
 - Of voids with true ELF ≥ 0.5, it predicts ≥ 0.5 for 63% (precision 0.83).

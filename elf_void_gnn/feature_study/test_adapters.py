@@ -98,7 +98,7 @@ class FeatureAdapterTests(unittest.TestCase):
             "atom_ablate_radius": ("atom", (2, 10)),
             "atom_ablate_block_indicators": ("atom", (5, 6, 7, 8, 13)),
             "void_ablate_coordination": ("void", (2, 3, 4)),
-            "void_ablate_nearest_distances": ("void", (5, 6, 7, 8)),
+            "void_ablate_nearest_distances": ("void", (0, 1, 5, 6, 7, 8)),
             "void_ablate_clearance_nearest_alias": ("void", (0, 1)),
         }
         for name, (node_type, removed) in checks.items():
@@ -115,7 +115,7 @@ class FeatureAdapterTests(unittest.TestCase):
         cases = {
             "atom_chemistry_void_coordination_removed": (("atom", (1, 2, 9, 10)), ("void", (2, 3, 4)), ()),
             "atom_chemistry_no_edge_distance": (("atom", (1, 2, 9, 10)), ("void", ()), ("all",)),
-            "void_nearest_no_void_atom_distance": (("void", (5, 6, 7, 8)), ("atom", ()), ("void_atom",)),
+            "void_nearest_no_void_atom_distance": (("void", (0, 1, 5, 6, 7, 8)), ("atom", ()), ("void_atom",)),
         }
         for name, (first_removed, second_removed, edge_mask) in cases.items():
             varied = apply_feature_variant(source, name, copy_graph=True)
