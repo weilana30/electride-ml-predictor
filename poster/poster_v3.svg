@@ -61,7 +61,7 @@
     <text x="48.0" y="545" style="font-family:Arial;font-weight:bold;font-size:29.33px;letter-spacing:3.81px;fill:#555555" id="text9">BACKGROUND</text>
     <text x="48.0" y="615" style="font-family:Arial;font-weight:bold;font-size:56px;fill:#000000" id="text10">What is an electride?</text>
     <text xml:space="preserve" x="48.0" y="680" style="font-family:Arial;font-size:36px;line-height:1.22;fill:#333333;inline-size:800px;white-space:pre-wrap" id="text11">In an electride, extra electrons sit in the empty space between atoms and act as anions. Whether those regions are isolated (0D) or connected (1D, 2D) shapes the material’s properties.</text>
-    <g id="electride" inkscape:label="Basic electride schematic" transform="translate(296.8 850.0) scale(0.24)">
+    <g id="electride" inkscape:label="Basic electride schematic" transform="translate(254.0 860.0) scale(0.31)">
       <g inkscape:label="Electron clouds" id="electride-g13">
         <circle cx="408" cy="408" r="178" fill="url(#electride-cloud)" id="electride-circle10"/>
         <circle cx="408" cy="852" r="178" fill="url(#electride-cloud)" id="electride-circle11"/>
@@ -99,7 +99,7 @@
         <text x="849" y="878" text-anchor="middle" font-family="Arial" font-weight="700" font-size="76" fill="#000000" id="electride-text26">e<tspan dy="-28" font-size="50" id="electride-tspan26">−</tspan></text>
       </g>
     </g>
-    <text xml:space="preserve" x="48.0" y="1222.0" style="font-family:Arial;font-size:36px;line-height:1.22;fill:#333333;inline-size:800px;white-space:pre-wrap" id="bg-elf"><tspan style="font-weight:bold;fill:#000000">ELF</tspan> (electron localization function, 0–1) measures how localized electrons are compared with a uniform electron gas: near 1 where strongly localized, 0.5 for a free-electron gas. In electrides, an ELF maximum in an interstitial void, away from any atom, signals localized interstitial electrons. Computing ELF requires a DFT calculation.</text>
+    <text xml:space="preserve" x="48.0" y="1320.0" style="font-family:Arial;font-size:36px;line-height:1.22;fill:#333333;inline-size:800px;white-space:pre-wrap" id="bg-elf"><tspan style="font-weight:bold;fill:#000000">ELF</tspan> measures how localized electrons are compared with a uniform electron gas. In electrides, an ELF maximum in an interstitial void can signal localized interstitial electrons. Computing ELF requires a DFT calculation.</text>
     <text x="888.0" y="615" style="font-family:Arial;font-weight:bold;font-size:61.33px;fill:#000000" id="text12">Electron connectivity sets the dimensionality</text>
     <text x="1243.0" y="690.0" style="font-family:Arial;font-size:36px;fill:#000000;text-anchor:middle" id="bg-lab0"><tspan style="font-weight:bold">0D</tspan>  Isolated pockets</text>
     <image xlink:href="diagrams/blender/crystals/electride_0d_v2_transparent.png" x="888.0" y="705.0" width="710" height="710" inkscape:label="0d" id="bg-img0"/>
