@@ -1003,7 +1003,7 @@
       </g>
     </g>
     <text xml:space="preserve" x="1795.2" y="2568.3999" style="font-size:28px;line-height:1.2;font-family:Arial;text-align:start;text-anchor:start;white-space:pre-wrap;inline-size:1614.8px;fill:#333333" id="text229"/>
-    <image xlink:href="figures/connectivity_flow_sweep.png" x="1795.2" y="2575.0" width="1612.8" height="740.1" inkscape:label="flow" id="image229"/>
+    <image xlink:href="figures/connectivity_flow_sweep.png" x="1795.2" y="2575.0" width="1612.8" height="834.7" inkscape:label="flow" id="image229"/>
   </g>
   <g id="layer-5" inkscape:groupmode="layer" inkscape:label="Closing band">
     <rect x="0.0" y="3494.4" width="3456.0" height="936.0" rx="0.0" ry="0.0" fill="#f2f2f2" inkscape:label="Closing band" id="rect229"/>

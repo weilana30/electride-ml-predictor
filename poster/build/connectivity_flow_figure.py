@@ -111,7 +111,7 @@ def connectivity_flow(structures: Any, sweep: Any, path: Path) -> None:
     """Flow from literature dimension to the connected stage found by the probe sweep.
 
     Correct flows (literature class = geometry class) are solid; mismatches are faded,
-    and the largest mismatch gets a callout. Every number is computed from the counts.
+    and a remark under the chart names the class with the largest mismatch. Every number is computed from the counts.
     """
     import matplotlib.pyplot as plt
     from matplotlib.patches import PathPatch, Rectangle
@@ -128,11 +128,10 @@ def connectivity_flow(structures: Any, sweep: Any, path: Path) -> None:
     off_diagonal = counts * (1 - np.eye(len(counts), dtype=int))
     worst = np.unravel_index(np.argmax(off_diagonal), counts.shape)
     with plt.rc_context({"font.family": "Arial", "pdf.fonttype": 42, "text.color": ink}):
-        fig, ax = plt.subplots(figsize=(15.5, 6.9))
+        fig, ax = plt.subplots(figsize=(15.5, 9.0))
         ax.axis("off")
         left_next, right_next = left_top.astype(float), right_top.astype(float)
         middle = (left + right) / 2
-        bands = {}
         for i, j in np.ndindex(counts.shape):
             n = counts[i, j]
             if n == 0:
@@ -140,7 +139,6 @@ def connectivity_flow(structures: Any, sweep: Any, path: Path) -> None:
             a, b = left_next[i], right_next[j]
             left_next[i] += n
             right_next[j] += n
-            bands[i, j] = (a, b, n)
             points = [(left, a), (middle, a), (middle, b), (right, b), (right, b + n),
                       (middle, b + n), (middle, a + n), (left, a + n), (left, a)]
             codes = [Curve.MOVETO, Curve.CURVE4, Curve.CURVE4, Curve.CURVE4, Curve.LINETO,
@@ -157,25 +155,24 @@ def connectivity_flow(structures: Any, sweep: Any, path: Path) -> None:
         for i in range(3):
             ax.add_patch(Rectangle((left - width, left_top[i]), width, left_totals[i], fc=colors[i], ec="none"))
             ax.text(left - width - 0.012, left_top[i] + left_totals[i] / 2,
-                    f"{labels[i]}: {left_totals[i]} \u00b7 {100 * hit_rate[i]:.0f}% found",
+                    f"{labels[i]}: {100 * hit_rate[i]:.0f}% identified correctly",
                     ha="right", va="center", fontsize=24, fontweight="bold")
             ax.add_patch(Rectangle((right, right_top[i]), width, right_totals[i], fc=colors[i], ec="none"))
             ax.text(right + width + 0.012, right_top[i] + right_totals[i] / 2,
                     f"{labels[i]}: {right_totals[i]}", ha="left", va="center",
                     fontsize=26, fontweight="bold")
-        # Callout on the largest mismatch, written along the start of its band.
-        a, _, n = bands[worst]
-        ax.text(left + 0.012, a + n / 2,
-                f"{n} {labels[worst[0]]} electrides\nhave connected\nopen space",
-                ha="left", va="center", fontsize=18, fontweight="bold", color="#3b3936",
-                linespacing=1.15, zorder=3)
+        bottom = max(left_top[-1] + left_totals[-1], right_top[-1] + right_totals[-1])
+        # Remark under the flows about the class with the largest mismatch.
+        ax.text((left + right) / 2, bottom + 14,
+                f"Many {labels[worst[0]]} electrides have connected open space",
+                ha="center", va="top", fontsize=22, fontweight="bold", color="#3b3936")
         for x, heading in ((left - width / 2, "Actual (literature)"),
                            (right + width / 2, "Geometry (probe sweep)")):
             ax.text(x, -14, heading, ha="center", va="bottom", fontsize=24, fontweight="bold")
         ax.set_xlim(0, 1)
         ax.text((left + right) / 2, -62, "Predicted vs actual void connectivity", ha="center",
                 va="bottom", fontsize=28, fontweight="bold", color="#8e6f3e")
-        ax.set_ylim(max(left_top[-1] + left_totals[-1], right_top[-1] + right_totals[-1]) + 4, -96)
+        ax.set_ylim(bottom + 50, -96)
         # Crop to the drawn content; the hidden axes would otherwise pad the sides.
         renderer = fig.canvas.get_renderer()
         drawn = Bbox.union([artist.get_window_extent(renderer) for artist in ax.texts + ax.patches])
