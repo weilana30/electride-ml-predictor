@@ -69,8 +69,9 @@ atom-only GNN uses no void descriptors, so it is unaffected.
   directly and again selected width-64 atom-only: test RMSE 0.059 ± 0.003,
   R² 0.82, against 0.070 ± 0.001 for the width-128 all-descriptor model
   (`elf_void_gnn/confirmation_study/results/README.md`).
-- The displayed comparison figure retains the earlier feature-study values;
-  the confirmation study is the stronger current estimate for the selected
+- The poster's comparison figure and stat card show the confirmation-study
+  value for the selected model (0.059, R² 0.82) beside the three † baselines;
+  the 0.058 feature-study row above is the earlier estimate of the same
   configuration.
 
 ### RQ2: dimensionality (source: `elf_void_analysis/case_studies/registry_test/summary.json`)
