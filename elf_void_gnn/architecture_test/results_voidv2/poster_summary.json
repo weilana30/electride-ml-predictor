@@ -1,0 +1,185 @@
+{
+  "atom_only_test": {
+    "rmse": [
+      0.057592547871704126,
+      0.0020860385190418214
+    ],
+    "mae": [
+      0.03770975068875921,
+      0.0014022554769175075
+    ],
+    "r2": [
+      0.8319920878623219,
+      0.012272478876567664
+    ],
+    "recall_elf_ge_0.5": [
+      0.6341938453911258,
+      0.06399806182191697
+    ],
+    "precision_elf_ge_0.5": [
+      0.8324811138294675,
+      0.044370715483544015
+    ],
+    "share_true_elf_ge_0.5": [
+      0.10614569237708615,
+      0.0
+    ],
+    "recall_elf_ge_0.7": [
+      0.05732484076433122,
+      0.015356131785020629
+    ],
+    "precision_elf_ge_0.7": [
+      0.9288111641052818,
+      0.06785806466360118
+    ],
+    "share_true_elf_ge_0.7": [
+      0.007081641858367163,
+      0.0
+    ]
+  },
+  "atom_only_test_voids": 88680,
+  "atom_only_seeds": {
+    "20261023": {
+      "n": 88680,
+      "rmse": 0.0560658130464234,
+      "mae": 0.03669672640211146,
+      "r2": 0.8409206814071282,
+      "recall_elf_ge_0.5": 0.5668755975778179,
+      "precision_elf_ge_0.5": 0.8736083824492469,
+      "share_true_elf_ge_0.5": 0.10614569237708615,
+      "recall_elf_ge_0.7": 0.04617834394904458,
+      "precision_elf_ge_0.7": 1.0,
+      "share_true_elf_ge_0.7": 0.007081641858367163
+    },
+    "20261024": {
+      "n": 88680,
+      "rmse": 0.05996941064624749,
+      "mae": 0.039310180913358604,
+      "r2": 0.8179976336536782,
+      "recall_elf_ge_0.5": 0.6942526293423988,
+      "precision_elf_ge_0.5": 0.7854567307692307,
+      "share_true_elf_ge_0.5": 0.10614569237708615,
+      "recall_elf_ge_0.7": 0.050955414012738856,
+      "precision_elf_ge_0.7": 0.8648648648648649,
+      "share_true_elf_ge_0.7": 0.007081641858367163
+    },
+    "20261025": {
+      "n": 88680,
+      "rmse": 0.056742419922441514,
+      "mae": 0.03712234475080757,
+      "r2": 0.8370579485261594,
+      "recall_elf_ge_0.5": 0.6414533092531606,
+      "precision_elf_ge_0.5": 0.838378228269925,
+      "share_true_elf_ge_0.5": 0.10614569237708615,
+      "recall_elf_ge_0.7": 0.07484076433121019,
+      "precision_elf_ge_0.7": 0.9215686274509803,
+      "share_true_elf_ge_0.7": 0.007081641858367163
+    }
+  },
+  "parity_plot_seed": 20261025,
+  "predict_average_rmse": 0.140569552897538,
+  "models": [
+    {
+      "label": "Void-only neural network",
+      "source": "architecture_test/void_mlp_w64_d2",
+      "runs": 3,
+      "void_features": [
+        "v2"
+      ],
+      "test_rmse": [
+        0.1392765928886178,
+        0.0005548709637449683
+      ]
+    },
+    {
+      "label": "Averaged-atom neural network",
+      "source": "architecture_test/fixed_context_mlp_w64_d2",
+      "runs": 3,
+      "void_features": [
+        "v2"
+      ],
+      "test_rmse": [
+        0.08270066866620614,
+        0.0020266486829061845
+      ]
+    },
+    {
+      "label": "Boosted decision trees",
+      "source": "architecture_test/tree_hgb_context",
+      "runs": 1,
+      "void_features": [
+        "v2"
+      ],
+      "test_rmse": [
+        0.0762650821159151,
+        0.0
+      ]
+    },
+    {
+      "label": "Gated message-passing GNN",
+      "source": "architecture_test/gated_mpnn_w64_d2",
+      "runs": 3,
+      "void_features": [
+        "v1"
+      ],
+      "test_rmse": [
+        0.06978882180952824,
+        0.003163509504002146
+      ]
+    },
+    {
+      "label": "Atom\u2013void GNN \u00b7 all descriptors",
+      "source": "architecture_test/hetero_w128_d2",
+      "runs": 3,
+      "void_features": [
+        "v1"
+      ],
+      "test_rmse": [
+        0.06523667330799414,
+        0.0007016527224411599
+      ]
+    },
+    {
+      "label": "Atom\u2013void GNN \u00b7 atomic features (feature study)",
+      "source": "feature_study/atom-only",
+      "runs": 3,
+      "test_rmse": [
+        0.057592547871704126,
+        0.0020860385190418214
+      ]
+    }
+  ],
+  "confirmation_comparison": [
+    {
+      "label": "Atom\u2013void graph network",
+      "source": "confirmation_study/w64_d2_atom_only",
+      "runs": 3,
+      "test_rmse": [
+        0.05928854712530773,
+        0.0028304753541178885
+      ],
+      "selected": true
+    },
+    {
+      "label": "Atom\u2013void graph network (width 128)",
+      "source": "confirmation_study/w128_d2_atom_only",
+      "runs": 3,
+      "test_rmse": [
+        0.060314031225428395,
+        0.0017230260628395633
+      ],
+      "selected": false
+    },
+    {
+      "label": "Atom\u2013void graph network (all features)",
+      "source": "confirmation_study/w128_d2_baseline",
+      "runs": 3,
+      "test_rmse": [
+        0.07013763837235326,
+        0.0011402879712149724
+      ],
+      "selected": false
+    }
+  ],
+  "notes": "Mean \u00b1 SD over seeds on the family-held-out test split. Recall/precision treat ELF >= threshold as a positive. predict_average_rmse uses the test mean, so it is slightly optimistic for a constant predictor."
+}

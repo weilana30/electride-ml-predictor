@@ -127,6 +127,10 @@ def main() -> None:
     parser.add_argument("--feature-predictions", type=Path, required=True,
                         help="feature-study final-test test_predictions.parquet")
     parser.add_argument("--run-metrics", type=Path, default=HERE.parent / "architecture_test/results/run_metrics.csv")
+    parser.add_argument("--rerun-metrics", type=Path,
+                        default=HERE.parent / "architecture_test/results_voidv2/run_metrics.csv",
+                        help="run metrics whose configurations replace those in --run-metrics "
+                             "(reruns on the fixed v2 void features); pass an empty string to skip")
     parser.add_argument("--output", type=Path, default=POSTER_FIGURES)
     args = parser.parse_args()
 
@@ -140,6 +144,11 @@ def main() -> None:
     mean_baseline = float(np.sqrt(np.mean((y - y.mean()) ** 2)))
 
     runs = pd.read_csv(args.run_metrics)
+    runs["void_features"] = "v1"
+    if str(args.rerun_metrics) and args.rerun_metrics.is_file():
+        rerun = pd.read_csv(args.rerun_metrics)
+        rerun = rerun[rerun["status"] == "completed"].assign(void_features="v2")
+        runs = pd.concat([runs[~runs["configuration"].isin(rerun["configuration"])], rerun], ignore_index=True)
     labels = {"void_mlp_w64_d2": "Void-only neural network", "fixed_context_mlp_w64_d2": "Averaged-atom neural network",
               "tree_hgb_context": "Boosted decision trees", "gated_mpnn_w64_d2": "Gated message-passing GNN",
               "hetero_w128_d2": "Atom–void GNN · all descriptors"}
@@ -150,6 +159,7 @@ def main() -> None:
             raise ValueError(f"no runs for {config}")
         values = sel["test_pooled_rmse"].to_numpy()
         models.append({"label": label, "source": f"architecture_test/{config}", "runs": int(len(values)),
+                       "void_features": sorted(set(sel["void_features"])),
                        "test_rmse": [float(values.mean()), float(values.std(ddof=1)) if len(values) > 1 else 0.0]})
     legacy_atom_only = {"label": "Atom–void GNN · atomic features (feature study)",
                         "source": "feature_study/atom-only", "runs": len(rows),
