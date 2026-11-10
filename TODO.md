@@ -23,9 +23,10 @@ for every rerun are ready under `/home/weilana/elfnet-runs/voidv2-2026-11-10/`
   MLP and tree (poster bars), plus the all-feature hetero GNN at widths 64
   and 128. The w32, d1, d3 and gated-MPNN configurations still use v1
   features, so the architecture choice is untested.
-- [ ] **Confirmation study**: the w128 all-descriptor baseline (3 seeds) used
-  v1 features; the atom-only runs are unaffected (masked void features are
-  exactly zero after normalization).
+- [x] **Confirmation study**: all-descriptor GNNs rerun on v2 at widths 64
+  and 128 with the original seeds (`confirmation_study/results_voidv2/`).
+  The per-family failures are gone; all-descriptor wins on validation but
+  atom-only still wins on test. Atom-only runs needed no rerun.
 - [ ] Update `RESULTS.md` / `DETAILED_RESULTS.md` / `confirmation_report.md`
   after the reruns, and note in each that earlier numbers used v1 features.
 
