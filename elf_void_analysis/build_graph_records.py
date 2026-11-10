@@ -52,6 +52,43 @@ VOID_FEATURE_NAMES = [
 ]
 METHOD_NAMES = ("Voronoi", "distance")
 VOID_SYMMETRY_TOLERANCE_ANGSTROM = 0.2
+VOID_COUNT_RADII_ANGSTROM = (3.0, 4.0, 5.0)
+VOID_NEAREST_COUNT = 4
+# Version 2 counts every periodic atom image (version 1 counted each basis
+# atom once by minimum image and padded missing nearest distances with 0).
+VOID_FEATURE_DEFINITION = (
+    "v2: counts and nearest distances over all periodic atom images from the "
+    "void-atom edges; nearest distances beyond the edge cutoff are set to the cutoff"
+)
+
+
+def void_neighbor_features(
+    n_voids: int, void_index: np.ndarray, distances: np.ndarray,
+    clearances: np.ndarray, cutoff: float,
+) -> np.ndarray:
+    """Per-void geometry features from periodic void->atom edges.
+
+    ``void_index`` and ``distances`` describe every atom image within
+    ``cutoff`` of each void, so counts and nearest distances do not depend on
+    the chosen unit cell. A nearest-neighbour slot with no atom image inside
+    the cutoff is set to the cutoff (a lower bound on the true distance), never
+    to 0. The count radii must not exceed the edge cutoff.
+    """
+    if max(VOID_COUNT_RADII_ANGSTROM) > cutoff + 1e-8:
+        raise ValueError("void count radii exceed the void-atom edge cutoff")
+    void_index = np.asarray(void_index, dtype=int).reshape(-1)
+    distances = np.asarray(distances, dtype=float).reshape(-1)
+    rows = []
+    for i in range(int(n_voids)):
+        ds = np.sort(distances[void_index == i])
+        nearest = np.full(VOID_NEAREST_COUNT, float(cutoff))
+        nearest[: min(len(ds), VOID_NEAREST_COUNT)] = ds[:VOID_NEAREST_COUNT]
+        rows.append([
+            float(clearances[i]), float(nearest[0]),
+            *[float(np.count_nonzero(ds <= r + 1e-8)) for r in VOID_COUNT_RADII_ANGSTROM],
+            *[float(x) for x in nearest],
+        ])
+    return np.asarray(rows, dtype=float).reshape(-1, len(VOID_FEATURE_NAMES))
 
 
 def _value_and_validity(value: Any) -> tuple[float, float]:
@@ -92,7 +129,10 @@ def _periodic_edges(
     indices: list[list[int]] = []
     distances: list[float] = []
     shifts: list[list[int]] = []
-    reciprocal_lengths = np.linalg.norm(lattice.reciprocal_lattice.matrix, axis=1)
+    # Crystallographic reciprocal vectors (no 2*pi): |b_i| = 1 / d_i.
+    reciprocal_lengths = np.linalg.norm(
+        lattice.reciprocal_lattice_crystallographic.matrix, axis=1
+    )
     for source, src in enumerate(source_frac):
         for destination, dst in enumerate(destination_frac):
             delta = np.asarray(dst) - np.asarray(src)
@@ -306,25 +346,17 @@ def build_graph_record(
         same_node_graph=True,
     )
 
-    # These descriptors count distinct basis-site atoms using minimum-image
-    # distances. They intentionally do not count translated images separately.
-    if len(void_frac):
-        void_atom_dist = structure.lattice.get_all_distances(void_frac, atom_frac)
-    else:
-        void_atom_dist = np.empty((0, len(atom_frac)), dtype=float)
-    void_features = []
+    # Counts and nearest distances use every periodic atom image (the
+    # void->atom edges), so they do not depend on the chosen unit cell.
+    void_features = void_neighbor_features(
+        len(candidates),
+        np.asarray(va_idx, dtype=int).reshape(-1, 2)[:, 0],
+        np.asarray(va_dist, dtype=float),
+        clearances, atom_void_cutoff_angstrom,
+    )
     multiplicities = []
     methods = []
-    for i, candidate in enumerate(candidates):
-        ds = np.sort(void_atom_dist[i])
-        padded = np.pad(ds[:4], (0, max(0, 4 - len(ds))), constant_values=0.0)
-        void_features.append([
-            float(clearances[i]), float(ds[0]) if len(ds) else 0.0,
-            float(np.count_nonzero(ds <= 3.0)),
-            float(np.count_nonzero(ds <= 4.0)),
-            float(np.count_nonzero(ds <= 5.0)),
-            *[float(x) for x in padded],
-        ])
+    for candidate in candidates:
         methods.append([int(name in candidate["methods"]) for name in METHOD_NAMES])
         multiplicities.append(int(candidate["orbit_multiplicity"]))
 
@@ -400,10 +432,7 @@ def build_graph_record(
             "void_symmetry_tolerance_angstrom": symmetry_expansion["tolerance_angstrom"],
             "void_symmetry_operation_count": symmetry_expansion["operation_count"],
             "void_finder": "void_detection.find_voronoi_voids.find_candidate_voids",
-            "void_neighbor_count_definition": (
-                "counts distinct atom basis sites using minimum-image distance; "
-                "periodic images of the same atom are not counted separately"
-            ),
+            "void_neighbor_count_definition": VOID_FEATURE_DEFINITION,
         },
     }
 

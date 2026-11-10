@@ -75,6 +75,12 @@ class RadiusAndReportTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             element_radii(["Ca", "N"], "custom", {"Ca": 1.0})
 
+    def test_hydride_anion_uses_hydride_radius_not_atomic_fallback(self) -> None:
+        radii, notes = element_radii(["Y", "Y", "Y", "H"], "ionic")
+        self.assertAlmostEqual(radii["H"], 1.40)
+        self.assertIn("H-", notes["H"])
+        self.assertNotIn("empirical", notes["H"])
+
     def test_report_labels_every_open_void_exactly(self) -> None:
         graph = {"lattice_angstrom": (np.eye(3) * 4).tolist(),
                  "atoms": {"fractional_coords": [[0., 0., 0.]], "atomic_numbers": [1]},
