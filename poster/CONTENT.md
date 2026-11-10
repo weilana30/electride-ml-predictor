@@ -100,8 +100,10 @@ atom-only GNN uses no void descriptors, so it is unaffected.
   atoms and act as anions. Whether those regions are isolated (0D) or
   connected (1D, 2D) shapes the material’s properties."
 - ELF: "ELF (electron localization function, 0–1) measures how localized
-  electrons are, so a high-ELF peak in an empty void marks electrons trapped
-  there. Computing it requires a DFT calculation."
+  electrons are compared with a uniform electron gas: near 1 where strongly
+  localized, 0.5 for a free-electron gas. In electrides, an ELF maximum in an
+  interstitial void, away from any atom, signals localized interstitial
+  electrons. Computing ELF requires a DFT calculation."
 - Crystal panel title: "Electron connectivity sets the dimensionality"
 - Goal card: "Screen for electrides from structure alone" · No DFT: predict ELF
   from atom positions · Per void, not per crystal: shows where electrons sit
