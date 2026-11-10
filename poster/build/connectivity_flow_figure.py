@@ -110,8 +110,11 @@ def connectivity_shares(structures: Any, sweep: Any) -> Any:
 def connectivity_flow(structures: Any, sweep: Any, path: Path) -> None:
     """Flow from literature dimension to the connected stage found by the probe sweep.
 
-    Correct flows (literature class = geometry class) are solid; mismatches are faded,
-    and a remark under the chart names the class with the largest mismatch. Every number is computed from the counts.
+    Every class box has the same height and the two sides line up, so each band's
+    thickness is its share of that box (row share on the left, column share on the
+    right). Correct flows are solid and carry the class hit rate; mismatches are
+    faded, and a remark under the chart names the class with the largest mismatch.
+    Every number is computed from the counts.
     """
     import matplotlib.pyplot as plt
     from matplotlib.patches import PathPatch, Rectangle
@@ -119,58 +122,65 @@ def connectivity_flow(structures: Any, sweep: Any, path: Path) -> None:
     from matplotlib.transforms import Bbox
     counts = connectivity_shares(structures, sweep).to_numpy()
     colors = {0: "#9D9795", 1: "#555960", 2: "#DAAA00"}
+    on_band = {0: "#000000", 1: "#ffffff", 2: "#000000"}
     labels = {0: "0D", 1: "1D", 2: "2D"}
-    ink, gap, left, right, width = "#000000", 16, 0.34, 0.80, 0.035
+    ink, box, gap, left, right, width = "#000000", 100.0, 24.0, 0.10, 0.86, 0.035
     left_totals, right_totals = counts.sum(axis=1), counts.sum(axis=0)
+    left_share = counts / np.maximum(left_totals[:, None], 1) * box
+    right_share = counts / np.maximum(right_totals[None, :], 1) * box
     hit_rate = np.diag(counts) / np.maximum(left_totals, 1)
-    left_top = np.r_[0, np.cumsum(left_totals + gap)[:-1]]
-    right_top = np.r_[0, np.cumsum(right_totals + gap)[:-1]]
+    top = np.arange(len(counts)) * (box + gap)
+    bottom = top[-1] + box
     off_diagonal = counts * (1 - np.eye(len(counts), dtype=int))
     worst = np.unravel_index(np.argmax(off_diagonal), counts.shape)
     with plt.rc_context({"font.family": "Arial", "pdf.fonttype": 42, "text.color": ink}):
         fig, ax = plt.subplots(figsize=(15.5, 9.0))
         ax.axis("off")
-        left_next, right_next = left_top.astype(float), right_top.astype(float)
+        left_next, right_next = top.astype(float), top.astype(float)
         middle = (left + right) / 2
         for i, j in np.ndindex(counts.shape):
-            n = counts[i, j]
-            if n == 0:
+            if counts[i, j] == 0:
                 continue
             a, b = left_next[i], right_next[j]
-            left_next[i] += n
-            right_next[j] += n
-            points = [(left, a), (middle, a), (middle, b), (right, b), (right, b + n),
-                      (middle, b + n), (middle, a + n), (left, a + n), (left, a)]
+            na, nb = left_share[i, j], right_share[i, j]
+            left_next[i] += na
+            right_next[j] += nb
+            points = [(left, a), (middle, a), (middle, b), (right, b), (right, b + nb),
+                      (middle, b + nb), (middle, a + na), (left, a + na), (left, a)]
             codes = [Curve.MOVETO, Curve.CURVE4, Curve.CURVE4, Curve.CURVE4, Curve.LINETO,
                      Curve.CURVE4, Curve.CURVE4, Curve.CURVE4, Curve.CLOSEPOLY]
-            correct = i == j
-            # Thin mismatch bands get an outline so a single structure still shows.
-            ax.add_patch(PathPatch(Curve(points, codes), fc=colors[i], alpha=0.95 if correct else 0.2,
-                                   ec="none", zorder=2 if correct else 1))
-            if not correct:  # a background-colored seam keeps neighboring faded bands apart
-                ax.add_patch(PathPatch(Curve(points, codes), fc="none", ec="#fcf5e1", lw=1.5, zorder=1))
-            if not correct and n <= 3:
-                ax.add_patch(PathPatch(Curve(points, codes), fc="none", ec=colors[i], lw=2.2,
-                                       alpha=0.8, zorder=1))
+            band = Curve(points, codes)
+            if i == j:
+                ax.add_patch(PathPatch(band, fc=colors[i], alpha=0.95, ec="none", zorder=2))
+                # Label a little left of centre, where thin crossing flows stay clear.
+                t = 0.42
+                start, end = (1 - t) ** 3 + 3 * (1 - t) ** 2 * t, 3 * (1 - t) * t ** 2 + t ** 3
+                x = left * (1 - t) ** 3 + middle * (start - (1 - t) ** 3 + end - t ** 3) + right * t ** 3
+                ax.text(x, start * (a + na / 2) + end * (b + nb / 2),
+                        f"{100 * hit_rate[i]:.0f}% identified correctly", ha="center", va="center",
+                        fontsize=24, fontweight="bold", color=on_band[i], zorder=3)
+                continue
+            ax.add_patch(PathPatch(band, fc=colors[i], alpha=0.2, ec="none", zorder=1))
+            # A background-colored seam keeps neighboring faded bands apart.
+            ax.add_patch(PathPatch(band, fc="none", ec="#fcf5e1", lw=1.5, zorder=1))
+            if counts[i, j] <= 3:  # outline thin bands so a single structure still shows
+                ax.add_patch(PathPatch(band, fc="none", ec=colors[i], lw=2.2, alpha=0.8, zorder=1))
         for i in range(3):
-            ax.add_patch(Rectangle((left - width, left_top[i]), width, left_totals[i], fc=colors[i], ec="none"))
-            ax.text(left - width - 0.012, left_top[i] + left_totals[i] / 2,
-                    f"{labels[i]}: {100 * hit_rate[i]:.0f}% identified correctly",
-                    ha="right", va="center", fontsize=24, fontweight="bold")
-            ax.add_patch(Rectangle((right, right_top[i]), width, right_totals[i], fc=colors[i], ec="none"))
-            ax.text(right + width + 0.012, right_top[i] + right_totals[i] / 2,
-                    f"{labels[i]}: {right_totals[i]}", ha="left", va="center",
-                    fontsize=26, fontweight="bold")
-        bottom = max(left_top[-1] + left_totals[-1], right_top[-1] + right_totals[-1])
+            centre = top[i] + box / 2
+            ax.add_patch(Rectangle((left - width, top[i]), width, box, fc=colors[i], ec="none"))
+            ax.text(left - width - 0.012, centre, labels[i], ha="right", va="center",
+                    fontsize=28, fontweight="bold")
+            ax.add_patch(Rectangle((right, top[i]), width, box, fc=colors[i], ec="none"))
+            ax.text(right + width + 0.012, centre, labels[i], ha="left", va="center",
+                    fontsize=28, fontweight="bold")
         # Remark under the flows about the class with the largest mismatch.
-        ax.text((left + right) / 2, bottom + 14,
-                f"Many {labels[worst[0]]} electrides have connected open space",
+        ax.text(middle, bottom + 14, f"Many {labels[worst[0]]} electrides have connected open space",
                 ha="center", va="top", fontsize=22, fontweight="bold", color="#3b3936")
         for x, heading in ((left - width / 2, "Actual (literature)"),
                            (right + width / 2, "Geometry (probe sweep)")):
             ax.text(x, -14, heading, ha="center", va="bottom", fontsize=24, fontweight="bold")
         ax.set_xlim(0, 1)
-        ax.text((left + right) / 2, -62, "Predicted vs actual void connectivity", ha="center",
+        ax.text(middle, -62, "Predicted vs actual void connectivity", ha="center",
                 va="bottom", fontsize=28, fontweight="bold", color="#8e6f3e")
         ax.set_ylim(bottom + 50, -96)
         # Crop to the drawn content; the hidden axes would otherwise pad the sides.
