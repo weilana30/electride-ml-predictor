@@ -464,7 +464,7 @@ y = p.bullets(x, top, wi, [
 y += 26
 p.o.append(f'<line x1="{x}" y1="{y}" x2="{x + wi}" y2="{y}" stroke="{T.RULE}" stroke-width="2.5"/>')
 y = p.text(x, y + 26, wi, "NEXT STEPS", 21, T.ELF_DARK, 700, tracking=2.6) + 18
-p.bullets(x, y, wi, ["Run DFT on known electrides and test the GNN on them.",
+p.bullets(x, y, wi, ["Run DFT on more known electrides and test the GNN.", "Add them to training so the model sees more electrides.",
                      "Predict ELF at bottlenecks, not only at void centers.",
                      "Combine both tools into one crystal-level electride screen."], 26.5, T.INK_2, 400, T.ELF, gap=16)
 
