@@ -1,5 +1,4 @@
 #!/bin/bash
-#SBATCH --account=andre176
 #SBATCH --partition=gpu
 #SBATCH --qos=normal
 #SBATCH --gres=gpu:1

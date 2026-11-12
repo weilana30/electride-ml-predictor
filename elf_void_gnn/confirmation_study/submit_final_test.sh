@@ -64,7 +64,7 @@ print("Preflight passed: validation stage and all nine frozen validation runs ar
 PY
 
 mkdir -p "$EXPERIMENT_ROOT/logs"
-sbatch --array="0-8%2" --export="ALL,MANIFEST=$MANIFEST" \
+sbatch --account="${SLURM_ACCOUNT:?set SLURM_ACCOUNT to your Slurm allocation}" --array="0-8%2" --export="ALL,MANIFEST=$MANIFEST" \
   --output="$EXPERIMENT_ROOT/logs/final-test-%A_%a.out" \
   --error="$EXPERIMENT_ROOT/logs/final-test-%A_%a.err" \
   "$REPO_ROOT/elf_void_gnn/confirmation_study/final_test_array.sbatch"
