@@ -1,14 +1,14 @@
 #!/bin/bash
 set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-EXPERIMENT_ROOT="${EXPERIMENT_ROOT:-/home/weilana/elfnet-runs/elf_void_gnn/architecture-test}"
+EXPERIMENT_ROOT="${EXPERIMENT_ROOT:-/home/USER/elfnet-runs/elf_void_gnn/architecture-test}"
 CONFIG_ROOT="$EXPERIMENT_ROOT/configs"
 RUNS_ROOT="$EXPERIMENT_ROOT/runs"
 mkdir -p "$EXPERIMENT_ROOT/logs"
-/home/weilana/.conda/envs/elfnet-train/bin/python "$REPO_ROOT/elf_void_gnn/architecture_test/generate_sweep.py" \
+/home/USER/.conda/envs/elfnet-train/bin/python "$REPO_ROOT/elf_void_gnn/architecture_test/generate_sweep.py" \
   --config-root "$CONFIG_ROOT" --runs-root "$RUNS_ROOT"
 MANIFEST="$CONFIG_ROOT/manifest.csv"
-RUN_COUNT="$(/home/weilana/.conda/envs/elfnet-train/bin/python -c 'import csv,sys; print(sum(1 for _ in csv.DictReader(open(sys.argv[1]))) )' "$MANIFEST")"
+RUN_COUNT="$(/home/USER/.conda/envs/elfnet-train/bin/python -c 'import csv,sys; print(sum(1 for _ in csv.DictReader(open(sys.argv[1]))) )' "$MANIFEST")"
 if [ "$RUN_COUNT" -lt 1 ]; then
   echo "Manifest contains no jobs" >&2
   exit 1

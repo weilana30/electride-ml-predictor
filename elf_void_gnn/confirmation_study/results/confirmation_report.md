@@ -14,9 +14,9 @@ Configurations are ranked by mean pooled validation RMSE across the three predec
 
 ## Study specification
 
-- Dataset path: /home/weilana/elfnet-datasets/elfnet-gnn-2026-10-23
+- Dataset path: /home/USER/elfnet-datasets/elfnet-gnn-2026-10-23
 - Dataset build fingerprint: 3928d5a96a2edf614c7b0f5fe93b70f11da6e7f8c312c208e1af6820e814e428
-- Existing family split path and SHA256: /home/weilana/elfnet-datasets/elfnet-gnn-2026-10-23/splits.parquet; cdb3fc87b80cb05ce1cfdd8b94267696cfb0bb9e810004512144b0c2f2aac7f4
+- Existing family split path and SHA256: /home/USER/elfnet-datasets/elfnet-gnn-2026-10-23/splits.parquet; cdb3fc87b80cb05ce1cfdd8b94267696cfb0bb9e810004512144b0c2f2aac7f4
 - Grouping definition: existing family_id split; no family overlaps splits
 - Seeds: 20261028, 20261029, 20261030; configurations: w128_d2_baseline, w128_d2_atom_only, w64_d2_atom_only
 - Selection rule: minimum mean pooled validation RMSE across three seeds.

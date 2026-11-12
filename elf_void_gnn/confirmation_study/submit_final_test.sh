@@ -1,10 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-EXPERIMENT_ROOT="${EXPERIMENT_ROOT:-/home/weilana/elfnet-runs/elf_void_gnn/confirmation-study-2026-10-28}"
+EXPERIMENT_ROOT="${EXPERIMENT_ROOT:-/home/USER/elfnet-runs/elf_void_gnn/confirmation-study-2026-10-28}"
 MANIFEST="$EXPERIMENT_ROOT/configs/manifest.csv"
 REPORT_DIR="$EXPERIMENT_ROOT/report"
-PYTHON="/home/weilana/.conda/envs/elfnet-train/bin/python"
+PYTHON="/home/USER/.conda/envs/elfnet-train/bin/python"
 
 # Refuse the launch unless the report and each predeclared validation run are complete.
 "$PYTHON" - "$MANIFEST" "$REPORT_DIR/validation_stage.json" <<'PY'

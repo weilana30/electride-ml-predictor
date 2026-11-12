@@ -82,7 +82,7 @@
 
 
      PseudoPot. # 1 for Cu read from file:
-     /home/weilana/electride-ml-predictor/dft/pseudo/PBE_PAW/Cu.pbe-spn-kjpaw_psl.1.0.0.UPF
+     /home/USER/electride-ml-predictor/dft/pseudo/PBE_PAW/Cu.pbe-spn-kjpaw_psl.1.0.0.UPF
      MD5 check sum: e7cbaad2f97193e5fe23251a619a52b0
      Pseudo is Projector augmented-wave + core cor, Zval = 19.0
      Generated using &quot;atomic&quot; code by A. Dal Corso  v.6.3
@@ -98,7 +98,7 @@
 
 
      PseudoPot. # 2 for Si read from file:
-     /home/weilana/electride-ml-predictor/dft/pseudo/PBE_PAW/Si.pbe-n-kjpaw_psl.1.0.0.UPF
+     /home/USER/electride-ml-predictor/dft/pseudo/PBE_PAW/Si.pbe-n-kjpaw_psl.1.0.0.UPF
      MD5 check sum: c39c59da582df4a0d9f10159256ea34e
      Pseudo is Projector augmented-wave + core cor, Zval =  4.0
      Generated using &quot;atomic&quot; code by A. Dal Corso  v.6.3
@@ -114,7 +114,7 @@
 
 
      PseudoPot. # 3 for Se read from file:
-     /home/weilana/electride-ml-predictor/dft/pseudo/PBE_PAW/Se.pbe-dn-kjpaw_psl.1.0.0.UPF
+     /home/USER/electride-ml-predictor/dft/pseudo/PBE_PAW/Se.pbe-dn-kjpaw_psl.1.0.0.UPF
      MD5 check sum: ac240dd2bae32a30e0bf3a38df9c8785
      Pseudo is Projector augmented-wave + core cor, Zval = 16.0
      Generated using &quot;atomic&quot; code by A. Dal Corso  v.6.3

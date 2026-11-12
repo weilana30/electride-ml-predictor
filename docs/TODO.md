@@ -9,9 +9,9 @@ only the poster's baseline bars were redone (see "Reruns still owed").
 ## Reruns still owed after the void-feature fix
 
 The fixed dataset is on Negishi at
-`/home/weilana/elfnet-datasets/elfnet-gnn-2026-11-10-voidv2` (same graphs,
+`/home/USER/elfnet-datasets/elfnet-gnn-2026-11-10-voidv2` (same graphs,
 targets and split; only `voids/features` changed). Run trees and job scripts
-for every rerun are ready under `/home/weilana/elfnet-runs/voidv2-2026-11-10/`
+for every rerun are ready under `/home/USER/elfnet-runs/voidv2-2026-11-10/`
 (`packed_commands.txt` lists all 56 trainings; `jobs.txt` logs submissions).
 
 - [ ] **Feature study** (Stages A–C, final test, correlations): every result

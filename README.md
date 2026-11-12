@@ -91,7 +91,7 @@ The connectivity identifier classifies how the empty space around each void is c
 ## Getting started
 
 ```bash
-git clone git@github.com:weilana30/electride-ml-predictor.git
+git clone https://github.com/weilana30/electride-ml-predictor.git
 cd electride-ml-predictor
 
 # Void finding and connectivity (needs pymatgen, scipy, h5py, pyarrow)

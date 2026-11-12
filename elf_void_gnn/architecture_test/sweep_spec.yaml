@@ -1,6 +1,6 @@
 name: elf-center-architecture-test
-dataset_root: /home/weilana/elfnet-datasets/elfnet-gnn-2026-10-23
-run_root: /home/weilana/elfnet-runs/elf_void_gnn/architecture-test/runs
+dataset_root: /home/USER/elfnet-datasets/elfnet-gnn-2026-10-23
+run_root: /home/USER/elfnet-runs/elf_void_gnn/architecture-test/runs
 seeds: [20261023, 20261024, 20261025]
 training:
   batch_size: 8

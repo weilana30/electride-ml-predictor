@@ -37,8 +37,8 @@ This generates a frozen 25-row manifest, submits 24 neural GPU tasks and one CPU
 
 ```bash
 python elf_void_gnn/architecture_test/report.py \
-  --manifest /home/weilana/elfnet-runs/elf_void_gnn/architecture-test/configs/manifest.csv \
-  --out-dir /home/weilana/elfnet-runs/elf_void_gnn/architecture-test/report
+  --manifest /home/USER/elfnet-runs/elf_void_gnn/architecture-test/configs/manifest.csv \
+  --out-dir /home/USER/elfnet-runs/elf_void_gnn/architecture-test/report
 ```
 
 The benchmark commit and split hash are recorded in `architecture_test/DETAILED_RESULTS.md`.

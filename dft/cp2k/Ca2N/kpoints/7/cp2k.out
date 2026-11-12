@@ -19,10 +19,10 @@
 
 
   **** **** ******  **  PROGRAM STARTED AT               2026-10-08 20:15:40.375
- ***** ** ***  *** **   PROGRAM STARTED ON          a067.negishi.rcac.purdue.edu
- **    ****   ******    PROGRAM STARTED BY                               weilana
+ ***** ** ***  *** **   PROGRAM STARTED ON          compute-node
+ **    ****   ******    PROGRAM STARTED BY                               USER
  ***** **    ** ** **   PROGRAM PROCESS ID                               4118905
-  **** **  *******  **  PROGRAM STARTED IN /scratch/negishi/weilana/electride-ml
+  **** **  *******  **  PROGRAM STARTED IN /scratch/negishi/USER/electride-ml
                                            -predictor/cp2k/Ca2N_kpoints_7_439342
                                            76
 

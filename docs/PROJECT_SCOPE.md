@@ -41,7 +41,7 @@ Combined void-level picture → crystal-level electride assessment (future)
 | Dataset | Contents | Role |
 | --- | --- | --- |
 | ELFNet corpus | 50,000 paired VASP POSCAR/ELFCAR structures | GNN training and evaluation |
-| Processed graph dataset | `/home/weilana/elfnet-datasets/elfnet-gnn-2026-10-23/`, HDF5 shards | Atom/void graphs and labels |
+| Processed graph dataset | `/home/USER/elfnet-datasets/elfnet-gnn-2026-10-23/`, HDF5 shards | Atom/void graphs and labels |
 | DFT reference set (`dft/`) | PBE calculations for Ba2As, Ba3CrN3, Ca2N (electrides) and MgS, BaSn3, Cu2SiSe3 (controls) | Physical reference cases |
 | Case-study CIFs (`data/cifs/`) | K4Al3(SiO4)3 (0D), Ba3CrN3 (1D), Ca2N (2D) | Connectivity validation against literature |
 

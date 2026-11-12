@@ -1,9 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-EXPERIMENT_ROOT="${EXPERIMENT_ROOT:-/home/weilana/elfnet-runs/elf_void_gnn/confirmation-study-2026-10-28}"
+EXPERIMENT_ROOT="${EXPERIMENT_ROOT:-/home/USER/elfnet-runs/elf_void_gnn/confirmation-study-2026-10-28}"
 mkdir -p "$EXPERIMENT_ROOT/configs" "$EXPERIMENT_ROOT/logs" "$EXPERIMENT_ROOT/runs"
-PYTHON="/home/weilana/.conda/envs/elfnet-train/bin/python"
+PYTHON="/home/USER/.conda/envs/elfnet-train/bin/python"
 "$PYTHON" "$REPO_ROOT/elf_void_gnn/confirmation_study/generate_manifest.py" \
   --manifest "$EXPERIMENT_ROOT/configs/manifest.csv"
 MANIFEST="$EXPERIMENT_ROOT/configs/manifest.csv"
