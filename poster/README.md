@@ -7,7 +7,6 @@ Research poster, 36 × 48 in portrait, built in Inkscape in Purdue colors
 | --- | --- |
 | [`poster_v3.svg`](poster_v3.svg) | **The current poster.** Open and edit it in Inkscape. Each section is its own layer. |
 | [`poster_v3.pdf`](poster_v3.pdf) | Print export of `poster_v3.svg` |
-| [`poster.svg`](poster.svg), [`poster.pdf`](poster.pdf) | Earlier version, kept for reference |
 | [`CONTENT.md`](CONTENT.md) | Story, every number on the poster with its source, and text drafts |
 | [`TODO.md`](TODO.md) | What still needs doing before printing |
 | [`figures/`](figures/) | Plots (PNG 300 dpi + PDF), linked into the poster |

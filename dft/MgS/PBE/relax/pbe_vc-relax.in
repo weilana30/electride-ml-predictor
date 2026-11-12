@@ -66,7 +66,7 @@ ATOMIC_POSITIONS crystal
 
 K_POINTS automatic
   17 17 17  0 0 0
-! Source: data/cifs/mp-1315.cif (mp-1315)
+! Source: dft/structures/mp-1315.cif (mp-1315)
 ! binary ionic control
 ! PBE ONCV scalar-relativistic pseudopotentials
 ! Pre-production settings: converge cutoffs and k mesh before production calculations.

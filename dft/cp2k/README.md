@@ -20,7 +20,7 @@ Install the small Python requirements in an environment, then run, for example:
 
 ```bash
 python3 -m pip install -r requirements.txt
-python find_voids.py ../../data/cifs/mp-2686.cif --output structures/Ca2N/voids.csv
+python find_voids.py ../structures/mp-2686.cif --output structures/Ca2N/voids.csv
 ```
 
 The candidates are geometric cavities. The finder does not decide which cavity

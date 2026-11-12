@@ -72,7 +72,7 @@ ATOMIC_POSITIONS crystal
 
 K_POINTS automatic
   17 17 17  0 0 0
-! Source: data/cifs/mp-7759.cif (mp-7759)
+! Source: dft/structures/mp-7759.cif (mp-7759)
 ! Ba-containing metallic intermetallic control
 ! PBE ONCV scalar-relativistic pseudopotentials
 ! Pre-production settings: converge cutoffs and k mesh before production calculations.
