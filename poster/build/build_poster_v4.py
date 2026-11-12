@@ -279,8 +279,9 @@ y = p.text(M, y + 20, 2700, "A graph neural network predicts the electron locali
 p.text(M, HEAD_H - 62, 2700, "**Andrew Weiland**   ·   Advisor: Justin Andrews   ·   Department of Chemistry, Purdue University   ·   weilana@purdue.edu", 25, "#ffffff", 500)
 LOGO = 300
 p.image("diagrams/lab_logo.png", W - M - 250 - 285 - 70, (HEAD_H - LOGO) / 2, LOGO, LOGO)
-p.rect(W - M - 250, 72, 250, 250, "#ffffff", 8, label="QR CODE")
-p.text(W - M - 250, 182, 250, "QR CODE", 17, T.MUTED, 500, align="center", tracking=2)
+p.rect(W - M - 250, 56, 250, 250, "#ffffff", 8, label="QR code backing")
+p.image("diagrams/github_qr.png", W - M - 250, 56, 250, 250)
+p.text(W - M - 250, 322, 250, "GitHub repository", 20, "#ffffff", 600, align="center", lh=1.15)
 
 # ---- 1 background
 p.layer("1 Background")

@@ -4,7 +4,7 @@ Edit `poster_v4.svg` in Inkscape, then export `poster_v4.pdf` (see README).
 
 ## Must do
 
-- [ ] **QR code:** replace the QR CODE placeholder box; link to the repository or contact page.
+- [x] QR code added (GitHub). Not decoded here; scan it once to confirm the link.
 - [ ] **References:** full citations in one consistent style, plus acknowledgements
   (advisor, funding, Purdue RCAC Negishi). The bottom strip has short names only:
   Becke & Edgecombe 1990, Burton et al. 2018, Zhu et al. 2019, Zeo++ (Willems et al. 2012).
