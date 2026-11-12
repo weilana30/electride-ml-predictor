@@ -258,7 +258,7 @@ def schematic(p: Page, key: str, x: float, y: float, w: float | None = None, h: 
 # ---------------------------------------------------------------- layout
 p = Page()
 PAD = 42
-FLOW_ASPECT = 8.0 / 16.0
+FLOW_ASPECT = 8.8 / 16.0
 HEAD_H, BG_Y, BG_H = 404, 444, 806
 GOAL_Y, GOAL_H = BG_Y + BG_H + 44, 128
 TOOL_Y = GOAL_Y + GOAL_H + 50
@@ -385,15 +385,15 @@ p.o.append(f'<path d="M{x} {SP_TOP + SP_HEAD}V{SP_TOP + 14}a14 14 0 0 1 14 -14H{
 p.o.append(f'<line x1="{x}" y1="{SP_TOP + SP_HEAD}" x2="{x + w}" y2="{SP_TOP + SP_HEAD}" stroke="{T.GEO}" stroke-width="3.5"/>')
 p.text(x + 34, SP_TOP + 18, w - 300, "Probe-size sweep", 40, T.INK, 700, T.HEAD)
 p.text(x + 34, SP_TOP + 34, w - 68, "EXPLORATORY", 22, T.GEO_DARK, 700, align="end", tracking=2.4)
-p.text(x + SP_PAD + 8, SP_TOP + SP_HEAD + 22, w - 2 * SP_PAD - 16, "Rule: 1D if any probe size gives 1D, else 2D, else 0D. Compared with the literature label.", 25, T.INK_2, 500, align="center")
 CALL2 = 140
 cy = SP_BOT - SP_PAD - CALL2
-fy = SP_TOP + SP_HEAD + 22 + 46
+fy = SP_TOP + SP_HEAD + 22
 iw = w - 2 * SP_PAD
 fh = iw * FLOW_ASPECT
 avail = cy - 16 - fy
 fw = iw if fh <= avail else iw * avail / fh
 fh = min(fh, avail)
+print("sweep chart scale", round(fw / iw, 3), "slack", round(avail - fh))
 p.image("figures/v4/connectivity_flow_sweep.png", x + (w - fw) / 2, fy + (avail - fh) / 2, fw, fh)
 p.rect(x + SP_PAD, cy, iw, CALL2, T.GEO_TINT, 12, T.GEO, 3, "Key finding")
 p.text(x + SP_PAD + 34, cy + 20, iw - 68, f"**In {N0_OPEN} of {N0} electrides labeled 0D, the open space connects at some probe size.** "
