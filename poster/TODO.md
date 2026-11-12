@@ -1,11 +1,10 @@
 # Poster to-do list
 
-Edit `poster.svg` in Inkscape, then export `poster.pdf` (see README).
+Edit `poster_v4.svg` in Inkscape, then export `poster_v4.pdf` (see README).
 
 ## Must do
 
-- [ ] **Author line:** replace `[Advisor name]`, `[Department]`, `[email]` in the title.
-- [ ] **Logo:** replace the LOGO placeholder box in the title (top right).
+- [ ] **Email:** replace `[email]` in the title (advisor, department and logo are done).
 - [ ] **QR code:** replace the QR CODE placeholder box; link to the repository or contact page.
 - [ ] **References:** full citations in one consistent style, plus acknowledgements
   (advisor, funding, Purdue RCAC Negishi). The bottom strip has short names only:

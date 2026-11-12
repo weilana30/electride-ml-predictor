@@ -1,24 +1,42 @@
 # Poster: electride void ELF and dimensionality
 
-Research poster, 36 × 48 in portrait, built in Inkscape in Purdue colors
-(black, Aged gold #8E6F3E for Tool 1, Rush gold #DAAA00 for Tool 2).
+Research poster, 36 × 48 in portrait. The current version is **v4**: six numbered
+section cards joined by arrows, slate blue for Tool 1 (predicted ELF), amber for
+Tool 2 (geometric void space), set in Avenir Next. v3 (Purdue black and gold,
+Arial) is kept because v4 lifts its hand-edited schematics.
 
 | File | What it is |
 | --- | --- |
-| [`poster_v3.svg`](poster_v3.svg) | **The current poster.** Open and edit it in Inkscape. Each section is its own layer. |
-| [`poster_v3.pdf`](poster_v3.pdf) | Print export of `poster_v3.svg` |
+| [`poster_v4.svg`](poster_v4.svg) | **The current poster.** Open and edit it in Inkscape. Each section is its own layer. |
+| [`poster_v4.pdf`](poster_v4.pdf), [`poster_v4_preview.png`](poster_v4_preview.png) | Print export of `poster_v4.svg`, and a small preview image |
+| [`poster_v3.svg`](poster_v3.svg), [`poster_v3.pdf`](poster_v3.pdf) | Previous version. Source of the v4 schematics; do not delete |
 | [`CONTENT.md`](CONTENT.md) | Story, every number on the poster with its source, and text drafts |
 | [`TODO.md`](TODO.md) | What still needs doing before printing |
 | [`figures/`](figures/) | Plots (PNG 300 dpi + PDF), linked into the poster |
 | [`diagrams/`](diagrams/) | Editable Inkscape schematics, and the Blender crystal renders in `diagrams/blender/crystals/` |
 | [`build/`](build/) | Scripts that produced the poster and every figure |
 
-## Editing
+## Rebuilding v4
+
+```bash
+python poster/build/make_v4_figures.py PATH/TO/test_predictions.parquet   # plots -> figures/v4/ ("-" skips the parity plot)
+python poster/build/build_poster_v4.py                                    # poster_v4.svg and poster_v4.pdf
+```
+
+`build_poster_v4.py` reads every number in the text from the result files
+(`poster_summary.json`, the confirmation-study `run_metrics.csv`, the registry
+`summary.json`, `figures/v4/numbers.json`) and copies the four schematics out of
+`poster_v3.svg`, recoloring them. Colors and fonts live in `build/v4_theme.py`.
+Rebuilding overwrites `poster_v4.svg`, so build to another file name once you
+start editing it by hand. Needs macOS (Avenir Next) and Inkscape. The parquet
+file is the one named in `build/make_parity_confirmation.py`.
+
+## Editing (v3)
 
 Edit `poster_v3.svg` directly in Inkscape. The three schematics (basic electride,
 ELF prediction, void connectivity) are pasted in as native, editable objects.
 The plots and crystal renders are linked images, so keep the `figures/` and
-`diagrams/` folders next to `poster.svg`.
+`diagrams/` folders next to `poster_v4.svg`.
 
 Export the PDF after editing:
 
