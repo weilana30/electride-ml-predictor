@@ -158,3 +158,21 @@ fully hand-checked.
 - How exact is the void network? It uses the power (radical Voronoi) diagram,
   so the connectivity is exact for the chosen radii, with no grid resolution
   limit. Related tools: Zeo++, CAVD, ToposPro.
+
+## v4 changes to wording and claims
+
+- Tool 2 now leads with the pre-chosen result (57% balanced accuracy vs 33%
+  chance at the fixed 1.0 Å probe). v3 showed only the probe-sweep flow chart.
+- The flow chart says "% agree" with the literature label instead of
+  "identified correctly", and its footnote states the sweep rule and that it
+  was chosen after seeing the labels. Class sizes (n) are on the chart.
+- Key finding uses the sweep counts shown in the chart: in 91 of 167
+  0D-labeled electrides the open space connects at some probe size. (At the
+  fixed 1.0 Å probe it is 57 of 167 as 1D/2D/3D; the older "50 of 167" counted
+  2D/3D only.)
+- Tool 1 adds the ± SD, error bars, a label on the predict-the-mean line, the
+  ELF ≥ 0.7 note on the parity plot, and a footnote that ELFNet has no known
+  electrides and that the test split holds out 9 structure families.
+- The crystal renders are captioned as geometric void space, not ELF.
+- Section 5 is marked "future work, not yet tested"; the takeaway says the
+  tools "could" separate structural from electronic dimensionality.
