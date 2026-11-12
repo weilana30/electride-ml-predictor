@@ -393,8 +393,8 @@ p.layer("4 Tool 2: map connectivity")
 top = p.card(X2, TOOL_Y, CW, TOOL_H, 4, "TOOL 2  ·  MAP HOW THE VOIDS CONNECT", T.GEO, T.INK, tag="EXACT GEOMETRY") + 28
 x = X2 + PAD
 y = p.text(x, top, w, "Can geometry alone recover the dimensionality reported for electrides?", 35, T.INK, 600, lh=1.2)
-y = p.text(x, y + 16, w, "Each atom blocks a sphere (ionic radius + probe radius). An exact power-diagram network of the "
-           "open space that remains counts the directions in which it repeats through the crystal.", 25.5, T.INK_2) + 30
+y = p.text(x, y + 16, w, "Each atom blocks a sphere (ionic radius + probe radius). We follow the open space through the "
+           "crystal and count how many directions it repeats in: none (0D), one (1D) or two (2D).", 25.5, T.INK_2) + 30
 vw, vh = schematic(p, "voidmap", x, y, w=w)
 y += vh + 26
 # sub-panel: the probe-size sweep, set apart from the schematic above it
