@@ -473,7 +473,7 @@ ry = H - REF_H
 p.rect(0, ry, W, REF_H, T.INK, label="References band")
 p.text(M, ry + 24, W - 2 * M,
        "**References**  [1] Becke & Edgecombe, J. Chem. Phys. 92, 5397 (1990), ELF.  [2] Ellis, Ellis & Miao, J. Mater. Inf. 6, 45 (2026), "
-       "doi:10.20517/jmi.2026.44, ELFNet.  [3] Registry labels: Magnetic electrides, J. Am. Chem. Soc. (2023), doi:10.1021/jacs.3c00284; "
+       "doi:10.20517/jmi.2026.44, ELFNet.  [3] Registry labels: Zhang et al., Magnetic Electrides: High-Throughput Material Screening, Intriguing Properties, and Applications, J. Am. Chem. Soc. (2023), doi:10.1021/jacs.3c00284; "
        "Zhu, Frolov & Choudhary, Matter 1, 1293 (2019); Burton et al., Chem. Mater. 30, 7521 (2018).  [4] Methods: Shannon, Acta Cryst. A32, 751 (1976), "
        "ionic radii; Willems et al., Micropor. Mesopor. Mater. 149, 134 (2012), Zeo++; Gilmer et al., ICML (2017), message passing.  "
        "[5] Related work: Xiao, Bristowe & Mostofi, Theory and Discovery of Electrides, arXiv:2605.11724 (2026); "
