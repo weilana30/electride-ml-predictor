@@ -428,8 +428,8 @@ top = p.card(x6, ROW3_Y, w6, ROW3_H, 6, "TAKEAWAYS", T.INK_2) + 30
 x, wi = x6 + PAD, w6 - 2 * PAD
 y = p.bullets(x, top, wi, [
     f"**Void ELF is predictable from nearby atoms:** RMSE {RMSE:.3f}, R² {R2:.2f} on held-out structure families.",
-    f"**Geometry beats chance on dimensionality** ({pct(BAL)} vs {pct(CHANCE)}). Most misses are 0D electrides whose open space connects.",
-    "**Not yet an electride classifier.** Together, the tools could separate structural from electronic dimensionality.",
+    f"**Geometry finds the 1D and 2D electrides:** the sweep agrees with the literature label for {pct(flow['agree'][1])} of 1D and {pct(flow['agree'][2])} of 2D.",
+    f"**Open space alone cannot call 0D:** {N0_OPEN} of {N0} electrides labeled 0D still have connected open space at some probe size.",
 ], 27.5, T.INK, 400, T.GEO, gap=24)
 y += 26
 p.o.append(f'<line x1="{x}" y1="{y}" x2="{x + wi}" y2="{y}" stroke="{T.RULE}" stroke-width="2.5"/>')
