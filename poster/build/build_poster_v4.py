@@ -243,6 +243,32 @@ def restyle(el, elf_values=False) -> str:
 
 V3, BOX = load_v3()
 BOX["elf"] = [48.0, 2002.0, 1640.0, 441.0]  # the three drawn panels; the queried box includes hidden padding
+
+
+def enlarge_bn() -> None:
+    """Larger labels in the section-5 schematic, with the legend laid out again to fit."""
+    from PIL import ImageFont
+    ids = {e.get("id"): e for e in V3["bn"].iter() if isinstance(e.tag, str)}
+    for k in ("text242", "text243", "text256", "text257"):
+        ids[k].set("font-size", "54")
+    for k in ("text258", "text259"):
+        ids[k].set("font-size", "50")
+    LEG = 47
+    font = ImageFont.truetype(T.font_file(T.BODY, 400), LEG)
+    x = 40.0
+    for sw, tx, label in (("rect259", "text260", "open channel (same geometry in both rows)"),
+                          ("rect260", "text261", "electron-rich region (high ELF)"),
+                          ("circle261", "text262", "atom")):
+        if sw.startswith("circle"):
+            ids[sw].set("cx", f"{x + 21:.1f}"), ids[sw].set("r", "21"), ids[sw].set("cy", "725")
+        else:
+            ids[sw].set("x", f"{x:.1f}"), ids[sw].set("width", "46"), ids[sw].set("height", "40"), ids[sw].set("y", "706")
+        ids[tx].set("x", f"{x + 62:.1f}"), ids[tx].set("font-size", str(LEG)), ids[tx].set("y", "742")
+        x += 62 + font.getlength(label) + 50
+
+
+enlarge_bn()
+BOX["bn"][2] = 2020.0
 DEFS = "".join(restyle(d) for d in V3["poster-defs"] if isinstance(d.tag, str))
 
 
@@ -258,7 +284,7 @@ def schematic(p: Page, key: str, x: float, y: float, w: float | None = None, h: 
 # ---------------------------------------------------------------- layout
 p = Page()
 PAD = 42
-FLOW_ASPECT = 8.8 / 16.0
+FLOW_ASPECT = 7.3 / 16.0
 HEAD_H, BG_Y, BG_H = 404, 444, 806
 GOAL_Y, GOAL_H = BG_Y + BG_H + 44, 128
 TOOL_Y = GOAL_Y + GOAL_H + 50
@@ -299,7 +325,7 @@ y = p.text(bx, top, bw, "Those voids can be isolated or connected, which sets th
 CRYSTALS = [("0d", "**0D**  isolated cages", "Ca~6~Al~7~O~16~ (mayenite type)"),
             ("1d", "**1D**  channels", "Y~5~Si~3~"), ("2d", "**2D**  sheets", "Ca~2~N")]
 cw = bw / 3
-img = 428
+img = 490
 for i, (k, label, formula) in enumerate(CRYSTALS):
     cx = bx + i * cw
     p.text(cx, y, cw, label, 28, T.INK, 500, align="center")
@@ -310,18 +336,18 @@ ex = bx + bw + 60
 ew = W - M - PAD - ex
 p.rect(ex, top - 6, ew + 18, BG_Y + BG_H - 24 - (top - 6), T.ELF_TINT, 12, label="ELF panel")
 ix, iw = ex + 26, ew - 34
-y = p.text(ix, top + 20, iw, "How electrides are identified: ELF", 34, T.ELF_DARK, 600, T.HEAD)
-y = p.text(ix, y + 14, iw, "The electron localization function (ELF) runs from 0 to 1 and measures how localized "
-           "electrons are compared with a uniform electron gas (0.5).", 26, T.INK_2, lh=1.3) + 26
+y = p.text(ix, top + 24, iw, "How electrides are identified: ELF", 38, T.ELF_DARK, 600, T.HEAD)
+y = p.text(ix, y + 18, iw, "The electron localization function (ELF) runs from 0 to 1 and measures how localized "
+           "electrons are compared with a uniform electron gas (0.5).", 28, T.INK_2, lh=1.3) + 46
 stops = "".join(f'<stop offset="{i / (len(T.ELF_RAMP) - 1):.3f}" stop-color="{c}"/>' for i, c in enumerate(T.ELF_RAMP))
 DEFS += f'<linearGradient id="elf-scale">{stops}</linearGradient>'
-p.rect(ix, y, iw, 40, "url(#elf-scale)", 6, T.RULE, 1.5, "ELF scale")
+p.rect(ix, y, iw, 50, "url(#elf-scale)", 6, T.RULE, 1.5, "ELF scale")
 for frac, lab, al in ((0, "0", "start"), (.5, "0.5  electron gas", "center"), (1, "1  localized", "end")):
     tx = ix + frac * iw
-    p.o.append(f'<line x1="{min(max(tx, ix + 1), ix + iw - 1):.1f}" y1="{y + 40}" x2="{min(max(tx, ix + 1), ix + iw - 1):.1f}" y2="{y + 52}" stroke="{T.INK_2}" stroke-width="2.5"/>')
-    p.text(tx - (0 if al == "start" else 200 if al == "center" else 400), y + 58, 400, lab, 20, T.INK_2, 500, align=al)
-y = p.text(ix, y + 122, iw, "**An ELF maximum inside a void**, away from any nucleus, signals interstitial electrons.", 26, T.INK_2, lh=1.3) + 22
-p.text(ix, y, iw, "**The bottleneck:** ELF needs a DFT calculation for every candidate crystal.", 26, T.INK_2, lh=1.3)
+    p.o.append(f'<line x1="{min(max(tx, ix + 1), ix + iw - 1):.1f}" y1="{y + 50}" x2="{min(max(tx, ix + 1), ix + iw - 1):.1f}" y2="{y + 64}" stroke="{T.INK_2}" stroke-width="2.5"/>')
+    p.text(tx - (0 if al == "start" else 200 if al == "center" else 400), y + 70, 400, lab, 24, T.INK_2, 500, align=al)
+y = p.text(ix, y + 142, iw, "**An ELF maximum inside a void**, away from any nucleus, signals interstitial electrons.", 28, T.INK_2, lh=1.3) + 34
+p.text(ix, y, iw, "**The bottleneck:** ELF needs a DFT calculation for every candidate crystal.", 28, T.INK_2, lh=1.3)
 
 # ---- 2 goal
 p.layer("2 Goal")
@@ -403,7 +429,7 @@ y = p.text(x, y + 12, w5, "The same open channel can hold connected electrons (1
 bh_avail = ROW3_Y + ROW3_H - 28 - y
 sx = 0.0
 bw_, bh_ = BOX["bn"][2], BOX["bn"][3]
-scale = min(bh_avail / bh_, (w5 - 650) / bw_)
+scale = min(bh_avail / bh_, (w5 - 560) / bw_)
 schematic(p, "bn", x, y + (bh_avail - bh_ * scale) / 2, w=bw_ * scale)
 stx = x + bw_ * scale + 44
 stw = M + C5W - PAD - stx

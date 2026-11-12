@@ -123,7 +123,7 @@ def flow(stem: Path) -> dict:
     faded = {0: "#d3d9dd", 1: "#b4bcc1", 2: T.GEO_SOFT}
     on_band = {0: T.INK, 1: "#ffffff", 2: T.INK}
     names = {0: "0D", 1: "1D", 2: "2D"}
-    box, gap, left, right, width, min_band = 100.0, 18.0, 0.125, 0.875, 0.03, 1.6
+    box, gap, left, right, width, min_band = 100.0, 18.0, 0.122, 0.878, 0.03, 1.6
     left_totals, right_totals = counts.sum(axis=1), counts.sum(axis=0)
 
     def shares(raw, axis):
@@ -134,7 +134,7 @@ def flow(stem: Path) -> dict:
     hit = np.diag(counts) / left_totals
     top = np.arange(3) * (box + gap)
     middle = (left + right) / 2
-    fig = plt.figure(figsize=(16.0, 8.8))
+    fig = plt.figure(figsize=(16.0, 7.3))
     ax = fig.add_axes((0, 0, 1, 1))
     ax.axis("off")
     left_next, right_next = top.astype(float), top.astype(float)
