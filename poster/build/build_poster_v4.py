@@ -304,7 +304,7 @@ p.rect(0, HEAD_H, W, 12, T.GEO, label="Header rule")
 y = p.text(M, 52, 2700, "Predicting Interstitial ELF and Mapping Void Connectivity for Electride Screening", 78, "#ffffff", 700, T.HEAD, lh=1.08)
 y = p.text(M, y + 20, 2700, "A graph neural network predicts the electron localization function (ELF) at interstitial voids; "
            "a geometric network labels how those voids connect", 27, "#c9d6dc", 400, lh=1.25)
-p.text(M, HEAD_H - 62, 2700, "**Andrew Weiland**   ·   Advisor: Dr. Justin Andrews   ·   Department of Chemistry, Purdue University   ·   weilana@purdue.edu", 25, "#ffffff", 500)
+p.text(M, HEAD_H - 62, 2700, "**Andrew Weiland, Gabriel Streblow**   ·   Advisor: Dr. Justin Andrews   ·   Department of Chemistry, Purdue University   ·   weilana@purdue.edu", 25, "#ffffff", 500)
 LOGO = 300
 p.image("diagrams/lab_logo.png", W - M - 250 - 285 - 70, (HEAD_H - LOGO) / 2, LOGO, LOGO)
 p.rect(W - M - 250, 56, 250, 250, "#ffffff", 8, label="QR code backing")
