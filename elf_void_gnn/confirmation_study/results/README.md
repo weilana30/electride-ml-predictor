@@ -5,7 +5,7 @@ Nine runs: three predeclared configurations × seeds 20261028, 20261029 and
 `cdb3fc87…aac7f4`; dataset fingerprint `3928d5a9…14e428`, both checked
 before the report). Plan: [`../PLAN.md`](../PLAN.md). Full report, logs,
 checkpoints and predictions are in
-`/home/weilana/elfnet-runs/elf_void_gnn/confirmation-study-2026-10-28/`.
+`/home/USER/elfnet-runs/elf_void_gnn/confirmation-study-2026-10-28/`.
 
 - Validation-only training: Slurm array `44756430`.
 - Validation report run and selection frozen 2026-11-03

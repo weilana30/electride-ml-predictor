@@ -2,7 +2,7 @@
 
 Uses the atom-only width-64 GNN, seed 20261028 (the median-RMSE seed of three). The per-void
 predictions are kept outside Git, on Negishi:
-  /home/weilana/elfnet-runs/elf_void_gnn/confirmation-study-2026-10-28/runs/w64_d2_atom_only-seed20261028/test_predictions.parquet
+  /home/USER/elfnet-runs/elf_void_gnn/confirmation-study-2026-10-28/runs/w64_d2_atom_only-seed20261028/test_predictions.parquet
 Copy that file locally, then:
     python poster/build/make_parity_confirmation.py PATH/TO/test_predictions.parquet [OUT_STEM]
 """

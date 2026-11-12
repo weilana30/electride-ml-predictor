@@ -1,7 +1,7 @@
 name: elf-center-existing-split-confirmation
-dataset_root: /home/weilana/elfnet-datasets/elfnet-gnn-2026-10-23
+dataset_root: /home/USER/elfnet-datasets/elfnet-gnn-2026-10-23
 split_sha256: cdb3fc87b80cb05ce1cfdd8b94267696cfb0bb9e810004512144b0c2f2aac7f4
-run_root: /home/weilana/elfnet-runs/elf_void_gnn/confirmation-study-2026-10-28/runs
+run_root: /home/USER/elfnet-runs/elf_void_gnn/confirmation-study-2026-10-28/runs
 default_evaluation_mode: validation-only
 seeds: [20261028, 20261029, 20261030]
 training:

@@ -15,7 +15,7 @@ trainer as `../results/`.
 `run_metrics.csv` is the `report.py` output for these runs;
 `poster_summary.json` is what `poster/build/make_gnn_figures.py` wrote for
 the poster chart. Runs and checkpoints are on Negishi under
-`/home/weilana/elfnet-runs/voidv2-2026-11-10/architecture-test/`.
+`/home/USER/elfnet-runs/voidv2-2026-11-10/architecture-test/`.
 
 Fixing the void descriptors barely changed these baselines: void geometry
 alone still predicts almost nothing (void-only R² ≈ 0.02).

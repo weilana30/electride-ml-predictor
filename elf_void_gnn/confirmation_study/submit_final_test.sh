@@ -1,10 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-EXPERIMENT_ROOT="${EXPERIMENT_ROOT:-/home/weilana/elfnet-runs/elf_void_gnn/confirmation-study-2026-10-28}"
+EXPERIMENT_ROOT="${EXPERIMENT_ROOT:-/home/USER/elfnet-runs/elf_void_gnn/confirmation-study-2026-10-28}"
 MANIFEST="$EXPERIMENT_ROOT/configs/manifest.csv"
 REPORT_DIR="$EXPERIMENT_ROOT/report"
-PYTHON="/home/weilana/.conda/envs/elfnet-train/bin/python"
+PYTHON="/home/USER/.conda/envs/elfnet-train/bin/python"
 
 # Refuse the launch unless the report and each predeclared validation run are complete.
 "$PYTHON" - "$MANIFEST" "$REPORT_DIR/validation_stage.json" <<'PY'
@@ -64,7 +64,7 @@ print("Preflight passed: validation stage and all nine frozen validation runs ar
 PY
 
 mkdir -p "$EXPERIMENT_ROOT/logs"
-sbatch --array="0-8%2" --export="ALL,MANIFEST=$MANIFEST" \
+sbatch --account="${SLURM_ACCOUNT:?set SLURM_ACCOUNT to your Slurm allocation}" --array="0-8%2" --export="ALL,MANIFEST=$MANIFEST" \
   --output="$EXPERIMENT_ROOT/logs/final-test-%A_%a.out" \
   --error="$EXPERIMENT_ROOT/logs/final-test-%A_%a.err" \
   "$REPO_ROOT/elf_void_gnn/confirmation_study/final_test_array.sbatch"

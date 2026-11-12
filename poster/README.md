@@ -10,7 +10,6 @@ Arial) is kept because v4 lifts its hand-edited schematics.
 | [`poster_v4.svg`](poster_v4.svg) | **The current poster.** Open and edit it in Inkscape. Each section is its own layer. |
 | [`poster_v4.pdf`](poster_v4.pdf), [`poster_v4_preview.png`](poster_v4_preview.png) | Print export of `poster_v4.svg`, and a small preview image |
 | [`poster_v3.svg`](poster_v3.svg), [`poster_v3.pdf`](poster_v3.pdf) | Previous version. Source of the v4 schematics; do not delete |
-| [`poster.svg`](poster.svg), [`poster.pdf`](poster.pdf) | Earlier version, kept for reference |
 | [`CONTENT.md`](CONTENT.md) | Story, every number on the poster with its source, and text drafts |
 | [`TODO.md`](TODO.md) | What still needs doing before printing |
 | [`figures/`](figures/) | Plots (PNG 300 dpi + PDF), linked into the poster |
@@ -37,7 +36,7 @@ file is the one named in `build/make_parity_confirmation.py`.
 Edit `poster_v3.svg` directly in Inkscape. The three schematics (basic electride,
 ELF prediction, void connectivity) are pasted in as native, editable objects.
 The plots and crystal renders are linked images, so keep the `figures/` and
-`diagrams/` folders next to `poster.svg`.
+`diagrams/` folders next to `poster_v4.svg`.
 
 Export the PDF after editing:
 

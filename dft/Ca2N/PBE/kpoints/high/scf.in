@@ -57,7 +57,7 @@ ATOMIC_POSITIONS crystal
 
 K_POINTS automatic
   21 21 21 0 0 0
-! Source: data/cifs/mp-2686.cif (mp-2686)
+! Source: dft/structures/mp-2686.cif (mp-2686)
 ! 2D; canonical layered electride; light-element contrast
 ! PBE ONCV scalar-relativistic pseudopotentials
 ! Pre-production settings: converge cutoffs and k mesh before production calculations.

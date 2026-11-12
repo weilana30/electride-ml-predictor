@@ -5,7 +5,7 @@
 The raw ELFNet source tree contains paired VASP `POSCAR` and `ELFCAR` files:
 
 ```text
-/scratch/negishi/weilana/dft-reference-elfs-50000-v1/
+/scratch/negishi/USER/dft-reference-elfs-50000-v1/
 ```
 
 This scratch location is temporary storage and must not be the only archive of the source data. The source tree is organized by ELFNet categories such as `2/` and `Mono/`, followed by parent phases and variants.
@@ -15,7 +15,7 @@ This scratch location is temporary storage and must not be the only archive of t
 The original Negishi extraction run used:
 
 ```text
-/scratch/negishi/weilana/electride-ml-predictor/elfnet-gnn-2026-10-23/
+/scratch/negishi/USER/electride-ml-predictor/elfnet-gnn-2026-10-23/
 ```
 
 The workflow created a manifest, distributed extraction into independent chunks, merged the chunks, regenerated family-safe splits, and validated the result. Intermediate chunks and Slurm logs remain in this external run root.
@@ -25,7 +25,7 @@ The workflow created a manifest, distributed extraction into independent chunks,
 The processed dataset used by the GNNs is:
 
 ```text
-/home/weilana/elfnet-datasets/elfnet-gnn-2026-10-23/
+/home/USER/elfnet-datasets/elfnet-gnn-2026-10-23/
 ```
 
 It contains:

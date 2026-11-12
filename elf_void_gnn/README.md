@@ -16,7 +16,7 @@ Inputs are atom structural features plus validity flags and void structural feat
 
 ## Negishi
 
-Create the separate environment using PyTorch 2.7.1 ROCm 6.3 and the pins in `requirements-rocm63.txt`; leave the extraction environment alone. From the repository root, create `/home/weilana/elfnet-runs/elf_void_gnn/logs`, then submit the GPU smoke script followed by the training script only after smoke succeeds:
+Create the separate environment using PyTorch 2.7.1 ROCm 6.3 and the pins in `requirements-rocm63.txt`; leave the extraction environment alone. From the repository root, create `/home/USER/elfnet-runs/elf_void_gnn/logs`, then submit the GPU smoke script followed by the training script only after smoke succeeds:
 
 ```sh
 sbatch elf_void_gnn/cluster/smoke.sbatch

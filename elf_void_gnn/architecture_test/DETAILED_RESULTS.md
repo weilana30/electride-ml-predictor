@@ -374,7 +374,7 @@ For the depth-3 hypothesis, record family-wise effects and seed stability rather
 - Split SHA256: `cdb3fc87b80cb05ce1cfdd8b94267696cfb0bb9e810004512144b0c2f2aac7f4`
 - GPU Slurm array: `44681694`, 24/24 complete, exit 0
 - CPU tree job: `44681695`, complete, exit 0
-- Remote run root: `/home/weilana/elfnet-runs/elf_void_gnn/architecture-test`
+- Remote run root: `/home/USER/elfnet-runs/elf_void_gnn/architecture-test`
 - Local result package: `architecture_test_results_2026-10-27`
 
 The remote checkout advanced during execution because of concurrent feature-study work. Early tasks used `ad3a175`; later tasks saw a subsequent change that added optional `edge_features` support to `hetero_mpnn.py`. The benchmark dataset did not supply that optional field, so the same original radial-distance path executed. The benchmark trainer, model variants, registry, manifest, and configurations did not change during the sweep.

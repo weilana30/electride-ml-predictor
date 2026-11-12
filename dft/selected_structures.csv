@@ -1,7 +1,7 @@
 role,material_id,formula,mp_id,label,rationale,source_cif,nat,initial_k_grid
-electride,ELD-0003,Ba2As,mp-2768,electride_0D_Ba2As,0D; Ba-As binary; nonmagnetic baseline,/Users/andrewweiland/Andrews_Lab_Research/electride-ml-predictor/data/cifs/mp-2768.cif,6,9x9x12
-electride,ELD-0014,Ba3CrN3,mp-12905,electride_1D_Ba3CrN3,1D; transition-metal nitride; AFM-seeded magnetic test,/Users/andrewweiland/Andrews_Lab_Research/electride-ml-predictor/data/cifs/mp-12905.cif,14,6x6x8
-electride,ELD-0049,Ca2N,mp-2686,electride_2D_Ca2N,2D; canonical layered electride; light-element contrast,/Users/andrewweiland/Andrews_Lab_Research/electride-ml-predictor/data/cifs/mp-2686.cif,3,14x14x14
-control,mp-1315,MgS,mp-1315,control_ionic_MgS,binary ionic control,/Users/andrewweiland/Andrews_Lab_Research/electride-ml-predictor/data/cifs/mp-1315.cif,2,14x14x14
-control,mp-7759,BaSn3,mp-7759,control_intermetallic_BaSn3,Ba-containing metallic intermetallic control,/Users/andrewweiland/Andrews_Lab_Research/electride-ml-predictor/data/cifs/mp-7759.cif,8,7x7x8
-control,mp-15896,Cu2SiSe3,mp-15896,control_covalent_Cu2SiSe3,ternary covalent/chalcogenide semiconductor control,/Users/andrewweiland/Andrews_Lab_Research/electride-ml-predictor/data/cifs/mp-15896.cif,12,7x8x8
+electride,ELD-0003,Ba2As,mp-2768,electride_0D_Ba2As,0D; Ba-As binary; nonmagnetic baseline,dft/structures/mp-2768.cif,6,9x9x12
+electride,ELD-0014,Ba3CrN3,mp-12905,electride_1D_Ba3CrN3,1D; transition-metal nitride; AFM-seeded magnetic test,dft/structures/mp-12905.cif,14,6x6x8
+electride,ELD-0049,Ca2N,mp-2686,electride_2D_Ca2N,2D; canonical layered electride; light-element contrast,dft/structures/mp-2686.cif,3,14x14x14
+control,mp-1315,MgS,mp-1315,control_ionic_MgS,binary ionic control,dft/structures/mp-1315.cif,2,14x14x14
+control,mp-7759,BaSn3,mp-7759,control_intermetallic_BaSn3,Ba-containing metallic intermetallic control,dft/structures/mp-7759.cif,8,7x7x8
+control,mp-15896,Cu2SiSe3,mp-15896,control_covalent_Cu2SiSe3,ternary covalent/chalcogenide semiconductor control,dft/structures/mp-15896.cif,12,7x8x8

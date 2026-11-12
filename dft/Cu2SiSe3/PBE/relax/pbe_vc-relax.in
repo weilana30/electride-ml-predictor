@@ -77,7 +77,7 @@ ATOMIC_POSITIONS crystal
 
 K_POINTS automatic
   17 17 17  0 0 0
-! Source: data/cifs/mp-15896.cif (mp-15896)
+! Source: dft/structures/mp-15896.cif (mp-15896)
 ! ternary covalent/chalcogenide semiconductor control
 ! PBE ONCV scalar-relativistic pseudopotentials
 ! Pre-production settings: converge cutoffs and k mesh before production calculations.

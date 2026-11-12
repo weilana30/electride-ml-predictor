@@ -46,7 +46,7 @@ Atom-only GNN: R² 0.83 ± 0.01, MAE 0.038 ± 0.001.
 
 `summary.json` holds every number above, per seed. Reproduce with the
 predictions copied from Negishi
-(`/home/weilana/elfnet-runs/feature-study/final-test/job-44702592/test_predictions.parquet`):
+(`/home/USER/elfnet-runs/feature-study/final-test/job-44702592/test_predictions.parquet`):
 
 ```bash
 python elf_void_gnn/poster_figures/make_figures.py \

@@ -7,3 +7,8 @@ __pycache__/
 
 # External ELFNet source, model, and large data archives
 elfnet_data/
+.DS_Store
+
+# Scheduler logs
+slurm-*.out
+slurm-*.err

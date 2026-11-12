@@ -3,7 +3,7 @@
 The completed fixed-architecture feature study is archived on Negishi under:
 
 ```text
-/home/weilana/elfnet-runs/feature-study/analysis/final-report/
+/home/USER/elfnet-runs/feature-study/analysis/final-report/
 ```
 
 The final report is generated from the frozen final-test artifact and does not re-evaluate test structures. The report and final prediction artifact are external because they include generated tables, figures, and predictions.

@@ -19,10 +19,10 @@
 
 
   **** **** ******  **  PROGRAM STARTED AT               2026-10-08 20:15:49.411
- ***** ** ***  *** **   PROGRAM STARTED ON          a066.negishi.rcac.purdue.edu
- **    ****   ******    PROGRAM STARTED BY                               weilana
+ ***** ** ***  *** **   PROGRAM STARTED ON          compute-node
+ **    ****   ******    PROGRAM STARTED BY                               USER
  ***** **    ** ** **   PROGRAM PROCESS ID                                367875
-  **** **  *******  **  PROGRAM STARTED IN /scratch/negishi/weilana/electride-ml
+  **** **  *******  **  PROGRAM STARTED IN /scratch/negishi/USER/electride-ml
                                            -predictor/cp2k/BaSn3_cutoff_300_4393
                                            4307
 
@@ -1312,9 +1312,9 @@
  
  -------------------------------------------------------------------------------
   **** **** ******  **  PROGRAM ENDED AT                 2026-10-08 20:18:47.935
- ***** ** ***  *** **   PROGRAM RAN ON              a066.negishi.rcac.purdue.edu
- **    ****   ******    PROGRAM RAN BY                                   weilana
+ ***** ** ***  *** **   PROGRAM RAN ON              compute-node
+ **    ****   ******    PROGRAM RAN BY                                   USER
  ***** **    ** ** **   PROGRAM PROCESS ID                                367875
-  **** **  *******  **  PROGRAM STOPPED IN /scratch/negishi/weilana/electride-ml
+  **** **  *******  **  PROGRAM STOPPED IN /scratch/negishi/USER/electride-ml
                                            -predictor/cp2k/BaSn3_cutoff_300_4393
                                            4307

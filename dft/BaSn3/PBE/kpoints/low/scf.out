@@ -81,7 +81,7 @@
 
 
      PseudoPot. # 1 for Ba read from file:
-     /home/weilana/electride-ml-predictor/dft/pseudo/PBE_PAW/Ba.pbe-spn-kjpaw_psl.1.0.0.UPF
+     /home/USER/electride-ml-predictor/dft/pseudo/PBE_PAW/Ba.pbe-spn-kjpaw_psl.1.0.0.UPF
      MD5 check sum: 7cfe25f1fe7574a4710541d5a11d6531
      Pseudo is Projector augmented-wave + core cor, Zval = 10.0
      Generated using &quot;atomic&quot; code by A. Dal Corso  v.6.2.2
@@ -98,7 +98,7 @@
 
 
      PseudoPot. # 2 for Sn read from file:
-     /home/weilana/electride-ml-predictor/dft/pseudo/PBE_PAW/Sn.pbe-dn-kjpaw_psl.1.0.0.UPF
+     /home/USER/electride-ml-predictor/dft/pseudo/PBE_PAW/Sn.pbe-dn-kjpaw_psl.1.0.0.UPF
      MD5 check sum: 67f11dec737d427557dc41ea34975807
      Pseudo is Projector augmented-wave + core cor, Zval = 14.0
      Generated using &quot;atomic&quot; code by A. Dal Corso  v.6.3

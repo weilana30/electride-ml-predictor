@@ -25,4 +25,4 @@ Mean over 3 seeds (pooled RMSE; macro = mean over held-out families):
   families; there is no consistent gain.
 
 Runs are on Negishi under
-`/home/weilana/elfnet-runs/voidv2-2026-11-10/confirmation-study/`.
+`/home/USER/elfnet-runs/voidv2-2026-11-10/confirmation-study/`.
