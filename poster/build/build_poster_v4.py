@@ -370,11 +370,11 @@ y = p.text(x, y + 16, w, "Atoms and candidate voids are both nodes of one period
 p.rect(x, y, w, 441 * (w - 40) / 1640 + 40, T.SOFT, 12, label="Schematic panel")
 ew_, eh_ = schematic(p, "elf", x + 20, y + 20, w=w - 40, elf_values=True)
 y += eh_ + 40 + 26
-p.stats(x, y, w, 172, [(f"{RMSE:.3f}", f"test RMSE (± {RMSE_SD:.3f}) on the 0–1 ELF scale"), (f"{R2:.2f}", "test R²"),
+p.stats(x, y, w, 172, [(f"{RMSE:.3f}", "test RMSE in ELF (0–1)"), (f"{R2:.2f}", "test R²"),
                        (f"{N_VOIDS:,}", "test voids in 5,000 crystals"), ("9", "structure families held out for the test")], T.ELF_DARK, T.ELF_TINT)
 y += 172 + 30
 FOOT = 25
-foot_h = 2 * FOOT * PT * 1.3
+foot_h = 3 * FOOT * PT * 1.3
 call_h = 118
 cw1, cw2, ch = 7.1 * 96 * .98, 8.9 * 96 * .98, 6.9 * 96 * .98
 gap = w - cw1 - cw2
@@ -388,11 +388,11 @@ p.image(f"figures/{FIGDIR}/gnn_parity_confirmation.png", x + cw1 + gap, ty + 46,
 p.rect(x, bottom + 14, w, call_h, T.ELF_TINT, 12, T.ELF, 3, "Key finding")
 p.text(x + 30, bottom + 14 + 17, w - 60, f"**The atoms carry the signal.** A void’s own geometry does no better than predicting the mean "
        f"({VOID_ONLY:.3f} vs {MEAN_RMSE:.3f}); adding its atomic neighborhood cuts the error by more than half.", 25, T.INK, 400, align="center", lh=1.28)
-p.text(x, TOOL_Y + TOOL_H - 26 - foot_h, w, "Data: ELFNet [2], 50,000 DFT structures (metal frameworks derived from compressed hydrides), split by structure family.", FOOT, T.MUTED, lh=1.3)
+p.text(x, TOOL_Y + TOOL_H - 26 - foot_h, w, "Data: ELFNet [2], 50,000 DFT structures (metal frameworks derived from compressed hydrides), split by structure family. ELFNet contains no known electrides, so this is not yet a test on real electrides.", FOOT, T.MUTED, lh=1.3)
 
 # ---- 4 tool 2
 p.layer("4 Tool 2: map connectivity")
-top = p.card(X2, TOOL_Y, CW, TOOL_H, 4, "TOOL 2  ·  MAP HOW THE VOIDS CONNECT", T.GEO, T.INK, tag="EXACT GEOMETRY") + 28
+top = p.card(X2, TOOL_Y, CW, TOOL_H, 4, "TOOL 2  ·  MAP HOW THE VOIDS CONNECT", T.GEO, T.INK, tag="GEOMETRY") + 28
 x = X2 + PAD
 y = p.text(x, top, w, "Can geometry alone recover the dimensionality reported for electrides?", 35, T.INK, 600, lh=1.2)
 y = p.text(x, y + 16, w, "Each atom blocks a sphere (ionic radius + probe radius). We follow the open space through the "
@@ -409,8 +409,8 @@ CALL2 = 140
 cy = SP_BOT - SP_PAD - CALL2
 iw = w - 2 * SP_PAD
 CAP_Y, CAP_H = SP_TOP + SP_HEAD + 22, 84
-p.text(x + SP_PAD, CAP_Y + 4, iw, "We grew the probe from 0.4 to 1.8 Å in 0.05 Å steps (29 sizes). An electride counts as 1D if any "
-       "size gives a 1D path, otherwise 2D if any gives 2D, otherwise 0D.", 27, T.INK_2, lh=1.3)
+p.text(x + SP_PAD, CAP_Y + 4, iw, "We grew the probe from 0.4 to 1.8 Å in 0.05 Å steps (29 sizes) and recorded "
+       "the most connected result for each electride.", 27, T.INK_2, lh=1.3)
 fy = CAP_Y + CAP_H + 14
 fh = iw * FLOW_ASPECT
 avail = cy - 16 - fy

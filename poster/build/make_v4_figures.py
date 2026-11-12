@@ -51,8 +51,6 @@ def comparison(stem: Path) -> dict:
     for i, m in enumerate(models):
         mean, sd = m["test_rmse"]
         ax.barh(i, mean, height=0.62, color=T.ELF if i == 0 else T.NEUTRAL_BARS[i - 1], zorder=2)
-        if sd:  # the boosted trees were run once
-            ax.errorbar(mean, i, xerr=sd, color=T.INK, lw=2.2, capsize=7, capthick=2.2, zorder=4)
         ax.text(0.005, i, f"{mean:.3f}", ha="left", va="center", fontsize=23, fontweight="bold",
                 color="white" if i == 0 else T.INK, zorder=5)
     ax.axvline(mean_rmse, color=T.INK, lw=2.6, ls=(0, (3.5, 2.2)), zorder=3)
