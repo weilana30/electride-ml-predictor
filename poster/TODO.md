@@ -4,7 +4,6 @@ Edit `poster_v4.svg` in Inkscape, then export `poster_v4.pdf` (see README).
 
 ## Must do
 
-- [ ] **Email:** replace `[email]` in the title (advisor, department and logo are done).
 - [ ] **QR code:** replace the QR CODE placeholder box; link to the repository or contact page.
 - [ ] **References:** full citations in one consistent style, plus acknowledgements
   (advisor, funding, Purdue RCAC Negishi). The bottom strip has short names only:
