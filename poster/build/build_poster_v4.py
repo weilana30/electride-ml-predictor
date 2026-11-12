@@ -291,7 +291,7 @@ y = p.text(ax, top, aw, "Electrons that sit between the atoms", 34, T.INK, 600, 
 y = p.text(ax, y + 14, aw, "In an electride, some valence electrons are not bound to any atom. They localize in the "
            "empty space (voids) of the crystal and act as the anions.", 26, T.INK_2) + 18
 sw, sh = schematic(p, "electride", ax + (aw - 340) / 2, y, w=340)
-p.text(ax, y + sh + 12, aw, "Schematic: cations (+) with electrons (e−) held in the voids between them.", 20, T.MUTED, align="center")
+p.text(ax, y + sh + 12, aw, "Schematic: cations (+) with electrons (e−) held in the voids between them.", 25, T.MUTED, align="center")
 
 bx, bw = ax + aw + 70, 1480
 p.o.append(f'<line x1="{bx - 35}" y1="{top}" x2="{bx - 35}" y2="{BG_Y + BG_H - 30}" stroke="{T.GRID}" stroke-width="3"/>')
@@ -304,7 +304,7 @@ for i, (k, label, formula) in enumerate(CRYSTALS):
     cx = bx + i * cw
     p.text(cx, y, cw, label, 28, T.INK, 500, align="center")
     p.image(f"diagrams/blender/crystals/electride_{k}_v2_transparent.png", cx + (cw - img) / 2, y + 44, img, img)
-    p.text(cx, y + 44 + img + 4, cw, formula, 24, T.INK_2, align="center")
+    p.text(cx, y + 44 + img + 4, cw, formula, 30, T.INK_2, align="center")
 
 ex = bx + bw + 60
 ew = W - M - PAD - ex
@@ -345,8 +345,8 @@ y += eh_ + 40 + 26
 p.stats(x, y, w, 172, [(f"{RMSE:.3f}", f"test RMSE (± {RMSE_SD:.3f}) on the 0–1 ELF scale"), (f"{R2:.2f}", "test R²"),
                        (f"{N_VOIDS:,}", "test voids in 5,000 crystals"), ("9", "structure families held out for the test")], T.ELF_DARK, T.ELF_TINT)
 y += 172 + 30
-FOOT = 19.5
-foot_h = 3 * FOOT * PT * 1.3
+FOOT = 25
+foot_h = 2 * FOOT * PT * 1.3
 call_h = 118
 cw1, cw2, ch = 7.1 * 96 * .98, 8.9 * 96 * .98, 6.9 * 96 * .98
 gap = w - cw1 - cw2
