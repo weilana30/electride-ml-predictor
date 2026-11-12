@@ -305,8 +305,6 @@ for i, (k, label, formula) in enumerate(CRYSTALS):
     p.text(cx, y, cw, label, 28, T.INK, 500, align="center")
     p.image(f"diagrams/blender/crystals/electride_{k}_v2_transparent.png", cx + (cw - img) / 2, y + 44, img, img)
     p.text(cx, y + 44 + img + 4, cw, formula, 24, T.INK_2, align="center")
-p.text(bx, BG_Y + BG_H - 28 - 56, bw, "Amber surfaces: geometric void space (ionic radii + 1.0 Å probe), not ELF. "
-       "Atoms simplified; mayenite cages drawn as spheres, O hidden.", 20, T.MUTED, align="center", lh=1.3)
 
 ex = bx + bw + 60
 ew = W - M - PAD - ex
@@ -327,15 +325,12 @@ p.text(ix, y, iw, "**The bottleneck:** ELF needs a DFT calculation for every can
 
 # ---- 2 goal
 p.layer("2 Goal")
-p.arrow(W / 2, BG_Y + BG_H + 3)
 p.rect(M, GOAL_Y, W - 2 * M, GOAL_H, T.INK, 16, label="Goal band")
 p.o.append(f'<circle cx="{M + 62}" cy="{GOAL_Y + GOAL_H / 2}" r="29" fill="{T.GEO}"/>')
 p.text(M + 32, GOAL_Y + GOAL_H / 2 - 21, 60, "2", 31, T.INK, 700, T.HEAD, "center")
 p.text(M + 112, GOAL_Y + GOAL_H / 2 - 21, 200, "GOAL", 31, T.GEO, 600, T.HEAD, tracking=1.2)
 p.text(M + 250, GOAL_Y + 18, W - 2 * M - 250 - PAD, "Screen crystals for electrides **from structure alone**: predict ELF at each void without "
        "DFT, and map how the voids connect. We built two void-centered tools and tested each one separately.", 30, "#ffffff", 400, lh=1.3)
-for cx in (X1 + CW / 2, X2 + CW / 2):
-    p.arrow(cx, GOAL_Y + GOAL_H + 5)
 
 # ---- 3 tool 1
 p.layer("3 Tool 1: predict ELF")
@@ -365,9 +360,7 @@ p.image("figures/v4/gnn_parity_confirmation.png", x + cw1 + gap, ty + 46, cw2, c
 p.rect(x, bottom + 14, w, call_h, T.ELF_TINT, 12, T.ELF, 3, "Key finding")
 p.text(x + 30, bottom + 14 + 17, w - 60, f"**The atoms carry the signal.** A void’s own geometry does no better than predicting the mean "
        f"({VOID_ONLY:.3f} vs {MEAN_RMSE:.3f}); adding its atomic neighborhood cuts the error by more than half.", 25, T.INK, 400, align="center", lh=1.28)
-p.text(x, TOOL_Y + TOOL_H - 26 - foot_h, w, "Data: ELFNet [2], 50,000 DFT structures (metal frameworks derived from compressed hydrides), split by "
-       "structure family. Numbers are mean ± SD over 3 seeds; error bars show the SD; the scatter is one seed. "
-       "ELFNet contains no known electrides, so this is not yet a test on real electrides.", FOOT, T.MUTED, lh=1.3)
+p.text(x, TOOL_Y + TOOL_H - 26 - foot_h, w, "Data: ELFNet [2], 50,000 DFT structures (metal frameworks derived from compressed hydrides), split by structure family.", FOOT, T.MUTED, lh=1.3)
 
 # ---- 4 tool 2
 p.layer("4 Tool 2: map connectivity")
@@ -401,8 +394,6 @@ p.text(x + SP_PAD + 34, cy + 20, iw - 68, f"**In {N0_OPEN} of {N0} electrides la
 
 # ---- 5 combination
 p.layer("5 Proposed combination")
-for cx in (X1 + CW / 2, X2 + CW / 2):
-    p.arrow(cx, TOOL_Y + TOOL_H + 5)
 C5W = 2230
 top = p.card(M, ROW3_Y, C5W, ROW3_H, 5, "PROPOSED  ·  COMBINE THE TWO TOOLS", T.INK_2, tag="FUTURE WORK, NOT YET TESTED") + 28
 x, w5 = M + PAD, C5W - 2 * PAD
