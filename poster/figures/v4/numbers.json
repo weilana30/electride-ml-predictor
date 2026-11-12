@@ -1,0 +1,74 @@
+{
+  "comparison": {
+    "models": [
+      {
+        "label": "Atom\u2013void graph network",
+        "test_rmse": [
+          0.05928854712530773,
+          0.0028304753541178885
+        ],
+        "runs": 3
+      },
+      {
+        "label": "Boosted decision trees",
+        "test_rmse": [
+          0.0762650821159151,
+          0.0
+        ],
+        "runs": 1
+      },
+      {
+        "label": "Averaged-atom neural network",
+        "test_rmse": [
+          0.08270066866620614,
+          0.0020266486829061845
+        ],
+        "runs": 3
+      },
+      {
+        "label": "Void-only neural network",
+        "test_rmse": [
+          0.1392765928886178,
+          0.0005548709637449683
+        ],
+        "runs": 3
+      }
+    ],
+    "predict_average_rmse": 0.140569552897538
+  },
+  "flow": {
+    "counts_literature_by_sweep": [
+      [
+        76,
+        19,
+        72
+      ],
+      [
+        0,
+        61,
+        1
+      ],
+      [
+        1,
+        0,
+        28
+      ]
+    ],
+    "agree": [
+      0.4550898203592814,
+      0.9838709677419355,
+      0.9655172413793104
+    ],
+    "share_0D_label_with_connected_space": 0.5449101796407185,
+    "n_0D_label_with_connected_space": 91,
+    "n_0D": 167
+  },
+  "parity": {
+    "n": 88680,
+    "rmse": 0.059467652272970614,
+    "r2": 0.8210304856471242,
+    "share_true_ge_rare": 0.007081641858367163,
+    "recall_ge_rare": 0.0,
+    "rare_threshold": 0.7
+  }
+}

@@ -1,6 +1,6 @@
 # Poster to-do list
 
-Edit `poster.svg` in Inkscape, then export `poster.pdf` (see README).
+Edit `poster_v4.svg` in Inkscape, then export `poster_v4.pdf` (see README).
 
 ## Must do
 
