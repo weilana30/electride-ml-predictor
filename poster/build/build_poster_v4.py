@@ -366,7 +366,7 @@ top = p.card(X1, TOOL_Y, CW, TOOL_H, 3, "TOOL 1  ·  PREDICT ELF AT EACH VOID", 
 x, w = X1 + PAD, CW - 2 * PAD
 y = p.text(x, top, w, "Can a graph network predict the ELF at each candidate void from the surrounding atoms?", 35, T.INK, 600, lh=1.2)
 y = p.text(x, y + 16, w, "Atoms and candidate voids are both nodes of one periodic graph, joined by distance edges. "
-           "Message passing gathers each void’s atomic neighborhood and returns one ELF value at the void center.", 25.5, T.INK_2) + 30
+           "Message passing gathers each void’s atomic neighborhood and returns one ELF value for each void.", 25.5, T.INK_2) + 30
 p.rect(x, y, w, 441 * (w - 40) / 1640 + 40, T.SOFT, 12, label="Schematic panel")
 ew_, eh_ = schematic(p, "elf", x + 20, y + 20, w=w - 40, elf_values=True)
 y += eh_ + 40 + 26
@@ -409,8 +409,8 @@ CALL2 = 140
 cy = SP_BOT - SP_PAD - CALL2
 iw = w - 2 * SP_PAD
 CAP_Y, CAP_H = SP_TOP + SP_HEAD + 22, 84
-p.text(x + SP_PAD, CAP_Y + 4, iw, "We grew the probe from 0.4 to 1.8 Å in 0.05 Å steps (29 sizes) and recorded "
-       "the most connected result for each electride.", 27, T.INK_2, lh=1.3)
+p.text(x + SP_PAD, CAP_Y + 4, iw, "We grew the probe from 0.4 to 1.8 Å in 0.05 Å steps (29 sizes). An electride counts as 1D if any "
+       "size gives a 1D path, otherwise 2D if any gives 2D, otherwise 0D.", 27, T.INK_2, lh=1.3)
 fy = CAP_Y + CAP_H + 14
 fh = iw * FLOW_ASPECT
 avail = cy - 16 - fy
@@ -458,7 +458,7 @@ top = p.card(x6, ROW3_Y, w6, ROW3_H, 6, "TAKEAWAYS", T.INK_2) + 30
 x, wi = x6 + PAD, w6 - 2 * PAD
 y = p.bullets(x, top, wi, [
     f"**Void ELF is predictable from nearby atoms:** RMSE {RMSE:.3f}, R² {R2:.2f} on held-out structure families.",
-    f"**Geometry finds the 1D and 2D electrides:** the sweep agrees with the literature label for {pct(flow['agree'][1])} of 1D and {pct(flow['agree'][2])} of 2D.",
+    f"**Geometry finds the 1D and 2D electrides:** it agrees with the literature label for {pct(flow['agree'][1])} of 1D and {pct(flow['agree'][2])} of 2D.",
     f"**Open space alone cannot call 0D:** {N0_OPEN} of {N0} electrides labeled 0D still have connected open space at some probe size.",
 ], 27.5, T.INK, 400, T.GEO, gap=24)
 y += 26
