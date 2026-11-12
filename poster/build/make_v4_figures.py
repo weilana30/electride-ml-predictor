@@ -123,7 +123,7 @@ def flow(stem: Path) -> dict:
     faded = {0: "#d3d9dd", 1: "#b4bcc1", 2: T.GEO_SOFT}
     on_band = {0: T.INK, 1: "#ffffff", 2: T.INK}
     names = {0: "0D", 1: "1D", 2: "2D"}
-    box, gap, left, right, width, min_band = 100.0, 20.0, 0.125, 0.875, 0.03, 1.6
+    box, gap, left, right, width, min_band = 100.0, 18.0, 0.125, 0.875, 0.03, 1.6
     left_totals, right_totals = counts.sum(axis=1), counts.sum(axis=0)
 
     def shares(raw, axis):
@@ -134,7 +134,7 @@ def flow(stem: Path) -> dict:
     hit = np.diag(counts) / left_totals
     top = np.arange(3) * (box + gap)
     middle = (left + right) / 2
-    fig = plt.figure(figsize=(16.0, 5.3))
+    fig = plt.figure(figsize=(16.0, 8.0))
     ax = fig.add_axes((0, 0, 1, 1))
     ax.axis("off")
     left_next, right_next = top.astype(float), top.astype(float)
@@ -153,20 +153,20 @@ def flow(stem: Path) -> dict:
             continue
         ax.add_patch(PathPatch(band, fc=colors[i], ec="none", zorder=2))
         ax.text(left + 0.3 * (right - left), a + na / 2 + (b + nb / 2 - a - na / 2) * 0.216,
-                f"{100 * hit[i]:.0f}% agree", ha="center", va="center", fontsize=29, fontweight="bold",
+                f"{100 * hit[i]:.0f}% agree", ha="center", va="center", fontsize=34, fontweight="bold",
                 color=on_band[i], zorder=3)
     for i in range(3):
         centre = top[i] + box / 2
         for x, align, sign, total in ((left - width, "right", -1, left_totals[i]), (right, "left", 1, right_totals[i])):
             ax.add_patch(Rectangle((x, top[i]), width, box, fc=colors[i], ec="none"))
             edge = x - 0.012 if sign < 0 else x + width + 0.012
-            ax.text(edge, centre - 14, names[i], ha=align, va="center", fontsize=36, fontweight="bold")
-            ax.text(edge, centre + 28, f"n = {total}", ha=align, va="center", fontsize=20, color=T.INK_2)
+            ax.text(edge, centre - 14, names[i], ha=align, va="center", fontsize=42, fontweight="bold")
+            ax.text(edge, centre + 32, f"n = {total}", ha=align, va="center", fontsize=24, color=T.INK_2)
     for x, align, heading in ((left - width, "left", "Literature label"),
                               (right + width, "right", "Geometry, over all probe sizes")):
-        ax.text(x, -16, heading, ha=align, va="bottom", fontsize=27, fontweight="demibold")
+        ax.text(x, -16, heading, ha=align, va="bottom", fontsize=31, fontweight="demibold")
     ax.set_xlim(0, 1)
-    ax.set_ylim(top[-1] + box + 8, -66)
+    ax.set_ylim(top[-1] + box + 8, -64)
     save(fig, stem)
     return {"counts_literature_by_sweep": counts.tolist(), "agree": hit.tolist(),
             "share_0D_label_with_connected_space": float(1 - hit[0]),

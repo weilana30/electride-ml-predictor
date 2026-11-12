@@ -258,6 +258,7 @@ def schematic(p: Page, key: str, x: float, y: float, w: float | None = None, h: 
 # ---------------------------------------------------------------- layout
 p = Page()
 PAD = 42
+FLOW_ASPECT = 8.0 / 16.0
 HEAD_H, BG_Y, BG_H = 404, 444, 806
 GOAL_Y, GOAL_H = BG_Y + BG_H + 44, 128
 TOOL_Y = GOAL_Y + GOAL_H + 50
@@ -376,25 +377,18 @@ y = p.text(x, y + 16, w, "Each atom blocks a sphere (ionic radius + probe radius
            "open space that remains counts the directions in which it repeats through the crystal.", 25.5, T.INK_2) + 30
 vw, vh = schematic(p, "voidmap", x, y, w=w)
 y += vh + 26
-p.stats(x, y, w, 172, [(str(N_REG), "known electrides scored (0D, 1D, 2D, 3D labels)"),
-                       (f"{pct(BAL)} vs {pct(CHANCE)}", "balanced accuracy vs chance, fixed 1.0 Å probe"),
-                       (pct(REACHED), "show the literature dimension at some probe size")], T.GEO_DARK, T.GEO_TINT)
-y += 172 + 30
-foot_h2 = 3 * FOOT * PT * 1.3
-fh = w * 5.3 / 16.0
-avail = TOOL_Y + TOOL_H - 26 - foot_h2 - 20 - call_h - 14 - (y + 46)
+CALL2 = 150
+cy = TOOL_Y + TOOL_H - 30 - CALL2
+fh = w * FLOW_ASPECT
+avail = cy - 18 - (y + 56)
 fw = w if fh <= avail else w * avail / fh
 fh = min(fh, avail)
-cy = TOOL_Y + TOOL_H - 26 - foot_h2 - 20 - call_h
-y += max(0, (cy - 14 - fh - 46 - y) / 2)
-p.text(x, y, w, "Sweeping the probe size: where geometry and the literature agree", 25, T.INK, 600, align="center")
-p.image("figures/v4/connectivity_flow_sweep.png", x + (w - fw) / 2, y + 46, fw, fh)
-p.rect(x, cy, w, call_h, T.GEO_TINT, 12, T.GEO, 3, "Key finding")
-p.text(x + 30, cy + 17, w - 60, f"**In {N0_OPEN} of {N0} electrides labeled 0D, the open space connects at some probe size.** "
-       "The space forms a path, but the electrons may still sit in separate pockets.", 25, T.INK, 400, align="center", lh=1.28)
-p.text(x, TOOL_Y + TOOL_H - 26 - foot_h2, w, f"Fixed probe: {pct(EXACT)} exact agreement; always answering 0D would score {pct(ALL0D)}, hence balanced accuracy. "
-       "Sweep rule (1D if any probe size gives 1D, else 2D, else 0D) was chosen after seeing the labels, so it is exploratory. "
-       f"Labels come from computational screens [3]; {N_EXP} of {N_REG} are experimentally confirmed. 3D (n = 2) not drawn.", FOOT, T.MUTED, lh=1.3)
+y += max(0, (avail - fh) / 2)
+p.text(x, y, w, "Probe-size sweep (exploratory): where geometry and the literature agree", 27, T.INK, 600, align="center")
+p.image("figures/v4/connectivity_flow_sweep.png", x + (w - fw) / 2, y + 56, fw, fh)
+p.rect(x, cy, w, CALL2, T.GEO_TINT, 12, T.GEO, 3, "Key finding")
+p.text(x + 36, cy + 22, w - 72, f"**In {N0_OPEN} of {N0} electrides labeled 0D, the open space connects at some probe size.** "
+       "The space forms a path, but the electrons may still sit in separate pockets.", 29, T.INK, 400, align="center", lh=1.28)
 
 # ---- 5 combination
 p.layer("5 Proposed combination")
