@@ -480,7 +480,7 @@ p.text(M, ry + 24, W - 2 * M,
        "Qin, Lv & Zhong, EAC-Net: Predicting Real-Space Charge Density via Equivariant Atomic Contributions, arXiv:2508.04052; "
        "Ryan, Lengyel & Shatruk, Crystal Structure Prediction via Deep Learning, J. Am. Chem. Soc. 140, 10158 (2018); "
        "Wang et al., Machine Learning-Accelerated Discovery of A~2~BC~2~ Ternary Electrides with Diverse Anionic Electron Densities, J. Am. Chem. Soc. 145, 26412 (2023).  "
-       "**Acknowledgements**  [advisor, funding]; Purdue RCAC (Negishi).", 20, "#d5dee3", 400, lh=1.32)
+       "**Acknowledgements**  Thank you to my advisor, Justin Andrews, for his guidance. Computing resources were provided by Purdue RCAC (Negishi).", 20, "#d5dee3", 400, lh=1.32)
 
 p.save(OUT, DEFS)
 print("flow figure scale", round(fw / w, 3))
