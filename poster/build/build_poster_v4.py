@@ -425,7 +425,7 @@ p.text(x + SP_PAD + 34, cy + 20, iw - 68, f"**In {N0_OPEN} of {N0} electrides la
 # ---- 5 combination
 p.layer("5 Proposed combination")
 C5W = 2230
-top = p.card(M, ROW3_Y, C5W, ROW3_H, 5, "PROPOSED  ·  COMBINE THE TWO TOOLS", T.INK_2, tag="FUTURE WORK, NOT YET TESTED") + 28
+top = p.card(M, ROW3_Y, C5W, ROW3_H, 5, "PROPOSED  ·  COMBINE THE TWO TOOLS", T.INK_2, tag="FUTURE WORK") + 28
 x, w5 = M + PAD, C5W - 2 * PAD
 y = p.text(x, top, w5, "Open space is not the same as electrons", 35, T.INK, 600)
 y = p.text(x, y + 12, w5, "The same open channel can hold connected electrons (1D) or separate pockets (0D); only the ELF at its "
