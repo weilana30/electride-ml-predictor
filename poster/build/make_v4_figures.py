@@ -160,8 +160,7 @@ def flow(stem: Path) -> dict:
         for x, align, sign, total in ((left - width, "right", -1, left_totals[i]), (right, "left", 1, right_totals[i])):
             ax.add_patch(Rectangle((x, top[i]), width, box, fc=colors[i], ec="none"))
             edge = x - 0.012 if sign < 0 else x + width + 0.012
-            ax.text(edge, centre - 14, names[i], ha=align, va="center", fontsize=42, fontweight="bold")
-            ax.text(edge, centre + 32, f"n = {total}", ha=align, va="center", fontsize=24, color=T.INK_2)
+            ax.text(edge, centre, names[i], ha=align, va="center", fontsize=42, fontweight="bold")
     for x, align, heading in ((left - width, "left", "Literature label"),
                               (right + width, "right", "Geometry, over all probe sizes")):
         ax.text(x, -16, heading, ha=align, va="bottom", fontsize=31, fontweight="demibold")
