@@ -284,7 +284,7 @@ def schematic(p: Page, key: str, x: float, y: float, w: float | None = None, h: 
 # ---------------------------------------------------------------- layout
 p = Page()
 PAD = 42
-FLOW_ASPECT = 7.3 / 16.0
+FLOW_ASPECT = 6.2 / 16.0
 HEAD_H, BG_Y, BG_H = 404, 444, 806
 GOAL_Y, GOAL_H = BG_Y + BG_H + 44, 128
 TOOL_Y = GOAL_Y + GOAL_H + 50
@@ -406,8 +406,13 @@ p.text(x + 34, SP_TOP + 18, w - 300, "Probe-size sweep", 40, T.INK, 700, T.HEAD)
 p.text(x + 34, SP_TOP + 34, w - 68, "EXPLORATORY", 22, T.GEO_DARK, 700, align="end", tracking=2.4)
 CALL2 = 140
 cy = SP_BOT - SP_PAD - CALL2
-fy = SP_TOP + SP_HEAD + 22
 iw = w - 2 * SP_PAD
+CAP_Y, CAP_H = SP_TOP + SP_HEAD + 22, 96
+p.rect(x + SP_PAD, CAP_Y, iw, CAP_H, T.SOFT, 10, label="Sweep note")
+p.rect(x + SP_PAD, CAP_Y, 10, CAP_H, T.GEO, 0)
+p.text(x + SP_PAD + 38, CAP_Y + 15, iw - 70, "We grew the probe from **0.4 to 1.8 Å in 0.05 Å steps (29 sizes)** and recorded "
+       "the **most connected result** for each electride.", 27, T.INK_2, lh=1.3)
+fy = CAP_Y + CAP_H + 14
 fh = iw * FLOW_ASPECT
 avail = cy - 16 - fy
 fw = iw if fh <= avail else iw * avail / fh

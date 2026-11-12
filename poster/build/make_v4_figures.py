@@ -134,7 +134,7 @@ def flow(stem: Path) -> dict:
     hit = np.diag(counts) / left_totals
     top = np.arange(3) * (box + gap)
     middle = (left + right) / 2
-    fig = plt.figure(figsize=(16.0, 7.3))
+    fig = plt.figure(figsize=(16.0, 6.2))
     ax = fig.add_axes((0, 0, 1, 1))
     ax.axis("off")
     left_next, right_next = top.astype(float), top.astype(float)
