@@ -355,8 +355,8 @@ p.rect(M, GOAL_Y, W - 2 * M, GOAL_H, T.INK, 16, label="Goal band")
 p.o.append(f'<circle cx="{M + 62}" cy="{GOAL_Y + GOAL_H / 2}" r="29" fill="{T.GEO}"/>')
 p.text(M + 32, GOAL_Y + GOAL_H / 2 - 21, 60, "2", 31, T.INK, 700, T.HEAD, "center")
 p.text(M + 112, GOAL_Y + GOAL_H / 2 - 21, 200, "GOAL", 31, T.GEO, 600, T.HEAD, tracking=1.2)
-p.text(M + 250, GOAL_Y + 18, W - 2 * M - 250 - PAD, "Screen crystals for electrides **from structure alone**: predict ELF at each void without "
-       "DFT, and map how the voids connect. We built two void-centered tools and tested each one separately.", 30, "#ffffff", 400, lh=1.3)
+p.text(M + 250, GOAL_Y + GOAL_H / 2 - 21, W - 2 * M - 250 - PAD, "Screen crystals for electrides **from structure alone**: predict ELF at each void without "
+       "DFT, and map how the voids connect. We built two void-centered tools.", 30, "#ffffff", 400, lh=1.3)
 
 # ---- 3 tool 1
 p.layer("3 Tool 1: predict ELF")
