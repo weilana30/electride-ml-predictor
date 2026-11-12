@@ -275,11 +275,11 @@ p.rect(0, HEAD_H, W, 12, T.GEO, label="Header rule")
 y = p.text(M, 52, 2700, "Predicting Interstitial ELF and Mapping Void Connectivity for Electride Screening", 78, "#ffffff", 700, T.HEAD, lh=1.08)
 y = p.text(M, y + 20, 2700, "A graph neural network predicts the electron localization function (ELF) at interstitial voids; "
            "an exact geometric network labels how those voids connect", 27, "#c9d6dc", 400, lh=1.25)
-p.text(M, HEAD_H - 62, 2700, "**Andrew Weiland**   ·   [Advisor name]   ·   [Department], Purdue University   ·   [email]", 25, "#ffffff", 500)
-for i, label in enumerate(("LOGO", "QR CODE")):
-    bx = W - M - 250 - (1 - i) * 285
-    p.rect(bx, 72, 250, 250, "#ffffff", 8, label=label)
-    p.text(bx, 182, 250, label, 17, T.MUTED, 500, align="center", tracking=2)
+p.text(M, HEAD_H - 62, 2700, "**Andrew Weiland**   ·   Advisor: Justin Andrews   ·   Department of Chemistry, Purdue University   ·   [email]", 25, "#ffffff", 500)
+LOGO = 300
+p.image("diagrams/lab_logo.png", W - M - 250 - 285 - 70, (HEAD_H - LOGO) / 2, LOGO, LOGO)
+p.rect(W - M - 250, 72, 250, 250, "#ffffff", 8, label="QR CODE")
+p.text(W - M - 250, 182, 250, "QR CODE", 17, T.MUTED, 500, align="center", tracking=2)
 
 # ---- 1 background
 p.layer("1 Background")
