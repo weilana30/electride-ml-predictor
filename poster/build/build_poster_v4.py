@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import html
 import json
+import os
 import re
 import subprocess
 import sys
@@ -27,6 +28,7 @@ POSTER = Path(__file__).resolve().parents[1]
 ROOT = POSTER.parent
 _args = [a for a in sys.argv[1:] if not a.startswith("--")]
 OUT = Path(_args[0]) if _args else POSTER / "poster_v4.svg"
+FIGDIR = os.environ.get("POSTER_FIGDIR", "v4")
 INKSCAPE = "/Applications/Inkscape.app/Contents/MacOS/inkscape"
 SVG, INK_NS = "http://www.w3.org/2000/svg", "http://www.inkscape.org/namespaces/inkscape"
 PT = 96 / 72
@@ -381,8 +383,8 @@ ty = y + max(0, (bottom - y - 46 - ch) / 2)
 print("tool 1 slack", round(bottom - y - 46 - ch))
 p.text(x, ty, cw1, "Graph network vs. simpler models", 25, T.INK, 600, align="center")
 p.text(x + cw1 + gap, ty, cw2, "Predicted vs. DFT ELF on the test set", 25, T.INK, 600, align="center")
-p.image("figures/v4/gnn_model_comparison.png", x, ty + 46, cw1, ch)
-p.image("figures/v4/gnn_parity_confirmation.png", x + cw1 + gap, ty + 46, cw2, ch)
+p.image(f"figures/{FIGDIR}/gnn_model_comparison.png", x, ty + 46, cw1, ch)
+p.image(f"figures/{FIGDIR}/gnn_parity_confirmation.png", x + cw1 + gap, ty + 46, cw2, ch)
 p.rect(x, bottom + 14, w, call_h, T.ELF_TINT, 12, T.ELF, 3, "Key finding")
 p.text(x + 30, bottom + 14 + 17, w - 60, f"**The atoms carry the signal.** A void’s own geometry does no better than predicting the mean "
        f"({VOID_ONLY:.3f} vs {MEAN_RMSE:.3f}); adding its atomic neighborhood cuts the error by more than half.", 25, T.INK, 400, align="center", lh=1.28)
@@ -403,7 +405,6 @@ p.rect(x, SP_TOP, w, SP_BOT - SP_TOP, T.CARD, 14, T.GEO, 3.5, "Sweep panel")
 p.o.append(f'<path d="M{x} {SP_TOP + SP_HEAD}V{SP_TOP + 14}a14 14 0 0 1 14 -14H{x + w - 14}a14 14 0 0 1 14 14V{SP_TOP + SP_HEAD}z" fill="{T.GEO_TINT}" inkscape:label="Sweep panel header"/>')
 p.o.append(f'<line x1="{x}" y1="{SP_TOP + SP_HEAD}" x2="{x + w}" y2="{SP_TOP + SP_HEAD}" stroke="{T.GEO}" stroke-width="3.5"/>')
 p.text(x + 34, SP_TOP + 18, w - 300, "Probe-size sweep", 40, T.INK, 700, T.HEAD)
-p.text(x + 34, SP_TOP + 34, w - 68, "EXPLORATORY", 22, T.GEO_DARK, 700, align="end", tracking=2.4)
 CALL2 = 140
 cy = SP_BOT - SP_PAD - CALL2
 iw = w - 2 * SP_PAD
@@ -416,7 +417,7 @@ avail = cy - 16 - fy
 fw = iw if fh <= avail else iw * avail / fh
 fh = min(fh, avail)
 print("sweep chart scale", round(fw / iw, 3), "slack", round(avail - fh))
-p.image("figures/v4/connectivity_flow_sweep.png", x + (w - fw) / 2, fy + (avail - fh) / 2, fw, fh)
+p.image(f"figures/{FIGDIR}/connectivity_flow_sweep.png", x + (w - fw) / 2, fy + (avail - fh) / 2, fw, fh)
 p.rect(x + SP_PAD, cy, iw, CALL2, T.GEO_TINT, 12, T.GEO, 3, "Key finding")
 p.text(x + SP_PAD + 34, cy + 20, iw - 68, f"**In {N0_OPEN} of {N0} electrides labeled 0D, the open space connects at some probe size.** "
        "The space forms a path, but the electrons may still sit in separate pockets.", 28, T.INK, 400, align="center", lh=1.28)

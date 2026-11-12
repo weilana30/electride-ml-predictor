@@ -33,14 +33,18 @@ ATOM = "#4b5961"
 ATOM_LIGHT = "#9aa6ad"
 NEUTRAL_BARS = ["#aab4ba", "#c0c8cd", "#d5dbde"]
 
-BODY = "Avenir Next"
-HEAD = "Avenir Next Condensed"
+import os
+ARIAL = os.environ.get("POSTER_FONT") == "arial"  # POSTER_FONT=arial redraws everything in Arial, for comparison
+BODY = "Arial" if ARIAL else "Avenir Next"
+HEAD = "Arial" if ARIAL else "Avenir Next Condensed"
 _TTC = {BODY: "/System/Library/Fonts/Avenir Next.ttc", HEAD: "/System/Library/Fonts/Avenir Next Condensed.ttc"}
 _cache: dict[tuple[str, int, bool], str] = {}
 
 
 def font_file(family: str, weight: int = 400, italic: bool = False) -> str:
     """Path to a standalone .ttf for one face, extracted from the macOS .ttc on first use."""
+    if ARIAL:
+        return "/System/Library/Fonts/Supplemental/Arial" + (" Bold" if weight >= 600 else "") + (" Italic" if italic else "") + ".ttf"
     key = (family, weight, italic)
     if key not in _cache:
         from fontTools.ttLib import TTCollection
@@ -60,7 +64,7 @@ def use_matplotlib_fonts() -> None:
     """Register Avenir Next with matplotlib and make it the default family."""
     import matplotlib
     from matplotlib import font_manager
-    for weight in (400, 500, 600, 700):
+    for weight in (400, 700) if ARIAL else (400, 500, 600, 700):
         font_manager.fontManager.addfont(font_file(BODY, weight))
         font_manager.fontManager.addfont(font_file(HEAD, weight))
     matplotlib.rcParams.update({
