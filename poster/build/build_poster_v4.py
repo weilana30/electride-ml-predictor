@@ -407,11 +407,9 @@ p.text(x + 34, SP_TOP + 34, w - 68, "EXPLORATORY", 22, T.GEO_DARK, 700, align="e
 CALL2 = 140
 cy = SP_BOT - SP_PAD - CALL2
 iw = w - 2 * SP_PAD
-CAP_Y, CAP_H = SP_TOP + SP_HEAD + 22, 96
-p.rect(x + SP_PAD, CAP_Y, iw, CAP_H, T.SOFT, 10, label="Sweep note")
-p.rect(x + SP_PAD, CAP_Y, 10, CAP_H, T.GEO, 0)
-p.text(x + SP_PAD + 38, CAP_Y + 15, iw - 70, "We grew the probe from **0.4 to 1.8 Å in 0.05 Å steps (29 sizes)** and recorded "
-       "the **most connected result** for each electride.", 27, T.INK_2, lh=1.3)
+CAP_Y, CAP_H = SP_TOP + SP_HEAD + 22, 84
+p.text(x + SP_PAD, CAP_Y + 4, iw, "We grew the probe from 0.4 to 1.8 Å in 0.05 Å steps (29 sizes) and recorded "
+       "the most connected result for each electride.", 27, T.INK_2, lh=1.3)
 fy = CAP_Y + CAP_H + 14
 fh = iw * FLOW_ASPECT
 avail = cy - 16 - fy
