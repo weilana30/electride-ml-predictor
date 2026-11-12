@@ -262,7 +262,7 @@ FLOW_ASPECT = 8.8 / 16.0
 HEAD_H, BG_Y, BG_H = 404, 444, 806
 GOAL_Y, GOAL_H = BG_Y + BG_H + 44, 128
 TOOL_Y = GOAL_Y + GOAL_H + 50
-REF_H = 160
+REF_H = 215
 ROW3_H = 772
 ROW3_Y = H - REF_H - 30 - ROW3_H
 TOOL_H = ROW3_Y - 50 - TOOL_Y
@@ -447,6 +447,10 @@ p.text(M, ry + 24, W - 2 * M,
        "doi:10.20517/jmi.2026.44, ELFNet.  [3] Registry labels: Magnetic electrides, J. Am. Chem. Soc. (2023), doi:10.1021/jacs.3c00284; "
        "Zhu, Frolov & Choudhary, Matter 1, 1293 (2019); Burton et al., Chem. Mater. 30, 7521 (2018).  [4] Methods: Shannon, Acta Cryst. A32, 751 (1976), "
        "ionic radii; Willems et al., Micropor. Mesopor. Mater. 149, 134 (2012), Zeo++; Gilmer et al., ICML (2017), message passing.  "
+       "[5] Related work: Xiao, Bristowe & Mostofi, Theory and Discovery of Electrides, arXiv:2605.11724 (2026); "
+       "Qin, Lv & Zhong, EAC-Net: Predicting Real-Space Charge Density via Equivariant Atomic Contributions, arXiv:2508.04052; "
+       "Ryan, Lengyel & Shatruk, Crystal Structure Prediction via Deep Learning, J. Am. Chem. Soc. 140, 10158 (2018); "
+       "Wang et al., Machine Learning-Accelerated Discovery of A~2~BC~2~ Ternary Electrides with Diverse Anionic Electron Densities, J. Am. Chem. Soc. 145, 26412 (2023).  "
        "**Acknowledgements**  [advisor, funding]; Purdue RCAC (Negishi).", 20, "#d5dee3", 400, lh=1.32)
 
 p.save(OUT, DEFS)
