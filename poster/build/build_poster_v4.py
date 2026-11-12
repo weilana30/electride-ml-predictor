@@ -388,7 +388,7 @@ p.image(f"figures/{FIGDIR}/gnn_parity_confirmation.png", x + cw1 + gap, ty + 46,
 p.rect(x, bottom + 14, w, call_h, T.ELF_TINT, 12, T.ELF, 3, "Key finding")
 p.text(x + 30, bottom + 14 + 17, w - 60, f"**The atoms carry the signal.** A void’s own geometry does no better than predicting the mean "
        f"({VOID_ONLY:.3f} vs {MEAN_RMSE:.3f}); adding its atomic neighborhood cuts the error by more than half.", 25, T.INK, 400, align="center", lh=1.28)
-p.text(x, TOOL_Y + TOOL_H - 26 - foot_h, w, "Data: ELFNet [2], 50,000 DFT structures (metal frameworks derived from compressed hydrides), split by structure family. ELFNet contains no known electrides, so this is not yet a test on real electrides.", FOOT, T.MUTED, lh=1.3)
+p.text(x, TOOL_Y + TOOL_H - 26 - foot_h, w, "Data: ELFNet [2], 50,000 DFT structures (metal frameworks derived from compressed hydrides), split by structure family. Limitation: ELFNet contains no known electrides.", FOOT, T.MUTED, lh=1.3)
 
 # ---- 4 tool 2
 p.layer("4 Tool 2: map connectivity")
